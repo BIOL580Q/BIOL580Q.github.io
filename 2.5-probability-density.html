@@ -150,11 +150,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="probability-density" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Probability density</h2>
 <p>Because we are dealing with a continuous distribution, there are no finite points along the distribution that can have a probability associated with them. Instead, we need to think back to calculus and consider the probability of any given value as an integral.</p>
-<div class="float">
-<img src="https://www.youtube.com/watch?v=P9dpTTpjymE" alt="I will derive" />
-<div class="figcaption">I will derive</div>
-</div>
-<p>Imagine that you have a curve, and the area under the curve represents a probability, so it must sum to 1 (i.e. all possible outcomes must be represented). Picture a set of discrete bars underneath that distribution, each representing some portion of the total probability, like we did with the discrete distributions. We will use the function <code>dnorm()</code> for this, which is the density (d for density) of a normal distribution at a vector of values, rather than random draws (r for random). To create our vector of values, we will use the <code>seq()</code> function, which generates a sequence of numbers.</p>
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/P9dpTTpjymE?si=gQ9jA4zgawehe5SX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  
+  <p>Imagine that you have a curve, and the area under the curve represents a probability, so it must sum to 1 (i.e. all possible outcomes must be represented). Picture a set of discrete bars underneath that distribution, each representing some portion of the total probability, like we did with the discrete distributions. We will use the function <code>dnorm()</code> for this, which is the density (d for density) of a normal distribution at a vector of values, rather than random draws (r for random). To create our vector of values, we will use the <code>seq()</code> function, which generates a sequence of numbers.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="2.5-probability-density.html#cb45-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.5</span>)))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672"  /></p>
 <p>Now imagine that we make each bin smaller, and smaller, and smaller by changing the increments in our sequence (i.e. we make more bins).</p>
