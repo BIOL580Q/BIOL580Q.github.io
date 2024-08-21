@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="2.5 Probability density | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+<meta property="og:type" content="book" />
+
+
+
+
+<meta name="author" content="Eliza Grames" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="description" content="2.5 Probability density | BIOL 480/580Q: Ecological Modeling (Fall 2024)">
+
+<title>2.5 Probability density | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte-fonts.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-background.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-italics.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#introduction" id="toc-introduction"><span class="toc-section-number">1</span> Introduction</a>
+<ul>
+<li><a href="1.1-about-this-book.html#about-this-book" id="toc-about-this-book"><span class="toc-section-number">1.1</span> About this ‘book’</a></li>
+<li><a href="1.2-why-this-course.html#why-this-course" id="toc-why-this-course"><span class="toc-section-number">1.2</span> Why this course?</a></li>
+<li class="has-sub"><a href="1.3-getting-comfortable-with-r-and-rstudio.html#getting-comfortable-with-r-and-rstudio" id="toc-getting-comfortable-with-r-and-rstudio"><span class="toc-section-number">1.3</span> Getting comfortable with R and RStudio</a>
+<ul>
+<li><a href="1.3-getting-comfortable-with-r-and-rstudio.html#some-terms-and-definitions" id="toc-some-terms-and-definitions"><span class="toc-section-number">1.3.1</span> Some terms and definitions</a></li>
+<li><a href="1.3-getting-comfortable-with-r-and-rstudio.html#customizing-rstudio" id="toc-customizing-rstudio"><span class="toc-section-number">1.3.2</span> Customizing RStudio</a></li>
+</ul></li>
+<li><a href="1.4-how-to-approach-this-course.html#how-to-approach-this-course" id="toc-how-to-approach-this-course"><span class="toc-section-number">1.4</span> How to approach this course</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-probability.html#probability" id="toc-probability"><span class="toc-section-number">2</span> Probability</a>
+<ul>
+<li><a href="2.1-bernoulli-distribution.html#bernoulli-distribution" id="toc-bernoulli-distribution"><span class="toc-section-number">2.1</span> Bernoulli distribution</a></li>
+<li class="has-sub"><a href="2.2-binomial-distribution.html#binomial-distribution" id="toc-binomial-distribution"><span class="toc-section-number">2.2</span> Binomial distribution</a>
+<ul>
+<li><a href="2.2-binomial-distribution.html#guillemot-example" id="toc-guillemot-example"><span class="toc-section-number">2.2.1</span> Guillemot example</a></li>
+<li><a href="2.2-binomial-distribution.html#coral-example" id="toc-coral-example"><span class="toc-section-number">2.2.2</span> Coral example</a></li>
+</ul></li>
+<li><a href="2.3-probability-mass.html#probability-mass" id="toc-probability-mass"><span class="toc-section-number">2.3</span> Probability mass</a></li>
+<li class="has-sub"><a href="2.4-the-normal-gaussian-distribution.html#the-normal-gaussian-distribution" id="toc-the-normal-gaussian-distribution"><span class="toc-section-number">2.4</span> The Normal (Gaussian) distribution</a>
+<ul>
+<li><a href="2.4-the-normal-gaussian-distribution.html#guillemot-weight" id="toc-guillemot-weight"><span class="toc-section-number">2.4.1</span> Guillemot weight</a></li>
+</ul></li>
+<li><a href="2.5-probability-density.html#probability-density" id="toc-probability-density"><span class="toc-section-number">2.5</span> Probability density</a></li>
+<li class="has-sub"><a href="2.6-the-standard-normal-distribution.html#the-standard-normal-distribution" id="toc-the-standard-normal-distribution"><span class="toc-section-number">2.6</span> The Standard Normal Distribution</a>
+<ul>
+<li><a href="2.6-the-standard-normal-distribution.html#functions-1" id="toc-functions-1"><span class="toc-section-number">2.6.1</span> Functions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="probability-density" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Probability density</h2>
+<p>Because we are dealing with a continuous distribution, there are no finite points along the distribution that can have a probability associated with them. Instead, we need to think back to calculus and consider the probability of any given value as an integral.</p>
+<div class="float">
+<img src="https://www.youtube.com/watch?v=P9dpTTpjymE" alt="I will derive" />
+<div class="figcaption">I will derive</div>
+</div>
+<p>Imagine that you have a curve, and the area under the curve represents a probability, so it must sum to 1 (i.e. all possible outcomes must be represented). Picture a set of discrete bars underneath that distribution, each representing some portion of the total probability, like we did with the discrete distributions. We will use the function <code>dnorm()</code> for this, which is the density (d for density) of a normal distribution at a vector of values, rather than random draws (r for random). To create our vector of values, we will use the <code>seq()</code> function, which generates a sequence of numbers.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="2.5-probability-density.html#cb45-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.5</span>)))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672"  /></p>
+<p>Now imagine that we make each bin smaller, and smaller, and smaller by changing the increments in our sequence (i.e. we make more bins).</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="2.5-probability-density.html#cb46-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.1</span>)))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672"  /></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="2.5-probability-density.html#cb47-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.05</span>)))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-2.png" width="672"  /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="2.5-probability-density.html#cb48-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.01</span>)))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-3.png" width="672"  /></p>
+<p>As the size of our bins approaches zero, the number of bins approaches infinity. This is essentially what we are doing with an integral. With a continuous distribution, we now have probability density functions, rather than probability mass.</p>
+<p><img src="https://media1.tenor.com/m/FznI6WanGVUAAAAC/mean-girls-lindsay-lohan.gif" /></p>
+<p>To get back to our original question of the probability of an adult guillemot weighing exactly 990 grams (still a silly question), we can use the <code>dnorm()</code> function to get the probability density at that value.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="2.5-probability-density.html#cb49-1" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x=</span><span class="dv">990</span>, <span class="at">mean=</span><span class="dv">980</span>, <span class="at">sd=</span><span class="dv">20</span>)</span></code></pre></div>
+<pre><code>## [1] 0.01760327</code></pre>
+<p>What we are likely more interested in, however, is the probability of an adult weighing <em>at least</em> 990 grams. For that, we need the <code>pnorm()</code> function which returns the cumulative density of the normal distribution at a given quantile (for now, think of the quantile as just the cutoff point in adult weights that we are interested in).</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="2.5-probability-density.html#cb51-1" tabindex="-1"></a><span class="co"># what is the probability of observing an adult guillemot that weighs at least 990 grams?</span></span>
+<span id="cb51-2"><a href="2.5-probability-density.html#cb51-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">990</span>, <span class="at">mean =</span> <span class="dv">980</span>, <span class="at">sd =</span> <span class="dv">20</span>, </span>
+<span id="cb51-3"><a href="2.5-probability-density.html#cb51-3" tabindex="-1"></a>      <span class="at">lower.tail=</span>F <span class="co"># we need to specify that we are in the upper tail</span></span>
+<span id="cb51-4"><a href="2.5-probability-density.html#cb51-4" tabindex="-1"></a>      )</span></code></pre></div>
+<pre><code>## [1] 0.3085375</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="2.5-probability-density.html#cb53-1" tabindex="-1"></a><span class="co"># what about at least 1000 grams?</span></span>
+<span id="cb53-2"><a href="2.5-probability-density.html#cb53-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">980</span>, <span class="at">sd =</span> <span class="dv">20</span>, <span class="at">lower.tail =</span> F)</span></code></pre></div>
+<pre><code>## [1] 0.1586553</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="2.5-probability-density.html#cb55-1" tabindex="-1"></a><span class="co"># what about at least 1020 grams?</span></span>
+<span id="cb55-2"><a href="2.5-probability-density.html#cb55-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1020</span>, <span class="at">mean =</span> <span class="dv">980</span>, <span class="at">sd =</span> <span class="dv">20</span>, <span class="at">lower.tail =</span> F)</span></code></pre></div>
+<pre><code>## [1] 0.02275013</code></pre>
+<p>As we get into the tails of the distribution, the probability of observing an adult guillemot that is at least that heavy, or heavier, gets increasingly less likely. This brings us to the definition of the p-value: the probability of observing your data, <em>or data more extreme</em>, if the null is true. In our case, we are treating the null hypothesis as being that guillemot weights are drawn from a normal distribution with a mean of 980 and standard deviation of 20. What if instead we our null hypothesis was that the mean was still 980, but that there was a lot more variability in nature, and the standard deviation was 30? The probability of an adult guillemot weighing that much is now much higher (9.1%, as opposed to 0.02%) because there is more spread around the central tendency.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="2.5-probability-density.html#cb57-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">1020</span>, <span class="at">mean=</span><span class="dv">980</span>, <span class="at">sd=</span><span class="dv">30</span>, <span class="at">lower.tail=</span>F)</span></code></pre></div>
+<pre><code>## [1] 0.09121122</code></pre>
+</div>
+<p style="text-align: center;">
+<a href="2.4-the-normal-gaussian-distribution.html"><button class="btn btn-default">Previous</button></a>
+<a href="2.6-the-standard-normal-distribution.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>

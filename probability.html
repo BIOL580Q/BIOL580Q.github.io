@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Probability | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+  <meta name="description" content="2 Probability | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Probability | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Probability | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  
+  
+  
+
+<meta name="author" content="Eliza Grames" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.1</b> About this ‘book’</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#why-this-course"><i class="fa fa-check"></i><b>1.2</b> Why this course?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-comfortable-with-r-and-rstudio"><i class="fa fa-check"></i><b>1.3</b> Getting comfortable with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#some-terms-and-definitions"><i class="fa fa-check"></i><b>1.3.1</b> Some terms and definitions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#customizing-rstudio"><i class="fa fa-check"></i><b>1.3.2</b> Customizing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-approach-this-course"><i class="fa fa-check"></i><b>1.4</b> How to approach this course</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i><b>2.1</b> Bernoulli distribution</a></li>
+<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#binomial-distribution"><i class="fa fa-check"></i><b>2.2</b> Binomial distribution</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#guillemot-example"><i class="fa fa-check"></i><b>2.2.1</b> Guillemot example</a></li>
+<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#coral-example"><i class="fa fa-check"></i><b>2.2.2</b> Coral example</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#probability-mass"><i class="fa fa-check"></i><b>2.3</b> Probability mass</a></li>
+<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#the-normal-gaussian-distribution"><i class="fa fa-check"></i><b>2.4</b> The Normal (Gaussian) distribution</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#guillemot-weight"><i class="fa fa-check"></i><b>2.4.1</b> Guillemot weight</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#probability-density"><i class="fa fa-check"></i><b>2.5</b> Probability density</a></li>
+<li class="chapter" data-level="2.6" data-path="probability.html"><a href="probability.html#the-standard-normal-distribution"><i class="fa fa-check"></i><b>2.6</b> The Standard Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="probability.html"><a href="probability.html#functions-1"><i class="fa fa-check"></i><b>2.6.1</b> Functions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIOL 480/580Q: Ecological Modeling (Fall 2024)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="probability" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Probability<a href="probability.html#probability" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="bernoulli-distribution" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Bernoulli distribution<a href="probability.html#bernoulli-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you flip a coin, what is the probability that it lands up heads? There is a 0.50 probability, or 50% chance, of flipping heads. There is also a 0.5 probability that the outcome is tails. These two probabilities have to sum to 1 because there is no chance of any other outcome. Put another way, if <span class="math inline">\(p_h = 0.5\)</span>, then <span class="math inline">\(p_t = 1 - p_h = 0.5\)</span>, where <span class="math inline">\(p_h\)</span> is probability of heads and <span class="math inline">\(p_t\)</span> is probability of tails.</p>
+<p>Now, instead of thinking about flipping a coin as a 50/50 shot at heads or tails, think about it only in terms of succeeding at flipping heads. Each successful attempt you get a ‘1’ for a success, and each time the coin is not heads, we call it a ‘0’ for failure. Put another way, we ask the question ‘Did we flip heads?’ and if the answer is TRUE, and we use a 1 to denote that. This is actually how R encodes TRUE (T = 1) and FALSE (F = 0).</p>
+<p>We can use R to simulate a coin flip using the function <code>rbinom()</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="probability.html#cb1-1" tabindex="-1"></a><span class="co"># to leave notes to yourself in R scripts, start with a #</span></span>
+<span id="cb1-2"><a href="probability.html#cb1-2" tabindex="-1"></a>?rbinom <span class="co"># look up the Help file to find out about the arguments to the function</span></span>
+<span id="cb1-3"><a href="probability.html#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="probability.html#cb1-4" tabindex="-1"></a><span class="co"># rbinom wants:</span></span>
+<span id="cb1-5"><a href="probability.html#cb1-5" tabindex="-1"></a><span class="co"># n, the number of observations / replicates</span></span>
+<span id="cb1-6"><a href="probability.html#cb1-6" tabindex="-1"></a><span class="co"># size, the number of draws</span></span>
+<span id="cb1-7"><a href="probability.html#cb1-7" tabindex="-1"></a><span class="co"># p the probability of success</span></span>
+<span id="cb1-8"><a href="probability.html#cb1-8" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="probability.html#cb1-9" tabindex="-1"></a><span class="co"># to simulate a single coin flip, we want to take one replicate (n=1) of </span></span>
+<span id="cb1-10"><a href="probability.html#cb1-10" tabindex="-1"></a><span class="co"># one draw (size=1) from a binomial distribution  with a probability of </span></span>
+<span id="cb1-11"><a href="probability.html#cb1-11" tabindex="-1"></a><span class="co"># success (heads) of 0.5</span></span>
+<span id="cb1-12"><a href="probability.html#cb1-12" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="probability.html#cb3-1" tabindex="-1"></a><span class="co"># we could keep running this line over and over</span></span>
+<span id="cb3-2"><a href="probability.html#cb3-2" tabindex="-1"></a><span class="co"># or we could increase n, the number of replicates</span></span>
+<span id="cb3-3"><a href="probability.html#cb3-3" tabindex="-1"></a><span class="co"># this gives us a vector of 100 observations of a coin flip</span></span>
+<span id="cb3-4"><a href="probability.html#cb3-4" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fu">c</span>(<span class="fl">0.5</span>))</span></code></pre></div>
+<pre><code>##   [1] 1 1 0 0 1 0 0 0 1 0 1 0 0 1 1 1 1 0 1 0 0 0 0 1 1 0 0 0 0 1 0 1 0 0 0 0 1
+##  [38] 1 1 1 1 0 0 0 1 1 1 0 1 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 1 1 1 1 1 1 0 0 1 1
+##  [75] 0 0 0 0 1 0 0 0 1 1 1 0 0 0 1 1 0 1 0 1 1 1 1 1 1 0</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="probability.html#cb5-1" tabindex="-1"></a><span class="co"># to visualize the outcome, we can create a histogram plotting the results</span></span>
+<span id="cb5-2"><a href="probability.html#cb5-2" tabindex="-1"></a><span class="co"># using the function hist()</span></span>
+<span id="cb5-3"><a href="probability.html#cb5-3" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fl">0.5</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="probability.html#cb6-1" tabindex="-1"></a><span class="co"># because the function is drawing from a probability distribution, outcomes will</span></span>
+<span id="cb6-2"><a href="probability.html#cb6-2" tabindex="-1"></a><span class="co"># be a little different every single time. If you need them to be the same, you </span></span>
+<span id="cb6-3"><a href="probability.html#cb6-3" tabindex="-1"></a><span class="co"># can set the seed with set.seed(42), or any other number</span></span></code></pre></div>
+<p><img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1562221440i/27764826._SY540_.jpg" /></p>
+<p>The outcome we are observing, successfully flipping heads, is a <strong>random variable</strong>. A random variable is one that is drawn from a probability distribution (not in the colloquial sense of the word random). Our observed response (heads = TRUE) is drawn from a Bernoulli distribution with a probability of success of 0.5. We can write this mathematically as: <span class="math display">\[heads \sim Bernoulli(p=0.5)\]</span></p>
+<p>The Bernoulli distribution is a probability distribution that only yields success (1) or failure (0) based on the probability of success <span class="math inline">\(p\)</span>. The probability can vary depending on the process you are modeling, but the outcome will always be 0 or 1.</p>
+<p>As an ecological example, let’s take guillemot chicks. Guillemots are seabirds that nest on steep cliffsides to escape predators. They spend most of their life on the ocean, however, and as such are very awkward on land and also not great at flying. To get from the cliffside nest to the ocean for the first time, guillemot chicks have to jump and then glide/fly. If they do not make it all the way, they can attempt to run, but are vulnerable to predation. The only option for chicks is to survive or fail - making it 70% of the way to the ocean will result in failure (and, in this case, death).</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5EYXdEsW6xw?si=8Rh_0NsMZuT4kock" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="probability.html#cb7-1" tabindex="-1"></a><span class="co"># let&#39;s assume chicks have a 40% chance of making it to the ocean, and there are</span></span>
+<span id="cb7-2"><a href="probability.html#cb7-2" tabindex="-1"></a><span class="co"># 100 chicks jumping from the cliff hoping to make it to the ocean so we have </span></span>
+<span id="cb7-3"><a href="probability.html#cb7-3" tabindex="-1"></a><span class="co"># 100 observations, each with one draw from the Bernoulli distribution</span></span>
+<span id="cb7-4"><a href="probability.html#cb7-4" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code></pre></div>
+<pre><code>##   [1] 1 0 0 1 0 1 0 0 0 0 1 0 0 0 1 0 1 0 0 0 1 1 0 0 0 0 0 0 0 1 1 0 0 1 1 1 1
+##  [38] 0 0 1 0 0 1 0 1 1 1 1 0 0 1 1 1 0 1 1 0 0 1 1 1 1 0 0 0 1 1 1 1 0 0 0 0 0
+##  [75] 0 0 0 1 0 1 0 1 1 1 0 0 1 0 1 1 1 1 0 0 0 0 0 0 1 1</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="probability.html#cb9-1" tabindex="-1"></a><span class="co"># so far, we have just been running functions and the output is shown in the console</span></span>
+<span id="cb9-2"><a href="probability.html#cb9-2" tabindex="-1"></a><span class="co"># but we don&#39;t have anything in our environment</span></span>
+<span id="cb9-3"><a href="probability.html#cb9-3" tabindex="-1"></a><span class="co"># can save to an object with the &lt;- assignment operator</span></span>
+<span id="cb9-4"><a href="probability.html#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="probability.html#cb9-5" tabindex="-1"></a>survival <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span>
+<span id="cb9-6"><a href="probability.html#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="probability.html#cb9-7" tabindex="-1"></a><span class="co"># we can then do things with that saved object, like plot it</span></span>
+<span id="cb9-8"><a href="probability.html#cb9-8" tabindex="-1"></a><span class="fu">hist</span>(survival)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="binomial-distribution" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Binomial distribution<a href="probability.html#binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="guillemot-example" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Guillemot example<a href="probability.html#guillemot-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Guillemots typically only lay 1-2 eggs, but for the sake of our example code, let’s pretend that each pair has 3 chicks that are attempting to make it to the ocean. Each individual chick’s attempt could be modeled with a Bernoulli distribution, but if we consider it from the perspective of the breeding pair, the total number of surviving offspring is what matters. We can think of the number of chicks from each nest that make it to the ocean as the sum of their individual attempts for a single nest. This is the Binomial distribution, which is a more generalized version of the Bernoulli distribution (more accurately, the Bernoulli distribution is a special case of the Binomial distribution with one draw) in which each observation has multiple draws.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="probability.html#cb10-1" tabindex="-1"></a><span class="co"># for one nest with 3 chicks and a probability of success of 0.4</span></span>
+<span id="cb10-2"><a href="probability.html#cb10-2" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="probability.html#cb12-1" tabindex="-1"></a><span class="co"># we could also think about a colony with let&#39;s say 100 nests</span></span>
+<span id="cb12-2"><a href="probability.html#cb12-2" tabindex="-1"></a><span class="co"># how many chicks from each nest will make it?</span></span>
+<span id="cb12-3"><a href="probability.html#cb12-3" tabindex="-1"></a>nest_offspring <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span>
+<span id="cb12-4"><a href="probability.html#cb12-4" tabindex="-1"></a><span class="fu">hist</span>(nest_offspring)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="probability.html#cb13-1" tabindex="-1"></a>nest_offspring</span></code></pre></div>
+<pre><code>##   [1] 2 2 0 1 2 2 2 0 1 0 1 2 2 2 1 0 1 2 0 2 1 2 2 1 3 3 0 3 3 1 1 1 2 2 1 1 2
+##  [38] 1 2 2 0 2 1 0 1 0 2 1 0 0 1 1 1 1 2 2 1 2 1 2 1 1 1 3 0 2 2 2 1 2 0 1 0 0
+##  [75] 0 2 2 2 1 2 2 2 1 0 2 1 2 2 0 2 1 3 2 1 1 0 2 0 1 1</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="probability.html#cb15-1" tabindex="-1"></a><span class="co"># what is the probability that all three chicks from a nest make it?</span></span>
+<span id="cb15-2"><a href="probability.html#cb15-2" tabindex="-1"></a><span class="co"># because we know what we fixed p to, we could multiply the probabilities</span></span>
+<span id="cb15-3"><a href="probability.html#cb15-3" tabindex="-1"></a><span class="fl">0.4</span><span class="sc">^</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 0.064</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="probability.html#cb17-1" tabindex="-1"></a><span class="co"># what is the probability that none make it?</span></span>
+<span id="cb17-2"><a href="probability.html#cb17-2" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.4</span>)<span class="sc">^</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 0.216</code></pre>
+<p>We are able to calculate what the probability of these outcomes are because we fixed the probability of success at 0.4 and then simulated outcomes. In the real world, we rarely know what the probability of success truly is, and instead we are working backwards from our observed outcomes (i.e. our data) to estimate the probability of survival. One of the beautiful things about working with simulated data is that we know the input value, so we can test assumptions, see if we recapture our input, and play around with different model structures and know that anything that is unexpected is most likely a problem with our code or model, not the data.</p>
+<p>With discrete distributions like the Binomial, we can convert the frequency of outcomes to a proportion of the total as an estimate of probability. Dividing the frequencies by the total sample size makes it so that the total probability sums to 1.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="probability.html#cb19-1" tabindex="-1"></a><span class="co"># table is a function that tallies up all the items in a vector</span></span>
+<span id="cb19-2"><a href="probability.html#cb19-2" tabindex="-1"></a><span class="co"># a vector is a type of object that is one dimension, i.e. nest_offspring is a </span></span>
+<span id="cb19-3"><a href="probability.html#cb19-3" tabindex="-1"></a><span class="co"># vector with length = 100</span></span>
+<span id="cb19-4"><a href="probability.html#cb19-4" tabindex="-1"></a><span class="fu">table</span>(nest_offspring)</span></code></pre></div>
+<pre><code>## nest_offspring
+##  0  1  2  3 
+## 20 35 39  6</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="probability.html#cb21-1" tabindex="-1"></a><span class="co"># proportions will convert the table into proportions instead of counts</span></span>
+<span id="cb21-2"><a href="probability.html#cb21-2" tabindex="-1"></a><span class="co"># so will prop.table and I often use that function because I learned it first</span></span>
+<span id="cb21-3"><a href="probability.html#cb21-3" tabindex="-1"></a><span class="co"># there are many different ways to accomplish the same goal in R</span></span>
+<span id="cb21-4"><a href="probability.html#cb21-4" tabindex="-1"></a>survival_prob <span class="ot">&lt;-</span> <span class="fu">proportions</span>(<span class="fu">table</span>(nest_offspring))</span>
+<span id="cb21-5"><a href="probability.html#cb21-5" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="probability.html#cb21-6" tabindex="-1"></a><span class="co"># How do these values compare to the calculated probability of all three chicks</span></span>
+<span id="cb21-7"><a href="probability.html#cb21-7" tabindex="-1"></a><span class="co"># surviving? What about of none surviving?</span></span>
+<span id="cb21-8"><a href="probability.html#cb21-8" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="probability.html#cb21-9" tabindex="-1"></a><span class="co"># With the values calculated from the simulated data (i.e. not the parameter</span></span>
+<span id="cb21-10"><a href="probability.html#cb21-10" tabindex="-1"></a><span class="co"># value that we fixed), what is the probability that *at least* one chick </span></span>
+<span id="cb21-11"><a href="probability.html#cb21-11" tabindex="-1"></a><span class="co"># from a nest survives?</span></span>
+<span id="cb21-12"><a href="probability.html#cb21-12" tabindex="-1"></a><span class="fl">0.47</span> <span class="sc">+</span> <span class="fl">0.27</span> <span class="sc">+</span> <span class="fl">0.06</span> <span class="co"># note: numbers might be different because we didn&#39;t set.seed()</span></span></code></pre></div>
+<pre><code>## [1] 0.8</code></pre>
+<p>In general with coding, you want to avoid hard coding like this where you put in fixed values. It is much better to use code that is flexible if the input data changes (e.g. we are using a randomly generated dataset, so it will change every time), or if you want to change some parameter across a lot of different parts of the code. For example, instead of repeatedly typing p=0.4, we could have created an object in our environment with the probability of success such as <code>p.surv &lt;- 0.4</code> and then specifying p=p.surv throughout the script, which would make it really easy to change the simulations for a new scenario (e.g. if the guillemot chicks were given little hang-gliders, we might increase p.surv and would only have to type it out once as <code>p.surv &lt;- 0.8</code>.</p>
+<p>Subsetting vectors in R is a really useful tool when you want to apply a function to only part of a vector, inspect part of an object, etc. We use the square brackets <code>[]</code> for subsetting, and within them specify which elements to return. The elements to return can be a numeric vector (e.g. <code>c(1,2,4)</code>) to return the first, second, and fourth elements, or a logical vector indicating if an element should or should not be returned (e.g. <code>c(TRUE TRUE FALSE TRUE)</code>). If subsetting a range of consecutive elements, the <code>:</code> operator can also be used (e.g. <code>1:4</code> is the same as <code>c(1,2,3,4)</code>).</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="probability.html#cb23-1" tabindex="-1"></a><span class="co"># To avoid hard coding our estimated percent, we can use sum() on a subset of</span></span>
+<span id="cb23-2"><a href="probability.html#cb23-2" tabindex="-1"></a><span class="co"># the table of proportions to estimate the probability at least one survives?</span></span>
+<span id="cb23-3"><a href="probability.html#cb23-3" tabindex="-1"></a><span class="fu">sum</span>(survival_prob[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<pre><code>## [1] 0.8</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="probability.html#cb25-1" tabindex="-1"></a><span class="co"># what is the probability at least two survive?</span></span>
+<span id="cb25-2"><a href="probability.html#cb25-2" tabindex="-1"></a><span class="fu">sum</span>(survival_prob[<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<pre><code>## [1] 0.45</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="probability.html#cb27-1" tabindex="-1"></a><span class="co"># side note: if you&#39;re not sure which indices to subset, it can help to look at</span></span>
+<span id="cb27-2"><a href="probability.html#cb27-2" tabindex="-1"></a><span class="co"># your object; you can easily do this in RStudio by highlighting just the bit of</span></span>
+<span id="cb27-3"><a href="probability.html#cb27-3" tabindex="-1"></a><span class="co"># code with your object name and using Ctrl + Enter (or Cmd + Enter) to print</span></span>
+<span id="cb27-4"><a href="probability.html#cb27-4" tabindex="-1"></a><span class="co"># just that object to the console, i.e. if you highlight part of a line, you will</span></span>
+<span id="cb27-5"><a href="probability.html#cb27-5" tabindex="-1"></a><span class="co"># only run the highlighted bit, not the entire line</span></span></code></pre></div>
+</div>
+<div id="coral-example" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Coral example<a href="probability.html#coral-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With the guillemots, we were assuming that each pair had three potential offspring surviving. What happens if we vastly increase the number of draws from the binomial distribution? Take corals as an example. Some broadcast spawning corals have mass synchronized spawning events where individual corals on a reef all release bundles of sperm and eggs at the same time. The reproductive success of each individual coral can still be modeled as a binomial distribution, i.e. how many of those released sperm and eggs will actually encounter a bundle of the same species and be a successful mating attempt is a random variable drawn from a Binomial distribution with a number of draws <span class="math inline">\(N\)</span> equal to the number of released sperm and eggs and a probability of success <span class="math inline">\(p\)</span> for each of those. <span class="math display">\[ offspring \sim Binomial(N, p)\]</span>.</p>
+<p>Note: the <span class="math inline">\(N\)</span> for denoting the number of draws from the Binomial is distinct from the <code>n =</code> argument in the <code>rbinom()</code> function. Don’t let this confuse you! <span class="math inline">\(N\)</span> equates to the <code>size =</code> argument, while <code>n =</code> is the number of observations of the random variable, i.e. the total number of individual corals on the reef.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wsaZ8-I7akg?si=WFGkMdCDz_PCJgpq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="probability.html#cb28-1" tabindex="-1"></a><span class="co"># let&#39;s assume now the coral reef has 100,00 individual corals (I have no </span></span>
+<span id="cb28-2"><a href="probability.html#cb28-2" tabindex="-1"></a><span class="co"># clue if this is an accurate number, but let&#39;s roll with it)</span></span>
+<span id="cb28-3"><a href="probability.html#cb28-3" tabindex="-1"></a><span class="co"># let&#39;s also assume each individual coral releases 10,000 sperm and eggs</span></span>
+<span id="cb28-4"><a href="probability.html#cb28-4" tabindex="-1"></a><span class="co"># and the probability for each of those resulting in a successful mating event </span></span>
+<span id="cb28-5"><a href="probability.html#cb28-5" tabindex="-1"></a><span class="co"># 0.0002 (i.e. 0.002%)</span></span>
+<span id="cb28-6"><a href="probability.html#cb28-6" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="probability.html#cb28-7" tabindex="-1"></a>gametes <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100000</span>, <span class="at">size=</span><span class="dv">10000</span>, <span class="at">p=</span><span class="fl">0.0002</span>)</span>
+<span id="cb28-8"><a href="probability.html#cb28-8" tabindex="-1"></a><span class="fu">hist</span>(gametes, <span class="at">breaks =</span> <span class="dv">100</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="probability.html#cb29-1" tabindex="-1"></a><span class="co"># what is the probability of reproductive failure?</span></span>
+<span id="cb29-2"><a href="probability.html#cb29-2" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes))</span></code></pre></div>
+<pre><code>## gametes
+##       0       1       2       3       4       5       6       7       8       9 
+## 0.13561 0.27176 0.27017 0.17799 0.09230 0.03482 0.01266 0.00337 0.00114 0.00015 
+##      10      11 
+## 0.00002 0.00001</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="probability.html#cb31-1" tabindex="-1"></a><span class="co"># what&#39;s the probability of more than 5 offspring?</span></span>
+<span id="cb31-2"><a href="probability.html#cb31-2" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes<span class="sc">&gt;</span><span class="dv">5</span>))</span></code></pre></div>
+<pre><code>## 
+##   FALSE    TRUE 
+## 0.98265 0.01735</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="probability.html#cb33-1" tabindex="-1"></a><span class="co"># now let&#39;s increase the number of individual corals to 1 million, and also increase</span></span>
+<span id="cb33-2"><a href="probability.html#cb33-2" tabindex="-1"></a><span class="co"># the probability of success to 0.001 </span></span>
+<span id="cb33-3"><a href="probability.html#cb33-3" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="probability.html#cb33-4" tabindex="-1"></a>gametes2 <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1000000</span>, <span class="at">size=</span><span class="dv">10000</span>, <span class="at">p=</span><span class="fl">0.001</span>)</span>
+<span id="cb33-5"><a href="probability.html#cb33-5" tabindex="-1"></a><span class="fu">hist</span>(gametes2, <span class="at">breaks=</span><span class="dv">100</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="probability.html#cb34-1" tabindex="-1"></a><span class="co"># now what is the probability of reproductive failure?</span></span>
+<span id="cb34-2"><a href="probability.html#cb34-2" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes2<span class="sc">==</span><span class="dv">0</span>))</span></code></pre></div>
+<pre><code>## 
+##    FALSE     TRUE 
+## 0.999952 0.000048</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="probability.html#cb36-1" tabindex="-1"></a><span class="co"># and what is the probability of more than 15 offspring?</span></span>
+<span id="cb36-2"><a href="probability.html#cb36-2" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes2<span class="sc">&gt;</span><span class="dv">15</span>))</span></code></pre></div>
+<pre><code>## 
+##   FALSE    TRUE 
+## 0.95154 0.04846</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="probability.html#cb38-1" tabindex="-1"></a><span class="co"># let&#39;s visualize the data as a histogram again, but add a vertical bar using </span></span>
+<span id="cb38-2"><a href="probability.html#cb38-2" tabindex="-1"></a><span class="co"># the abline() function at 15; note there are other plotting options to make </span></span>
+<span id="cb38-3"><a href="probability.html#cb38-3" tabindex="-1"></a><span class="co"># your plots slightly more aesthetic</span></span>
+<span id="cb38-4"><a href="probability.html#cb38-4" tabindex="-1"></a><span class="fu">hist</span>(gametes2, </span>
+<span id="cb38-5"><a href="probability.html#cb38-5" tabindex="-1"></a>     <span class="at">breaks=</span><span class="dv">100</span>,</span>
+<span id="cb38-6"><a href="probability.html#cb38-6" tabindex="-1"></a>     <span class="at">border=</span>F, <span class="co"># i just don&#39;t like borders on bars</span></span>
+<span id="cb38-7"><a href="probability.html#cb38-7" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;turquoise4&quot;</span>, </span>
+<span id="cb38-8"><a href="probability.html#cb38-8" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;&quot;</span>, <span class="co"># removes the &#39;title&#39;</span></span>
+<span id="cb38-9"><a href="probability.html#cb38-9" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Number of successful mating attempts&quot;</span>, <span class="co"># changes x axis label</span></span>
+<span id="cb38-10"><a href="probability.html#cb38-10" tabindex="-1"></a>     <span class="at">las=</span><span class="dv">1</span> <span class="co"># rotates the axis labels the right way</span></span>
+<span id="cb38-11"><a href="probability.html#cb38-11" tabindex="-1"></a>     )</span>
+<span id="cb38-12"><a href="probability.html#cb38-12" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">15</span>, </span>
+<span id="cb38-13"><a href="probability.html#cb38-13" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">2</span>, <span class="co"># width of line</span></span>
+<span id="cb38-14"><a href="probability.html#cb38-14" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;tomato2&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+</div>
+</div>
+<div id="probability-mass" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Probability mass<a href="probability.html#probability-mass" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the example above, you can see that there is very low probability of being in the tails of the distribution. So far, we have only been thinking about discrete distributions where the outcome will fall into a ‘bin’ of some kind. With the Bernoulli distribution, the outcome could only be 0 or 1. With the Binomial distribution, the outcome could only be an integer, including zero, and can only be positive. There are no numbers in between; you either make it to the ocean, or you don’t, and you never end up with 1.5 surviving offspring.</p>
+<p>Discrete distributions have a probability mass function, which you can think of as the amount of probability associated with each bar in the histogram (including potential ‘bars’ that are never observed and their probability mass is 0).</p>
+<div class="float">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb3mixP0J2LWeQsK3VWxL8RM0tFg5-8KBLLMYSPfjzZrGw60PCyknoxmqJqyvn6yR2lS4J_8sblZs3blNsagoCq9JHxjSPhtv8PH3DnBZEmPl7zcNZaSjPwCoMQ1j6Cu8tFGULP8uZQmfV/s1600/horst+discrete+continuous.jpg" alt="Discrete vs continuous data by Alison Horst" />
+<div class="figcaption">Discrete vs continuous data by Alison Horst</div>
+</div>
+</div>
+<div id="the-normal-gaussian-distribution" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> The Normal (Gaussian) distribution<a href="probability.html#the-normal-gaussian-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In contrast to discrete distributions, continuous distributions can return any number value (within some constraints, which we will get to later in the semester when we talk about generalized linear models or GLMs). For now, we will just focus on the normal distribution which is one that is likely most familiar. The normal distribution is continuous and can return any value from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. There are two parameters that govern the normal distribution: 1) the mean of the distribution, <span class="math inline">\(\mu\)</span> and the variance, <span class="math inline">\(\sigma^2\)</span>. If we have a response variable <span class="math inline">\(y\)</span> that is a random variable drawn from the normal distribution, we would write this out as: <span class="math display">\[y \sim Normal(\mu, \sigma^2)\]</span></p>
+<p>The mean (<span class="math inline">\(\mu\)</span>) is the central tendency of the distribution; you could also think of it as the expected value. The variance (<span class="math inline">\(\sigma\)</span>) is a measure of spread, i.e. how tightly are values clustered to that central tendency versus more spread out.</p>
+<div id="guillemot-weight" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Guillemot weight<a href="probability.html#guillemot-weight" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Apparently, adult Common Guillemots weigh 900-1100 grams (about 2-2.5 lbs). Because guillemot weights can be any number (e.g. 929.374 grams), we could assume that our response variable (weight) is a random variable drawn from a normal distribution. Ballpark, let’s say that the mean is 980, and the variance is 400. In R, instead of using the variance directly, the function <code>rnorm()</code> takes the standard deviation (<span class="math inline">\(\sigma\)</span>) as input. The standard deviation is simply the square root of the variance. So we can describe guillemot weight mathematically as: <span class="math display">\[ weight \sim Normal(\mu = 980, \sigma=20)\]</span></p>
+<p>Using the function <code>rnorm</code>, we will simulate a population of 120 adult guillemots and their weights.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="probability.html#cb39-1" tabindex="-1"></a>adult_weights <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">120</span>, <span class="co"># population size</span></span>
+<span id="cb39-2"><a href="probability.html#cb39-2" tabindex="-1"></a>                       <span class="at">mean =</span> <span class="dv">980</span>, <span class="co"># mu, population mean</span></span>
+<span id="cb39-3"><a href="probability.html#cb39-3" tabindex="-1"></a>                       <span class="at">sd =</span> <span class="dv">20</span> <span class="co">#standard deviation, square root of the variance</span></span>
+<span id="cb39-4"><a href="probability.html#cb39-4" tabindex="-1"></a>                       )</span>
+<span id="cb39-5"><a href="probability.html#cb39-5" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="probability.html#cb39-6" tabindex="-1"></a><span class="co"># plot a histogram of our sample</span></span>
+<span id="cb39-7"><a href="probability.html#cb39-7" tabindex="-1"></a><span class="fu">hist</span>(adult_weights, <span class="at">breaks =</span> <span class="dv">20</span>)</span>
+<span id="cb39-8"><a href="probability.html#cb39-8" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="probability.html#cb39-9" tabindex="-1"></a><span class="co"># add a vertical line where we set the mean to</span></span>
+<span id="cb39-10"><a href="probability.html#cb39-10" tabindex="-1"></a><span class="co"># note: if running these in an R Markdown file, you have to run both lines</span></span>
+<span id="cb39-11"><a href="probability.html#cb39-11" tabindex="-1"></a><span class="co"># at the same time or you will get an error that plot.new has not been called</span></span>
+<span id="cb39-12"><a href="probability.html#cb39-12" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">980</span>,</span>
+<span id="cb39-13"><a href="probability.html#cb39-13" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">2</span>, </span>
+<span id="cb39-14"><a href="probability.html#cb39-14" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="probability.html#cb40-1" tabindex="-1"></a><span class="co"># based on the sample, what is the probability of an adult guillemot weighing</span></span>
+<span id="cb40-2"><a href="probability.html#cb40-2" tabindex="-1"></a><span class="co"># more than 980 grams?</span></span>
+<span id="cb40-3"><a href="probability.html#cb40-3" tabindex="-1"></a><span class="fu">proportions</span>(<span class="fu">table</span>(adult_weights<span class="sc">&gt;</span><span class="dv">980</span>))</span></code></pre></div>
+<pre><code>## 
+##     FALSE      TRUE 
+## 0.5166667 0.4833333</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="probability.html#cb42-1" tabindex="-1"></a><span class="co"># what is the probability of an adult weighing exactly 990 grams? (not 990.1, 990.2, etc.)</span></span>
+<span id="cb42-2"><a href="probability.html#cb42-2" tabindex="-1"></a><span class="co"># we could do this empirically, i.e. how many of our 120 adults were exactly 990 grams?</span></span>
+<span id="cb42-3"><a href="probability.html#cb42-3" tabindex="-1"></a><span class="fu">proportions</span>(<span class="fu">table</span>(adult_weights<span class="sc">==</span><span class="dv">990</span>))</span></code></pre></div>
+<pre><code>## 
+## FALSE 
+##     1</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="probability.html#cb44-1" tabindex="-1"></a><span class="co"># but this does not make any sense, because we are dealing with continuous data, so why</span></span>
+<span id="cb44-2"><a href="probability.html#cb44-2" tabindex="-1"></a><span class="co"># would we treat it like it is in discrete chunks?</span></span></code></pre></div>
+</div>
+</div>
+<div id="probability-density" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Probability density<a href="probability.html#probability-density" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Because we are dealing with a continuous distribution, there are no finite points along the distribution that can have a probability associated with them. Instead, we need to think back to calculus and consider the probability of any given value as an integral.</p>
+<div class="float">
+<img src="https://www.youtube.com/watch?v=P9dpTTpjymE" alt="I will derive" />
+<div class="figcaption">I will derive</div>
+</div>
+<p>Imagine that you have a curve, and the area under the curve represents a probability, so it must sum to 1 (i.e. all possible outcomes must be represented). Picture a set of discrete bars underneath that distribution, each representing some portion of the total probability, like we did with the discrete distributions. We will use the function <code>dnorm()</code> for this, which is the density (d for density) of a normal distribution at a vector of values, rather than random draws (r for random). To create our vector of values, we will use the <code>seq()</code> function, which generates a sequence of numbers.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="probability.html#cb45-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.5</span>)))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Now imagine that we make each bin smaller, and smaller, and smaller by changing the increments in our sequence (i.e. we make more bins).</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="probability.html#cb46-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.1</span>)))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="probability.html#cb47-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.05</span>)))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="probability.html#cb48-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.01</span>)))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
+<p>As the size of our bins approaches zero, the number of bins approaches infinity. This is essentially what we are doing with an integral. With a continuous distribution, we now have probability density functions, rather than probability mass.</p>
+<p><img src="https://media1.tenor.com/m/FznI6WanGVUAAAAC/mean-girls-lindsay-lohan.gif" /></p>
+<p>To get back to our original question of the probability of an adult guillemot weighing exactly 990 grams (still a silly question), we can use the <code>dnorm()</code> function to get the probability density at that value.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="probability.html#cb49-1" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x=</span><span class="dv">990</span>, <span class="at">mean=</span><span class="dv">980</span>, <span class="at">sd=</span><span class="dv">20</span>)</span></code></pre></div>
+<pre><code>## [1] 0.01760327</code></pre>
+<p>What we are likely more interested in, however, is the probability of an adult weighing <em>at least</em> 990 grams. For that, we need the <code>pnorm()</code> function which returns the cumulative density of the normal distribution at a given quantile (for now, think of the quantile as just the cutoff point in adult weights that we are interested in).</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="probability.html#cb51-1" tabindex="-1"></a><span class="co"># what is the probability of observing an adult guillemot that weighs at least 990 grams?</span></span>
+<span id="cb51-2"><a href="probability.html#cb51-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">990</span>, <span class="at">mean =</span> <span class="dv">980</span>, <span class="at">sd =</span> <span class="dv">20</span>, </span>
+<span id="cb51-3"><a href="probability.html#cb51-3" tabindex="-1"></a>      <span class="at">lower.tail=</span>F <span class="co"># we need to specify that we are in the upper tail</span></span>
+<span id="cb51-4"><a href="probability.html#cb51-4" tabindex="-1"></a>      )</span></code></pre></div>
+<pre><code>## [1] 0.3085375</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="probability.html#cb53-1" tabindex="-1"></a><span class="co"># what about at least 1000 grams?</span></span>
+<span id="cb53-2"><a href="probability.html#cb53-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">980</span>, <span class="at">sd =</span> <span class="dv">20</span>, <span class="at">lower.tail =</span> F)</span></code></pre></div>
+<pre><code>## [1] 0.1586553</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="probability.html#cb55-1" tabindex="-1"></a><span class="co"># what about at least 1020 grams?</span></span>
+<span id="cb55-2"><a href="probability.html#cb55-2" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1020</span>, <span class="at">mean =</span> <span class="dv">980</span>, <span class="at">sd =</span> <span class="dv">20</span>, <span class="at">lower.tail =</span> F)</span></code></pre></div>
+<pre><code>## [1] 0.02275013</code></pre>
+<p>As we get into the tails of the distribution, the probability of observing an adult guillemot that is at least that heavy, or heavier, gets increasingly less likely. This brings us to the definition of the p-value: the probability of observing your data, <em>or data more extreme</em>, if the null is true. In our case, we are treating the null hypothesis as being that guillemot weights are drawn from a normal distribution with a mean of 980 and standard deviation of 20. What if instead we our null hypothesis was that the mean was still 980, but that there was a lot more variability in nature, and the standard deviation was 30? The probability of an adult guillemot weighing that much is now much higher (9.1%, as opposed to 0.02%) because there is more spread around the central tendency.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="probability.html#cb57-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">1020</span>, <span class="at">mean=</span><span class="dv">980</span>, <span class="at">sd=</span><span class="dv">30</span>, <span class="at">lower.tail=</span>F)</span></code></pre></div>
+<pre><code>## [1] 0.09121122</code></pre>
+</div>
+<div id="the-standard-normal-distribution" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> The Standard Normal Distribution<a href="probability.html#the-standard-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the real world, we typically do not know what the parameters are underlying our distribution (i.e. we would have know way of knowing what the mean and standard deviation of guillemot weight are). We also often work with data that are normally distributed, but could not have negative values. Remember that the support of the normal distribution is all numbers from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. Adult guillemots, however, cannot have negative weight. Thus, we first need to centralize and standardize the data so that we <em>know</em> what the mean and standard deviation are.</p>
+<p>Centralizing data means we subtract the mean value of our sample from every single observation, such that we are left with a mean value of 0. Standardizing data is a way of transforming it so that variables are more comparable across different data sources, and also so that we can easily compare standard deviations. To standardize data, we convert it to Z-scores. For each observation <span class="math inline">\(x\)</span>, we subtract the mean <span class="math inline">\(\bar{x}\)</span> and then divide that value by the standard deviation <span class="math inline">\(\sigma\)</span>. The equations to do this for a sample are below; <span class="math inline">\(SS\)</span> stands for the sum of squared residuals. Note that we divide the sum of squares by n-1, rather than n, because we are dealing with a <em>sample</em> rather than population. The degrees of freedom is the number of observations we have, but we lost one degree of freedom when we calculated the sample mean <span class="math inline">\(\bar{x}\)</span>.
+<span class="math display">\[Z = (x -\bar{x})/\sigma\]</span>
+<span class="math display">\[\sigma = \sqrt{\sigma^2}\]</span>
+<span class="math display">\[\sigma^2 = \frac{SS}{(n-1)}\]</span>
+<span class="math display">\[SS = \sum_{i=1}^{n}(x_i - \bar{x})^2\]</span></p>
+<div id="functions-1" class="section level3 hasAnchor" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Functions<a href="probability.html#functions-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To standardize our data we need to center it (subtract the mean) and standardize (Z transform) the data. We will create functions in R to do this for us quickly. There are many inbuilt functions in R, such as the ones we have been using already (e.g. <code>rnorm</code>, <code>hist</code>, <code>sum</code>, etc.) and you can also install packages that contain functions which other people have written. You can also write your own custom functions. This is extremely useful when you want to repeat an operation many times without using up many lines of code (the more lines of code, the more likely you are to end up with an error, or something difficult to fix later on).</p>
+<p>First, we will create a function that calculates just the sum of the squared residuals. To create a function, we need to name it just like an object, but pass to it a <code>function()</code> containing arguments that the function accepts. In this case, it is a function that will take a vector x. Inside the <code>{}</code> brackets we place the instructions for what to do with <code>x</code> and what to return from the function. Only the object that is specified will be returned (i.e. <code>xbar</code>, <code>res</code>, and <code>squares</code> will not be saved to your environment, only <code>ss</code>).</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="probability.html#cb59-1" tabindex="-1"></a>sum_squares <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb59-2"><a href="probability.html#cb59-2" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="co"># mean of the sample</span></span>
+<span id="cb59-3"><a href="probability.html#cb59-3" tabindex="-1"></a>  res <span class="ot">&lt;-</span> x <span class="sc">-</span> xbar <span class="co"># residuals</span></span>
+<span id="cb59-4"><a href="probability.html#cb59-4" tabindex="-1"></a>  squares <span class="ot">&lt;-</span> res<span class="sc">^</span><span class="dv">2</span> <span class="co"># squared residuals</span></span>
+<span id="cb59-5"><a href="probability.html#cb59-5" tabindex="-1"></a>  ss <span class="ot">&lt;-</span> <span class="fu">sum</span>(squares) <span class="co"># sum of the squared residuals</span></span>
+<span id="cb59-6"><a href="probability.html#cb59-6" tabindex="-1"></a>  <span class="fu">return</span>(ss) <span class="co"># what should the function return</span></span>
+<span id="cb59-7"><a href="probability.html#cb59-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>We can also nest functions inside other functions, which can make it a lot easier to keep your code neat and tidy. Below is a function to standardize data which uses the other function we just created.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="probability.html#cb60-1" tabindex="-1"></a>standardize <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb60-2"><a href="probability.html#cb60-2" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb60-3"><a href="probability.html#cb60-3" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb60-4"><a href="probability.html#cb60-4" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="probability.html#cb60-5" tabindex="-1"></a>  ss <span class="ot">&lt;-</span> <span class="fu">sum_squares</span>(x) <span class="co"># note we call our function from earlier</span></span>
+<span id="cb60-6"><a href="probability.html#cb60-6" tabindex="-1"></a>  s2 <span class="ot">&lt;-</span> ss<span class="sc">/</span>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># variance = sum of squares divided by n - 1</span></span>
+<span id="cb60-7"><a href="probability.html#cb60-7" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(s2) <span class="co"># calculate standard deviation from variance</span></span>
+<span id="cb60-8"><a href="probability.html#cb60-8" tabindex="-1"></a>  z <span class="ot">&lt;-</span> (x <span class="sc">-</span> xbar)<span class="sc">/</span>s</span>
+<span id="cb60-9"><a href="probability.html#cb60-9" tabindex="-1"></a>  <span class="fu">return</span>(z)</span>
+<span id="cb60-10"><a href="probability.html#cb60-10" tabindex="-1"></a>}</span>
+<span id="cb60-11"><a href="probability.html#cb60-11" tabindex="-1"></a></span>
+<span id="cb60-12"><a href="probability.html#cb60-12" tabindex="-1"></a><span class="co"># use this function to standardize adult guillemot weights that we generated </span></span>
+<span id="cb60-13"><a href="probability.html#cb60-13" tabindex="-1"></a><span class="co"># earlier and plot the output. how does it differ from the original?</span></span>
+<span id="cb60-14"><a href="probability.html#cb60-14" tabindex="-1"></a></span>
+<span id="cb60-15"><a href="probability.html#cb60-15" tabindex="-1"></a>std_weights <span class="ot">&lt;-</span> <span class="fu">standardize</span>(adult_weights)</span>
+<span id="cb60-16"><a href="probability.html#cb60-16" tabindex="-1"></a><span class="fu">hist</span>(std_weights)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="probability.html#cb61-1" tabindex="-1"></a><span class="co"># Note that we now have negative weights, however, the interpretation is simply</span></span>
+<span id="cb61-2"><a href="probability.html#cb61-2" tabindex="-1"></a><span class="co"># that these individuals are below the mean, and positive values are above it</span></span></code></pre></div>
+<p>One of the nice things about the standard normal distribution is that we know that the mean is 0 and the standard deviation is 1. This means that now, when we ask about the probability of observing an adult guillemot with a standardized weight of some value or higher and our null is 0, we are asking if that individual significantly differs from the sample mean. We also know the standard deviations, and instead of having to calculate the integral at different cutoffs, this has already been done. Prior to advances in modern computing, this was done manually, and there were huge lookup tables at the back up statistics textbooks that would tell you the p-value associated with different z-scores. Thankfully, now we have R.</p>
+<p><img src="https://www.ztable.net/wp-content/uploads/2020/09/read-negativeztable-intersection.png" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

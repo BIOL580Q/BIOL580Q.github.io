@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="2.4 The Normal (Gaussian) distribution | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+<meta property="og:type" content="book" />
+
+
+
+
+<meta name="author" content="Eliza Grames" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="description" content="2.4 The Normal (Gaussian) distribution | BIOL 480/580Q: Ecological Modeling (Fall 2024)">
+
+<title>2.4 The Normal (Gaussian) distribution | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte-fonts.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-background.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-italics.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#introduction" id="toc-introduction"><span class="toc-section-number">1</span> Introduction</a>
+<ul>
+<li><a href="1.1-about-this-book.html#about-this-book" id="toc-about-this-book"><span class="toc-section-number">1.1</span> About this ‘book’</a></li>
+<li><a href="1.2-why-this-course.html#why-this-course" id="toc-why-this-course"><span class="toc-section-number">1.2</span> Why this course?</a></li>
+<li class="has-sub"><a href="1.3-getting-comfortable-with-r-and-rstudio.html#getting-comfortable-with-r-and-rstudio" id="toc-getting-comfortable-with-r-and-rstudio"><span class="toc-section-number">1.3</span> Getting comfortable with R and RStudio</a>
+<ul>
+<li><a href="1.3-getting-comfortable-with-r-and-rstudio.html#some-terms-and-definitions" id="toc-some-terms-and-definitions"><span class="toc-section-number">1.3.1</span> Some terms and definitions</a></li>
+<li><a href="1.3-getting-comfortable-with-r-and-rstudio.html#customizing-rstudio" id="toc-customizing-rstudio"><span class="toc-section-number">1.3.2</span> Customizing RStudio</a></li>
+</ul></li>
+<li><a href="1.4-how-to-approach-this-course.html#how-to-approach-this-course" id="toc-how-to-approach-this-course"><span class="toc-section-number">1.4</span> How to approach this course</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-probability.html#probability" id="toc-probability"><span class="toc-section-number">2</span> Probability</a>
+<ul>
+<li><a href="2.1-bernoulli-distribution.html#bernoulli-distribution" id="toc-bernoulli-distribution"><span class="toc-section-number">2.1</span> Bernoulli distribution</a></li>
+<li class="has-sub"><a href="2.2-binomial-distribution.html#binomial-distribution" id="toc-binomial-distribution"><span class="toc-section-number">2.2</span> Binomial distribution</a>
+<ul>
+<li><a href="2.2-binomial-distribution.html#guillemot-example" id="toc-guillemot-example"><span class="toc-section-number">2.2.1</span> Guillemot example</a></li>
+<li><a href="2.2-binomial-distribution.html#coral-example" id="toc-coral-example"><span class="toc-section-number">2.2.2</span> Coral example</a></li>
+</ul></li>
+<li><a href="2.3-probability-mass.html#probability-mass" id="toc-probability-mass"><span class="toc-section-number">2.3</span> Probability mass</a></li>
+<li class="has-sub"><a href="2.4-the-normal-gaussian-distribution.html#the-normal-gaussian-distribution" id="toc-the-normal-gaussian-distribution"><span class="toc-section-number">2.4</span> The Normal (Gaussian) distribution</a>
+<ul>
+<li><a href="2.4-the-normal-gaussian-distribution.html#guillemot-weight" id="toc-guillemot-weight"><span class="toc-section-number">2.4.1</span> Guillemot weight</a></li>
+</ul></li>
+<li><a href="2.5-probability-density.html#probability-density" id="toc-probability-density"><span class="toc-section-number">2.5</span> Probability density</a></li>
+<li class="has-sub"><a href="2.6-the-standard-normal-distribution.html#the-standard-normal-distribution" id="toc-the-standard-normal-distribution"><span class="toc-section-number">2.6</span> The Standard Normal Distribution</a>
+<ul>
+<li><a href="2.6-the-standard-normal-distribution.html#functions-1" id="toc-functions-1"><span class="toc-section-number">2.6.1</span> Functions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="the-normal-gaussian-distribution" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> The Normal (Gaussian) distribution</h2>
+<p>In contrast to discrete distributions, continuous distributions can return any number value (within some constraints, which we will get to later in the semester when we talk about generalized linear models or GLMs). For now, we will just focus on the normal distribution which is one that is likely most familiar. The normal distribution is continuous and can return any value from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. There are two parameters that govern the normal distribution: 1) the mean of the distribution, <span class="math inline">\(\mu\)</span> and the variance, <span class="math inline">\(\sigma^2\)</span>. If we have a response variable <span class="math inline">\(y\)</span> that is a random variable drawn from the normal distribution, we would write this out as: <span class="math display">\[y \sim Normal(\mu, \sigma^2)\]</span></p>
+<p>The mean (<span class="math inline">\(\mu\)</span>) is the central tendency of the distribution; you could also think of it as the expected value. The variance (<span class="math inline">\(\sigma\)</span>) is a measure of spread, i.e. how tightly are values clustered to that central tendency versus more spread out.</p>
+<div id="guillemot-weight" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Guillemot weight</h3>
+<p>Apparently, adult Common Guillemots weigh 900-1100 grams (about 2-2.5 lbs). Because guillemot weights can be any number (e.g. 929.374 grams), we could assume that our response variable (weight) is a random variable drawn from a normal distribution. Ballpark, let’s say that the mean is 980, and the variance is 400. In R, instead of using the variance directly, the function <code>rnorm()</code> takes the standard deviation (<span class="math inline">\(\sigma\)</span>) as input. The standard deviation is simply the square root of the variance. So we can describe guillemot weight mathematically as: <span class="math display">\[ weight \sim Normal(\mu = 980, \sigma=20)\]</span></p>
+<p>Using the function <code>rnorm</code>, we will simulate a population of 120 adult guillemots and their weights.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="2.4-the-normal-gaussian-distribution.html#cb39-1" tabindex="-1"></a>adult_weights <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">120</span>, <span class="co"># population size</span></span>
+<span id="cb39-2"><a href="2.4-the-normal-gaussian-distribution.html#cb39-2" tabindex="-1"></a>                       <span class="at">mean =</span> <span class="dv">980</span>, <span class="co"># mu, population mean</span></span>
+<span id="cb39-3"><a href="2.4-the-normal-gaussian-distribution.html#cb39-3" tabindex="-1"></a>                       <span class="at">sd =</span> <span class="dv">20</span> <span class="co">#standard deviation, square root of the variance</span></span>
+<span id="cb39-4"><a href="2.4-the-normal-gaussian-distribution.html#cb39-4" tabindex="-1"></a>                       )</span>
+<span id="cb39-5"><a href="2.4-the-normal-gaussian-distribution.html#cb39-5" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="2.4-the-normal-gaussian-distribution.html#cb39-6" tabindex="-1"></a><span class="co"># plot a histogram of our sample</span></span>
+<span id="cb39-7"><a href="2.4-the-normal-gaussian-distribution.html#cb39-7" tabindex="-1"></a><span class="fu">hist</span>(adult_weights, <span class="at">breaks =</span> <span class="dv">20</span>)</span>
+<span id="cb39-8"><a href="2.4-the-normal-gaussian-distribution.html#cb39-8" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="2.4-the-normal-gaussian-distribution.html#cb39-9" tabindex="-1"></a><span class="co"># add a vertical line where we set the mean to</span></span>
+<span id="cb39-10"><a href="2.4-the-normal-gaussian-distribution.html#cb39-10" tabindex="-1"></a><span class="co"># note: if running these in an R Markdown file, you have to run both lines</span></span>
+<span id="cb39-11"><a href="2.4-the-normal-gaussian-distribution.html#cb39-11" tabindex="-1"></a><span class="co"># at the same time or you will get an error that plot.new has not been called</span></span>
+<span id="cb39-12"><a href="2.4-the-normal-gaussian-distribution.html#cb39-12" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">980</span>,</span>
+<span id="cb39-13"><a href="2.4-the-normal-gaussian-distribution.html#cb39-13" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">2</span>, </span>
+<span id="cb39-14"><a href="2.4-the-normal-gaussian-distribution.html#cb39-14" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672"  /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="2.4-the-normal-gaussian-distribution.html#cb40-1" tabindex="-1"></a><span class="co"># based on the sample, what is the probability of an adult guillemot weighing</span></span>
+<span id="cb40-2"><a href="2.4-the-normal-gaussian-distribution.html#cb40-2" tabindex="-1"></a><span class="co"># more than 980 grams?</span></span>
+<span id="cb40-3"><a href="2.4-the-normal-gaussian-distribution.html#cb40-3" tabindex="-1"></a><span class="fu">proportions</span>(<span class="fu">table</span>(adult_weights<span class="sc">&gt;</span><span class="dv">980</span>))</span></code></pre></div>
+<pre><code>## 
+##     FALSE      TRUE 
+## 0.5083333 0.4916667</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="2.4-the-normal-gaussian-distribution.html#cb42-1" tabindex="-1"></a><span class="co"># what is the probability of an adult weighing exactly 990 grams? (not 990.1, 990.2, etc.)</span></span>
+<span id="cb42-2"><a href="2.4-the-normal-gaussian-distribution.html#cb42-2" tabindex="-1"></a><span class="co"># we could do this empirically, i.e. how many of our 120 adults were exactly 990 grams?</span></span>
+<span id="cb42-3"><a href="2.4-the-normal-gaussian-distribution.html#cb42-3" tabindex="-1"></a><span class="fu">proportions</span>(<span class="fu">table</span>(adult_weights<span class="sc">==</span><span class="dv">990</span>))</span></code></pre></div>
+<pre><code>## 
+## FALSE 
+##     1</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="2.4-the-normal-gaussian-distribution.html#cb44-1" tabindex="-1"></a><span class="co"># but this does not make any sense, because we are dealing with continuous data, so why</span></span>
+<span id="cb44-2"><a href="2.4-the-normal-gaussian-distribution.html#cb44-2" tabindex="-1"></a><span class="co"># would we treat it like it is in discrete chunks?</span></span></code></pre></div>
+</div>
+</div>
+<p style="text-align: center;">
+<a href="2.3-probability-mass.html"><button class="btn btn-default">Previous</button></a>
+<a href="2.5-probability-density.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>
