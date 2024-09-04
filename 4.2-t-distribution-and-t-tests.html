@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="4.2 T-distribution and t-tests | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+<meta property="og:type" content="book" />
+
+
+
+
+<meta name="author" content="Eliza Grames" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="description" content="4.2 T-distribution and t-tests | BIOL 480/580Q: Ecological Modeling (Fall 2024)">
+
+<title>4.2 T-distribution and t-tests | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#introduction" id="toc-introduction"><span class="toc-section-number">1</span> Introduction</a>
+<ul>
+<li><a href="1.1-about-this-book.html#about-this-book" id="toc-about-this-book"><span class="toc-section-number">1.1</span> About this ‘book’</a></li>
+<li><a href="1.2-why-this-course.html#why-this-course" id="toc-why-this-course"><span class="toc-section-number">1.2</span> Why this course?</a></li>
+<li class="has-sub"><a href="1.3-getting-comfortable-with-r-and-rstudio.html#getting-comfortable-with-r-and-rstudio" id="toc-getting-comfortable-with-r-and-rstudio"><span class="toc-section-number">1.3</span> Getting comfortable with R and RStudio</a>
+<ul>
+<li><a href="1.3-getting-comfortable-with-r-and-rstudio.html#some-terms-and-definitions" id="toc-some-terms-and-definitions"><span class="toc-section-number">1.3.1</span> Some terms and definitions</a></li>
+<li><a href="1.3-getting-comfortable-with-r-and-rstudio.html#customizing-rstudio" id="toc-customizing-rstudio"><span class="toc-section-number">1.3.2</span> Customizing RStudio</a></li>
+</ul></li>
+<li><a href="1.4-how-to-approach-this-course.html#how-to-approach-this-course" id="toc-how-to-approach-this-course"><span class="toc-section-number">1.4</span> How to approach this course</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-probability.html#probability" id="toc-probability"><span class="toc-section-number">2</span> Probability</a>
+<ul>
+<li><a href="2.1-bernoulli-distribution.html#bernoulli-distribution" id="toc-bernoulli-distribution"><span class="toc-section-number">2.1</span> Bernoulli distribution</a></li>
+<li class="has-sub"><a href="2.2-binomial-distribution.html#binomial-distribution" id="toc-binomial-distribution"><span class="toc-section-number">2.2</span> Binomial distribution</a>
+<ul>
+<li><a href="2.2-binomial-distribution.html#guillemot-example" id="toc-guillemot-example"><span class="toc-section-number">2.2.1</span> Guillemot example</a></li>
+<li><a href="2.2-binomial-distribution.html#coral-example" id="toc-coral-example"><span class="toc-section-number">2.2.2</span> Coral example</a></li>
+</ul></li>
+<li><a href="2.3-probability-mass.html#probability-mass" id="toc-probability-mass"><span class="toc-section-number">2.3</span> Probability mass</a></li>
+<li class="has-sub"><a href="2.4-the-normal-gaussian-distribution.html#the-normal-gaussian-distribution" id="toc-the-normal-gaussian-distribution"><span class="toc-section-number">2.4</span> The Normal (Gaussian) distribution</a>
+<ul>
+<li><a href="2.4-the-normal-gaussian-distribution.html#guillemot-weight" id="toc-guillemot-weight"><span class="toc-section-number">2.4.1</span> Guillemot weight</a></li>
+</ul></li>
+<li><a href="2.5-probability-density.html#probability-density" id="toc-probability-density"><span class="toc-section-number">2.5</span> Probability density</a></li>
+</ul></li>
+<li class="has-sub"><a href="3-recap.html#recap" id="toc-recap"><span class="toc-section-number">3</span> Recap</a>
+<ul>
+<li class="has-sub"><a href="3.1-the-standard-normal-distribution.html#the-standard-normal-distribution" id="toc-the-standard-normal-distribution"><span class="toc-section-number">3.1</span> The Standard Normal Distribution</a>
+<ul>
+<li><a href="3.1-the-standard-normal-distribution.html#functions-1" id="toc-functions-1"><span class="toc-section-number">3.1.1</span> Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="4-null-hypothesis-significance-testing.html#null-hypothesis-significance-testing" id="toc-null-hypothesis-significance-testing"><span class="toc-section-number">4</span> Null hypothesis significance testing</a>
+<ul>
+<li><a href="4.1-a-brief-history-of-statistics-and-eugenics.html#a-brief-history-of-statistics-and-eugenics" id="toc-a-brief-history-of-statistics-and-eugenics"><span class="toc-section-number">4.1</span> A brief history of statistics and eugenics</a></li>
+<li class="has-sub"><a href="4.2-t-distribution-and-t-tests.html#t-distribution-and-t-tests" id="toc-t-distribution-and-t-tests"><span class="toc-section-number">4.2</span> T-distribution and t-tests</a>
+<ul>
+<li><a href="4.2-t-distribution-and-t-tests.html#butterfly-wing-size" id="toc-butterfly-wing-size"><span class="toc-section-number">4.2.1</span> Butterfly wing size</a></li>
+</ul></li>
+<li class="has-sub"><a href="4.3-type-i-and-type-ii-error.html#type-i-and-type-ii-error" id="toc-type-i-and-type-ii-error"><span class="toc-section-number">4.3</span> Type I and Type II error</a>
+<ul>
+<li><a href="4.3-type-i-and-type-ii-error.html#section" id="toc-section"><span class="toc-section-number">4.3.1</span> !!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></li>
+</ul></li>
+<li><a href="4.4-anova.html#anova" id="toc-anova"><span class="toc-section-number">4.4</span> ANOVA</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-inference.html#inference" id="toc-inference"><span class="toc-section-number">5</span> Inference</a>
+<ul>
+<li><a href="5.1-lyrebird-song-repertoire.html#lyrebird-song-repertoire" id="toc-lyrebird-song-repertoire"><span class="toc-section-number">5.1</span> Lyrebird song repertoire</a></li>
+</ul></li>
+<li class="has-sub"><a href="6-the-law-of-large-numbers.html#the-law-of-large-numbers" id="toc-the-law-of-large-numbers"><span class="toc-section-number">6</span> The law of large numbers</a>
+<ul>
+<li><a href="6.1-confidence-intervals.html#confidence-intervals" id="toc-confidence-intervals"><span class="toc-section-number">6.1</span> Confidence intervals</a></li>
+<li><a href="6.2-lyrebird-population-differences.html#lyrebird-population-differences" id="toc-lyrebird-population-differences"><span class="toc-section-number">6.2</span> Lyrebird population differences</a></li>
+<li><a href="6.3-lyrebird-mating-success-and-the-sampling-distribution.html#lyrebird-mating-success-and-the-sampling-distribution" id="toc-lyrebird-mating-success-and-the-sampling-distribution"><span class="toc-section-number">6.3</span> Lyrebird mating success and the sampling distribution</a></li>
+<li><a href="6.4-credible-intervals.html#credible-intervals" id="toc-credible-intervals"><span class="toc-section-number">6.4</span> Credible intervals</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-visualizing-group-differences.html#visualizing-group-differences" id="toc-visualizing-group-differences"><span class="toc-section-number">7</span> Visualizing group differences</a>
+<ul>
+<li><a href="7.1-boxplots.html#boxplots" id="toc-boxplots"><span class="toc-section-number">7.1</span> Boxplots</a></li>
+<li><a href="7.2-beehive-plots.html#beehive-plots" id="toc-beehive-plots"><span class="toc-section-number">7.2</span> Beehive plots</a></li>
+<li><a href="7.3-density-plots.html#density-plots" id="toc-density-plots"><span class="toc-section-number">7.3</span> Density plots</a></li>
+<li><a href="7.4-raincloud-plots.html#raincloud-plots" id="toc-raincloud-plots"><span class="toc-section-number">7.4</span> Raincloud plots</a></li>
+<li><a href="7.5-paired-slopes.html#paired-slopes" id="toc-paired-slopes"><span class="toc-section-number">7.5</span> Paired slopes</a></li>
+</ul></li>
+<li><a href="8-visualizing-confidence-intervals.html#visualizing-confidence-intervals" id="toc-visualizing-confidence-intervals"><span class="toc-section-number">8</span> Visualizing confidence intervals</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="t-distribution-and-t-tests" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> T-distribution and t-tests</h2>
+<p>With Z-scores, we are assuming an infinite sample size when we use the standard deviation in the denominator. This is never the case with real data, though as our sample size increases, it becomes less and less important. To account for the reality of small sample sizes, often researchers will use the t distribution instead. The t distribution was developed by William Sealy Gosset, a brewer at Guinness, who essentially wanted to quality check different batches of beer with statistics, but could not use the normal distribution because of the small sample sizes. He published it under the pseudonym Student, which is why it is now called Student’s t-test.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="4.2-t-distribution-and-t-tests.html#cb62-1" tabindex="-1"></a><span class="co"># create an object of xvalues over a reasonable range to plot</span></span>
+<span id="cb62-2"><a href="4.2-t-distribution-and-t-tests.html#cb62-2" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">4</span>, <span class="at">to=</span><span class="dv">4</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb62-3"><a href="4.2-t-distribution-and-t-tests.html#cb62-3" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="4.2-t-distribution-and-t-tests.html#cb62-4" tabindex="-1"></a><span class="co"># plot the standardized normal (z) distribution over this range</span></span>
+<span id="cb62-5"><a href="4.2-t-distribution-and-t-tests.html#cb62-5" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">dnorm</span>(xvals, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>), <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb62-6"><a href="4.2-t-distribution-and-t-tests.html#cb62-6" tabindex="-1"></a></span>
+<span id="cb62-7"><a href="4.2-t-distribution-and-t-tests.html#cb62-7" tabindex="-1"></a><span class="co"># use the lines() function to add a line with the t distribution over the same range</span></span>
+<span id="cb62-8"><a href="4.2-t-distribution-and-t-tests.html#cb62-8" tabindex="-1"></a><span class="co"># and assume we have 1 degree of freedom (i.e. a sample size of 2, where df = n - 1)</span></span>
+<span id="cb62-9"><a href="4.2-t-distribution-and-t-tests.html#cb62-9" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dt</span>(xvals, <span class="at">df=</span><span class="dv">1</span>), <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb62-10"><a href="4.2-t-distribution-and-t-tests.html#cb62-10" tabindex="-1"></a></span>
+<span id="cb62-11"><a href="4.2-t-distribution-and-t-tests.html#cb62-11" tabindex="-1"></a><span class="co"># as you increase the sample size, and hence the degrees of freedom, the t distribution</span></span>
+<span id="cb62-12"><a href="4.2-t-distribution-and-t-tests.html#cb62-12" tabindex="-1"></a><span class="co"># approaches, but never reaches, normal (though for most purposes, anything with</span></span>
+<span id="cb62-13"><a href="4.2-t-distribution-and-t-tests.html#cb62-13" tabindex="-1"></a><span class="co"># a sample size &gt;20 is probably fine to assume normality if it is generally normally</span></span>
+<span id="cb62-14"><a href="4.2-t-distribution-and-t-tests.html#cb62-14" tabindex="-1"></a><span class="co"># distributed and meets other assumptions)</span></span>
+<span id="cb62-15"><a href="4.2-t-distribution-and-t-tests.html#cb62-15" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dt</span>(xvals, <span class="at">df=</span><span class="dv">5</span>), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;tomato2&quot;</span>)</span>
+<span id="cb62-16"><a href="4.2-t-distribution-and-t-tests.html#cb62-16" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dt</span>(xvals, <span class="at">df=</span><span class="dv">20</span>), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;tomato2&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>We will not spend much time on t-tests because quite frankly they are rarely useful in ecology (and the internet is chock-full of advice), but they can be useful if you want to know if two groups are different from each other.</p>
+<div class="float">
+<img src="https://pbs.twimg.com/media/EOGPlvJU8AIDLEV.jpg:large" alt="T-tests as illustrated by Alison Horst" />
+<div class="figcaption">T-tests as illustrated by Alison Horst</div>
+</div>
+<div id="butterfly-wing-size" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Butterfly wing size</h3>
+<p>Let’s say we have two species of butterflies, and we want to know if there is a significant difference in their forewing length. The data we are using for this example come from <a href="https://doi.org/10.1111/ecog.07075">Daly et al. (2024)</a>, who found that warming temperatures can affect development and eventual body size of Arctic butterflies. Here, we are not replicating their full analysis - we are just going to use the data to test if <em>Boloria chariclea</em> is larger than <em>Boloria freija</em> (a fascinating question, I know…).</p>
+<div class="float">
+<img src="https://nsojournals.onlinelibrary.wiley.com/cms/asset/ace47237-28e9-4e1e-b01a-c6e188e51852/ecog13112-fig-0003-m.jpg" alt="Figure from Daly et al. (2024) showing potential impacts of climate change on body size in ARctic butterflies" />
+<div class="figcaption">Figure from Daly et al. (2024) showing potential impacts of climate change on body size in ARctic butterflies</div>
+</div>
+<p>Because we are working with external data, we need to get it into our environment. There are many different ways to import data depending on the type of file you are reading. In this case, I have exported <a href="https://doi.org/10.5061/dryad.4qrfj6qh1">their data from Dryad</a> and converted it to a comma separated value (.csv) file.</p>
+<blockquote>
+<p><strong>Future proofing your data files: </strong>When you can use .csv, it is highly, highly recommended because it is future proofed meaning it can be opened by any text editor (unlike e.g. .xlsx). There are of course other options for reading in things like tab-delimited files with <code>read.delim()</code> or Excel spreadsheets with <code>readxl::read.xlsx()</code> and so on, but a simple .csv is the way to go when possible.</p>
+</blockquote>
+<p>First, we should read in the data into our environment. Then, it is generally a good idea to explore your data to see what you are working with. The function <code>head</code> will show you, by default, the first six elements of an object (in this case, the first six rows because our object is of the class <code>data.frame</code>). The function <code>colnames</code> will give you the column names (<code>rownames</code> will give you the names of rows). It is also a good idea to look at the structure of your data with the <code>str</code> function which gives you a quick overview of what is contained in the object. For example, with this data, it will tell us we have 2501 observations (i.e. rows of data) of 19 variables (i.e. our columns). It will also tell us all the column names, what type of data are contained in the column (e.g. year is an integer, species is a character, etc.), and give a preview of the first few items in each column.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="4.2-t-distribution-and-t-tests.html#cb63-1" tabindex="-1"></a><span class="co"># read in the spreadsheet to our environment</span></span>
+<span id="cb63-2"><a href="4.2-t-distribution-and-t-tests.html#cb63-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/daly2024_butterflysize.csv&quot;</span>)</span>
+<span id="cb63-3"><a href="4.2-t-distribution-and-t-tests.html#cb63-3" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="4.2-t-distribution-and-t-tests.html#cb63-4" tabindex="-1"></a><span class="co"># note that if you have an internet connection, you can also read in data from </span></span>
+<span id="cb63-5"><a href="4.2-t-distribution-and-t-tests.html#cb63-5" tabindex="-1"></a><span class="co"># remote sources. e.g. I uploaded this spreadsheet as a publicly available</span></span>
+<span id="cb63-6"><a href="4.2-t-distribution-and-t-tests.html#cb63-6" tabindex="-1"></a><span class="co"># .csv via Google Sheets and you could read it in from there instead of from</span></span>
+<span id="cb63-7"><a href="4.2-t-distribution-and-t-tests.html#cb63-7" tabindex="-1"></a><span class="co"># a local archive</span></span>
+<span id="cb63-8"><a href="4.2-t-distribution-and-t-tests.html#cb63-8" tabindex="-1"></a></span>
+<span id="cb63-9"><a href="4.2-t-distribution-and-t-tests.html#cb63-9" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://tinyurl.com/daly2024&quot;</span>) </span>
+<span id="cb63-10"><a href="4.2-t-distribution-and-t-tests.html#cb63-10" tabindex="-1"></a></span>
+<span id="cb63-11"><a href="4.2-t-distribution-and-t-tests.html#cb63-11" tabindex="-1"></a><span class="co"># look at the first few rows of data</span></span>
+<span id="cb63-12"><a href="4.2-t-distribution-and-t-tests.html#cb63-12" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<pre><code>##   year      barcode box.barcode   box     envelope Species.determined.by
+## 1 1971 UAM100190600      C87023 53-01 UAM100190576   Jayce B. Williamson
+## 2 1971 UAM100190625      C87023 53-01 UAM100190573   Jayce B. Williamson
+## 3 1971 UAM100190626      C87023 53-01 UAM100190573   Jayce B. Williamson
+## 4 1971 UAM100190627      C87023 53-01 UAM100190573   Jayce B. Williamson
+## 5 1971 UAM100190639      C87023 53-01 UAM100190570   Jayce B. Williamson
+## 6 1971 UAM100190640      C87023 53-01 UAM100190561   Jayce B. Williamson
+##             species length            measurer region sex
+## 1 Boloria chariclea  18.70     Abby Blackstone      W   M
+## 2 Boloria chariclea  16.50 Elizabeth Himschoot      W   M
+## 3 Boloria chariclea  16.48 Elizabeth Himschoot      W   M
+## 4 Boloria chariclea  16.41 Elizabeth Himschoot      W   M
+## 5 Boloria chariclea  16.70 Elizabeth Himschoot      W   M
+## 6 Boloria chariclea  18.16 Elizabeth Himschoot      W   M
+##   Previous.Summer.Station Spring.weather.station extrap_station extrap_gdd0
+## 1                    brrw                   brrw  brrw.nk.ko.at    917.7636
+## 2                    brrw                   brrw  brrw.nk.ko.at    917.7636
+## 3                    brrw                   brrw  brrw.nk.ko.at    917.7636
+## 4                    brrw                   brrw  brrw.nk.ko.at    917.7636
+## 5                    brrw                   brrw  brrw.nk.ko.at    917.7636
+## 6                    brrw                   brrw  brrw.nk.ko.at    917.7636
+##   extrap_gdd5 flight_doy_cutoff prev_summer_gdd spring_gdd
+## 1    679.3685               180           61.66      20.28
+## 2    679.3685               180           61.66      20.28
+## 3    679.3685               180           61.66      20.28
+## 4    679.3685               180           61.66      20.28
+## 5    679.3685               180           61.66      20.28
+## 6    679.3685               180           61.66      20.28</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="4.2-t-distribution-and-t-tests.html#cb65-1" tabindex="-1"></a><span class="co"># what are all the column names?</span></span>
+<span id="cb65-2"><a href="4.2-t-distribution-and-t-tests.html#cb65-2" tabindex="-1"></a><span class="fu">colnames</span>(dat)</span></code></pre></div>
+<pre><code>##  [1] &quot;year&quot;                    &quot;barcode&quot;                
+##  [3] &quot;box.barcode&quot;             &quot;box&quot;                    
+##  [5] &quot;envelope&quot;                &quot;Species.determined.by&quot;  
+##  [7] &quot;species&quot;                 &quot;length&quot;                 
+##  [9] &quot;measurer&quot;                &quot;region&quot;                 
+## [11] &quot;sex&quot;                     &quot;Previous.Summer.Station&quot;
+## [13] &quot;Spring.weather.station&quot;  &quot;extrap_station&quot;         
+## [15] &quot;extrap_gdd0&quot;             &quot;extrap_gdd5&quot;            
+## [17] &quot;flight_doy_cutoff&quot;       &quot;prev_summer_gdd&quot;        
+## [19] &quot;spring_gdd&quot;</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="4.2-t-distribution-and-t-tests.html#cb67-1" tabindex="-1"></a><span class="co"># often, it is also a good idea to look at the structure</span></span>
+<span id="cb67-2"><a href="4.2-t-distribution-and-t-tests.html#cb67-2" tabindex="-1"></a><span class="fu">str</span>(dat)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    2501 obs. of  19 variables:
+##  $ year                   : int  1971 1971 1971 1971 1971 1971 1971 1971 1971 1971 ...
+##  $ barcode                : chr  &quot;UAM100190600&quot; &quot;UAM100190625&quot; &quot;UAM100190626&quot; &quot;UAM100190627&quot; ...
+##  $ box.barcode            : chr  &quot;C87023&quot; &quot;C87023&quot; &quot;C87023&quot; &quot;C87023&quot; ...
+##  $ box                    : chr  &quot;53-01&quot; &quot;53-01&quot; &quot;53-01&quot; &quot;53-01&quot; ...
+##  $ envelope               : chr  &quot;UAM100190576&quot; &quot;UAM100190573&quot; &quot;UAM100190573&quot; &quot;UAM100190573&quot; ...
+##  $ Species.determined.by  : chr  &quot;Jayce B. Williamson&quot; &quot;Jayce B. Williamson&quot; &quot;Jayce B. Williamson&quot; &quot;Jayce B. Williamson&quot; ...
+##  $ species                : chr  &quot;Boloria chariclea&quot; &quot;Boloria chariclea&quot; &quot;Boloria chariclea&quot; &quot;Boloria chariclea&quot; ...
+##  $ length                 : num  18.7 16.5 16.5 16.4 16.7 ...
+##  $ measurer               : chr  &quot;Abby Blackstone&quot; &quot;Elizabeth Himschoot&quot; &quot;Elizabeth Himschoot&quot; &quot;Elizabeth Himschoot&quot; ...
+##  $ region                 : chr  &quot;W&quot; &quot;W&quot; &quot;W&quot; &quot;W&quot; ...
+##  $ sex                    : chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
+##  $ Previous.Summer.Station: chr  &quot;brrw&quot; &quot;brrw&quot; &quot;brrw&quot; &quot;brrw&quot; ...
+##  $ Spring.weather.station : chr  &quot;brrw&quot; &quot;brrw&quot; &quot;brrw&quot; &quot;brrw&quot; ...
+##  $ extrap_station         : chr  &quot;brrw.nk.ko.at&quot; &quot;brrw.nk.ko.at&quot; &quot;brrw.nk.ko.at&quot; &quot;brrw.nk.ko.at&quot; ...
+##  $ extrap_gdd0            : num  918 918 918 918 918 ...
+##  $ extrap_gdd5            : num  679 679 679 679 679 ...
+##  $ flight_doy_cutoff      : int  180 180 180 180 180 180 180 180 180 180 ...
+##  $ prev_summer_gdd        : num  61.7 61.7 61.7 61.7 61.7 ...
+##  $ spring_gdd             : num  20.3 20.3 20.3 20.3 20.3 ...</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="4.2-t-distribution-and-t-tests.html#cb69-1" tabindex="-1"></a><span class="co"># notice that different columns in the data.frame have different data types</span></span>
+<span id="cb69-2"><a href="4.2-t-distribution-and-t-tests.html#cb69-2" tabindex="-1"></a><span class="co"># e.g. year is an integer, species is a character (chr), previous summer growing</span></span>
+<span id="cb69-3"><a href="4.2-t-distribution-and-t-tests.html#cb69-3" tabindex="-1"></a><span class="co"># degree days (prev_summer_gdd) is numeric, etc.</span></span></code></pre></div>
+<p>But, back to the main point here: doing a quick t-test to see if the two species are different sizes. First, let’s ask the question “Are <em>Boloria chariclea</em> and <em>Boloria freija</em> significantly different in size?”. Notice here that we do not specify which is larger - just that they are different.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="4.2-t-distribution-and-t-tests.html#cb70-1" tabindex="-1"></a><span class="co"># create a vector of only the sizes (length) of B freija</span></span>
+<span id="cb70-2"><a href="4.2-t-distribution-and-t-tests.html#cb70-2" tabindex="-1"></a><span class="co"># and the same for chariclea</span></span>
+<span id="cb70-3"><a href="4.2-t-distribution-and-t-tests.html#cb70-3" tabindex="-1"></a>freija <span class="ot">&lt;-</span> dat<span class="sc">$</span>length[dat<span class="sc">$</span>species<span class="sc">==</span><span class="st">&quot;Boloria freija&quot;</span>]</span>
+<span id="cb70-4"><a href="4.2-t-distribution-and-t-tests.html#cb70-4" tabindex="-1"></a>chariclea <span class="ot">&lt;-</span> dat<span class="sc">$</span>length[dat<span class="sc">$</span>species<span class="sc">==</span><span class="st">&quot;Boloria chariclea&quot;</span>]</span>
+<span id="cb70-5"><a href="4.2-t-distribution-and-t-tests.html#cb70-5" tabindex="-1"></a></span>
+<span id="cb70-6"><a href="4.2-t-distribution-and-t-tests.html#cb70-6" tabindex="-1"></a><span class="co"># use a t-test to test if they are different</span></span>
+<span id="cb70-7"><a href="4.2-t-distribution-and-t-tests.html#cb70-7" tabindex="-1"></a><span class="fu">t.test</span>(freija, chariclea)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  freija and chariclea
+## t = -8.4521, df = 1895.9, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.5197503 -0.3239729
+## sample estimates:
+## mean of x mean of y 
+##  17.46234  17.88420</code></pre>
+<p>For identification purposes, it is potentially good to know that the species can be distinguished by size. But imagine telling a field technician that they can tell them apart because they are different sizes. The first question they will ask is which one is bigger.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="4.2-t-distribution-and-t-tests.html#cb72-1" tabindex="-1"></a><span class="co"># plot the distribution of sizes for the two species side by side</span></span>
+<span id="cb72-2"><a href="4.2-t-distribution-and-t-tests.html#cb72-2" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="4.2-t-distribution-and-t-tests.html#cb72-3" tabindex="-1"></a><span class="fu">hist</span>(freija, <span class="at">col=</span><span class="st">&quot;#ffaa0088&quot;</span>, <span class="co"># you can specify colors in RGB format, including opacity</span></span>
+<span id="cb72-4"><a href="4.2-t-distribution-and-t-tests.html#cb72-4" tabindex="-1"></a>     <span class="at">border=</span>F,</span>
+<span id="cb72-5"><a href="4.2-t-distribution-and-t-tests.html#cb72-5" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">24</span>), <span class="co"># in case the other species needs more room on the axis</span></span>
+<span id="cb72-6"><a href="4.2-t-distribution-and-t-tests.html#cb72-6" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">50</span>)</span>
+<span id="cb72-7"><a href="4.2-t-distribution-and-t-tests.html#cb72-7" tabindex="-1"></a><span class="fu">hist</span>(chariclea, <span class="at">col=</span><span class="st">&quot;#ff000044&quot;</span>, <span class="at">border=</span>F,</span>
+<span id="cb72-8"><a href="4.2-t-distribution-and-t-tests.html#cb72-8" tabindex="-1"></a>     <span class="at">add=</span>T, <span class="co"># add it to the current plot set to TRUE</span></span>
+<span id="cb72-9"><a href="4.2-t-distribution-and-t-tests.html#cb72-9" tabindex="-1"></a>     <span class="at">breaks=</span><span class="dv">50</span>)</span>
+<span id="cb72-10"><a href="4.2-t-distribution-and-t-tests.html#cb72-10" tabindex="-1"></a></span>
+<span id="cb72-11"><a href="4.2-t-distribution-and-t-tests.html#cb72-11" tabindex="-1"></a><span class="co"># add a legend to remind ourselves which color is which</span></span>
+<span id="cb72-12"><a href="4.2-t-distribution-and-t-tests.html#cb72-12" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="co"># placement</span></span>
+<span id="cb72-13"><a href="4.2-t-distribution-and-t-tests.html#cb72-13" tabindex="-1"></a>       <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;B. freija&quot;</span>, <span class="st">&quot;B. chariclea&quot;</span>), <span class="co">#text</span></span>
+<span id="cb72-14"><a href="4.2-t-distribution-and-t-tests.html#cb72-14" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;#ffaa00&quot;</span>, <span class="st">&quot;#ff0000&quot;</span>), <span class="co"># colors</span></span>
+<span id="cb72-15"><a href="4.2-t-distribution-and-t-tests.html#cb72-15" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">15</span>, <span class="co"># character</span></span>
+<span id="cb72-16"><a href="4.2-t-distribution-and-t-tests.html#cb72-16" tabindex="-1"></a>       <span class="at">bty=</span><span class="st">&quot;n&quot;</span>, <span class="co"># i do not like boxes</span></span>
+<span id="cb72-17"><a href="4.2-t-distribution-and-t-tests.html#cb72-17" tabindex="-1"></a>       <span class="at">pt.cex=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="4.2-t-distribution-and-t-tests.html#cb73-1" tabindex="-1"></a><span class="co"># looks like chariclea is slightly larger</span></span></code></pre></div>
+<p>Earlier, we did a two-tailed t-test with an <span class="math inline">\(\alpha\)</span> of 0.05, meaning we only cared if the probability of observing the difference in size that we observed, or an even greater difference, was less than 5%, if the null hypothesis that there was no difference in size was true. But, we could also do a one-tailed test, which would help us answer the question: Is <em>Boloria chariclea</em> larger than <em>Boloria freija</em>? Here, we introduce the idea that we only care about one side (the upper tail) of the t-distribution, not the lower.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="4.2-t-distribution-and-t-tests.html#cb74-1" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: it matters which species is x and which is y! In this line, we are asking if</span></span>
+<span id="cb74-2"><a href="4.2-t-distribution-and-t-tests.html#cb74-2" tabindex="-1"></a><span class="co"># chariclea is larger than freija, and the result is yes</span></span>
+<span id="cb74-3"><a href="4.2-t-distribution-and-t-tests.html#cb74-3" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> chariclea, <span class="at">y =</span> freija, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  chariclea and freija
+## t = 8.4521, df = 1895.9, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  0.3397231       Inf
+## sample estimates:
+## mean of x mean of y 
+##  17.88420  17.46234</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="4.2-t-distribution-and-t-tests.html#cb76-1" tabindex="-1"></a><span class="co"># but, if we ask in a one-sided test if freija is larger than chariclea, it is no</span></span>
+<span id="cb76-2"><a href="4.2-t-distribution-and-t-tests.html#cb76-2" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> freija, <span class="at">y =</span> chariclea, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  freija and chariclea
+## t = -8.4521, df = 1895.9, p-value = 1
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  -0.5040001        Inf
+## sample estimates:
+## mean of x mean of y 
+##  17.46234  17.88420</code></pre>
+<p>There are also paired t-tests in which you have a paired set of observations of one thing, and you want to know if they as a group differ from a paired set of observations of another thing. To do this, add the argument <code>paired=T</code> to the <code>t.test</code> function, but each of your vectors will need to actually be paired (i.e. identical length).</p>
+<p>With our <em>Boloria</em> data, let’s say for some reason we wanted to know if the mean size of <em>Boloria chariclea</em> was larger than <em>Boloria freija</em> every single year in the study, and we wanted to do the comparisons year by year. Not a very sensible question to ask from a biological perspective unless we thought that there were large differences across years, but that’s our example data this week, so we will go with it.</p>
+<p>First, we will need to do some data wrangling to get our data into the format we want. What we want is a mean value for each year for each species. We can use the <code>aggregate</code> function for this. There are also <code>tidyverse</code> ways to group and summarize data, which we will not talk about in this course because I prefer base.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="4.2-t-distribution-and-t-tests.html#cb78-1" tabindex="-1"></a><span class="co"># don&#39;t forget you can look up what arguments a function expects with ?</span></span>
+<span id="cb78-2"><a href="4.2-t-distribution-and-t-tests.html#cb78-2" tabindex="-1"></a>mean_wts <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(length <span class="sc">~</span> year <span class="sc">+</span> species, <span class="at">data=</span>dat, <span class="at">FUN=</span>mean)</span>
+<span id="cb78-3"><a href="4.2-t-distribution-and-t-tests.html#cb78-3" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="4.2-t-distribution-and-t-tests.html#cb78-4" tabindex="-1"></a><span class="co"># this gives us the mean for each species in each year, but we want it in a</span></span>
+<span id="cb78-5"><a href="4.2-t-distribution-and-t-tests.html#cb78-5" tabindex="-1"></a><span class="co"># format where each row contains observations for comparison; we can move it to</span></span>
+<span id="cb78-6"><a href="4.2-t-distribution-and-t-tests.html#cb78-6" tabindex="-1"></a><span class="co"># this form with the xtabs function</span></span>
+<span id="cb78-7"><a href="4.2-t-distribution-and-t-tests.html#cb78-7" tabindex="-1"></a></span>
+<span id="cb78-8"><a href="4.2-t-distribution-and-t-tests.html#cb78-8" tabindex="-1"></a>yearly_wts <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(length <span class="sc">~</span> ., <span class="at">data=</span>mean_wts)</span>
+<span id="cb78-9"><a href="4.2-t-distribution-and-t-tests.html#cb78-9" tabindex="-1"></a></span>
+<span id="cb78-10"><a href="4.2-t-distribution-and-t-tests.html#cb78-10" tabindex="-1"></a><span class="co"># now we have vectors of the same length for comparison with a paired t-test</span></span>
+<span id="cb78-11"><a href="4.2-t-distribution-and-t-tests.html#cb78-11" tabindex="-1"></a><span class="co"># note you do not always need these steps, it depends on your data structure</span></span>
+<span id="cb78-12"><a href="4.2-t-distribution-and-t-tests.html#cb78-12" tabindex="-1"></a></span>
+<span id="cb78-13"><a href="4.2-t-distribution-and-t-tests.html#cb78-13" tabindex="-1"></a><span class="fu">t.test</span>(yearly_wts[,<span class="dv">1</span>], yearly_wts[,<span class="dv">2</span>], <span class="at">paired=</span>T, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  yearly_wts[, 1] and yearly_wts[, 2]
+## t = 0.35052, df = 14, p-value = 0.3656
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  -2.307567       Inf
+## sample estimates:
+## mean of the differences 
+##               0.5733311</code></pre>
+<p>A more practical example of where I’ve used this is to test if there have been phenological shifts in the week of last flight for moths in Ithaca. Each species is only represented once in the historical data, and once in the current data. To see if the whole community is flying later, we used a paired t-test because that way each species was matched up with its own data point historically and now, rather than having a lumped distribution of data historically and a lumped distribution currently. Or, perhaps you have a before and after experimental design setup and want to know if your experimental units have changed in response to a treatment. For example, you have 20 streams and you measure their invertebrate species richness, then introduce standing deadwood to the streams and want to know how it changed the invertebrate community. You do not want to compare the streams to each other - you want to compare each to their previous invertebrate community, so you have pairwise samples.</p>
+</div>
+</div>
+<p style="text-align: center;">
+<a href="4.1-a-brief-history-of-statistics-and-eugenics.html"><button class="btn btn-default">Previous</button></a>
+<a href="4.3-type-i-and-type-ii-error.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

@@ -173,11 +173,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#butterfly-wing-size"><i class="fa fa-check"></i><b>3.2.1</b> Butterfly wing size</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#anova"><i class="fa fa-check"></i><b>3.3</b> ANOVA</a></li>
+<li class="chapter" data-level="3.4" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#type-i-and-type-ii-error"><i class="fa fa-check"></i><b>3.4</b> Type I and Type II error</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4</b> Inference</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="inference.html"><a href="inference.html#confidence-intervals"><i class="fa fa-check"></i><b>4.1</b> Confidence intervals</a></li>
-<li class="chapter" data-level="4.2" data-path="inference.html"><a href="inference.html#credible-intervals"><i class="fa fa-check"></i><b>4.2</b> Credible intervals</a></li>
+<li class="chapter" data-level="4.1" data-path="inference.html"><a href="inference.html#lyrebird-song-repertoire"><i class="fa fa-check"></i><b>4.1</b> Lyrebird song repertoire</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html"><i class="fa fa-check"></i><b>5</b> The law of large numbers</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#confidence-intervals"><i class="fa fa-check"></i><b>5.1</b> Confidence intervals</a></li>
+<li class="chapter" data-level="5.2" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-population-differences"><i class="fa fa-check"></i><b>5.2</b> Lyrebird population differences</a></li>
+<li class="chapter" data-level="5.3" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-mating-success-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> Lyrebird mating success and the sampling distribution</a></li>
+<li class="chapter" data-level="5.4" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#credible-intervals"><i class="fa fa-check"></i><b>5.4</b> Credible intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html"><i class="fa fa-check"></i><b>6</b> Visualizing group differences</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#boxplots"><i class="fa fa-check"></i><b>6.1</b> Boxplots</a></li>
+<li class="chapter" data-level="6.2" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#beehive-plots"><i class="fa fa-check"></i><b>6.2</b> Beehive plots</a></li>
+<li class="chapter" data-level="6.3" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#density-plots"><i class="fa fa-check"></i><b>6.3</b> Density plots</a></li>
+<li class="chapter" data-level="6.4" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#raincloud-plots"><i class="fa fa-check"></i><b>6.4</b> Raincloud plots</a></li>
+<li class="chapter" data-level="6.5" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#paired-slopes"><i class="fa fa-check"></i><b>6.5</b> Paired slopes</a></li>
 </ul></li>
 </ul>
 
@@ -198,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="null-hypothesis-significance-testing" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">3</span> Null hypothesis significance testing<a href="null-hypothesis-significance-testing.html#null-hypothesis-significance-testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Conventionally in statistics, people use a threshold (<span class="math inline">\(\alpha\)</span>) of 0.05 to denote statistical significance. If the probability of observing your data, or data more extreme, is less than the threshold you set, you reject the null hypothesis. This is why you so often see things like <span class="math inline">\(p &lt; 0.05\)</span> in the results section of papers (particularly in older papers, i.e. when you needed a lookup table). Conversely, if your p-value is greater than <span class="math inline">\(\alpha\)</span>, you fail to reject the null hypothesis. You never accept your hypothesis, and you never accept the null hypothesis. You just fail, or do not fail, to reject the null.</p>
+<p>Conventionally in statistics, people use a threshold (<span class="math inline">\(\alpha\)</span>) of 0.05 to denote statistical significance. If the probability of observing your data, <em>or data more extreme</em>, is less than the threshold you set, you reject the null hypothesis. This is why you so often see things like <span class="math inline">\(p &lt; 0.05\)</span> in the results section of papers (particularly in older papers, i.e. when you needed a lookup table). Conversely, if your p-value is greater than <span class="math inline">\(\alpha\)</span>, you fail to reject the null hypothesis. You never accept your hypothesis, and you never accept the null hypothesis. You just fail, or do not fail, to reject the null.</p>
 <p><img src="https://i.pinimg.com/1200x/dd/ac/14/ddac14c15096e7961a5d5ac9d73e0329.jpg" /></p>
 <p>Why do we conventionally use <span class="math inline">\(\alpha = 0.05\)</span> as a threshold?</p>
 <blockquote>
@@ -226,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.2</span> T-distribution and t-tests<a href="null-hypothesis-significance-testing.html#t-distribution-and-t-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>With Z-scores, we are assuming an infinite sample size when we use the standard deviation in the denominator. This is never the case with real data, though as our sample size increases, it becomes less and less important. To account for the reality of small sample sizes, often researchers will use the t distribution instead. The t distribution was developed by William Sealy Gosset, a brewer at Guinness, who essentially wanted to quality check different batches of beer with statistics, but could not use the normal distribution because of the small sample sizes. He published it under the pseudonym Student, which is why it is now called Student’s t-test.</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="null-hypothesis-significance-testing.html#cb62-1" tabindex="-1"></a><span class="co"># create an object of xvalues over a reasonable range to plot</span></span>
-<span id="cb62-2"><a href="null-hypothesis-significance-testing.html#cb62-2" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">01</span>)</span>
+<span id="cb62-2"><a href="null-hypothesis-significance-testing.html#cb62-2" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">4</span>, <span class="at">to=</span><span class="dv">4</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
 <span id="cb62-3"><a href="null-hypothesis-significance-testing.html#cb62-3" tabindex="-1"></a></span>
 <span id="cb62-4"><a href="null-hypothesis-significance-testing.html#cb62-4" tabindex="-1"></a><span class="co"># plot the standardized normal (z) distribution over this range</span></span>
 <span id="cb62-5"><a href="null-hypothesis-significance-testing.html#cb62-5" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">dnorm</span>(xvals, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>), <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span>
@@ -236,10 +251,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb62-9"><a href="null-hypothesis-significance-testing.html#cb62-9" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dt</span>(xvals, <span class="at">df=</span><span class="dv">1</span>), <span class="at">lty=</span><span class="dv">2</span>)</span>
 <span id="cb62-10"><a href="null-hypothesis-significance-testing.html#cb62-10" tabindex="-1"></a></span>
 <span id="cb62-11"><a href="null-hypothesis-significance-testing.html#cb62-11" tabindex="-1"></a><span class="co"># as you increase the sample size, and hence the degrees of freedom, the t distribution</span></span>
-<span id="cb62-12"><a href="null-hypothesis-significance-testing.html#cb62-12" tabindex="-1"></a><span class="co"># approaches, but never reaches, normal (though for most purposes, anything with </span></span>
-<span id="cb62-13"><a href="null-hypothesis-significance-testing.html#cb62-13" tabindex="-1"></a><span class="co"># a sample size &gt;20 is probably fine to assume normality)</span></span>
-<span id="cb62-14"><a href="null-hypothesis-significance-testing.html#cb62-14" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dt</span>(xvals, <span class="at">df=</span><span class="dv">5</span>), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;tomato2&quot;</span>)</span>
-<span id="cb62-15"><a href="null-hypothesis-significance-testing.html#cb62-15" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dt</span>(xvals, <span class="at">df=</span><span class="dv">20</span>), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;tomato2&quot;</span>)</span></code></pre></div>
+<span id="cb62-12"><a href="null-hypothesis-significance-testing.html#cb62-12" tabindex="-1"></a><span class="co"># approaches, but never reaches, normal (though for most purposes, anything with</span></span>
+<span id="cb62-13"><a href="null-hypothesis-significance-testing.html#cb62-13" tabindex="-1"></a><span class="co"># a sample size &gt;20 is probably fine to assume normality if it is generally normally</span></span>
+<span id="cb62-14"><a href="null-hypothesis-significance-testing.html#cb62-14" tabindex="-1"></a><span class="co"># distributed and meets other assumptions)</span></span>
+<span id="cb62-15"><a href="null-hypothesis-significance-testing.html#cb62-15" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dt</span>(xvals, <span class="at">df=</span><span class="dv">5</span>), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;tomato2&quot;</span>)</span>
+<span id="cb62-16"><a href="null-hypothesis-significance-testing.html#cb62-16" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dt</span>(xvals, <span class="at">df=</span><span class="dv">20</span>), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;tomato2&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>We will not spend much time on t-tests because quite frankly they are rarely useful in ecology (and the internet is chock-full of advice), but they can be useful if you want to know if two groups are different from each other.</p>
 <div class="float">
@@ -255,14 +271,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Because we are working with external data, we need to get it into our environment. There are many different ways to import data depending on the type of file you are reading. In this case, I have exported <a href="https://doi.org/10.5061/dryad.4qrfj6qh1">their data from Dryad</a> and converted it to a comma separated value (.csv) file.</p>
 <blockquote>
-<p><strong>Future proofing your data files: </strong>When you can use .csv, it is highly, highly recommended because it is future proofed because it can be opened by any text editor (unlike e.g. .xlsx). There are of course other options for reading in things like tab-delimited files with <code>read.delim()</code> or Excel spreadsheets with <code>readxl::read.xlsx()</code> and so on, but a simple .csv is the way to go when possible.</p>
+<p><strong>Future proofing your data files: </strong>When you can use .csv, it is highly, highly recommended because it is future proofed meaning it can be opened by any text editor (unlike e.g. .xlsx). There are of course other options for reading in things like tab-delimited files with <code>read.delim()</code> or Excel spreadsheets with <code>readxl::read.xlsx()</code> and so on, but a simple .csv is the way to go when possible.</p>
 </blockquote>
-<p>First, we should read in the data into our environment. Then, it is generally a good idea to explore your data to see what you are working with. The function <code>head</code> will show you, by default, the first six elements of an object (in this case, the first six rows because our object is of the class <code>data.frame</code>). The function <code>colnames</code> will give you the column names (<code>rownames</code> will give you the names of rows). It is also a good idea to look at the structure of your data with the <code>str</code> function which gives you a quick overview of what is contained in the object. For example, with this data, it will tell us we have 2501 observations (i.e. rows of data) of 19 variables (i.e. our columns). It will also tell su all the column names, what type of data are contained in the column (e.g. year is an integer, species is a character, etc.), and give a preview of the first few items in each column.</p>
+<p>First, we should read in the data into our environment. Then, it is generally a good idea to explore your data to see what you are working with. The function <code>head</code> will show you, by default, the first six elements of an object (in this case, the first six rows because our object is of the class <code>data.frame</code>). The function <code>colnames</code> will give you the column names (<code>rownames</code> will give you the names of rows). It is also a good idea to look at the structure of your data with the <code>str</code> function which gives you a quick overview of what is contained in the object. For example, with this data, it will tell us we have 2501 observations (i.e. rows of data) of 19 variables (i.e. our columns). It will also tell us all the column names, what type of data are contained in the column (e.g. year is an integer, species is a character, etc.), and give a preview of the first few items in each column.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="null-hypothesis-significance-testing.html#cb63-1" tabindex="-1"></a><span class="co"># read in the spreadsheet to our environment</span></span>
 <span id="cb63-2"><a href="null-hypothesis-significance-testing.html#cb63-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./data/daly2024_butterflysize.csv&quot;</span>)</span>
 <span id="cb63-3"><a href="null-hypothesis-significance-testing.html#cb63-3" tabindex="-1"></a></span>
-<span id="cb63-4"><a href="null-hypothesis-significance-testing.html#cb63-4" tabindex="-1"></a><span class="co"># look at the first few rows of data</span></span>
-<span id="cb63-5"><a href="null-hypothesis-significance-testing.html#cb63-5" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<span id="cb63-4"><a href="null-hypothesis-significance-testing.html#cb63-4" tabindex="-1"></a><span class="co"># note that if you have an internet connection, you can also read in data from </span></span>
+<span id="cb63-5"><a href="null-hypothesis-significance-testing.html#cb63-5" tabindex="-1"></a><span class="co"># remote sources. e.g. I uploaded this spreadsheet as a publicly available</span></span>
+<span id="cb63-6"><a href="null-hypothesis-significance-testing.html#cb63-6" tabindex="-1"></a><span class="co"># .csv via Google Sheets and you could read it in from there instead of from</span></span>
+<span id="cb63-7"><a href="null-hypothesis-significance-testing.html#cb63-7" tabindex="-1"></a><span class="co"># a local archive</span></span>
+<span id="cb63-8"><a href="null-hypothesis-significance-testing.html#cb63-8" tabindex="-1"></a></span>
+<span id="cb63-9"><a href="null-hypothesis-significance-testing.html#cb63-9" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://tinyurl.com/daly2024&quot;</span>) </span>
+<span id="cb63-10"><a href="null-hypothesis-significance-testing.html#cb63-10" tabindex="-1"></a></span>
+<span id="cb63-11"><a href="null-hypothesis-significance-testing.html#cb63-11" tabindex="-1"></a><span class="co"># look at the first few rows of data</span></span>
+<span id="cb63-12"><a href="null-hypothesis-significance-testing.html#cb63-12" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
 <pre><code>##   year      barcode box.barcode   box     envelope Species.determined.by
 ## 1 1971 UAM100190600      C87023 53-01 UAM100190576   Jayce B. Williamson
 ## 2 1971 UAM100190625      C87023 53-01 UAM100190573   Jayce B. Williamson
@@ -326,9 +349,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ prev_summer_gdd        : num  61.7 61.7 61.7 61.7 61.7 ...
 ##  $ spring_gdd             : num  20.3 20.3 20.3 20.3 20.3 ...</code></pre>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="null-hypothesis-significance-testing.html#cb69-1" tabindex="-1"></a><span class="co"># notice that different columns in the data.frame have different data types</span></span>
-<span id="cb69-2"><a href="null-hypothesis-significance-testing.html#cb69-2" tabindex="-1"></a><span class="co"># e.g. year is an integer, species is a character (chr), previous summer growing </span></span>
+<span id="cb69-2"><a href="null-hypothesis-significance-testing.html#cb69-2" tabindex="-1"></a><span class="co"># e.g. year is an integer, species is a character (chr), previous summer growing</span></span>
 <span id="cb69-3"><a href="null-hypothesis-significance-testing.html#cb69-3" tabindex="-1"></a><span class="co"># degree days (prev_summer_gdd) is numeric, etc.</span></span></code></pre></div>
-<p>But, back to the main point here: doing a quick t-test to see if the two species are different sizes. First, let’s ask the question “Are Boloria chariclea and Boloria freija significantly different in size?”. Notice here that we do not specify which is larger - just that they are different.</p>
+<p>But, back to the main point here: doing a quick t-test to see if the two species are different sizes. First, let’s ask the question “Are <em>Boloria chariclea</em> and <em>Boloria freija</em> significantly different in size?”. Notice here that we do not specify which is larger - just that they are different.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="null-hypothesis-significance-testing.html#cb70-1" tabindex="-1"></a><span class="co"># create a vector of only the sizes (length) of B freija</span></span>
 <span id="cb70-2"><a href="null-hypothesis-significance-testing.html#cb70-2" tabindex="-1"></a><span class="co"># and the same for chariclea</span></span>
 <span id="cb70-3"><a href="null-hypothesis-significance-testing.html#cb70-3" tabindex="-1"></a>freija <span class="ot">&lt;-</span> dat<span class="sc">$</span>length[dat<span class="sc">$</span>species<span class="sc">==</span><span class="st">&quot;Boloria freija&quot;</span>]</span>
@@ -347,14 +370,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x mean of y 
 ##  17.46234  17.88420</code></pre>
-<p>For identification purposes, that is potentially good to know. But imagine telling a field technician that they can tell them apart because they are different sizes. The first question they will ask is which one is bigger.</p>
+<p>For identification purposes, it is potentially good to know that the species can be distinguished by size. But imagine telling a field technician that they can tell them apart because they are different sizes. The first question they will ask is which one is bigger.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="null-hypothesis-significance-testing.html#cb72-1" tabindex="-1"></a><span class="co"># plot the distribution of sizes for the two species side by side</span></span>
 <span id="cb72-2"><a href="null-hypothesis-significance-testing.html#cb72-2" tabindex="-1"></a></span>
 <span id="cb72-3"><a href="null-hypothesis-significance-testing.html#cb72-3" tabindex="-1"></a><span class="fu">hist</span>(freija, <span class="at">col=</span><span class="st">&quot;#ffaa0088&quot;</span>, <span class="co"># you can specify colors in RGB format, including opacity</span></span>
-<span id="cb72-4"><a href="null-hypothesis-significance-testing.html#cb72-4" tabindex="-1"></a>     <span class="at">border=</span>F, </span>
+<span id="cb72-4"><a href="null-hypothesis-significance-testing.html#cb72-4" tabindex="-1"></a>     <span class="at">border=</span>F,</span>
 <span id="cb72-5"><a href="null-hypothesis-significance-testing.html#cb72-5" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">24</span>), <span class="co"># in case the other species needs more room on the axis</span></span>
 <span id="cb72-6"><a href="null-hypothesis-significance-testing.html#cb72-6" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">50</span>)</span>
-<span id="cb72-7"><a href="null-hypothesis-significance-testing.html#cb72-7" tabindex="-1"></a><span class="fu">hist</span>(chariclea, <span class="at">col=</span><span class="st">&quot;#ff000044&quot;</span>, <span class="at">border=</span>F, </span>
+<span id="cb72-7"><a href="null-hypothesis-significance-testing.html#cb72-7" tabindex="-1"></a><span class="fu">hist</span>(chariclea, <span class="at">col=</span><span class="st">&quot;#ff000044&quot;</span>, <span class="at">border=</span>F,</span>
 <span id="cb72-8"><a href="null-hypothesis-significance-testing.html#cb72-8" tabindex="-1"></a>     <span class="at">add=</span>T, <span class="co"># add it to the current plot set to TRUE</span></span>
 <span id="cb72-9"><a href="null-hypothesis-significance-testing.html#cb72-9" tabindex="-1"></a>     <span class="at">breaks=</span><span class="dv">50</span>)</span>
 <span id="cb72-10"><a href="null-hypothesis-significance-testing.html#cb72-10" tabindex="-1"></a></span>
@@ -367,8 +390,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb72-17"><a href="null-hypothesis-significance-testing.html#cb72-17" tabindex="-1"></a>       <span class="at">pt.cex=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="null-hypothesis-significance-testing.html#cb73-1" tabindex="-1"></a><span class="co"># looks like chariclea is slightly larger</span></span></code></pre></div>
-<p>Earlier, we did a two-tailed t-test with an <span class="math inline">\(\alpha\)</span> of 0.05, meaning we only cared if the probability of observing the difference in size that we observed, or an even greater difference, was less than 5%, if the null hypothesis that there was no difference in size was true. But, we could also do a one-tailed test, which would help us answer the question: Is Boloria chariclea larger than Boloria freija? Here, we introduce the idea that we only care about one side (the upper tail) of the t-distribution, not the lower.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="null-hypothesis-significance-testing.html#cb74-1" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: it matters which species is x and which is y! In this line, we are asking if </span></span>
+<p>Earlier, we did a two-tailed t-test with an <span class="math inline">\(\alpha\)</span> of 0.05, meaning we only cared if the probability of observing the difference in size that we observed, or an even greater difference, was less than 5%, if the null hypothesis that there was no difference in size was true. But, we could also do a one-tailed test, which would help us answer the question: Is <em>Boloria chariclea</em> larger than <em>Boloria freija</em>? Here, we introduce the idea that we only care about one side (the upper tail) of the t-distribution, not the lower.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="null-hypothesis-significance-testing.html#cb74-1" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: it matters which species is x and which is y! In this line, we are asking if</span></span>
 <span id="cb74-2"><a href="null-hypothesis-significance-testing.html#cb74-2" tabindex="-1"></a><span class="co"># chariclea is larger than freija, and the result is yes</span></span>
 <span id="cb74-3"><a href="null-hypothesis-significance-testing.html#cb74-3" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> chariclea, <span class="at">y =</span> freija, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
 <pre><code>## 
@@ -395,32 +418,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x mean of y 
 ##  17.46234  17.88420</code></pre>
-<p>There are also paired t-tests in which you have a paired set of observations of one thing, and you want to know if they as a group differ from a paired set of observations of another thing. One example of where I’ve used this is to test if there have been phenological shifts in the week of last flight for moths in Ithaca. Each species is only represented once in the historical data, and once in the current data. To see if the whole community is flying later, we used a paired t-test because that way each species was matched up with its own data point historically and now, rather than having a lumped distribution of data historically and a lumped distribution currently. To do this, add the argument <code>paired=T</code> to the <code>t.test</code> function, but each of your vectors will need to actually be paired (i.e. identical length).</p>
-<p>And that is the last we will talk about t-tests this semester because overall I find them fairly limited in terms of the types of questions you can ask and they are rarely appropriate for ecological data.</p>
+<p>There are also paired t-tests in which you have a paired set of observations of one thing, and you want to know if they as a group differ from a paired set of observations of another thing. To do this, add the argument <code>paired=T</code> to the <code>t.test</code> function, but each of your vectors will need to actually be paired (i.e. identical length).</p>
+<p>With our <em>Boloria</em> data, let’s say for some reason we wanted to know if the mean size of <em>Boloria chariclea</em> was larger than <em>Boloria freija</em> every single year in the study, and we wanted to do the comparisons year by year. Not a very sensible question to ask from a biological perspective unless we thought that there were large differences across years, but that’s our example data this week, so we will go with it.</p>
+<p>First, we will need to do some data wrangling to get our data into the format we want. What we want is a mean value for each year for each species. We can use the <code>aggregate</code> function for this. There are also <code>tidyverse</code> ways to group and summarize data, which we will not talk about in this course because I prefer base.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="null-hypothesis-significance-testing.html#cb78-1" tabindex="-1"></a><span class="co"># don&#39;t forget you can look up what arguments a function expects with ?</span></span>
+<span id="cb78-2"><a href="null-hypothesis-significance-testing.html#cb78-2" tabindex="-1"></a>mean_wts <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(length <span class="sc">~</span> year <span class="sc">+</span> species, <span class="at">data=</span>dat, <span class="at">FUN=</span>mean)</span>
+<span id="cb78-3"><a href="null-hypothesis-significance-testing.html#cb78-3" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="null-hypothesis-significance-testing.html#cb78-4" tabindex="-1"></a><span class="co"># this gives us the mean for each species in each year, but we want it in a</span></span>
+<span id="cb78-5"><a href="null-hypothesis-significance-testing.html#cb78-5" tabindex="-1"></a><span class="co"># format where each row contains observations for comparison; we can move it to</span></span>
+<span id="cb78-6"><a href="null-hypothesis-significance-testing.html#cb78-6" tabindex="-1"></a><span class="co"># this form with the xtabs function</span></span>
+<span id="cb78-7"><a href="null-hypothesis-significance-testing.html#cb78-7" tabindex="-1"></a></span>
+<span id="cb78-8"><a href="null-hypothesis-significance-testing.html#cb78-8" tabindex="-1"></a>yearly_wts <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(length <span class="sc">~</span> ., <span class="at">data=</span>mean_wts)</span>
+<span id="cb78-9"><a href="null-hypothesis-significance-testing.html#cb78-9" tabindex="-1"></a></span>
+<span id="cb78-10"><a href="null-hypothesis-significance-testing.html#cb78-10" tabindex="-1"></a><span class="co"># now we have vectors of the same length for comparison with a paired t-test</span></span>
+<span id="cb78-11"><a href="null-hypothesis-significance-testing.html#cb78-11" tabindex="-1"></a><span class="co"># note you do not always need these steps, it depends on your data structure</span></span>
+<span id="cb78-12"><a href="null-hypothesis-significance-testing.html#cb78-12" tabindex="-1"></a></span>
+<span id="cb78-13"><a href="null-hypothesis-significance-testing.html#cb78-13" tabindex="-1"></a><span class="fu">t.test</span>(yearly_wts[,<span class="dv">1</span>], yearly_wts[,<span class="dv">2</span>], <span class="at">paired=</span>T, <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  yearly_wts[, 1] and yearly_wts[, 2]
+## t = 0.35052, df = 14, p-value = 0.3656
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  -2.307567       Inf
+## sample estimates:
+## mean of the differences 
+##               0.5733311</code></pre>
+<p>A more practical example of where I’ve used this is to test if there have been phenological shifts in the week of last flight for moths in Ithaca. Each species is only represented once in the historical data, and once in the current data. To see if the whole community is flying later, we used a paired t-test because that way each species was matched up with its own data point historically and now, rather than having a lumped distribution of data historically and a lumped distribution currently. Or, perhaps you have a before and after experimental design setup and want to know if your experimental units have changed in response to a treatment. For example, you have 20 streams and you measure their invertebrate species richness, then introduce standing deadwood to the streams and want to know how it changed the invertebrate community. You do not want to compare the streams to each other - you want to compare each to their previous invertebrate community, so you have pairwise samples.</p>
 </div>
 </div>
 <div id="anova" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> ANOVA<a href="null-hypothesis-significance-testing.html#anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>What if instead of comparing two groups, we wanted to compare three or more groups? That’s called an analysis of variance (ANOVA) and I find it equally dull and fairly limited in usefulness in ecology because it rarely answers the type of questions we want to ask. But, you will likely run into it in the literature, so you should at least be vaguely familiar.</p>
+<p>What if instead of comparing two groups, we wanted to compare three or more groups? That’s called an analysis of variance (ANOVA).</p>
 <p>The dataset we read in earlier actually has three different species and also includes <em>Colias hecla</em>. For no real scientific reason whatsoever, we will ask the question: are these three butterfly species different in size?</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="null-hypothesis-significance-testing.html#cb78-1" tabindex="-1"></a><span class="co"># we use the aov function, and here we will specify our data a bit differently</span></span>
-<span id="cb78-2"><a href="null-hypothesis-significance-testing.html#cb78-2" tabindex="-1"></a><span class="co"># instead of putting in two separate species vectors, we will use the tilde ~</span></span>
-<span id="cb78-3"><a href="null-hypothesis-significance-testing.html#cb78-3" tabindex="-1"></a><span class="co"># to indicate that we want to model the response variable (length) over the</span></span>
-<span id="cb78-4"><a href="null-hypothesis-significance-testing.html#cb78-4" tabindex="-1"></a><span class="co"># categorical groups (species) in our dataset (dat)</span></span>
-<span id="cb78-5"><a href="null-hypothesis-significance-testing.html#cb78-5" tabindex="-1"></a>size_mod <span class="ot">&lt;-</span> <span class="fu">aov</span>(length <span class="sc">~</span> species, <span class="at">data =</span> dat)</span>
-<span id="cb78-6"><a href="null-hypothesis-significance-testing.html#cb78-6" tabindex="-1"></a></span>
-<span id="cb78-7"><a href="null-hypothesis-significance-testing.html#cb78-7" tabindex="-1"></a><span class="co"># we saved this output to an object, because typically you want to actually be</span></span>
-<span id="cb78-8"><a href="null-hypothesis-significance-testing.html#cb78-8" tabindex="-1"></a><span class="co"># able to work with your model output, not just run it once and do nothing</span></span>
-<span id="cb78-9"><a href="null-hypothesis-significance-testing.html#cb78-9" tabindex="-1"></a><span class="co"># the summary() function applied to the model will give us the results</span></span>
-<span id="cb78-10"><a href="null-hypothesis-significance-testing.html#cb78-10" tabindex="-1"></a><span class="fu">summary</span>(size_mod)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="null-hypothesis-significance-testing.html#cb80-1" tabindex="-1"></a><span class="co"># we use the aov function, and here we will specify our data a bit differently</span></span>
+<span id="cb80-2"><a href="null-hypothesis-significance-testing.html#cb80-2" tabindex="-1"></a><span class="co"># instead of putting in two separate species vectors, we will use the tilde ~</span></span>
+<span id="cb80-3"><a href="null-hypothesis-significance-testing.html#cb80-3" tabindex="-1"></a><span class="co"># to indicate that we want to model the response variable (length) over the</span></span>
+<span id="cb80-4"><a href="null-hypothesis-significance-testing.html#cb80-4" tabindex="-1"></a><span class="co"># categorical groups (species) in our dataset (dat)</span></span>
+<span id="cb80-5"><a href="null-hypothesis-significance-testing.html#cb80-5" tabindex="-1"></a>size_mod <span class="ot">&lt;-</span> <span class="fu">aov</span>(length <span class="sc">~</span> species, <span class="at">data =</span> dat)</span>
+<span id="cb80-6"><a href="null-hypothesis-significance-testing.html#cb80-6" tabindex="-1"></a></span>
+<span id="cb80-7"><a href="null-hypothesis-significance-testing.html#cb80-7" tabindex="-1"></a><span class="co"># we saved this output to an object, because typically you want to actually be</span></span>
+<span id="cb80-8"><a href="null-hypothesis-significance-testing.html#cb80-8" tabindex="-1"></a><span class="co"># able to work with your model output, not just run it once and do nothing</span></span>
+<span id="cb80-9"><a href="null-hypothesis-significance-testing.html#cb80-9" tabindex="-1"></a><span class="co"># the summary() function applied to the model will give us the results</span></span>
+<span id="cb80-10"><a href="null-hypothesis-significance-testing.html#cb80-10" tabindex="-1"></a><span class="fu">summary</span>(size_mod)</span></code></pre></div>
 <pre><code>##               Df Sum Sq Mean Sq F value Pr(&gt;F)    
 ## species        2  10964    5482    4086 &lt;2e-16 ***
 ## Residuals   2497   3350       1                   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 1 observation deleted due to missingness</code></pre>
-<p>The model summary tells us that there are significant differences between the three species, but do we know if that’s because one is much bigger (or smaller) than the others, or that they are all different from each other. To see what differences resulted in a significant difference in the overall model, we can use Tukey’s Honestly Significant Differences, which will give us the difference between the groups, the lower and upper bound of the difference, and the p-value associated with that difference. Note that if the lower and upper bounds of the difference overlap zero, then we would not know if there was a difference between the two groups. That is another way to think about p-values and significance (assuming 0 difference is your null hypothesis). These upper and lower values are confidence intervals, which we will talk about more in a few weeks.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="null-hypothesis-significance-testing.html#cb80-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(size_mod)</span></code></pre></div>
+<p>The model summary tells us that there are significant differences between the three species, but do we know if that’s because one is much bigger (or smaller) than the others, or that they are all different from each other. To see what differences resulted in a significant difference in the overall model, we can use Tukey’s Honestly Significant Differences, which will give us the difference between the groups, the lower and upper bound of the difference, and the p-value associated with that difference. Note that if the lower and upper bounds of the difference overlap zero, then we would not know if there was a difference between the two groups. That is another way to think about p-values and significance (assuming 0 difference is your null hypothesis). These upper and lower values are confidence intervals.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="null-hypothesis-significance-testing.html#cb82-1" tabindex="-1"></a><span class="fu">TukeyHSD</span>(size_mod)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -431,6 +480,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Boloria freija-Boloria chariclea -0.4218616 -0.5462763 -0.297447     0
 ## Colias hecla-Boloria chariclea    4.6964363  4.5547907  4.838082     0
 ## Colias hecla-Boloria freija       5.1182979  4.9758238  5.260772     0</code></pre>
+</div>
+<div id="type-i-and-type-ii-error" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Type I and Type II error<a href="null-hypothesis-significance-testing.html#type-i-and-type-ii-error" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When doing null hypothesis significance testing (NHST) with different thresholds of <span class="math inline">\(\alpha\)</span>, remember that we only either reject or fail to reject the null. But, we also know that our p-values are the probability of observing our data, or data more extreme, if the null were true. This means that there is always a non-zero chance of observing your data and rejecting the null <em>even if the null is true</em>. If we reject the null when it is true, this is a false positive (i.e. we have identified a relationship or difference in our data that does not actually exist) or a type I error. The probability of making a type I error is our <span class="math inline">\(\alpha\)</span> threshold. When setting a threshold for <span class="math inline">\(\alpha\)</span>, what we are really asking ourselves is ‘what probability am I okay with as an upper bound for claiming something is true when it is not?’ Conversely, a type II error is when we fail to reject the null even though the null is false (i.e. a false negative, we say there is no difference when there really is). The probability of making a type II error is denoted <span class="math inline">\(\beta\)</span> and represents the chance that we will miss an association or effect that truly exists. <span class="math inline">\(1 - \beta\)</span> is the ‘power’ of our test.</p>
+<div class="float">
+<img src="https://miro.medium.com/v2/resize:fit:1400/0*9xnNK1z-rLOHBTlw.jpg" alt="Type I vs Type II error" />
+<div class="figcaption">Type I vs Type II error</div>
+</div>
+<p>When planning research, it is helpful to know if you will likely be able to detect the effect that you expect exists in the population, which partly depends on sample size. Power analysis is an approach to estimate what sample size you will need, what effect is possible to detect with your data, or what power you have to detect an observed effect given your data. Note that the last one is typically done post-hoc to ‘explain’ negative results and is bad scientific practice; do not do post-hoc power analyses. For t-tests, there is a built-in function in R to do power analysis called <code>power.t.test</code>. Using this function, what is the chance, given our data, that we will make a type II error when comparing <em>Boloria chariclea</em> to <em>B. freija</em> wing length?</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="null-hypothesis-significance-testing.html#cb84-1" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">nrow</span>(dat)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb84-2"><a href="null-hypothesis-significance-testing.html#cb84-2" tabindex="-1"></a>sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(dat<span class="sc">$</span>length)</span>
+<span id="cb84-3"><a href="null-hypothesis-significance-testing.html#cb84-3" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb84-4"><a href="null-hypothesis-significance-testing.html#cb84-4" tabindex="-1"></a>meandiff <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>length[dat<span class="sc">$</span>species<span class="sc">==</span><span class="st">&quot;Boloria chariclea&quot;</span>], <span class="at">na.rm=</span>T) <span class="sc">-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>length[dat<span class="sc">$</span>species<span class="sc">==</span><span class="st">&quot;Boloria freija&quot;</span>], <span class="at">na.rm=</span>T)</span>
+<span id="cb84-5"><a href="null-hypothesis-significance-testing.html#cb84-5" tabindex="-1"></a></span>
+<span id="cb84-6"><a href="null-hypothesis-significance-testing.html#cb84-6" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> N, <span class="at">delta =</span> meandiff, <span class="at">sig.level =</span> alpha)</span></code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 1250.5
+##           delta = 0.4218616
+##              sd = 1
+##       sig.level = 0.05
+##           power = 1
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="null-hypothesis-significance-testing.html#cb86-1" tabindex="-1"></a><span class="co"># What if we only sampled 20 individuals of each species?</span></span>
+<span id="cb86-2"><a href="null-hypothesis-significance-testing.html#cb86-2" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">delta =</span> meandiff, <span class="at">sig.level =</span> alpha)</span></code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 20
+##           delta = 0.4218616
+##              sd = 1
+##       sig.level = 0.05
+##           power = 0.2547824
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
+<p>Power analysis can be especially useful if you are doing destructive or lethal sampling because you can use it to estimate the minimum number of samples or individuals you need to sacrifice to detect different thresholds. For instance, let’s say we were <a href="https://journals.biologists.com/jeb/article/225/10/jeb243294/275376/Anna-s-hummingbird-Calypte-anna-physiological">collecting hummingbirds from high elevation and low elevation sites, bringing them to a common location, measuring their metabolic rates, and then sacrificing them to weigh their internal organs</a>. Naturally, we would want to sacrifice as few individuals as possible. If we wanted 80% power to detect an effect size difference of 0.2 between individuals from low and high elevation sites with a probability of a false positive of 5%, how many hummingbirds would we need? What if we weren’t sure about the effect and we thought it might be between 0.1 and 0.8?</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="null-hypothesis-significance-testing.html#cb88-1" tabindex="-1"></a>possible_effects <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.8</span>, <span class="at">by=</span><span class="fl">0.05</span>)</span>
+<span id="cb88-2"><a href="null-hypothesis-significance-testing.html#cb88-2" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb88-3"><a href="null-hypothesis-significance-testing.html#cb88-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(possible_effects)){</span>
+<span id="cb88-4"><a href="null-hypothesis-significance-testing.html#cb88-4" tabindex="-1"></a>  power1 <span class="ot">&lt;-</span> <span class="fu">power.t.test</span>(<span class="at">n =</span> <span class="cn">NULL</span>, <span class="at">delta=</span>possible_effects[i], <span class="at">sd=</span><span class="dv">1</span>, <span class="at">sig.level=</span><span class="fl">0.05</span>, <span class="at">power=</span><span class="fl">0.20</span>)</span>
+<span id="cb88-5"><a href="null-hypothesis-significance-testing.html#cb88-5" tabindex="-1"></a>  sample_size[i] <span class="ot">&lt;-</span> power1<span class="sc">$</span>n</span>
+<span id="cb88-6"><a href="null-hypothesis-significance-testing.html#cb88-6" tabindex="-1"></a>}</span>
+<span id="cb88-7"><a href="null-hypothesis-significance-testing.html#cb88-7" tabindex="-1"></a></span>
+<span id="cb88-8"><a href="null-hypothesis-significance-testing.html#cb88-8" tabindex="-1"></a><span class="fu">plot</span>(sample_size <span class="sc">~</span> possible_effects, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">las=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
 </div>
             </section>
@@ -481,7 +579,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.epub"],
 "search": {
 "engine": "fuse",
 "options": null

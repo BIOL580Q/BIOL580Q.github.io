@@ -25,10 +25,22 @@ MathJax.Hub.Config({
 
 <title>2.3 Probability mass | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
 
-<link href="libs/tufte-css-2015.12.29/tufte-fonts.css" rel="stylesheet" />
-<link href="libs/tufte-css-2015.12.29/tufte-background.css" rel="stylesheet" />
-<link href="libs/tufte-css-2015.12.29/tufte-italics.css" rel="stylesheet" />
-<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -97,14 +109,41 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 
 
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
 </head>
 
 <body>
 
+<div class="container-fluid main-container">
 
 
 <div class="row">
@@ -136,11 +175,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="2.4-the-normal-gaussian-distribution.html#guillemot-weight" id="toc-guillemot-weight"><span class="toc-section-number">2.4.1</span> Guillemot weight</a></li>
 </ul></li>
 <li><a href="2.5-probability-density.html#probability-density" id="toc-probability-density"><span class="toc-section-number">2.5</span> Probability density</a></li>
-<li class="has-sub"><a href="2.6-the-standard-normal-distribution.html#the-standard-normal-distribution" id="toc-the-standard-normal-distribution"><span class="toc-section-number">2.6</span> The Standard Normal Distribution</a>
+</ul></li>
+<li class="has-sub"><a href="3-recap.html#recap" id="toc-recap"><span class="toc-section-number">3</span> Recap</a>
 <ul>
-<li><a href="2.6-the-standard-normal-distribution.html#functions-1" id="toc-functions-1"><span class="toc-section-number">2.6.1</span> Functions</a></li>
+<li class="has-sub"><a href="3.1-the-standard-normal-distribution.html#the-standard-normal-distribution" id="toc-the-standard-normal-distribution"><span class="toc-section-number">3.1</span> The Standard Normal Distribution</a>
+<ul>
+<li><a href="3.1-the-standard-normal-distribution.html#functions-1" id="toc-functions-1"><span class="toc-section-number">3.1.1</span> Functions</a></li>
 </ul></li>
 </ul></li>
+<li class="has-sub"><a href="4-null-hypothesis-significance-testing.html#null-hypothesis-significance-testing" id="toc-null-hypothesis-significance-testing"><span class="toc-section-number">4</span> Null hypothesis significance testing</a>
+<ul>
+<li><a href="4.1-a-brief-history-of-statistics-and-eugenics.html#a-brief-history-of-statistics-and-eugenics" id="toc-a-brief-history-of-statistics-and-eugenics"><span class="toc-section-number">4.1</span> A brief history of statistics and eugenics</a></li>
+<li class="has-sub"><a href="4.2-t-distribution-and-t-tests.html#t-distribution-and-t-tests" id="toc-t-distribution-and-t-tests"><span class="toc-section-number">4.2</span> T-distribution and t-tests</a>
+<ul>
+<li><a href="4.2-t-distribution-and-t-tests.html#butterfly-wing-size" id="toc-butterfly-wing-size"><span class="toc-section-number">4.2.1</span> Butterfly wing size</a></li>
+</ul></li>
+<li class="has-sub"><a href="4.3-type-i-and-type-ii-error.html#type-i-and-type-ii-error" id="toc-type-i-and-type-ii-error"><span class="toc-section-number">4.3</span> Type I and Type II error</a>
+<ul>
+<li><a href="4.3-type-i-and-type-ii-error.html#section" id="toc-section"><span class="toc-section-number">4.3.1</span> !!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></li>
+</ul></li>
+<li><a href="4.4-anova.html#anova" id="toc-anova"><span class="toc-section-number">4.4</span> ANOVA</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-inference.html#inference" id="toc-inference"><span class="toc-section-number">5</span> Inference</a>
+<ul>
+<li><a href="5.1-lyrebird-song-repertoire.html#lyrebird-song-repertoire" id="toc-lyrebird-song-repertoire"><span class="toc-section-number">5.1</span> Lyrebird song repertoire</a></li>
+</ul></li>
+<li class="has-sub"><a href="6-the-law-of-large-numbers.html#the-law-of-large-numbers" id="toc-the-law-of-large-numbers"><span class="toc-section-number">6</span> The law of large numbers</a>
+<ul>
+<li><a href="6.1-confidence-intervals.html#confidence-intervals" id="toc-confidence-intervals"><span class="toc-section-number">6.1</span> Confidence intervals</a></li>
+<li><a href="6.2-lyrebird-population-differences.html#lyrebird-population-differences" id="toc-lyrebird-population-differences"><span class="toc-section-number">6.2</span> Lyrebird population differences</a></li>
+<li><a href="6.3-lyrebird-mating-success-and-the-sampling-distribution.html#lyrebird-mating-success-and-the-sampling-distribution" id="toc-lyrebird-mating-success-and-the-sampling-distribution"><span class="toc-section-number">6.3</span> Lyrebird mating success and the sampling distribution</a></li>
+<li><a href="6.4-credible-intervals.html#credible-intervals" id="toc-credible-intervals"><span class="toc-section-number">6.4</span> Credible intervals</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-visualizing-group-differences.html#visualizing-group-differences" id="toc-visualizing-group-differences"><span class="toc-section-number">7</span> Visualizing group differences</a>
+<ul>
+<li><a href="7.1-boxplots.html#boxplots" id="toc-boxplots"><span class="toc-section-number">7.1</span> Boxplots</a></li>
+<li><a href="7.2-beehive-plots.html#beehive-plots" id="toc-beehive-plots"><span class="toc-section-number">7.2</span> Beehive plots</a></li>
+<li><a href="7.3-density-plots.html#density-plots" id="toc-density-plots"><span class="toc-section-number">7.3</span> Density plots</a></li>
+<li><a href="7.4-raincloud-plots.html#raincloud-plots" id="toc-raincloud-plots"><span class="toc-section-number">7.4</span> Raincloud plots</a></li>
+<li><a href="7.5-paired-slopes.html#paired-slopes" id="toc-paired-slopes"><span class="toc-section-number">7.5</span> Paired slopes</a></li>
+</ul></li>
+<li><a href="8-visualizing-confidence-intervals.html#visualizing-confidence-intervals" id="toc-visualizing-confidence-intervals"><span class="toc-section-number">8</span> Visualizing confidence intervals</a></li>
 </ul>
 </div>
 </div>
@@ -164,6 +239,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
 
 </body>
 </html>

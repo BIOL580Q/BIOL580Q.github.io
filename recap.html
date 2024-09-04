@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Recap | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+  <meta name="description" content="3 Recap | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Recap | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Recap | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  
+  
+  
+
+<meta name="author" content="Eliza Grames" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="probability.html"/>
+<link rel="next" href="null-hypothesis-significance-testing.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.1</b> About this ‘book’</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#why-this-course"><i class="fa fa-check"></i><b>1.2</b> Why this course?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-comfortable-with-r-and-rstudio"><i class="fa fa-check"></i><b>1.3</b> Getting comfortable with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#some-terms-and-definitions"><i class="fa fa-check"></i><b>1.3.1</b> Some terms and definitions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#customizing-rstudio"><i class="fa fa-check"></i><b>1.3.2</b> Customizing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-approach-this-course"><i class="fa fa-check"></i><b>1.4</b> How to approach this course</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i><b>2.1</b> Bernoulli distribution</a></li>
+<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#binomial-distribution"><i class="fa fa-check"></i><b>2.2</b> Binomial distribution</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#guillemot-example"><i class="fa fa-check"></i><b>2.2.1</b> Guillemot example</a></li>
+<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#coral-example"><i class="fa fa-check"></i><b>2.2.2</b> Coral example</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#probability-mass"><i class="fa fa-check"></i><b>2.3</b> Probability mass</a></li>
+<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#the-normal-gaussian-distribution"><i class="fa fa-check"></i><b>2.4</b> The Normal (Gaussian) distribution</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#guillemot-weight"><i class="fa fa-check"></i><b>2.4.1</b> Guillemot weight</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#probability-density"><i class="fa fa-check"></i><b>2.5</b> Probability density</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="recap.html"><a href="recap.html"><i class="fa fa-check"></i><b>3</b> Recap</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="recap.html"><a href="recap.html#the-standard-normal-distribution"><i class="fa fa-check"></i><b>3.1</b> The Standard Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="recap.html"><a href="recap.html#functions-1"><i class="fa fa-check"></i><b>3.1.1</b> Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html"><i class="fa fa-check"></i><b>4</b> Null hypothesis significance testing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#a-brief-history-of-statistics-and-eugenics"><i class="fa fa-check"></i><b>4.1</b> A brief history of statistics and eugenics</a></li>
+<li class="chapter" data-level="4.2" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#t-distribution-and-t-tests"><i class="fa fa-check"></i><b>4.2</b> T-distribution and t-tests</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#butterfly-wing-size"><i class="fa fa-check"></i><b>4.2.1</b> Butterfly wing size</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#type-i-and-type-ii-error"><i class="fa fa-check"></i><b>4.3</b> Type I and Type II error</a></li>
+<li class="chapter" data-level="4.4" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#anova"><i class="fa fa-check"></i><b>4.4</b> ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>5</b> Inference</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="inference.html"><a href="inference.html#lyrebird-song-repertoire"><i class="fa fa-check"></i><b>5.1</b> Lyrebird song repertoire</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html"><i class="fa fa-check"></i><b>6</b> The law of large numbers</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#confidence-intervals"><i class="fa fa-check"></i><b>6.1</b> Confidence intervals</a></li>
+<li class="chapter" data-level="6.2" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-population-differences"><i class="fa fa-check"></i><b>6.2</b> Lyrebird population differences</a></li>
+<li class="chapter" data-level="6.3" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-mating-success-and-the-sampling-distribution"><i class="fa fa-check"></i><b>6.3</b> Lyrebird mating success and the sampling distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#credible-intervals"><i class="fa fa-check"></i><b>6.4</b> Credible intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html"><i class="fa fa-check"></i><b>7</b> Visualizing group differences</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#boxplots"><i class="fa fa-check"></i><b>7.1</b> Boxplots</a></li>
+<li class="chapter" data-level="7.2" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#beehive-plots"><i class="fa fa-check"></i><b>7.2</b> Beehive plots</a></li>
+<li class="chapter" data-level="7.3" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#density-plots"><i class="fa fa-check"></i><b>7.3</b> Density plots</a></li>
+<li class="chapter" data-level="7.4" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#raincloud-plots"><i class="fa fa-check"></i><b>7.4</b> Raincloud plots</a></li>
+<li class="chapter" data-level="7.5" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#paired-slopes"><i class="fa fa-check"></i><b>7.5</b> Paired slopes</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="visualizing-confidence-intervals.html"><a href="visualizing-confidence-intervals.html"><i class="fa fa-check"></i><b>8</b> Visualizing confidence intervals</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIOL 480/580Q: Ecological Modeling (Fall 2024)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="recap" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Recap<a href="recap.html#recap" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li>Random variables can be described with a probability distribution function.</li>
+<li>A Bernoulli random variable can be written as <span class="math inline">\(y ~ Bern(p)\)</span> where <span class="math inline">\(p\)</span> is the probability of success. Only 0 or 1 are possible outcomes.</li>
+<li>The Bernoulli is a special case of the Binomial distribution with a single draw. A Binomial random variable can be written as <span class="math inline">\(y ~ Bin(N, p)\)</span> where <span class="math inline">\(N\)</span> is the number of trials.</li>
+<li>Discrete distributions like the Bernoulli and Binomial have probability mass associated with each potential value and those probabilities must sum to 1.</li>
+<li>Continuous distributions like the Normal (Gaussian) have probability density associated with each potential value and the area under the curve sums to 1.</li>
+<li>If we know the probability distribution function, or even if we have empirical data, we can estimate the probability of observing a value, or of observing a value at least that extreme.</li>
+</ul>
+<div id="the-standard-normal-distribution" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> The Standard Normal Distribution<a href="recap.html#the-standard-normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the real world, we typically do not know what the parameters are underlying our distribution (i.e. we would have know way of knowing what the mean and standard deviation of guillemot weight are). We also often work with data that are normally distributed, but could not have negative values. Remember that the support of the normal distribution is all numbers from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. Adult guillemots, however, cannot have negative weight. Thus, we first need to centralize and standardize the data so that we <em>know</em> what the mean and standard deviation are.</p>
+<p>Centralizing data means we subtract the mean value of our sample from every single observation, such that we are left with a mean value of 0. Standardizing data is a way of transforming it so that variables are more comparable across different data sources, and also so that we can easily compare standard deviations. To standardize data, we convert it to Z-scores. For each observation <span class="math inline">\(x\)</span>, we subtract the mean <span class="math inline">\(\bar{x}\)</span> and then divide that value by the standard deviation <span class="math inline">\(\sigma\)</span>. The equations to do this for a sample are below; <span class="math inline">\(SS\)</span> stands for the sum of squared residuals. Note that we divide the sum of squares by n-1, rather than n, because we are dealing with a <em>sample</em> rather than population. The degrees of freedom is the number of observations we have, but we lost one degree of freedom when we calculated the sample mean <span class="math inline">\(\bar{x}\)</span>.
+<span class="math display">\[Z = (x -\bar{x})/\sigma\]</span>
+<span class="math display">\[\sigma = \sqrt{\sigma^2}\]</span>
+<span class="math display">\[\sigma^2 = \frac{SS}{(n-1)}\]</span>
+<span class="math display">\[SS = \sum_{i=1}^{n}(x_i - \bar{x})^2\]</span></p>
+<div id="functions-1" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Functions<a href="recap.html#functions-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To standardize our data we need to center it (subtract the mean) and standardize (Z transform) the data. We will create functions in R to do this for us quickly. There are many inbuilt functions in R, such as the ones we have been using already (e.g. <code>rnorm</code>, <code>hist</code>, <code>sum</code>, etc.) and you can also install packages that contain functions which other people have written. You can also write your own custom functions. This is extremely useful when you want to repeat an operation many times without using up many lines of code (the more lines of code, the more likely you are to end up with an error, or something difficult to fix later on).</p>
+<p>First, we will create a function that calculates just the sum of the squared residuals. To create a function, we need to name it just like an object, but pass to it a <code>function()</code> containing arguments that the function accepts. In this case, it is a function that will take a vector x. Inside the <code>{}</code> brackets we place the instructions for what to do with <code>x</code> and what to return from the function. Only the object that is specified will be returned (i.e. <code>xbar</code>, <code>res</code>, and <code>squares</code> will not be saved to your environment, only <code>ss</code>).</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="recap.html#cb59-1" tabindex="-1"></a>sum_squares <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb59-2"><a href="recap.html#cb59-2" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="co"># mean of the sample</span></span>
+<span id="cb59-3"><a href="recap.html#cb59-3" tabindex="-1"></a>  res <span class="ot">&lt;-</span> x <span class="sc">-</span> xbar <span class="co"># residuals</span></span>
+<span id="cb59-4"><a href="recap.html#cb59-4" tabindex="-1"></a>  squares <span class="ot">&lt;-</span> res<span class="sc">^</span><span class="dv">2</span> <span class="co"># squared residuals</span></span>
+<span id="cb59-5"><a href="recap.html#cb59-5" tabindex="-1"></a>  ss <span class="ot">&lt;-</span> <span class="fu">sum</span>(squares) <span class="co"># sum of the squared residuals</span></span>
+<span id="cb59-6"><a href="recap.html#cb59-6" tabindex="-1"></a>  <span class="fu">return</span>(ss) <span class="co"># what should the function return</span></span>
+<span id="cb59-7"><a href="recap.html#cb59-7" tabindex="-1"></a>}</span></code></pre></div>
+<p>We can also nest functions inside other functions, which can make it a lot easier to keep your code neat and tidy. Below is a function to standardize data which uses the other function we just created.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="recap.html#cb60-1" tabindex="-1"></a>standardize <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb60-2"><a href="recap.html#cb60-2" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb60-3"><a href="recap.html#cb60-3" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb60-4"><a href="recap.html#cb60-4" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="recap.html#cb60-5" tabindex="-1"></a>  ss <span class="ot">&lt;-</span> <span class="fu">sum_squares</span>(x) <span class="co"># note we call our function from earlier</span></span>
+<span id="cb60-6"><a href="recap.html#cb60-6" tabindex="-1"></a>  s2 <span class="ot">&lt;-</span> ss<span class="sc">/</span>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># variance = sum of squares divided by n - 1</span></span>
+<span id="cb60-7"><a href="recap.html#cb60-7" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(s2) <span class="co"># calculate standard deviation from variance</span></span>
+<span id="cb60-8"><a href="recap.html#cb60-8" tabindex="-1"></a>  z <span class="ot">&lt;-</span> (x <span class="sc">-</span> xbar)<span class="sc">/</span>s</span>
+<span id="cb60-9"><a href="recap.html#cb60-9" tabindex="-1"></a>  <span class="fu">return</span>(z)</span>
+<span id="cb60-10"><a href="recap.html#cb60-10" tabindex="-1"></a>}</span>
+<span id="cb60-11"><a href="recap.html#cb60-11" tabindex="-1"></a></span>
+<span id="cb60-12"><a href="recap.html#cb60-12" tabindex="-1"></a><span class="co"># use this function to standardize adult guillemot weights that we generated </span></span>
+<span id="cb60-13"><a href="recap.html#cb60-13" tabindex="-1"></a><span class="co"># earlier and plot the output. how does it differ from the original?</span></span>
+<span id="cb60-14"><a href="recap.html#cb60-14" tabindex="-1"></a></span>
+<span id="cb60-15"><a href="recap.html#cb60-15" tabindex="-1"></a>std_weights <span class="ot">&lt;-</span> <span class="fu">standardize</span>(adult_weights)</span>
+<span id="cb60-16"><a href="recap.html#cb60-16" tabindex="-1"></a><span class="fu">hist</span>(std_weights)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="recap.html#cb61-1" tabindex="-1"></a><span class="co"># Note that we now have negative weights, however, the interpretation is simply</span></span>
+<span id="cb61-2"><a href="recap.html#cb61-2" tabindex="-1"></a><span class="co"># that these individuals are below the mean, and positive values are above it</span></span></code></pre></div>
+<p>One of the nice things about the standard normal distribution is that we know that the mean is 0 and the standard deviation is 1. This means that now, when we ask about the probability of observing an adult guillemot with a standardized weight of some value or higher and our null is 0, we are asking if that individual significantly differs from the sample mean. We also know the standard deviations, and instead of having to calculate the integral at different cutoffs, this has already been done. Prior to advances in modern computing, this was done manually, and there were huge lookup tables at the back up statistics textbooks that would tell you the p-value associated with different z-scores. Thankfully, now we have R.</p>
+<p><img src="https://www.ztable.net/wp-content/uploads/2020/09/read-negativeztable-intersection.png" /></p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="probability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="null-hypothesis-significance-testing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
