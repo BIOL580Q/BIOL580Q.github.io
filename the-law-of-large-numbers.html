@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="inference.html"/>
-<link rel="next" href="visualizing-group-differences.html"/>
+<link rel="next" href="linear-models.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -186,13 +186,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-mating-success-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> Lyrebird mating success and the sampling distribution</a></li>
 <li class="chapter" data-level="5.4" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#credible-intervals"><i class="fa fa-check"></i><b>5.4</b> Credible intervals</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html"><i class="fa fa-check"></i><b>6</b> Visualizing group differences</a>
+<li class="chapter" data-level="6" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>6</b> Linear models</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#boxplots"><i class="fa fa-check"></i><b>6.1</b> Boxplots</a></li>
-<li class="chapter" data-level="6.2" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#beehive-plots"><i class="fa fa-check"></i><b>6.2</b> Beehive plots</a></li>
-<li class="chapter" data-level="6.3" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#density-plots"><i class="fa fa-check"></i><b>6.3</b> Density plots</a></li>
-<li class="chapter" data-level="6.4" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#raincloud-plots"><i class="fa fa-check"></i><b>6.4</b> Raincloud plots</a></li>
-<li class="chapter" data-level="6.5" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#paired-slopes"><i class="fa fa-check"></i><b>6.5</b> Paired slopes</a></li>
+<li class="chapter" data-level="6.1" data-path="linear-models.html"><a href="linear-models.html#algebraic-linear-functions"><i class="fa fa-check"></i><b>6.1</b> Algebraic linear functions</a></li>
+<li class="chapter" data-level="6.2" data-path="linear-models.html"><a href="linear-models.html#model-components"><i class="fa fa-check"></i><b>6.2</b> Model components</a></li>
+<li class="chapter" data-level="6.3" data-path="linear-models.html"><a href="linear-models.html#ordinary-least-squares"><i class="fa fa-check"></i><b>6.3</b> Ordinary least squares</a></li>
+<li class="chapter" data-level="6.4" data-path="linear-models.html"><a href="linear-models.html#vectors-and-matrices"><i class="fa fa-check"></i><b>6.4</b> Vectors and matrices</a></li>
+<li class="chapter" data-level="6.5" data-path="linear-models.html"><a href="linear-models.html#assumptions-of-linear-models"><i class="fa fa-check"></i><b>6.5</b> Assumptions of linear models</a></li>
+<li class="chapter" data-level="6.6" data-path="linear-models.html"><a href="linear-models.html#example-american-pika"><i class="fa fa-check"></i><b>6.6</b> Example: American pika</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="linear-models.html"><a href="linear-models.html#specify-our-the-model"><i class="fa fa-check"></i><b>6.6.1</b> Specify our the model</a></li>
+<li class="chapter" data-level="6.6.2" data-path="linear-models.html"><a href="linear-models.html#read-in-the-data"><i class="fa fa-check"></i><b>6.6.2</b> Read in the data</a></li>
+<li class="chapter" data-level="6.6.3" data-path="linear-models.html"><a href="linear-models.html#data-cleaning-and-prepping-covariates"><i class="fa fa-check"></i><b>6.6.3</b> Data cleaning and prepping covariates</a></li>
+<li class="chapter" data-level="6.6.4" data-path="linear-models.html"><a href="linear-models.html#plot-the-data"><i class="fa fa-check"></i><b>6.6.4</b> Plot the data</a></li>
+<li class="chapter" data-level="6.6.5" data-path="linear-models.html"><a href="linear-models.html#fit-the-model"><i class="fa fa-check"></i><b>6.6.5</b> Fit the model</a></li>
+<li class="chapter" data-level="6.6.6" data-path="linear-models.html"><a href="linear-models.html#evaluate-model-fit"><i class="fa fa-check"></i><b>6.6.6</b> Evaluate model fit</a></li>
+<li class="chapter" data-level="6.6.7" data-path="linear-models.html"><a href="linear-models.html#interpret-model-output"><i class="fa fa-check"></i><b>6.6.7</b> Interpret model output</a></li>
+<li class="chapter" data-level="6.6.8" data-path="linear-models.html"><a href="linear-models.html#make-predictions"><i class="fa fa-check"></i><b>6.6.8</b> Make predictions</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -253,13 +264,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;bananas&quot;
 ## [1] &quot;grapes&quot;</code></pre>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="the-law-of-large-numbers.html#cb96-1" tabindex="-1"></a><span class="co"># add in a second vector of adjectives</span></span>
-<span id="cb96-2"><a href="the-law-of-large-numbers.html#cb96-2" tabindex="-1"></a>adjectives <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;decent&quot;</span>, <span class="st">&quot;disgusting&quot;</span>, <span class="st">&quot;just okay&quot;</span>)</span>
+<span id="cb96-2"><a href="the-law-of-large-numbers.html#cb96-2" tabindex="-1"></a>adjectives <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;purple&quot;</span>)</span>
 <span id="cb96-3"><a href="the-law-of-large-numbers.html#cb96-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
 <span id="cb96-4"><a href="the-law-of-large-numbers.html#cb96-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(fruits[i], <span class="st">&quot;are&quot;</span>, adjectives[i]))</span>
 <span id="cb96-5"><a href="the-law-of-large-numbers.html#cb96-5" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;apples are decent&quot;
-## [1] &quot;bananas are disgusting&quot;
-## [1] &quot;grapes are just okay&quot;</code></pre>
+<pre><code>## [1] &quot;apples are green&quot;
+## [1] &quot;bananas are yellow&quot;
+## [1] &quot;grapes are purple&quot;</code></pre>
 <p>You can also nest <code>for</code> loops within each other, but that is for a different day. What we want to use <code>for</code> loops for right now is to combine them with a probability density function (<code>rnorm</code>) to visualize the central limit theorem.</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="the-law-of-large-numbers.html#cb98-1" tabindex="-1"></a><span class="co"># Using the same population parameters as above, if we were to sample more</span></span>
 <span id="cb98-2"><a href="the-law-of-large-numbers.html#cb98-2" tabindex="-1"></a><span class="co"># individuals, would we converge towards the true mean?</span></span>
@@ -308,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb99-16"><a href="the-law-of-large-numbers.html#cb99-16" tabindex="-1"></a><span class="fu">text</span>(ci[<span class="dv">1</span>], <span class="dv">0</span>, <span class="st">&quot;μ - 1.96*σ&quot;</span>, <span class="at">cex=</span><span class="fl">1.5</span>)</span>
 <span id="cb99-17"><a href="the-law-of-large-numbers.html#cb99-17" tabindex="-1"></a><span class="fu">text</span>(ci[<span class="dv">2</span>], <span class="dv">0</span>, <span class="st">&quot;μ + 1.96*σ&quot;</span>, <span class="at">cex=</span><span class="fl">1.5</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" />
-That means if you went out and collected observations on a sample (e.g. 10 lyrebirds) and then repeated that 100 times (i.e. 100 replicates of each sample, so 1000 total individual butterflies, but observed independently in 100 different replicates, each with a sample size of 10), you would expect that 95 out of those 100 confidence intervals would include the true population mean.</p>
+That means if you went out and collected observations on a sample (e.g. 10 lyrebirds) and then repeated that 100 times (i.e. 100 replicates of each sample, so 1000 total individual lyrebirds, but observed independently in 100 different replicates, each with a sample size of 10), you would expect that 95 out of those 100 confidence intervals would include the true population mean.</p>
 </div>
 <div id="lyrebird-population-differences" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Lyrebird population differences<a href="the-law-of-large-numbers.html#lyrebird-population-differences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -325,42 +336,40 @@ That means if you went out and collected observations on a sample (e.g. 10 lyre
 <span id="cb100-10"><a href="the-law-of-large-numbers.html#cb100-10" tabindex="-1"></a>n.obs <span class="ot">&lt;-</span> <span class="dv">30</span> <span class="co"># we observe 30 individuals in each population</span></span>
 <span id="cb100-11"><a href="the-law-of-large-numbers.html#cb100-11" tabindex="-1"></a>n.reps <span class="ot">&lt;-</span> <span class="dv">100</span></span>
 <span id="cb100-12"><a href="the-law-of-large-numbers.html#cb100-12" tabindex="-1"></a></span>
-<span id="cb100-13"><a href="the-law-of-large-numbers.html#cb100-13" tabindex="-1"></a></span>
-<span id="cb100-14"><a href="the-law-of-large-numbers.html#cb100-14" tabindex="-1"></a></span>
-<span id="cb100-15"><a href="the-law-of-large-numbers.html#cb100-15" tabindex="-1"></a><span class="co"># For each replication, we will use a one-sided t-test to test if the urban</span></span>
-<span id="cb100-16"><a href="the-law-of-large-numbers.html#cb100-16" tabindex="-1"></a><span class="co"># population has a larger song repertoire than the natural population</span></span>
-<span id="cb100-17"><a href="the-law-of-large-numbers.html#cb100-17" tabindex="-1"></a></span>
-<span id="cb100-18"><a href="the-law-of-large-numbers.html#cb100-18" tabindex="-1"></a><span class="co"># set up placeholder objects</span></span>
-<span id="cb100-19"><a href="the-law-of-large-numbers.html#cb100-19" tabindex="-1"></a>rep_diff <span class="ot">&lt;-</span> rep_low <span class="ot">&lt;-</span> rep_up <span class="ot">&lt;-</span> contains_true <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb100-20"><a href="the-law-of-large-numbers.html#cb100-20" tabindex="-1"></a></span>
-<span id="cb100-21"><a href="the-law-of-large-numbers.html#cb100-21" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n.reps){</span>
-<span id="cb100-22"><a href="the-law-of-large-numbers.html#cb100-22" tabindex="-1"></a>  nat_pop <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs, nat_pop_mean, nat_sd)</span>
-<span id="cb100-23"><a href="the-law-of-large-numbers.html#cb100-23" tabindex="-1"></a>  urb_pop <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs, urb_pop_mean, urb_sd)</span>
-<span id="cb100-24"><a href="the-law-of-large-numbers.html#cb100-24" tabindex="-1"></a>  </span>
-<span id="cb100-25"><a href="the-law-of-large-numbers.html#cb100-25" tabindex="-1"></a>  mod1 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(urb_pop, nat_pop)</span>
-<span id="cb100-26"><a href="the-law-of-large-numbers.html#cb100-26" tabindex="-1"></a></span>
-<span id="cb100-27"><a href="the-law-of-large-numbers.html#cb100-27" tabindex="-1"></a>  rep_diff[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(urb_pop) <span class="sc">-</span> <span class="fu">mean</span>(nat_pop)</span>
-<span id="cb100-28"><a href="the-law-of-large-numbers.html#cb100-28" tabindex="-1"></a>  rep_low[i] <span class="ot">&lt;-</span> mod1<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span>
-<span id="cb100-29"><a href="the-law-of-large-numbers.html#cb100-29" tabindex="-1"></a>  rep_up[i] <span class="ot">&lt;-</span> mod1<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span>
+<span id="cb100-13"><a href="the-law-of-large-numbers.html#cb100-13" tabindex="-1"></a><span class="co"># For each replication, we will use a one-sided t-test to test if the urban</span></span>
+<span id="cb100-14"><a href="the-law-of-large-numbers.html#cb100-14" tabindex="-1"></a><span class="co"># population has a larger song repertoire than the natural population</span></span>
+<span id="cb100-15"><a href="the-law-of-large-numbers.html#cb100-15" tabindex="-1"></a></span>
+<span id="cb100-16"><a href="the-law-of-large-numbers.html#cb100-16" tabindex="-1"></a><span class="co"># set up placeholder objects</span></span>
+<span id="cb100-17"><a href="the-law-of-large-numbers.html#cb100-17" tabindex="-1"></a>rep_diff <span class="ot">&lt;-</span> rep_low <span class="ot">&lt;-</span> rep_up <span class="ot">&lt;-</span> contains_true <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb100-18"><a href="the-law-of-large-numbers.html#cb100-18" tabindex="-1"></a></span>
+<span id="cb100-19"><a href="the-law-of-large-numbers.html#cb100-19" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n.reps){</span>
+<span id="cb100-20"><a href="the-law-of-large-numbers.html#cb100-20" tabindex="-1"></a>  nat_pop <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs, nat_pop_mean, nat_sd)</span>
+<span id="cb100-21"><a href="the-law-of-large-numbers.html#cb100-21" tabindex="-1"></a>  urb_pop <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs, urb_pop_mean, urb_sd)</span>
+<span id="cb100-22"><a href="the-law-of-large-numbers.html#cb100-22" tabindex="-1"></a>  </span>
+<span id="cb100-23"><a href="the-law-of-large-numbers.html#cb100-23" tabindex="-1"></a>  mod1 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(urb_pop, nat_pop)</span>
+<span id="cb100-24"><a href="the-law-of-large-numbers.html#cb100-24" tabindex="-1"></a></span>
+<span id="cb100-25"><a href="the-law-of-large-numbers.html#cb100-25" tabindex="-1"></a>  rep_diff[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(urb_pop) <span class="sc">-</span> <span class="fu">mean</span>(nat_pop)</span>
+<span id="cb100-26"><a href="the-law-of-large-numbers.html#cb100-26" tabindex="-1"></a>  rep_low[i] <span class="ot">&lt;-</span> mod1<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span>
+<span id="cb100-27"><a href="the-law-of-large-numbers.html#cb100-27" tabindex="-1"></a>  rep_up[i] <span class="ot">&lt;-</span> mod1<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span>
+<span id="cb100-28"><a href="the-law-of-large-numbers.html#cb100-28" tabindex="-1"></a></span>
+<span id="cb100-29"><a href="the-law-of-large-numbers.html#cb100-29" tabindex="-1"></a>  contains_true[i] <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(rep_low[i]<span class="sc">&lt;</span>true_diff <span class="sc">&amp;</span> rep_up[i]<span class="sc">&gt;</span>true_diff)</span>
 <span id="cb100-30"><a href="the-law-of-large-numbers.html#cb100-30" tabindex="-1"></a></span>
-<span id="cb100-31"><a href="the-law-of-large-numbers.html#cb100-31" tabindex="-1"></a>  contains_true[i] <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(rep_low[i]<span class="sc">&lt;</span>true_diff <span class="sc">&amp;</span> rep_up[i]<span class="sc">&gt;</span>true_diff)</span>
+<span id="cb100-31"><a href="the-law-of-large-numbers.html#cb100-31" tabindex="-1"></a>  }</span>
 <span id="cb100-32"><a href="the-law-of-large-numbers.html#cb100-32" tabindex="-1"></a></span>
-<span id="cb100-33"><a href="the-law-of-large-numbers.html#cb100-33" tabindex="-1"></a>  }</span>
-<span id="cb100-34"><a href="the-law-of-large-numbers.html#cb100-34" tabindex="-1"></a></span>
-<span id="cb100-35"><a href="the-law-of-large-numbers.html#cb100-35" tabindex="-1"></a><span class="fu">plot</span>(rep_diff <span class="sc">~</span> <span class="fu">seq</span>(<span class="dv">1</span>, n.reps, <span class="dv">1</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>),</span>
-<span id="cb100-36"><a href="the-law-of-large-numbers.html#cb100-36" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>)[<span class="fu">factor</span>(contains_true)])</span>
-<span id="cb100-37"><a href="the-law-of-large-numbers.html#cb100-37" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span><span class="fu">seq</span>(<span class="dv">1</span>, n.reps, <span class="dv">1</span>), <span class="at">y0=</span>rep_low, <span class="at">y1=</span>rep_up, <span class="at">code=</span><span class="dv">3</span>, <span class="at">angle=</span><span class="dv">90</span>, <span class="at">length=</span><span class="fl">0.05</span>,</span>
-<span id="cb100-38"><a href="the-law-of-large-numbers.html#cb100-38" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>)[<span class="fu">factor</span>(contains_true)])</span>
-<span id="cb100-39"><a href="the-law-of-large-numbers.html#cb100-39" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>true_diff)</span></code></pre></div>
+<span id="cb100-33"><a href="the-law-of-large-numbers.html#cb100-33" tabindex="-1"></a><span class="fu">plot</span>(rep_diff <span class="sc">~</span> <span class="fu">seq</span>(<span class="dv">1</span>, n.reps, <span class="dv">1</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>),</span>
+<span id="cb100-34"><a href="the-law-of-large-numbers.html#cb100-34" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>)[<span class="fu">factor</span>(contains_true)])</span>
+<span id="cb100-35"><a href="the-law-of-large-numbers.html#cb100-35" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span><span class="fu">seq</span>(<span class="dv">1</span>, n.reps, <span class="dv">1</span>), <span class="at">y0=</span>rep_low, <span class="at">y1=</span>rep_up, <span class="at">code=</span><span class="dv">3</span>, <span class="at">angle=</span><span class="dv">90</span>, <span class="at">length=</span><span class="fl">0.05</span>,</span>
+<span id="cb100-36"><a href="the-law-of-large-numbers.html#cb100-36" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>)[<span class="fu">factor</span>(contains_true)])</span>
+<span id="cb100-37"><a href="the-law-of-large-numbers.html#cb100-37" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>true_diff)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="the-law-of-large-numbers.html#cb101-1" tabindex="-1"></a><span class="fu">table</span>(contains_true)</span></code></pre></div>
 <pre><code>## contains_true
 ## FALSE  TRUE 
-##     7    93</code></pre>
+##     6    94</code></pre>
 </div>
 <div id="lyrebird-mating-success-and-the-sampling-distribution" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Lyrebird mating success and the sampling distribution<a href="the-law-of-large-numbers.html#lyrebird-mating-success-and-the-sampling-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The law of large numbers does not just apply to the normal distribution, or even just to continuous distributions for that matter. The <em>sampling distribution</em> for any parameter will converge on the true population value with enough samples. It is important to keep the sampling distribution and sample distribution separate; the sampling distribution is the distribution of statistics calculated from a bunch of different samples, whereas the sample distribution is the distribution of a single sample.</p>
+<p>The law of large numbers does not just apply to the normal distribution, or even just to continuous distributions for that matter. The <em>sampling distribution</em> for any parameter will converge on the true population value with enough samples. It is important to keep the sampling distribution and sample distribution separate; the sampling distribution is the distribution of <em>statistics</em> calculated from a bunch of different samples, whereas the sample distribution is the distribution of observations.</p>
 <p>Let’s assume each male lyrebird in our population has a 0.25 probability of mating success, we observe 20 males in each of our samples, and we replicate our sample 100 times.</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="the-law-of-large-numbers.html#cb103-1" tabindex="-1"></a>sample1 <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">20</span>, <span class="dv">1</span>, <span class="fl">0.25</span>) <span class="co"># this is our sample</span></span>
 <span id="cb103-2"><a href="the-law-of-large-numbers.html#cb103-2" tabindex="-1"></a></span>
@@ -370,11 +379,11 @@ That means if you went out and collected observations on a sample (e.g. 10 lyre
 <span id="cb104-2"><a href="the-law-of-large-numbers.html#cb104-2" tabindex="-1"></a></span>
 <span id="cb104-3"><a href="the-law-of-large-numbers.html#cb104-3" tabindex="-1"></a>rep_means <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
 <span id="cb104-4"><a href="the-law-of-large-numbers.html#cb104-4" tabindex="-1"></a></span>
-<span id="cb104-5"><a href="the-law-of-large-numbers.html#cb104-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb104-5"><a href="the-law-of-large-numbers.html#cb104-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5000</span>){</span>
 <span id="cb104-6"><a href="the-law-of-large-numbers.html#cb104-6" tabindex="-1"></a>  rep_means[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(<span class="fu">rbinom</span>(<span class="dv">20</span>, <span class="dv">1</span>, <span class="fl">0.25</span>)))</span>
 <span id="cb104-7"><a href="the-law-of-large-numbers.html#cb104-7" tabindex="-1"></a>}</span>
 <span id="cb104-8"><a href="the-law-of-large-numbers.html#cb104-8" tabindex="-1"></a></span>
-<span id="cb104-9"><a href="the-law-of-large-numbers.html#cb104-9" tabindex="-1"></a><span class="fu">hist</span>(rep_means) <span class="co"># this is our sampling distribution</span></span></code></pre></div>
+<span id="cb104-9"><a href="the-law-of-large-numbers.html#cb104-9" tabindex="-1"></a><span class="fu">hist</span>(rep_means, <span class="dv">10</span>) <span class="co"># this is our sampling distribution</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-31-2.png" width="672" /></p>
 </div>
 <div id="credible-intervals" class="section level2 hasAnchor" number="5.4">
@@ -393,7 +402,7 @@ That means if you went out and collected observations on a sample (e.g. 10 lyre
         </div>
       </div>
 <a href="inference.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="visualizing-group-differences.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

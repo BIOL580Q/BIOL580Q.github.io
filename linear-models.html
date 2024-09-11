@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Linear models | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+  <meta name="description" content="6 Linear models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Linear models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Linear models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  
+  
+  
+
+<meta name="author" content="Eliza Grames" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="the-law-of-large-numbers.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.1</b> About this ‘book’</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#why-this-course"><i class="fa fa-check"></i><b>1.2</b> Why this course?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-comfortable-with-r-and-rstudio"><i class="fa fa-check"></i><b>1.3</b> Getting comfortable with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#some-terms-and-definitions"><i class="fa fa-check"></i><b>1.3.1</b> Some terms and definitions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#customizing-rstudio"><i class="fa fa-check"></i><b>1.3.2</b> Customizing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-approach-this-course"><i class="fa fa-check"></i><b>1.4</b> How to approach this course</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i><b>2.1</b> Bernoulli distribution</a></li>
+<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#binomial-distribution"><i class="fa fa-check"></i><b>2.2</b> Binomial distribution</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#guillemot-example"><i class="fa fa-check"></i><b>2.2.1</b> Guillemot example</a></li>
+<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#coral-example"><i class="fa fa-check"></i><b>2.2.2</b> Coral example</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#probability-mass"><i class="fa fa-check"></i><b>2.3</b> Probability mass</a></li>
+<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#the-normal-gaussian-distribution"><i class="fa fa-check"></i><b>2.4</b> The Normal (Gaussian) distribution</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#guillemot-weight"><i class="fa fa-check"></i><b>2.4.1</b> Guillemot weight</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#probability-density"><i class="fa fa-check"></i><b>2.5</b> Probability density</a></li>
+<li class="chapter" data-level="2.6" data-path="probability.html"><a href="probability.html#the-standard-normal-distribution"><i class="fa fa-check"></i><b>2.6</b> The Standard Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="probability.html"><a href="probability.html#functions-1"><i class="fa fa-check"></i><b>2.6.1</b> Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html"><i class="fa fa-check"></i><b>3</b> Null hypothesis significance testing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#a-brief-history-of-statistics-and-eugenics"><i class="fa fa-check"></i><b>3.1</b> A brief history of statistics and eugenics</a></li>
+<li class="chapter" data-level="3.2" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#t-distribution-and-t-tests"><i class="fa fa-check"></i><b>3.2</b> T-distribution and t-tests</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#butterfly-wing-size"><i class="fa fa-check"></i><b>3.2.1</b> Butterfly wing size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#anova"><i class="fa fa-check"></i><b>3.3</b> ANOVA</a></li>
+<li class="chapter" data-level="3.4" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#type-i-and-type-ii-error"><i class="fa fa-check"></i><b>3.4</b> Type I and Type II error</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4</b> Inference</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inference.html"><a href="inference.html#lyrebird-song-repertoire"><i class="fa fa-check"></i><b>4.1</b> Lyrebird song repertoire</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html"><i class="fa fa-check"></i><b>5</b> The law of large numbers</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#confidence-intervals"><i class="fa fa-check"></i><b>5.1</b> Confidence intervals</a></li>
+<li class="chapter" data-level="5.2" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-population-differences"><i class="fa fa-check"></i><b>5.2</b> Lyrebird population differences</a></li>
+<li class="chapter" data-level="5.3" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-mating-success-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> Lyrebird mating success and the sampling distribution</a></li>
+<li class="chapter" data-level="5.4" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#credible-intervals"><i class="fa fa-check"></i><b>5.4</b> Credible intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>6</b> Linear models</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="linear-models.html"><a href="linear-models.html#algebraic-linear-functions"><i class="fa fa-check"></i><b>6.1</b> Algebraic linear functions</a></li>
+<li class="chapter" data-level="6.2" data-path="linear-models.html"><a href="linear-models.html#model-components"><i class="fa fa-check"></i><b>6.2</b> Model components</a></li>
+<li class="chapter" data-level="6.3" data-path="linear-models.html"><a href="linear-models.html#ordinary-least-squares"><i class="fa fa-check"></i><b>6.3</b> Ordinary least squares</a></li>
+<li class="chapter" data-level="6.4" data-path="linear-models.html"><a href="linear-models.html#vectors-and-matrices"><i class="fa fa-check"></i><b>6.4</b> Vectors and matrices</a></li>
+<li class="chapter" data-level="6.5" data-path="linear-models.html"><a href="linear-models.html#assumptions-of-linear-models"><i class="fa fa-check"></i><b>6.5</b> Assumptions of linear models</a></li>
+<li class="chapter" data-level="6.6" data-path="linear-models.html"><a href="linear-models.html#example-american-pika"><i class="fa fa-check"></i><b>6.6</b> Example: American pika</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="linear-models.html"><a href="linear-models.html#specify-our-the-model"><i class="fa fa-check"></i><b>6.6.1</b> Specify our the model</a></li>
+<li class="chapter" data-level="6.6.2" data-path="linear-models.html"><a href="linear-models.html#read-in-the-data"><i class="fa fa-check"></i><b>6.6.2</b> Read in the data</a></li>
+<li class="chapter" data-level="6.6.3" data-path="linear-models.html"><a href="linear-models.html#data-cleaning-and-prepping-covariates"><i class="fa fa-check"></i><b>6.6.3</b> Data cleaning and prepping covariates</a></li>
+<li class="chapter" data-level="6.6.4" data-path="linear-models.html"><a href="linear-models.html#plot-the-data"><i class="fa fa-check"></i><b>6.6.4</b> Plot the data</a></li>
+<li class="chapter" data-level="6.6.5" data-path="linear-models.html"><a href="linear-models.html#fit-the-model"><i class="fa fa-check"></i><b>6.6.5</b> Fit the model</a></li>
+<li class="chapter" data-level="6.6.6" data-path="linear-models.html"><a href="linear-models.html#evaluate-model-fit"><i class="fa fa-check"></i><b>6.6.6</b> Evaluate model fit</a></li>
+<li class="chapter" data-level="6.6.7" data-path="linear-models.html"><a href="linear-models.html#interpret-model-output"><i class="fa fa-check"></i><b>6.6.7</b> Interpret model output</a></li>
+<li class="chapter" data-level="6.6.8" data-path="linear-models.html"><a href="linear-models.html#make-predictions"><i class="fa fa-check"></i><b>6.6.8</b> Make predictions</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIOL 480/580Q: Ecological Modeling (Fall 2024)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="linear-models" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Linear models<a href="linear-models.html#linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Linear models are the bread and butter of ecological modeling. If you can fit a linear model, you can satisfactorily answer probably over 90% of the types of questions ecologists are interested in. There are a few important things to remember from your first algebra class that will be important for linear models.</p>
+<div id="algebraic-linear-functions" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Algebraic linear functions<a href="linear-models.html#algebraic-linear-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Remember that we can represent a straight line in slope-intercept form as <span class="math inline">\(y = mx + b\)</span>, where <span class="math inline">\(m\)</span> is the slope of the line and <span class="math inline">\(b\)</span> is the intercept. The intercept, <span class="math inline">\(b\)</span> is where the line hits the y-axis, in other words, it is the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x=0\)</span>. For every one unit increase in <span class="math inline">\(x\)</span>, we except an <span class="math inline">\(m\)</span> unit increase in <span class="math inline">\(y\)</span>.</p>
+<p><img src="https://digitalfirst.bfwpub.com/phys_sci_math_tutorial2/asset/freed_collphysics1e_m-01.jpg" /></p>
+<p>We represent the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> in a Cartesian plane, where the <span class="math inline">\(x\)</span> axis is horizontal and the <span class="math inline">\(y\)</span> axis is vertical (and we are only operating in 2 dimensions).</p>
+<p>In a function, no single <span class="math inline">\(x\)</span> value as input can have two different <span class="math inline">\(y\)</span> values as output. In other words, a function can never double back on itself / overlap vertically. If you know <span class="math inline">\(x\)</span>, you know <span class="math inline">\(y\)</span> - there is no possibility of a different <span class="math inline">\(y\)</span> associated with a single <span class="math inline">\(y\)</span>. The same <span class="math inline">\(y\)</span> value can be the output of multiple different <span class="math inline">\(x\)</span> input values, though.</p>
+<div class="float">
+<img src="https://www.boredpanda.com/blog/wp-content/uploads/2023/06/funny-witty-math-memes-56-6489a7a911599__700.jpg" alt="Functional cows" />
+<div class="figcaption">Functional cows</div>
+</div>
+<div class="float">
+<img src="img/nonfunctionalcow.png" alt="Non-functional cow, input of x = 1 leads to y = 1.5 and y = -4" />
+<div class="figcaption">Non-functional cow, input of x = 1 leads to y = 1.5 and y = -4</div>
+</div>
+<p>Normal linear functions are continuous with no break points / gaps. There are piecewise functions over which there are ranges of <span class="math inline">\(x\)</span> values that there can be no <span class="math inline">\(y\)</span> values, but these are not the norm.</p>
+<p><img src="https://justinmath.com/files/blog/piecewise-functions-2.png" /></p>
+</div>
+<div id="model-components" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Model components<a href="linear-models.html#model-components" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Linear models consist of a deterministic component and a stochastic component. For a normally distributed random variable <span class="math inline">\(y\)</span> with one predictor <span class="math inline">\(x_1\)</span>, the (a) stochastic and (b) deterministic components can be represented as: <span class="math display">\[\text{(a)} \quad y \sim Norm(\mu, \sigma) \\ \text{(b)} \quad \mu = \beta_0 + \beta_1*x_1\]</span> In this example, you can think of <span class="math inline">\(\beta_0\)</span> as the same as <span class="math inline">\(b\)</span> in <span class="math inline">\(y = mx + b\)</span> and the coefficient <span class="math inline">\(\beta_1\)</span> as the slope <span class="math inline">\(m\)</span>. But, the general linear model is a lot more flexible than a linear function represented in slope-intercept form (so we will switch to the more accurate representation for the rest of the semester).</p>
+<p>The <strong>deterministic</strong> component will always result in the same answer every time (i.e. it is determined). This is akin to an algebraic linear function, i.e. the y-value always lies on the line. In ecology, the deterministic component represents our biological hypothesis, i.e. it is a statement about the way we think the world works. If the world worked the way we think it does, every time we would end up observing the same outcome. Note that the deterministic component uses <span class="math inline">\(=\)</span> because the answer is solvable.</p>
+<p>Because there is always some amount of error or variation around that determined part, we also have a <strong>stochastic</strong> component. The stochastic component can represent a number of things depending on what you are modeling. It could be measurement or observation error, e.g. because we imperfectly observe the world, miscount individuals, our measurement tools are a bit faulty, etc. It could also represent true biological variability around a population mean (e.g. think about intraspecific trait variability). Or, it could represent unmeasured or unmodeled variables (i.e. the variable we are modeling is predicted by two covariates, but we only included one, so we are working with an incomplete picture). And, of course, it could be a combination of these different factors. Note that the stochastic component uses <span class="math inline">\(\sim\)</span> because the output is distributed as that probability distribution, but we know there will always be variation in our sample.</p>
+<blockquote>
+<p>Note on terminology. Some people refer to variable(s) on the x-axis as the independent variable and the variable on the y-axis as the dependent variable because y depends on x. This is confusing, however, and also implies that there is a strongly causal relationship between x and y. I, and many others, prefer the terms predictor for the x-axis variable(s), and response for the y-axis variable because these terms are much clearer for communicating your model structure.</p>
+</blockquote>
+</div>
+<div id="ordinary-least-squares" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Ordinary least squares<a href="linear-models.html#ordinary-least-squares" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In an algebraic linear function represented in slope-intercept form, all values of <span class="math inline">\(y\)</span> lie on the line, with no deviation from it. In the real world, data are messy, so how do we find the line of best fit through that data? Typically, we use ordinary least squares (OLS) regression. You can think of it as if we are attempting to find the combination of the slope (<span class="math inline">\(m\)</span>) and intercept (<span class="math inline">\(b\)</span>) that leads to a line that is as close as possible to all data points. In other words, we want to have the smallest <em>residuals</em> (the difference between each point and the predicted value on the line) as possible. In reality, we base this fit on the sum of the squared residuals. Why squared? Let’s simulate some data.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="linear-models.html#cb105-1" tabindex="-1"></a><span class="co"># First, let&#39;s create a function that generates observations as a linear function </span></span>
+<span id="cb105-2"><a href="linear-models.html#cb105-2" tabindex="-1"></a><span class="co"># of x, i.e. in an algebraic sense</span></span>
+<span id="cb105-3"><a href="linear-models.html#cb105-3" tabindex="-1"></a>linear_function <span class="ot">&lt;-</span> <span class="cf">function</span>(m, x, b){</span>
+<span id="cb105-4"><a href="linear-models.html#cb105-4" tabindex="-1"></a>  y <span class="ot">&lt;-</span> m<span class="sc">*</span>x <span class="sc">+</span> b</span>
+<span id="cb105-5"><a href="linear-models.html#cb105-5" tabindex="-1"></a>  <span class="fu">return</span>(y)</span>
+<span id="cb105-6"><a href="linear-models.html#cb105-6" tabindex="-1"></a>}</span>
+<span id="cb105-7"><a href="linear-models.html#cb105-7" tabindex="-1"></a></span>
+<span id="cb105-8"><a href="linear-models.html#cb105-8" tabindex="-1"></a>x.vals <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb105-9"><a href="linear-models.html#cb105-9" tabindex="-1"></a>slope <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb105-10"><a href="linear-models.html#cb105-10" tabindex="-1"></a>intercept <span class="ot">&lt;-</span> <span class="fl">1.2</span></span>
+<span id="cb105-11"><a href="linear-models.html#cb105-11" tabindex="-1"></a></span>
+<span id="cb105-12"><a href="linear-models.html#cb105-12" tabindex="-1"></a>y.det <span class="ot">&lt;-</span> <span class="fu">linear_function</span>(<span class="at">m =</span> slope, <span class="at">x=</span>x.vals, <span class="at">b=</span>intercept)</span>
+<span id="cb105-13"><a href="linear-models.html#cb105-13" tabindex="-1"></a><span class="fu">plot</span>(y.det <span class="sc">~</span> x.vals)</span>
+<span id="cb105-14"><a href="linear-models.html#cb105-14" tabindex="-1"></a><span class="fu">lines</span>(y.det <span class="sc">~</span> x.vals)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="linear-models.html#cb106-1" tabindex="-1"></a><span class="co"># Now let&#39;s add error</span></span>
+<span id="cb106-2"><a href="linear-models.html#cb106-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">27</span>)</span>
+<span id="cb106-3"><a href="linear-models.html#cb106-3" tabindex="-1"></a>y.obs <span class="ot">&lt;-</span> y.det <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="at">n=</span><span class="fu">length</span>(x.vals))</span>
+<span id="cb106-4"><a href="linear-models.html#cb106-4" tabindex="-1"></a></span>
+<span id="cb106-5"><a href="linear-models.html#cb106-5" tabindex="-1"></a><span class="fu">plot</span>(y.obs <span class="sc">~</span> x.vals, <span class="at">type=</span><span class="st">&quot;p&quot;</span>)</span>
+<span id="cb106-6"><a href="linear-models.html#cb106-6" tabindex="-1"></a><span class="fu">lines</span>(y.det <span class="sc">~</span> x.vals)</span>
+<span id="cb106-7"><a href="linear-models.html#cb106-7" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> x.vals, <span class="at">x1=</span>x.vals,</span>
+<span id="cb106-8"><a href="linear-models.html#cb106-8" tabindex="-1"></a>       <span class="at">y0=</span>y.det, <span class="at">y1=</span>y.obs, </span>
+<span id="cb106-9"><a href="linear-models.html#cb106-9" tabindex="-1"></a>       <span class="at">code=</span><span class="dv">3</span>, </span>
+<span id="cb106-10"><a href="linear-models.html#cb106-10" tabindex="-1"></a>       <span class="at">angle=</span><span class="dv">90</span>, </span>
+<span id="cb106-11"><a href="linear-models.html#cb106-11" tabindex="-1"></a>       <span class="at">length=</span><span class="dv">0</span>, </span>
+<span id="cb106-12"><a href="linear-models.html#cb106-12" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="linear-models.html#cb107-1" tabindex="-1"></a><span class="co"># calculate the residuals</span></span>
+<span id="cb107-2"><a href="linear-models.html#cb107-2" tabindex="-1"></a>res <span class="ot">&lt;-</span> y.obs <span class="sc">-</span> y.det</span>
+<span id="cb107-3"><a href="linear-models.html#cb107-3" tabindex="-1"></a><span class="fu">sum</span>(res<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 14.89237</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="linear-models.html#cb109-1" tabindex="-1"></a><span class="co"># what if we tried a different line?</span></span>
+<span id="cb109-2"><a href="linear-models.html#cb109-2" tabindex="-1"></a>alt.line <span class="ot">&lt;-</span> <span class="fu">linear_function</span>(<span class="at">m=</span><span class="fl">0.05</span>, <span class="at">x=</span>x.vals, <span class="at">b=</span><span class="dv">2</span>)</span>
+<span id="cb109-3"><a href="linear-models.html#cb109-3" tabindex="-1"></a><span class="fu">plot</span>(y.obs <span class="sc">~</span> x.vals)</span>
+<span id="cb109-4"><a href="linear-models.html#cb109-4" tabindex="-1"></a><span class="fu">lines</span>(alt.line <span class="sc">~</span> x.vals)</span>
+<span id="cb109-5"><a href="linear-models.html#cb109-5" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> x.vals, <span class="at">x1=</span>x.vals,</span>
+<span id="cb109-6"><a href="linear-models.html#cb109-6" tabindex="-1"></a>       <span class="at">y0=</span>alt.line, <span class="at">y1=</span>y.obs, </span>
+<span id="cb109-7"><a href="linear-models.html#cb109-7" tabindex="-1"></a>       <span class="at">code=</span><span class="dv">3</span>, </span>
+<span id="cb109-8"><a href="linear-models.html#cb109-8" tabindex="-1"></a>       <span class="at">angle=</span><span class="dv">90</span>, </span>
+<span id="cb109-9"><a href="linear-models.html#cb109-9" tabindex="-1"></a>       <span class="at">length=</span><span class="dv">0</span>, </span>
+<span id="cb109-10"><a href="linear-models.html#cb109-10" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-3.png" width="672" /></p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="linear-models.html#cb110-1" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> y.obs <span class="sc">-</span> alt.line</span>
+<span id="cb110-2"><a href="linear-models.html#cb110-2" tabindex="-1"></a><span class="fu">sum</span>(res2<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 18.02767</code></pre>
+<p>Because we simulated based on the deterministic relationship but added in error, neither of these attempts is actually the line of best fit for our ‘observed’ data. We will use the function <code>lm</code> to fit a linear model to our simulated data which has a slope and intercept that minimize the sum of the squared residuals. The argument that the function needs is a formula, which we represent as our response variable over our predictor variable(s) using the tilde (i.e. <code>y ~ x</code>).</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="linear-models.html#cb112-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y.obs <span class="sc">~</span> x.vals)</span>
+<span id="cb112-2"><a href="linear-models.html#cb112-2" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y.obs ~ x.vals)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.7480 -0.8622 -0.2009  0.8796  1.7493 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)   1.3137     0.8860   1.483    0.176
+## x.vals        0.2442     0.1428   1.710    0.126
+## 
+## Residual standard error: 1.297 on 8 degrees of freedom
+## Multiple R-squared:  0.2677, Adjusted R-squared:  0.1762 
+## F-statistic: 2.925 on 1 and 8 DF,  p-value: 0.1256</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="linear-models.html#cb114-1" tabindex="-1"></a><span class="co"># From our &quot;observed&quot; data, the best line has slope=0.2442 and intercept=1.3137</span></span>
+<span id="cb114-2"><a href="linear-models.html#cb114-2" tabindex="-1"></a><span class="co"># Let&#39;s double check this with our function and residuals</span></span>
+<span id="cb114-3"><a href="linear-models.html#cb114-3" tabindex="-1"></a>ols.line <span class="ot">&lt;-</span> <span class="fu">linear_function</span>(<span class="at">m=</span><span class="fl">0.2442</span>, <span class="at">x=</span>x.vals, <span class="at">b=</span><span class="fl">1.3137</span>)</span>
+<span id="cb114-4"><a href="linear-models.html#cb114-4" tabindex="-1"></a><span class="fu">plot</span>(y.obs <span class="sc">~</span> x.vals)</span>
+<span id="cb114-5"><a href="linear-models.html#cb114-5" tabindex="-1"></a><span class="fu">lines</span>(ols.line <span class="sc">~</span> x.vals)</span>
+<span id="cb114-6"><a href="linear-models.html#cb114-6" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> x.vals, <span class="at">x1=</span>x.vals,</span>
+<span id="cb114-7"><a href="linear-models.html#cb114-7" tabindex="-1"></a>       <span class="at">y0=</span>ols.line, <span class="at">y1=</span>y.obs, </span>
+<span id="cb114-8"><a href="linear-models.html#cb114-8" tabindex="-1"></a>       <span class="at">code=</span><span class="dv">3</span>, </span>
+<span id="cb114-9"><a href="linear-models.html#cb114-9" tabindex="-1"></a>       <span class="at">angle=</span><span class="dv">90</span>, </span>
+<span id="cb114-10"><a href="linear-models.html#cb114-10" tabindex="-1"></a>       <span class="at">length=</span><span class="dv">0</span>, </span>
+<span id="cb114-11"><a href="linear-models.html#cb114-11" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="linear-models.html#cb115-1" tabindex="-1"></a>res.ols <span class="ot">&lt;-</span> y.obs <span class="sc">-</span> ols.line</span>
+<span id="cb115-2"><a href="linear-models.html#cb115-2" tabindex="-1"></a><span class="fu">sum</span>(res.ols<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 13.45756</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="linear-models.html#cb117-1" tabindex="-1"></a><span class="fu">sum</span>(res.ols) <span class="co"># Not actually zero because of rounding, but, is actually zero</span></span></code></pre></div>
+<pre><code>## [1] 0.0006278831</code></pre>
+</div>
+<div id="vectors-and-matrices" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Vectors and matrices<a href="linear-models.html#vectors-and-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[
+\begin{bmatrix}
+\beta_0 \\ \beta_1 \\ \beta_2 \\ \vdots \\ \beta_j
+\end{bmatrix} *
+\begin{bmatrix}
+1 &amp; x_{1,1} &amp; x_{1,2} &amp; \dots &amp; x_{1,j} \\
+1 &amp; x_{2,1} &amp; x_{2,2} &amp; \dots &amp; x_{2,j} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+1 &amp; x_{i,1} &amp; x_{i,2} &amp; \dots &amp; x_{i,j} \\\end{bmatrix}
+=
+\begin{bmatrix}
+\mu_1 \\ \mu_2 \\ \vdots \\ \mu_i
+\end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[ \mu_i = \beta_0*1 + \beta_1*x_{i,1} + \beta_2*x_{i,2} \dots + \beta_j*x_{i,j}\]</span></p>
+</div>
+<div id="assumptions-of-linear-models" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Assumptions of linear models<a href="linear-models.html#assumptions-of-linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>It makes <em>biological sense</em>. This is the single most important assumption of your model. Your predictors must make sense in how they relate to your response variable, your underlying deterministic component is sensible, and you have a biological hypothesis or explanation for why you are using this model structure.</p></li>
+<li><p>The effects are <em>additive</em>. In our simple model, the response variable is the sum of the intercept (<span class="math inline">\(b\)</span>) and the slope (<span class="math inline">\(m\)</span>) times the value of <span class="math inline">\(x\)</span>, not the product of the two, or <span class="math inline">\(m\)</span> as a function of <span class="math inline">\(x\)</span>, etc. The effects are additive because they are separate and the sum of the effects results in the deterministic estimate.</p></li>
+<li><p>Effects are <em>linear</em>. This does not mean that everything needs to be a straight line! But the function does need to be linear.</p></li>
+<li><p>Errors (aka residuals, in this case) are independent. There are no shared patterns in the residuals, which might indicate that there is an issue with the observation process, or that there are other shared covariates that might explain patterns in the residuals.</p></li>
+<li><p>Errors have equal variance (“homoscedasticity”).</p></li>
+<li><p>Errors are normally distributed. The residuals of the model are not skewed, non-normal, all positive, etc.</p></li>
+</ol>
+</div>
+<div id="example-american-pika" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Example: American pika<a href="linear-models.html#example-american-pika" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="float">
+<img src="https://img.theepochtimes.com/assets/uploads/2024/05/07/id5645118-Pika.jpg" alt="Ochotona princeps, the American pika" />
+<div class="figcaption"><em>Ochotona princeps</em>, the American pika</div>
+</div>
+<p>At the Niwot Ridge Long-Term Ecological Research (LTER) site in Colorado, researchers collected <a href="https://doi.org/10.6073/pasta/9f95baf55f98732f47a8844821ff690d">stress data on American pika</a> across an elevational gradient. They sampled pika feces and represented stress as the concentration of glucocorticoid metabolites per gram of feces. At each site, they also recorded habitat characteristics. We will use this dataset as our example for linear models this week to ask: how does pika stress vary across an elevational gradient?</p>
+<div id="specify-our-the-model" class="section level3 hasAnchor" number="6.6.1">
+<h3><span class="header-section-number">6.6.1</span> Specify our the model<a href="linear-models.html#specify-our-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Our response variable (<span class="math inline">\(y\)</span>) is pika stress, and our predictor (<span class="math inline">\(x\)</span>) is elevation. We can write this out as:</p>
+<p><span class="math display">\[ y \sim Norm(\mu, \sigma) \\ \mu = \beta_0 + \beta_1*x\]</span></p>
+</div>
+<div id="read-in-the-data" class="section level3 hasAnchor" number="6.6.2">
+<h3><span class="header-section-number">6.6.2</span> Read in the data<a href="linear-models.html#read-in-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Not really a model fitting step, but we do need the data in our environment to work with! For this week’s class, we will use a different data structure than we have used before. Note that I do not actually recommend using proprietary software formats! But, you will likely encounter them in your research, and should know how to get them into R. Please download the data from <a href="https://tinyurl.com/pikastress" class="uri">https://tinyurl.com/pikastress</a>. Make a note of where on your computer you downloaded the file to, because you will need the path to the file to read it into R.</p>
+<p>To read a .xlsx file into R, you will need to install the package <code>readxl</code> using the function <code>install.packages</code>. Once the package is installed, there are two ways to use the functions contained in it: 1) by loading it with <code>library("readxl")</code>, or 2) using <code>::</code> to call function names from the package. I prefer the latter because it helps you remember which functions come from which packages; this can be especially helpful when you have a script with functions from many packages.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="linear-models.html#cb119-1" tabindex="-1"></a><span class="co"># install.packages(&quot;readxl&quot;) # after running this once, you do not need to run it again!</span></span></code></pre></div>
+<p>Once it is successfully installed, we can read in our data. And remember, you only need to install a package once - after you have it installed, you only need to load it each time and not reinstall. Hence why this line of code is commented out in my script.</p>
+<p>One of the things about a .xlsx that differs from a .csv file is that there can be multiple sheets contained within the workbook (i.e. when you are working with Excel, you might have multiple tabs). We can add an argument to the function call to specify which tab to read in. In this case, I happen to know that the stress data are tab 1 and metadata are tab 2, but most of the time you will have to inspect the file to figure out what you want to read in.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="linear-models.html#cb120-1" tabindex="-1"></a>samples <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;~/Downloads/pika_stress.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>)</span>
+<span id="cb120-2"><a href="linear-models.html#cb120-2" tabindex="-1"></a>metadat <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;~/Downloads/pika_stress.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">2</span>)</span>
+<span id="cb120-3"><a href="linear-models.html#cb120-3" tabindex="-1"></a></span>
+<span id="cb120-4"><a href="linear-models.html#cb120-4" tabindex="-1"></a><span class="co"># as usual, use head() or str() to get a sense of the data</span></span>
+<span id="cb120-5"><a href="linear-models.html#cb120-5" tabindex="-1"></a><span class="fu">str</span>(samples)</span></code></pre></div>
+<pre><code>## tibble [109 × 11] (S3: tbl_df/tbl/data.frame)
+##  $ Date              : POSIXct[1:109], format: &quot;2018-06-08&quot; &quot;2018-06-08&quot; ...
+##  $ Station           : chr [1:109] &quot;CG1&quot; &quot;CG2&quot; &quot;CG3&quot; &quot;WK3&quot; ...
+##  $ UTM_Easting       : num [1:109] 451373 451411 451462 449317 449342 ...
+##  $ UTM_Northing      : num [1:109] 4432963 4432985 4432991 4434093 4434141 ...
+##  $ Notes             : chr [1:109] NA NA NA NA ...
+##  $ Vial              : num [1:109] 98 99 100 101 102 103 104 105 106 107 ...
+##  $ Concentration_pg_g: num [1:109] 11563 10629 10924 10414 13531 ...
+##  $ Plate             : num [1:109] 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Site              : chr [1:109] &quot;CG&quot; &quot;CG&quot; &quot;CG&quot; &quot;WK&quot; ...
+##  $ Biweek            : num [1:109] 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Sex               : chr [1:109] &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="linear-models.html#cb122-1" tabindex="-1"></a><span class="fu">str</span>(metadat)</span></code></pre></div>
+<pre><code>## tibble [20 × 32] (S3: tbl_df/tbl/data.frame)
+##  $ Date              : POSIXct[1:20], format: &quot;2019-07-10&quot; &quot;2019-07-10&quot; ...
+##  $ Station           : chr [1:20] &quot;CG1&quot; &quot;CG2&quot; &quot;CG3&quot; &quot;CG4&quot; ...
+##  $ UTM_Easting       : num [1:20] 451373 451411 451462 451617 449927 ...
+##  $ UTM_Northing      : num [1:20] 4432963 4432986 4432991 4433243 4435565 ...
+##  $ Cover_Rock        : num [1:20] 77 68 65 50 60 45 55 50 40 60 ...
+##  $ Cover_Bare        : num [1:20] 3 5 5 0 10 5 5 5 25 2 ...
+##  $ Cover_Grass       : num [1:20] 5 15 14.5 15 3 10 15 22 17 16 ...
+##  $ Cover_Forb        : num [1:20] 10 10 10 15 6 30 5 23 18 22 ...
+##  $ Cover_Shrub       : num [1:20] 5 1 5 10 20 5 15 0 0 0 ...
+##  $ Cover_Tree        : num [1:20] 0 1 0.5 10 1 5 5 0 0 0 ...
+##  $ Marmot_Seen       : chr [1:20] &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; ...
+##  $ Marmot_Heard      : chr [1:20] &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; ...
+##  $ Marmot_Scat       : chr [1:20] &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; ...
+##  $ Marmot_Dens       : chr [1:20] &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; ...
+##  $ Subsurf_Flow      : chr [1:20] &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; ...
+##  $ Downslope_Pooling : chr [1:20] &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; ...
+##  $ Downslope_Riparian: chr [1:20] &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; ...
+##  $ Upslope_Snow      : chr [1:20] &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; ...
+##  $ Skies             : num [1:20] 1 1 1 1 1 1 1 2 2 1 ...
+##  $ Wind              : num [1:20] 1 1 1 1 1 1 1 1 1 3 ...
+##  $ Temp_C            : num [1:20] 60 60 60 60 60 60 65 65 65 60 ...
+##  $ Rock_Shade        : num [1:20] 2 2 2 2 2 2 1 2 1 2 ...
+##  $ Largest_Rock_1st  : num [1:20] 2 2 2 1.3 3 2 2.5 1 0.75 1 ...
+##  $ Largest_Rock_10th : num [1:20] 1.5 1.5 1.5 0.5 2 1.5 1.5 0.5 0.5 0.5 ...
+##  $ Deepest_Crevice   : num [1:20] 2 2 1 1 1 3 3 2 2 1 ...
+##  $ Cover_Lichen      : num [1:20] 3 2 3 2 1 1 1 3 1 3 ...
+##  $ Forage_Dist       : num [1:20] 0.5 0 0 0 0 0 0 0 0 0 ...
+##  $ Aspect_Deg        : num [1:20] 204 207 193 242 313 ...
+##  $ Elev_M            : num [1:20] 3343 3353 3358 3407 3296 ...
+##  $ Aspect_Dir        : chr [1:20] &quot;SW&quot; &quot;SW&quot; &quot;S&quot; &quot;SW&quot; ...
+##  $ Notes             : chr [1:20] &quot;Heard 1 pika upslope on arrival (possible adult)&quot; NA NA &quot;Fresh hay seen in haypile. 1/2 &amp; 1/2 grasses and forbs near plot&quot; ...
+##  $ Notes_Snow        : chr [1:20] NA NA NA NA ...</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="linear-models.html#cb124-1" tabindex="-1"></a><span class="co"># Note that both of our data.frames have a column called Station</span></span>
+<span id="cb124-2"><a href="linear-models.html#cb124-2" tabindex="-1"></a><span class="co"># We can use this to match the elevation data at each station with the </span></span>
+<span id="cb124-3"><a href="linear-models.html#cb124-3" tabindex="-1"></a><span class="co"># pika stress data</span></span></code></pre></div>
+</div>
+<div id="data-cleaning-and-prepping-covariates" class="section level3 hasAnchor" number="6.6.3">
+<h3><span class="header-section-number">6.6.3</span> Data cleaning and prepping covariates<a href="linear-models.html#data-cleaning-and-prepping-covariates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now, you may have noticed that the samples data.frame has the pika stress data, but no column for elevation. But, the metadata data.frame has elevation data. Each of them has a column called Station, which we can use to match the records and associate the elevation at each station with each sample This is pretty typical with data analysis - a large portion of your time will be spent getting data into the format you need for your analyses. To find the elevation of each station and add it as a variable to our samples data object, we will use the function <code>match</code>. Sidenote: if you are tidyverse-inclined, what we are going for is something akin to left_join.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="linear-models.html#cb125-1" tabindex="-1"></a><span class="co"># Match returns the index (i.e. position in the vector) where values line up</span></span>
+<span id="cb125-2"><a href="linear-models.html#cb125-2" tabindex="-1"></a>station_indices <span class="ot">&lt;-</span> <span class="fu">match</span>(samples<span class="sc">$</span>Station, metadat<span class="sc">$</span>Station)</span>
+<span id="cb125-3"><a href="linear-models.html#cb125-3" tabindex="-1"></a></span>
+<span id="cb125-4"><a href="linear-models.html#cb125-4" tabindex="-1"></a><span class="co"># To get a better sense of what is going on here, let&#39;s look at the vector</span></span>
+<span id="cb125-5"><a href="linear-models.html#cb125-5" tabindex="-1"></a>station_indices</span></code></pre></div>
+<pre><code>##   [1]  1  2  3 14 15 16 17 18 19  9 11 12  5  6  7 17 10  4  1  3  8 13 14 16 17
+##  [26] 19 20 10 11 12  8 13 16 17 18 19 20  9 10 12  1  2  4  8 13 14 15 16 17 18
+##  [51] 19 20  9 10 11 12  1  2  3  5  6  7  8 13 14 15 16 17 18 19 20  9 10 11 12
+##  [76]  8 13 14 16 17 18 19 20  9 10 11 12  1  2  3  4  5  6  7  1  2  3  4  8 13
+## [101] 14 16 17 18 19 20  9 10 11</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="linear-models.html#cb127-1" tabindex="-1"></a><span class="co"># Note that it has length 109, which is the same number of rows in samples</span></span>
+<span id="cb127-2"><a href="linear-models.html#cb127-2" tabindex="-1"></a><span class="co"># It also only has values up to 20, which is the number of rows in metadat</span></span>
+<span id="cb127-3"><a href="linear-models.html#cb127-3" tabindex="-1"></a></span>
+<span id="cb127-4"><a href="linear-models.html#cb127-4" tabindex="-1"></a><span class="co"># The fourth entry in the vector is 14, indicating that the fourth element of</span></span>
+<span id="cb127-5"><a href="linear-models.html#cb127-5" tabindex="-1"></a><span class="co"># samples$Station is the 14th element in metadat$station, which we can confirm</span></span>
+<span id="cb127-6"><a href="linear-models.html#cb127-6" tabindex="-1"></a><span class="co"># is true.</span></span>
+<span id="cb127-7"><a href="linear-models.html#cb127-7" tabindex="-1"></a>samples<span class="sc">$</span>Station[<span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;WK3&quot;</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="linear-models.html#cb129-1" tabindex="-1"></a>metadat<span class="sc">$</span>Station[<span class="dv">14</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;WK3&quot;</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="linear-models.html#cb131-1" tabindex="-1"></a><span class="co"># Now that we have this vector of indices, we can subset metadat by it to return</span></span>
+<span id="cb131-2"><a href="linear-models.html#cb131-2" tabindex="-1"></a><span class="co"># the elevation of the station associated with each fecal sample; because multiple</span></span>
+<span id="cb131-3"><a href="linear-models.html#cb131-3" tabindex="-1"></a><span class="co"># fecal samples are collected at the same stations, elevations will be repeated</span></span>
+<span id="cb131-4"><a href="linear-models.html#cb131-4" tabindex="-1"></a></span>
+<span id="cb131-5"><a href="linear-models.html#cb131-5" tabindex="-1"></a>elevations <span class="ot">&lt;-</span> metadat<span class="sc">$</span>Elev_M[station_indices]</span>
+<span id="cb131-6"><a href="linear-models.html#cb131-6" tabindex="-1"></a></span>
+<span id="cb131-7"><a href="linear-models.html#cb131-7" tabindex="-1"></a><span class="co"># Now we have a vector of elevations associated with each fecal sample</span></span>
+<span id="cb131-8"><a href="linear-models.html#cb131-8" tabindex="-1"></a></span>
+<span id="cb131-9"><a href="linear-models.html#cb131-9" tabindex="-1"></a><span class="co"># Let&#39;s also create a vector that pulls out just the pika stress data</span></span>
+<span id="cb131-10"><a href="linear-models.html#cb131-10" tabindex="-1"></a>stress <span class="ot">&lt;-</span> samples<span class="sc">$</span>Concentration_pg_g</span></code></pre></div>
+</div>
+<div id="plot-the-data" class="section level3 hasAnchor" number="6.6.4">
+<h3><span class="header-section-number">6.6.4</span> Plot the data<a href="linear-models.html#plot-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I think it’s generally a good idea to plot your data as a first step before running your analyses to make sure you understand what the structure of your data is. You may encounter (outdated) advice that you should never, ever look at your data before fitting your model. The reasons behind this advice are primarily that, in theory, you collected the data to answer a specific question and had a model in mind already when you gathered the data, so inspecting it first could lead you to change your model or bias you in some direction, or that you are not really testing a hypothesis anymore because you’ve done some data exploration, so it could lead to issues of irreproducibility or overfitting your model to the data. The reason I think this advice is not very good is because you are at a much greater risk of fitting a model that does not represent your data if you do not know what the structure of your data (i.e. if you thought your data were normally distributed, but are actually heavily skewed or seem to be drawn from a different distribution entirely). So, first we will generate a quick plot to check that everything matches our expectations of what measures of niche breadth and conspecific density should look like. Especially when working with other peoples’ data.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="linear-models.html#cb132-1" tabindex="-1"></a><span class="co"># Do the stress data seem plausibly normal?</span></span>
+<span id="cb132-2"><a href="linear-models.html#cb132-2" tabindex="-1"></a><span class="fu">hist</span>(stress, <span class="dv">20</span>) <span class="co"># eh, not really</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="linear-models.html#cb133-1" tabindex="-1"></a><span class="co"># What about elevations?</span></span>
+<span id="cb133-2"><a href="linear-models.html#cb133-2" tabindex="-1"></a><span class="fu">hist</span>(elevations) <span class="co"># Seems fairly bimodal, let&#39;s keep this in mind</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-2.png" width="672" /></p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="linear-models.html#cb134-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">pty=</span><span class="st">&quot;s&quot;</span>, <span class="at">las=</span><span class="st">&quot;1&quot;</span>)</span>
+<span id="cb134-2"><a href="linear-models.html#cb134-2" tabindex="-1"></a><span class="fu">plot</span>(stress <span class="sc">~</span> elevations, <span class="at">pch=</span><span class="dv">19</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-3.png" width="672" /></p>
+</div>
+<div id="fit-the-model" class="section level3 hasAnchor" number="6.6.5">
+<h3><span class="header-section-number">6.6.5</span> Fit the model<a href="linear-models.html#fit-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When fitting a linear model in R, the function we will use is <code>lm</code>. We pass to it the formula, which is our response variable over (<code>~</code>) our predictor. When running models, it is a good idea to save them to an object so you can then work with your model object. And that’s it, the model is fit!</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="linear-models.html#cb135-1" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb135-2"><a href="linear-models.html#cb135-2" tabindex="-1"></a>mod.stress <span class="ot">&lt;-</span> <span class="fu">lm</span>(stress <span class="sc">~</span> elevations)</span></code></pre></div>
+</div>
+<div id="evaluate-model-fit" class="section level3 hasAnchor" number="6.6.6">
+<h3><span class="header-section-number">6.6.6</span> Evaluate model fit<a href="linear-models.html#evaluate-model-fit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://i.pinimg.com/originals/62/75/bd/6275bd308a986cef65b7d85224ee43f8.png" /></p>
+<p>Now that we have fit our model, we need to evaluate if it is actually a good model for our data. There are default diagnostic plots in R for general linear models which can help us with this.</p>
+<p>First is the residuals vs fitted plot. Residuals, remember, are the errors or the difference between the observed values and the fitted (predicted) values (i.e. what falls along the line). The residuals vs fitted plot helps us check if our errors vary with magnitude, i.e. do we have larger errors for larger predicted values? If we see a trend here, that means our model may only be good over some ranges of values. In this example, maybe we are pretty good at estimating how stressed a low to moderately stressed pika is, but when they get really, really stressed our estimates get much farther off. If this relationship is relatively flat, that means we should not be concerned about the model estimates being biased at certain range of our observed data.</p>
+<p>Next is the Normal Q-Q plot. Remember that one of the assumptions of linear models is that the error are normally distributed. If the errors are normally distributed, they should fall along the line matching up with theoretical quantiles. This is just a visual check, so it is not really diagnostic, but can give us a good gut check on whether or nor the errors are normally distributed. There seems to be a fairly long tail in the lower end that deviates from the assumption, which we might have anticipated from our histogram of the response variable.</p>
+<p>The third default diagnostic plot is Scale-Location, which helps us understand if our errors have equal variance (another assumption of linear models: homoscedasticity). Again, a relatively flat line here passes the gut check that model assumptions are met.</p>
+<p>The final visual diagnostic check is residuals versus leverage. If data points have large leverage, you can interpret this as meaning that the estimates would change quite a bit if they were removed from the dataset before fitting the model. If particularly large, or particularly small, data points have high leverage, they would stand out in this plot and could indicate issues with the model fit or data.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="linear-models.html#cb136-1" tabindex="-1"></a><span class="fu">plot</span>(mod.stress)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-39-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-39-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-39-4.png" width="672" /></p>
+</div>
+<div id="interpret-model-output" class="section level3 hasAnchor" number="6.6.7">
+<h3><span class="header-section-number">6.6.7</span> Interpret model output<a href="linear-models.html#interpret-model-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Assuming we are happy with our model fit, we can move on to interpreting the output. We can use the <code>summary</code> function for this. In the output, the first thing we see is the call, which repeats back our model specification. There is also a summary of the residuals in terms of quantiles; because we did not standardize or scale our data, these are in the units of the response variable.</p>
+<p>Next, and possibly most important for our interpretation of the model, are the coefficients. The estimate is the point estimate. The estimate for the intercept here is 6173.68, meaning that at 0 elevation, that is the predicted pika stress. With every one unit increase in elevation, we would expect an estimated -0.2829 unit decrease in pika stress. The Std.Error column is the standard error of the estimate, i.e. how large are the error bars surrounding that estimate. The t-value is what we use to lookup the p-value (here, labeled as <code>Pr(&gt;|t|)</code>).</p>
+<p>Lastly, we have the R-squared which tells us how much of the variance in our response variable (stress) is explained by our predictor variable(s) (in this case, just elevation). The adjusted R-squared accounts for the number of variables included in the model.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="linear-models.html#cb137-1" tabindex="-1"></a><span class="fu">summary</span>(mod.stress)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = stress ~ elevations)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4412.0 -2496.0  -910.7  2002.8  8371.0 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 6173.6870  8868.8314   0.696    0.488
+## elevations    -0.2829     2.5143  -0.113    0.911
+## 
+## Residual standard error: 2989 on 107 degrees of freedom
+## Multiple R-squared:  0.0001183,  Adjusted R-squared:  -0.009226 
+## F-statistic: 0.01266 on 1 and 107 DF,  p-value: 0.9106</code></pre>
+<p>For this particular model, even though the model fit was acceptable, the R-squared was very, very low and the the effect of elevation was not significant (using an <span class="math inline">\(\alpha\)</span> of 0.05). How we would interpret this is that our model was fine, but we cannot reject the null hypothesis that there is no effect of elevation on stress. We might write this up something like “Our model explained little to no variance in pika stress response (R^2 = 0.0001) and we found no effect of elevation (mean = -0.28, SE = 2.51, p = 0.91) on pika stress.”</p>
+</div>
+<div id="make-predictions" class="section level3 hasAnchor" number="6.6.8">
+<h3><span class="header-section-number">6.6.8</span> Make predictions<a href="linear-models.html#make-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Normally, if we had a model that was this bad at explaining our response, we would probably stop there. But, because this is just an example dataset for class, we will go through the steps of making predictions based on our model and plotting the output with a 95% confidence interval around the estimates.</p>
+<p>First, let’s predict our line of best fit. We can use the <code>predict</code> function to predict estimated y-values across a range of x-values. We will choose something sensible in the range of data we input to the model.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="linear-models.html#cb139-1" tabindex="-1"></a><span class="fu">summary</span>(elevations)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    3278    3407    3584    3526    3602    3616</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="linear-models.html#cb141-1" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">3250</span>, <span class="dv">3750</span>, <span class="dv">1</span>)</span>
+<span id="cb141-2"><a href="linear-models.html#cb141-2" tabindex="-1"></a></span>
+<span id="cb141-3"><a href="linear-models.html#cb141-3" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.stress, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">elevations=</span>xvals))</span>
+<span id="cb141-4"><a href="linear-models.html#cb141-4" tabindex="-1"></a></span>
+<span id="cb141-5"><a href="linear-models.html#cb141-5" tabindex="-1"></a><span class="co"># Plot the raw data</span></span>
+<span id="cb141-6"><a href="linear-models.html#cb141-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">pty=</span><span class="st">&quot;s&quot;</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb141-7"><a href="linear-models.html#cb141-7" tabindex="-1"></a><span class="fu">plot</span>(stress <span class="sc">~</span> elevations, <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb141-8"><a href="linear-models.html#cb141-8" tabindex="-1"></a><span class="fu">lines</span>(p1 <span class="sc">~</span> xvals, <span class="at">type=</span><span class="st">&quot;l&quot;</span>) <span class="co"># add the predicted line of best fit</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>This is just the line of best fit, and we also want to know what the confidence interval is around that line across the range of values we are interested in. To do this, we can use the argument <code>se.fit=T</code> in the function call. We will also introduce the <code>polygon</code> function to add polygons onto our plots representing our confidence intervals.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="linear-models.html#cb142-1" tabindex="-1"></a>p.conf <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.stress, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">elevations=</span>xvals), </span>
+<span id="cb142-2"><a href="linear-models.html#cb142-2" tabindex="-1"></a>                  <span class="at">se.fit =</span> T)</span>
+<span id="cb142-3"><a href="linear-models.html#cb142-3" tabindex="-1"></a>ci.up <span class="ot">&lt;-</span> p.conf<span class="sc">$</span>fit <span class="sc">+</span> p.conf<span class="sc">$</span>se.fit<span class="sc">*</span><span class="fl">1.96</span></span>
+<span id="cb142-4"><a href="linear-models.html#cb142-4" tabindex="-1"></a>ci.low <span class="ot">&lt;-</span> p.conf<span class="sc">$</span>fit <span class="sc">-</span> p.conf<span class="sc">$</span>se.fit<span class="sc">*</span><span class="fl">1.96</span></span>
+<span id="cb142-5"><a href="linear-models.html#cb142-5" tabindex="-1"></a></span>
+<span id="cb142-6"><a href="linear-models.html#cb142-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">pty=</span><span class="st">&quot;s&quot;</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb142-7"><a href="linear-models.html#cb142-7" tabindex="-1"></a><span class="fu">plot</span>(stress <span class="sc">~</span> elevations, <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb142-8"><a href="linear-models.html#cb142-8" tabindex="-1"></a><span class="fu">lines</span>(p1 <span class="sc">~</span> xvals, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb142-9"><a href="linear-models.html#cb142-9" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)), </span>
+<span id="cb142-10"><a href="linear-models.html#cb142-10" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(ci.low, ci.up),</span>
+<span id="cb142-11"><a href="linear-models.html#cb142-11" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#a0056588&quot;</span>,</span>
+<span id="cb142-12"><a href="linear-models.html#cb142-12" tabindex="-1"></a>        <span class="at">border=</span><span class="st">&quot;#a0056588&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-law-of-large-numbers.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

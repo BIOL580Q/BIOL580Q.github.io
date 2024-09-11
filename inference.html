@@ -186,13 +186,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-mating-success-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> Lyrebird mating success and the sampling distribution</a></li>
 <li class="chapter" data-level="5.4" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#credible-intervals"><i class="fa fa-check"></i><b>5.4</b> Credible intervals</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html"><i class="fa fa-check"></i><b>6</b> Visualizing group differences</a>
+<li class="chapter" data-level="6" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>6</b> Linear models</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#boxplots"><i class="fa fa-check"></i><b>6.1</b> Boxplots</a></li>
-<li class="chapter" data-level="6.2" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#beehive-plots"><i class="fa fa-check"></i><b>6.2</b> Beehive plots</a></li>
-<li class="chapter" data-level="6.3" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#density-plots"><i class="fa fa-check"></i><b>6.3</b> Density plots</a></li>
-<li class="chapter" data-level="6.4" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#raincloud-plots"><i class="fa fa-check"></i><b>6.4</b> Raincloud plots</a></li>
-<li class="chapter" data-level="6.5" data-path="visualizing-group-differences.html"><a href="visualizing-group-differences.html#paired-slopes"><i class="fa fa-check"></i><b>6.5</b> Paired slopes</a></li>
+<li class="chapter" data-level="6.1" data-path="linear-models.html"><a href="linear-models.html#algebraic-linear-functions"><i class="fa fa-check"></i><b>6.1</b> Algebraic linear functions</a></li>
+<li class="chapter" data-level="6.2" data-path="linear-models.html"><a href="linear-models.html#model-components"><i class="fa fa-check"></i><b>6.2</b> Model components</a></li>
+<li class="chapter" data-level="6.3" data-path="linear-models.html"><a href="linear-models.html#ordinary-least-squares"><i class="fa fa-check"></i><b>6.3</b> Ordinary least squares</a></li>
+<li class="chapter" data-level="6.4" data-path="linear-models.html"><a href="linear-models.html#vectors-and-matrices"><i class="fa fa-check"></i><b>6.4</b> Vectors and matrices</a></li>
+<li class="chapter" data-level="6.5" data-path="linear-models.html"><a href="linear-models.html#assumptions-of-linear-models"><i class="fa fa-check"></i><b>6.5</b> Assumptions of linear models</a></li>
+<li class="chapter" data-level="6.6" data-path="linear-models.html"><a href="linear-models.html#example-american-pika"><i class="fa fa-check"></i><b>6.6</b> Example: American pika</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="linear-models.html"><a href="linear-models.html#specify-our-the-model"><i class="fa fa-check"></i><b>6.6.1</b> Specify our the model</a></li>
+<li class="chapter" data-level="6.6.2" data-path="linear-models.html"><a href="linear-models.html#read-in-the-data"><i class="fa fa-check"></i><b>6.6.2</b> Read in the data</a></li>
+<li class="chapter" data-level="6.6.3" data-path="linear-models.html"><a href="linear-models.html#data-cleaning-and-prepping-covariates"><i class="fa fa-check"></i><b>6.6.3</b> Data cleaning and prepping covariates</a></li>
+<li class="chapter" data-level="6.6.4" data-path="linear-models.html"><a href="linear-models.html#plot-the-data"><i class="fa fa-check"></i><b>6.6.4</b> Plot the data</a></li>
+<li class="chapter" data-level="6.6.5" data-path="linear-models.html"><a href="linear-models.html#fit-the-model"><i class="fa fa-check"></i><b>6.6.5</b> Fit the model</a></li>
+<li class="chapter" data-level="6.6.6" data-path="linear-models.html"><a href="linear-models.html#evaluate-model-fit"><i class="fa fa-check"></i><b>6.6.6</b> Evaluate model fit</a></li>
+<li class="chapter" data-level="6.6.7" data-path="linear-models.html"><a href="linear-models.html#interpret-model-output"><i class="fa fa-check"></i><b>6.6.7</b> Interpret model output</a></li>
+<li class="chapter" data-level="6.6.8" data-path="linear-models.html"><a href="linear-models.html#make-predictions"><i class="fa fa-check"></i><b>6.6.8</b> Make predictions</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -227,20 +238,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> Lyrebird song repertoire<a href="inference.html#lyrebird-song-repertoire" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VjE0Kdfos4Y?si=pyDb1r8xL98Dakq2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 </iframe>
-<p>Lyrebirds can learn new songs from their environment, making it possible for individuals who have been exposed to more songs to have a larger song repertoire. As a motivating example, let’s pretend we are trying to understand the song repertoire of a population of lyrebirds (in this case, in both the ecological and statistical sense!). For the sake of this example, we will say that we know that the true population mean number of songs that lyrebirds in the population know is 38.1. We will also fix the standard deviation to 4. These are our population parameters.</p>
+<p>Lyrebirds can learn new songs from their environment, making it possible for individuals who have been exposed to more songs to have a larger song repertoire. As a motivating example, let’s pretend we are trying to understand the song repertoire of a population of lyrebirds (in this case, in both the ecological and statistical sense!). For the sake of this example, we will say that we know that the true population mean diversity of songs that lyrebirds in the population know is 38.1. We will also fix the standard deviation to 4. These are our population parameters.</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="inference.html#cb89-1" tabindex="-1"></a><span class="co"># define our population parameters</span></span>
 <span id="cb89-2"><a href="inference.html#cb89-2" tabindex="-1"></a>true_mean <span class="ot">&lt;-</span> <span class="fl">38.1</span></span>
 <span id="cb89-3"><a href="inference.html#cb89-3" tabindex="-1"></a>true_sd <span class="ot">&lt;-</span> <span class="dv">4</span></span>
 <span id="cb89-4"><a href="inference.html#cb89-4" tabindex="-1"></a></span>
 <span id="cb89-5"><a href="inference.html#cb89-5" tabindex="-1"></a><span class="co"># Now, we go out into the forest and sample some individuals from the population</span></span>
-<span id="cb89-6"><a href="inference.html#cb89-6" tabindex="-1"></a><span class="co"># by recording the number of songs they know. Let&#39;s say we observed 10 individuals.</span></span>
+<span id="cb89-6"><a href="inference.html#cb89-6" tabindex="-1"></a><span class="co"># by recording the diversity of songs they know. Let&#39;s say we observed 10 individuals.</span></span>
 <span id="cb89-7"><a href="inference.html#cb89-7" tabindex="-1"></a></span>
 <span id="cb89-8"><a href="inference.html#cb89-8" tabindex="-1"></a>n.obs <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb89-9"><a href="inference.html#cb89-9" tabindex="-1"></a>song_rep <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs, true_mean, <span class="at">sd =</span> true_sd)</span>
 <span id="cb89-10"><a href="inference.html#cb89-10" tabindex="-1"></a></span>
 <span id="cb89-11"><a href="inference.html#cb89-11" tabindex="-1"></a><span class="co"># What is the mean estimated from this sample?</span></span>
 <span id="cb89-12"><a href="inference.html#cb89-12" tabindex="-1"></a><span class="fu">mean</span>(song_rep)</span></code></pre></div>
-<pre><code>## [1] 37.05111</code></pre>
+<pre><code>## [1] 37.95507</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="inference.html#cb91-1" tabindex="-1"></a><span class="co"># How close it is to the true population mean?</span></span>
 <span id="cb91-2"><a href="inference.html#cb91-2" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="fl">0.01</span>) <span class="co"># set up a reasonable range of x values for plotting purposes</span></span>
 <span id="cb91-3"><a href="inference.html#cb91-3" tabindex="-1"></a></span>
