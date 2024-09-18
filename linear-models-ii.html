@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Linear models II | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+  <meta name="description" content="7 Linear models II | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Linear models II | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Linear models II | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  
+  
+  
+
+<meta name="author" content="Eliza Grames" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="simple-linear-models.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.1</b> About this ‘book’</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#why-this-course"><i class="fa fa-check"></i><b>1.2</b> Why this course?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-comfortable-with-r-and-rstudio"><i class="fa fa-check"></i><b>1.3</b> Getting comfortable with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#some-terms-and-definitions"><i class="fa fa-check"></i><b>1.3.1</b> Some terms and definitions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#customizing-rstudio"><i class="fa fa-check"></i><b>1.3.2</b> Customizing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-approach-this-course"><i class="fa fa-check"></i><b>1.4</b> How to approach this course</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i><b>2.1</b> Bernoulli distribution</a></li>
+<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#binomial-distribution"><i class="fa fa-check"></i><b>2.2</b> Binomial distribution</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#guillemot-example"><i class="fa fa-check"></i><b>2.2.1</b> Guillemot example</a></li>
+<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#coral-example"><i class="fa fa-check"></i><b>2.2.2</b> Coral example</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#probability-mass"><i class="fa fa-check"></i><b>2.3</b> Probability mass</a></li>
+<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#the-normal-gaussian-distribution"><i class="fa fa-check"></i><b>2.4</b> The Normal (Gaussian) distribution</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#guillemot-weight"><i class="fa fa-check"></i><b>2.4.1</b> Guillemot weight</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#probability-density"><i class="fa fa-check"></i><b>2.5</b> Probability density</a></li>
+<li class="chapter" data-level="2.6" data-path="probability.html"><a href="probability.html#the-standard-normal-distribution"><i class="fa fa-check"></i><b>2.6</b> The Standard Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="probability.html"><a href="probability.html#functions-1"><i class="fa fa-check"></i><b>2.6.1</b> Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html"><i class="fa fa-check"></i><b>3</b> Null hypothesis significance testing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#a-brief-history-of-statistics-and-eugenics"><i class="fa fa-check"></i><b>3.1</b> A brief history of statistics and eugenics</a></li>
+<li class="chapter" data-level="3.2" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#t-distribution-and-t-tests"><i class="fa fa-check"></i><b>3.2</b> T-distribution and t-tests</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#butterfly-wing-size"><i class="fa fa-check"></i><b>3.2.1</b> Butterfly wing size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#anova"><i class="fa fa-check"></i><b>3.3</b> ANOVA</a></li>
+<li class="chapter" data-level="3.4" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#type-i-and-type-ii-error"><i class="fa fa-check"></i><b>3.4</b> Type I and Type II error</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4</b> Inference</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inference.html"><a href="inference.html#lyrebird-song-repertoire"><i class="fa fa-check"></i><b>4.1</b> Lyrebird song repertoire</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html"><i class="fa fa-check"></i><b>5</b> The law of large numbers</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#confidence-intervals"><i class="fa fa-check"></i><b>5.1</b> Confidence intervals</a></li>
+<li class="chapter" data-level="5.2" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-population-differences"><i class="fa fa-check"></i><b>5.2</b> Lyrebird population differences</a></li>
+<li class="chapter" data-level="5.3" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-mating-success-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> Lyrebird mating success and the sampling distribution</a></li>
+<li class="chapter" data-level="5.4" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#credible-intervals"><i class="fa fa-check"></i><b>5.4</b> Credible intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="simple-linear-models.html"><a href="simple-linear-models.html"><i class="fa fa-check"></i><b>6</b> Simple Linear models</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="simple-linear-models.html"><a href="simple-linear-models.html#algebraic-linear-functions"><i class="fa fa-check"></i><b>6.1</b> Algebraic linear functions</a></li>
+<li class="chapter" data-level="6.2" data-path="simple-linear-models.html"><a href="simple-linear-models.html#model-components"><i class="fa fa-check"></i><b>6.2</b> Model components</a></li>
+<li class="chapter" data-level="6.3" data-path="simple-linear-models.html"><a href="simple-linear-models.html#ordinary-least-squares"><i class="fa fa-check"></i><b>6.3</b> Ordinary least squares</a></li>
+<li class="chapter" data-level="6.4" data-path="simple-linear-models.html"><a href="simple-linear-models.html#assumptions-of-linear-models"><i class="fa fa-check"></i><b>6.4</b> Assumptions of linear models</a></li>
+<li class="chapter" data-level="6.5" data-path="simple-linear-models.html"><a href="simple-linear-models.html#example-american-pika"><i class="fa fa-check"></i><b>6.5</b> Example: American pika</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="simple-linear-models.html"><a href="simple-linear-models.html#specify-our-the-model"><i class="fa fa-check"></i><b>6.5.1</b> Specify our the model</a></li>
+<li class="chapter" data-level="6.5.2" data-path="simple-linear-models.html"><a href="simple-linear-models.html#read-in-the-data"><i class="fa fa-check"></i><b>6.5.2</b> Read in the data</a></li>
+<li class="chapter" data-level="6.5.3" data-path="simple-linear-models.html"><a href="simple-linear-models.html#data-cleaning-and-prepping-covariates"><i class="fa fa-check"></i><b>6.5.3</b> Data cleaning and prepping covariates</a></li>
+<li class="chapter" data-level="6.5.4" data-path="simple-linear-models.html"><a href="simple-linear-models.html#plot-the-data"><i class="fa fa-check"></i><b>6.5.4</b> Plot the data</a></li>
+<li class="chapter" data-level="6.5.5" data-path="simple-linear-models.html"><a href="simple-linear-models.html#fit-the-model"><i class="fa fa-check"></i><b>6.5.5</b> Fit the model</a></li>
+<li class="chapter" data-level="6.5.6" data-path="simple-linear-models.html"><a href="simple-linear-models.html#evaluate-model-fit"><i class="fa fa-check"></i><b>6.5.6</b> Evaluate model fit</a></li>
+<li class="chapter" data-level="6.5.7" data-path="simple-linear-models.html"><a href="simple-linear-models.html#interpret-model-output"><i class="fa fa-check"></i><b>6.5.7</b> Interpret model output</a></li>
+<li class="chapter" data-level="6.5.8" data-path="simple-linear-models.html"><a href="simple-linear-models.html#make-predictions"><i class="fa fa-check"></i><b>6.5.8</b> Make predictions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="linear-models-ii.html"><a href="linear-models-ii.html"><i class="fa fa-check"></i><b>7</b> Linear models II</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="linear-models-ii.html"><a href="linear-models-ii.html#multiple-predictors"><i class="fa fa-check"></i><b>7.1</b> Multiple predictors</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="linear-models-ii.html"><a href="linear-models-ii.html#the-design-matrix"><i class="fa fa-check"></i><b>7.1.1</b> The Design Matrix</a></li>
+<li class="chapter" data-level="7.1.2" data-path="linear-models-ii.html"><a href="linear-models-ii.html#additive-effects"><i class="fa fa-check"></i><b>7.1.2</b> Additive effects</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIOL 480/580Q: Ecological Modeling (Fall 2024)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="linear-models-ii" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Linear models II<a href="linear-models-ii.html#linear-models-ii" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The dataset we will be using in class today is the same as last week: weight of American Bison. When watching the video, pay careful attention specifically to the size (and approximate weight) of bison of different ages and different sexes, and anything that might affect an individual’s weight.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3bS6Dz4YVqQ?si=ZhsxZlEi_wgqRMuV&amp;start=4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<p>First, let’s fit the linear model from the homework assignment.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="linear-models-ii.html#cb143-1" tabindex="-1"></a><span class="co"># read in data</span></span>
+<span id="cb143-2"><a href="linear-models-ii.html#cb143-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;~/Downloads/CBH012.csv&quot;</span>)</span>
+<span id="cb143-3"><a href="linear-models-ii.html#cb143-3" tabindex="-1"></a></span>
+<span id="cb143-4"><a href="linear-models-ii.html#cb143-4" tabindex="-1"></a><span class="co"># inspect the data structure</span></span>
+<span id="cb143-5"><a href="linear-models-ii.html#cb143-5" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<pre><code>##   DataCode RecType RecYear RecMonth RecDay AnimalCode AnimalSex AnimalWeight
+## 1    CBH01       2    1994       11      8        813         F          890
+## 2    CBH01       2    1994       11      8        834         F         1074
+## 3    CBH01       2    1994       11      8      B-301         F         1060
+## 4    CBH01       2    1994       11      8      B-402         F          989
+## 5    CBH01       2    1994       11      8      B-403         F         1062
+## 6    CBH01       2    1994       11      8      B-502         F          978
+##   AnimalYOB
+## 1      1981
+## 2      1983
+## 3      1983
+## 4      1984
+## 5      1984
+## 6      1985</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="linear-models-ii.html#cb145-1" tabindex="-1"></a><span class="fu">str</span>(dat)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    8325 obs. of  9 variables:
+##  $ DataCode    : chr  &quot;CBH01&quot; &quot;CBH01&quot; &quot;CBH01&quot; &quot;CBH01&quot; ...
+##  $ RecType     : int  2 2 2 2 2 2 2 2 2 2 ...
+##  $ RecYear     : int  1994 1994 1994 1994 1994 1994 1994 1994 1994 1994 ...
+##  $ RecMonth    : int  11 11 11 11 11 11 11 11 11 11 ...
+##  $ RecDay      : int  8 8 8 8 8 8 8 8 8 8 ...
+##  $ AnimalCode  : chr  &quot;813&quot; &quot;834&quot; &quot;B-301&quot; &quot;B-402&quot; ...
+##  $ AnimalSex   : chr  &quot;F&quot; &quot;F&quot; &quot;F&quot; &quot;F&quot; ...
+##  $ AnimalWeight: chr  &quot;890&quot; &quot;1074&quot; &quot;1060&quot; &quot;989&quot; ...
+##  $ AnimalYOB   : int  1981 1983 1983 1984 1984 1985 1985 1985 1986 1986 ...</code></pre>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="linear-models-ii.html#cb147-1" tabindex="-1"></a><span class="co"># convert weight to be numeric</span></span>
+<span id="cb147-2"><a href="linear-models-ii.html#cb147-2" tabindex="-1"></a>dat<span class="sc">$</span>AnimalWeight <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>AnimalWeight)</span></code></pre></div>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="linear-models-ii.html#cb149-1" tabindex="-1"></a><span class="co"># create a new variable called age</span></span>
+<span id="cb149-2"><a href="linear-models-ii.html#cb149-2" tabindex="-1"></a><span class="co"># age is the year the animal&#39;s weight was recorded, minus their year of birth</span></span>
+<span id="cb149-3"><a href="linear-models-ii.html#cb149-3" tabindex="-1"></a>dat<span class="sc">$</span>age <span class="ot">&lt;-</span> dat<span class="sc">$</span>RecYear <span class="sc">-</span> dat<span class="sc">$</span>AnimalYOB <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb149-4"><a href="linear-models-ii.html#cb149-4" tabindex="-1"></a></span>
+<span id="cb149-5"><a href="linear-models-ii.html#cb149-5" tabindex="-1"></a><span class="co"># subset your data.frame to remove rows with missing weight or age values</span></span>
+<span id="cb149-6"><a href="linear-models-ii.html#cb149-6" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat[<span class="sc">!</span><span class="fu">is.na</span>(dat<span class="sc">$</span>AnimalWeight),]</span>
+<span id="cb149-7"><a href="linear-models-ii.html#cb149-7" tabindex="-1"></a></span>
+<span id="cb149-8"><a href="linear-models-ii.html#cb149-8" tabindex="-1"></a><span class="co"># subset your data.frame to only include male bison</span></span>
+<span id="cb149-9"><a href="linear-models-ii.html#cb149-9" tabindex="-1"></a>m.dat <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>AnimalSex<span class="sc">==</span><span class="st">&quot;M&quot;</span>,]</span>
+<span id="cb149-10"><a href="linear-models-ii.html#cb149-10" tabindex="-1"></a></span>
+<span id="cb149-11"><a href="linear-models-ii.html#cb149-11" tabindex="-1"></a><span class="co"># Plot the weight over age to see what we are dealing with</span></span>
+<span id="cb149-12"><a href="linear-models-ii.html#cb149-12" tabindex="-1"></a><span class="fu">plot</span>(m.dat<span class="sc">$</span>AnimalWeight <span class="sc">~</span> m.dat<span class="sc">$</span>age, <span class="at">pch=</span><span class="dv">20</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="linear-models-ii.html#cb150-1" tabindex="-1"></a><span class="co"># fit a linear model of animal weight in response to age</span></span>
+<span id="cb150-2"><a href="linear-models-ii.html#cb150-2" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(AnimalWeight <span class="sc">~</span> age, <span class="at">data=</span>m.dat)</span>
+<span id="cb150-3"><a href="linear-models-ii.html#cb150-3" tabindex="-1"></a></span>
+<span id="cb150-4"><a href="linear-models-ii.html#cb150-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb150-5"><a href="linear-models-ii.html#cb150-5" tabindex="-1"></a><span class="fu">plot</span>(mod1)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-2.png" width="672" /></p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="linear-models-ii.html#cb151-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb151-2"><a href="linear-models-ii.html#cb151-2" tabindex="-1"></a></span>
+<span id="cb151-3"><a href="linear-models-ii.html#cb151-3" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> (<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">22</span>, <span class="at">by=</span><span class="fl">0.1</span>))</span>
+<span id="cb151-4"><a href="linear-models-ii.html#cb151-4" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">age=</span>xvals), <span class="at">se.fit=</span>T)</span>
+<span id="cb151-5"><a href="linear-models-ii.html#cb151-5" tabindex="-1"></a></span>
+<span id="cb151-6"><a href="linear-models-ii.html#cb151-6" tabindex="-1"></a><span class="co"># Plot the raw data points</span></span>
+<span id="cb151-7"><a href="linear-models-ii.html#cb151-7" tabindex="-1"></a><span class="fu">par</span>(<span class="at">pty=</span><span class="st">&quot;s&quot;</span>)</span>
+<span id="cb151-8"><a href="linear-models-ii.html#cb151-8" tabindex="-1"></a><span class="fu">plot</span>(m.dat<span class="sc">$</span>AnimalWeight <span class="sc">~</span> m.dat<span class="sc">$</span>age,</span>
+<span id="cb151-9"><a href="linear-models-ii.html#cb151-9" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="fl">0.5</span>, <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb151-10"><a href="linear-models-ii.html#cb151-10" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;#00000088&quot;</span>,</span>
+<span id="cb151-11"><a href="linear-models-ii.html#cb151-11" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Weight&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Age&quot;</span>,</span>
+<span id="cb151-12"><a href="linear-models-ii.html#cb151-12" tabindex="-1"></a>     <span class="at">axes=</span>F)</span>
+<span id="cb151-13"><a href="linear-models-ii.html#cb151-13" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>); <span class="fu">axis</span>(<span class="dv">2</span>)</span>
+<span id="cb151-14"><a href="linear-models-ii.html#cb151-14" tabindex="-1"></a></span>
+<span id="cb151-15"><a href="linear-models-ii.html#cb151-15" tabindex="-1"></a><span class="co"># Add the line of best fit from the model</span></span>
+<span id="cb151-16"><a href="linear-models-ii.html#cb151-16" tabindex="-1"></a><span class="fu">lines</span>(p1<span class="sc">$</span>fit <span class="sc">~</span> xvals, <span class="at">add=</span>T)</span></code></pre></div>
+<pre><code>## Warning in plot.xy(xy.coords(x, y), type = type, ...): &quot;add&quot; is not a graphical
+## parameter</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="linear-models-ii.html#cb153-1" tabindex="-1"></a><span class="co">#abline(mod1)</span></span>
+<span id="cb153-2"><a href="linear-models-ii.html#cb153-2" tabindex="-1"></a></span>
+<span id="cb153-3"><a href="linear-models-ii.html#cb153-3" tabindex="-1"></a><span class="co"># Add a polygon showing the 95% confidence interval around the line</span></span>
+<span id="cb153-4"><a href="linear-models-ii.html#cb153-4" tabindex="-1"></a>ci.up <span class="ot">&lt;-</span> p1<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p1<span class="sc">$</span>se.fit</span>
+<span id="cb153-5"><a href="linear-models-ii.html#cb153-5" tabindex="-1"></a>ci.low <span class="ot">&lt;-</span> p1<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p1<span class="sc">$</span>se.fit</span>
+<span id="cb153-6"><a href="linear-models-ii.html#cb153-6" tabindex="-1"></a></span>
+<span id="cb153-7"><a href="linear-models-ii.html#cb153-7" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb153-8"><a href="linear-models-ii.html#cb153-8" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(ci.up, <span class="fu">rev</span>(ci.low)),</span>
+<span id="cb153-9"><a href="linear-models-ii.html#cb153-9" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#ff992188&quot;</span>,</span>
+<span id="cb153-10"><a href="linear-models-ii.html#cb153-10" tabindex="-1"></a>        <span class="at">border=</span>F)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-3.png" width="672" /></p>
+<div id="multiple-predictors" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Multiple predictors<a href="linear-models-ii.html#multiple-predictors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For last week’s assignment, you fit a simple linear model with a single predictor (age) and a single response variable (male bison weight). i.e. we fit this model:</p>
+<p><span class="math display">\[weight \sim Norm(\mu_i, \sigma) \\
+\mu_i = \beta_0 + \beta_{age} * age_i\]</span></p>
+<p>But, in ecology, we often want to estimate the effects of multiple predictors at the same time. For example, what if we wanted to model the effects of age and sex on weight?
+<span class="math display">\[weight \sim Norm(\mu_i, \sigma) \\
+\mu_i = \beta_0 + \beta_{age} * age_i + \beta_{sex}*sex_i\]</span></p>
+<p>Because, by definition, the effects in our model have to be additive, this is actually pretty straightforward. We add another regression coefficient (<span class="math inline">\(\beta\)</span>) to go along with our extra covariate (another word for predictor that you will encounter in the literature). When fitting the model, our coefficient estimates will now be the best combination of values for all three coefficients (i.e. the intercept, <span class="math inline">\(\beta_0\)</span>, the effect of age, <span class="math inline">\(\beta_{age}\)</span>, and the effect of sex <span class="math inline">\(\beta_{sex}\)</span>) that minimizes the sum of the squared residuals.</p>
+<div id="the-design-matrix" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> The Design Matrix<a href="linear-models-ii.html#the-design-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To understand why we get a combination of three coefficients that collectively minimize the sum of the squared residuals, rather than estimating the effect of each predictor separately, it is important to know just a <em>little</em> bit of matrix algebra.</p>
+<p>The three coefficient estimates (or ‘betas’ for short) are a <strong>vector</strong>, which has only one dimension and all elements are of the same type (typically, numeric). You could think of it like if you only took one column from a spreadsheet. One row from a spreadsheet is also a vector in the linear algebra sense, but not in the <code>R</code> sense unless <em>all</em> the elements are the same class (i.e. if they are all numbers, but not a mix of numbers and letters).</p>
+<p>A matrix, while still having elements of the same type (and still numbers), has two dimensions: the number of rows, and the number of columns. In ecological modeling, people typically either describe a matrix as being <span class="math inline">\(n \times p\)</span>, where <span class="math inline">\(n\)</span> is the number of rows or number of observations and <span class="math inline">\(p\)</span> is the number of predictors, or as being <span class="math inline">\(i \times j\)</span> where <span class="math inline">\(i\)</span> is the number of observations and <span class="math inline">\(j\)</span> is the number of predictors. I tend to use <span class="math inline">\(i \times j\)</span> because it matches how I code indices (i.e. <code>x[i]</code>) and because very rarely are biological concepts denoted as <span class="math inline">\(i\)</span> or <span class="math inline">\(j\)</span> but <span class="math inline">\(n\)</span> often is used to describe sample sizes and <span class="math inline">\(p\)</span> is often used for probability, so I find the code is much more readable with <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>.</p>
+<div id="adding-matrices" class="section level4 hasAnchor" number="7.1.1.1">
+<h4><span class="header-section-number">7.1.1.1</span> Adding matrices<a href="linear-models-ii.html#adding-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Let’s say we have the following 2x3 matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. To add the two matrices together, we add the matching elements from each. We can only add the matrices together if they have the same dimensionality, i.e. we could not add a 2x3 matrix to a 2x5 matrix because there will not be matching elements.</p>
+<p><span class="math display">\[A = \begin{bmatrix}
+2 &amp; 4 &amp; 3 \\
+1&amp;6 &amp; 8
+\end{bmatrix} \\
+\\
+B= \begin{bmatrix}
+1 &amp; 2&amp;3\\
+5&amp;8&amp;1
+\end{bmatrix}
+\\ \\
+A+B = \begin{bmatrix}
+(2+1) &amp; (4+2) &amp; (3+3)\\
+(1+5) &amp; (6+8) &amp; (8+1)
+\end{bmatrix}
+\\
+A+B = \begin{bmatrix}
+3 &amp; 6 &amp; 6 \\
+6 &amp; 14 &amp; 9
+\end{bmatrix}\]</span></p>
+<p>We can also do matrix calculations in R.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="linear-models-ii.html#cb154-1" tabindex="-1"></a><span class="co"># create matrix A</span></span>
+<span id="cb154-2"><a href="linear-models-ii.html#cb154-2" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">8</span>), </span>
+<span id="cb154-3"><a href="linear-models-ii.html#cb154-3" tabindex="-1"></a>            <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">3</span>,</span>
+<span id="cb154-4"><a href="linear-models-ii.html#cb154-4" tabindex="-1"></a>            <span class="at">byrow=</span>T <span class="co"># super important! default is to fill by column</span></span>
+<span id="cb154-5"><a href="linear-models-ii.html#cb154-5" tabindex="-1"></a>            )</span>
+<span id="cb154-6"><a href="linear-models-ii.html#cb154-6" tabindex="-1"></a></span>
+<span id="cb154-7"><a href="linear-models-ii.html#cb154-7" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">1</span>),</span>
+<span id="cb154-8"><a href="linear-models-ii.html#cb154-8" tabindex="-1"></a>            <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">3</span>, </span>
+<span id="cb154-9"><a href="linear-models-ii.html#cb154-9" tabindex="-1"></a>            <span class="at">byrow=</span>T)</span>
+<span id="cb154-10"><a href="linear-models-ii.html#cb154-10" tabindex="-1"></a></span>
+<span id="cb154-11"><a href="linear-models-ii.html#cb154-11" tabindex="-1"></a>A<span class="sc">+</span>B</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    3    6    6
+## [2,]    6   14    9</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="linear-models-ii.html#cb156-1" tabindex="-1"></a><span class="co"># what if we mad matrices with different dimensions?</span></span>
+<span id="cb156-2"><a href="linear-models-ii.html#cb156-2" tabindex="-1"></a></span>
+<span id="cb156-3"><a href="linear-models-ii.html#cb156-3" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb156-4"><a href="linear-models-ii.html#cb156-4" tabindex="-1"></a>            <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="co"># note we now have a 3x2 matrix!</span></span>
+<span id="cb156-5"><a href="linear-models-ii.html#cb156-5" tabindex="-1"></a>            <span class="at">byrow=</span>T</span>
+<span id="cb156-6"><a href="linear-models-ii.html#cb156-6" tabindex="-1"></a>            )</span>
+<span id="cb156-7"><a href="linear-models-ii.html#cb156-7" tabindex="-1"></a><span class="fu">print</span>(C)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    0
+## [2,]    1    1
+## [3,]    0    1</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="linear-models-ii.html#cb158-1" tabindex="-1"></a><span class="co">#A+C # this will result in an error because they have different dimensions</span></span></code></pre></div>
+</div>
+<div id="multiplying-vectors-and-matrices" class="section level4 hasAnchor" number="7.1.1.2">
+<h4><span class="header-section-number">7.1.1.2</span> Multiplying vectors and matrices<a href="linear-models-ii.html#multiplying-vectors-and-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>When multiplying matrices and vectors in <code>R</code>, we use the <code>%*%</code> operator, rather than <code>*</code>. When multiplying a vector by a matrix, the vector needs to have the same length as the number of columns in the matrix. One thing that is perhaps counterintuitive here is that vectors are oriented like columns so the length is vertical. But, when viewed in R, they will look horizontal.</p>
+$$=
+<span class="math display">\[\begin{bmatrix}
+0 \\ 1 \\ 0.5 \\
+\end{bmatrix}\]</span>
+\
+A =
+<span class="math display">\[\begin{bmatrix}
+2 &amp; 4 &amp; 3 \\
+1&amp;6 &amp; 8
+\end{bmatrix}\]</span>
+<p>\</p>
+A =
+<span class="math display">\[\begin{bmatrix}
+(0\times2) + (1\times4) + (0.5\times3)\\
+(0\times1) + (1\times6) + (0.5\times8)
+\end{bmatrix}\]</span>
+=
+<span class="math display">\[\begin{bmatrix}
+0 + 4 + 1.5\\
+0 + 6 + 4
+\end{bmatrix}\]</span>
+=
+<span class="math display">\[\begin{bmatrix}
+5.5 \\ 10
+\end{bmatrix}\]</span>
+<p>$$</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="linear-models-ii.html#cb159-1" tabindex="-1"></a>betas <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.5</span>), <span class="at">ncol=</span><span class="dv">1</span>)</span>
+<span id="cb159-2"><a href="linear-models-ii.html#cb159-2" tabindex="-1"></a>A<span class="sc">%*%</span>betas</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]  5.5
+## [2,] 10.0</code></pre>
+<p>This is where our Design Matrix comes in, where the number of columns needs to be equal to our number of betas, and the number of rows needs to be equal to the number of observations. Don’t forget to add a column of all 1s if you have an intercept! i.e. so that the intercept <span class="math inline">\(\beta_0\)</span> gets multiplied by <span class="math inline">\(1\)</span> and added in each time.</p>
+<p><span class="math display">\[ \begin{bmatrix}
+\beta_0 \\ \beta_1 \\ \beta_2 \\ \vdots \\ \beta_j
+\end{bmatrix} *
+\begin{bmatrix}
+1 &amp; x_{1,1} &amp; x_{1,2} &amp; \dots &amp; x_{1,j} \\
+1 &amp; x_{2,1} &amp; x_{2,2} &amp; \dots &amp; x_{2,j} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+1 &amp; x_{i,1} &amp; x_{i,2} &amp; \dots &amp; x_{i,j} \\\end{bmatrix}
+=
+\begin{bmatrix}
+\mu_1 \\ \mu_2 \\ \vdots \\ \mu_i
+\end{bmatrix}\]</span></p>
+<p><span class="math display">\[ \mu_i = \beta_0*1 + \beta_1*x_{i,1} + \beta_2*x_{i,2} \dots + \beta_j*x_{i,j}\]</span></p>
+</div>
+</div>
+<div id="additive-effects" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Additive effects<a href="linear-models-ii.html#additive-effects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Going back to our bison example, you can probably guess how we add another predictor to our model, because it looks just like our representation of the model with equations.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="linear-models-ii.html#cb161-1" tabindex="-1"></a><span class="co"># Note: we are switching back to the full dataset now, not the male subset</span></span>
+<span id="cb161-2"><a href="linear-models-ii.html#cb161-2" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(AnimalWeight <span class="sc">~</span> age <span class="sc">+</span> AnimalSex, <span class="at">data=</span>dat)</span></code></pre></div>
+<p>Before we get to model fit, we will go over interpreting coefficient estimates for categorical variables. In our dataset, sex is coded as M or F. Behind the scenes, R has automatically dummy-coded these for you. Dummy-coding is when you represent a categorical variable as 0 or 1, so there is a new temporary ‘column’ (not really, but thinking of it like that will be helpful) in our dataset called ‘M’ and it takes the value of 1 when the sex column is M, and 0 when it does not. There is also a new temporary ‘column’ called F that scales the value of 1 when sex is F, and 0 when it is not.</p>
+<p>When dealing with categorical variables, there always has to be a comparison level that other levels are compared to because it is incorporated into the intercept. The default in R is the first value alphabetically. Let’s look at the summary of the model to help with understanding this.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="linear-models-ii.html#cb162-1" tabindex="-1"></a><span class="fu">summary</span>(mod2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = AnimalWeight ~ age + AnimalSex, data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -932.26 -175.33   -8.67  159.25  986.16 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 401.0841     5.2817   75.94   &lt;2e-16 ***
+## age          63.4171     0.7234   87.67   &lt;2e-16 ***
+## AnimalSexM  155.4143     5.9896   25.95   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 244 on 8070 degrees of freedom
+##   (251 observations deleted due to missingness)
+## Multiple R-squared:  0.4887, Adjusted R-squared:  0.4885 
+## F-statistic:  3856 on 2 and 8070 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>We have a coefficient estimate for the intercept, for age, and for sex = M. There is no coefficient estimate for sex = F. That’s because the intercept now represents the predicted weight for a <em>female</em> bison at age 0. The coefficient estimate for sex = M of 155 represents the difference in the intercept for a male bison <em>still at age 0</em>, i.e. it shifts the entire line up the y-axis by 155.</p>
+<blockquote>
+<p>As a side note that does not apply to this model but will come up in the future: if you have multiple categorical variables, the intercept is the comparison level for all of them. i.e. if we also had bison color morphs that were aqua and chartreuse, the intercept would be the predicted weight for an aqua-colored female bison at age 0 (because aqua alphabetically comes first). You can change what the comparison level is by converting categorical variables into factors with <code>factor</code> and using <code>relevel</code> to specify the order.</p>
+</blockquote>
+<p>Let’s plot the predictions from the model to help with understanding the different coefficient estimates by visualizing the model (we will come back to model fit later!). Now, one obnoxious thing about plotting models fit with dummy variables, is that to predict new values, we need to be able to pass in a 0 or 1.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="linear-models-ii.html#cb164-1" tabindex="-1"></a>x.vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2100</span>, <span class="dv">1</span>)</span>
+<span id="cb164-2"><a href="linear-models-ii.html#cb164-2" tabindex="-1"></a>f.wts <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod2, <span class="at">newdata =</span><span class="fu">data.frame</span>(<span class="at">age=</span>x.vals,</span>
+<span id="cb164-3"><a href="linear-models-ii.html#cb164-3" tabindex="-1"></a>                                  <span class="at">AnimalSex=</span><span class="st">&quot;F&quot;</span></span>
+<span id="cb164-4"><a href="linear-models-ii.html#cb164-4" tabindex="-1"></a>                                  ))</span></code></pre></div>
+<p>So, let’s actually refit our model but change our input data to make predictions easier.</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="linear-models-ii.html#cb165-1" tabindex="-1"></a>dat<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>AnimalSex<span class="sc">==</span><span class="st">&quot;M&quot;</span>)</span>
+<span id="cb165-2"><a href="linear-models-ii.html#cb165-2" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="linear-models-ii.html#cb165-3" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(AnimalWeight <span class="sc">~</span> age <span class="sc">+</span> sex, <span class="at">data=</span>dat)</span>
+<span id="cb165-4"><a href="linear-models-ii.html#cb165-4" tabindex="-1"></a></span>
+<span id="cb165-5"><a href="linear-models-ii.html#cb165-5" tabindex="-1"></a>x.vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2100</span>, <span class="dv">1</span>)</span>
+<span id="cb165-6"><a href="linear-models-ii.html#cb165-6" tabindex="-1"></a></span>
+<span id="cb165-7"><a href="linear-models-ii.html#cb165-7" tabindex="-1"></a>f.wts <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod3, <span class="at">newdata =</span><span class="fu">data.frame</span>(<span class="at">age=</span>x.vals,</span>
+<span id="cb165-8"><a href="linear-models-ii.html#cb165-8" tabindex="-1"></a>                                  <span class="at">sex=</span><span class="dv">0</span></span>
+<span id="cb165-9"><a href="linear-models-ii.html#cb165-9" tabindex="-1"></a>                                  ))</span>
+<span id="cb165-10"><a href="linear-models-ii.html#cb165-10" tabindex="-1"></a>m.wts <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod3, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">age=</span>x.vals,</span>
+<span id="cb165-11"><a href="linear-models-ii.html#cb165-11" tabindex="-1"></a>                                          <span class="at">sex=</span><span class="dv">1</span>))</span>
+<span id="cb165-12"><a href="linear-models-ii.html#cb165-12" tabindex="-1"></a></span>
+<span id="cb165-13"><a href="linear-models-ii.html#cb165-13" tabindex="-1"></a><span class="co"># plot our raw data</span></span>
+<span id="cb165-14"><a href="linear-models-ii.html#cb165-14" tabindex="-1"></a></span>
+<span id="cb165-15"><a href="linear-models-ii.html#cb165-15" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>AnimalWeight <span class="sc">~</span> dat<span class="sc">$</span>age, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;blue&quot;</span>)[<span class="fu">factor</span>(dat<span class="sc">$</span>sex)])</span>
+<span id="cb165-16"><a href="linear-models-ii.html#cb165-16" tabindex="-1"></a><span class="fu">lines</span>(f.wts <span class="sc">~</span> x.vals, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>) </span>
+<span id="cb165-17"><a href="linear-models-ii.html#cb165-17" tabindex="-1"></a><span class="fu">lines</span>(m.wts <span class="sc">~</span> x.vals, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>) <span class="co"># note the difference in intercept</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>Okay, so I think we can all agree something seems <strong>very</strong> off about our model. We don’t even need diagnostic plots to know this is not a good representation of our data. In reality, animals do not continue to grow at at the same rate with age (though many fish do have indeterminate growth), and weight will eventually plateau.</p>
+<div class="float">
+<img src="https://www.mercurynews.com/wp-content/uploads/2022/11/hypatia-h_43d6427768a315f7d9230a00c8cdd3d3-h_7138ac0ed4cc1e068d401b99c60ec1bb.jpg?w=1024" alt="Even fish with indeterminate growth do not grow linearly with age" />
+<div class="figcaption">Even fish with indeterminate growth do not grow linearly with age</div>
+</div>
+<p>Remember that a linear model does not have to be a straight line! Any linear function of x will do. In this case, we want something that will reach a horizontal asymptote. <span class="math inline">\(x^{1/2}\)</span> should do the trick here. If you’re not sure what linear form of x to use, I recommend setting up a range of x-values from -4 to 4, increasing in increments of 0.1 and then plotting y as different functions of x.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="linear-models-ii.html#cb166-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb166-2"><a href="linear-models-ii.html#cb166-2" tabindex="-1"></a></span>
+<span id="cb166-3"><a href="linear-models-ii.html#cb166-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>}</span>
+<span id="cb166-4"><a href="linear-models-ii.html#cb166-4" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="linear-models-ii.html#cb167-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
+<span id="cb167-2"><a href="linear-models-ii.html#cb167-2" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-2.png" width="672" /></p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="linear-models-ii.html#cb168-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span>x<span class="sc">^</span>{<span class="dv">2</span>}</span>
+<span id="cb168-2"><a href="linear-models-ii.html#cb168-2" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-3.png" width="672" /></p>
+<p>To model weight as a function of the square root of age and sex, we will first create a new variable consisting of the square root of age, and then refit the model with this as a covariate.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="linear-models-ii.html#cb169-1" tabindex="-1"></a>dat<span class="sc">$</span>age.sq <span class="ot">&lt;-</span> dat<span class="sc">$</span>age<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>}</span>
+<span id="cb169-2"><a href="linear-models-ii.html#cb169-2" tabindex="-1"></a></span>
+<span id="cb169-3"><a href="linear-models-ii.html#cb169-3" tabindex="-1"></a>mod4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(AnimalWeight <span class="sc">~</span> age.sq <span class="sc">+</span> sex, <span class="at">data=</span>dat)</span>
+<span id="cb169-4"><a href="linear-models-ii.html#cb169-4" tabindex="-1"></a></span>
+<span id="cb169-5"><a href="linear-models-ii.html#cb169-5" tabindex="-1"></a></span>
+<span id="cb169-6"><a href="linear-models-ii.html#cb169-6" tabindex="-1"></a><span class="fu">summary</span>(mod4)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = AnimalWeight ~ age.sq + sex, data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -747.60 -135.64  -11.15  123.36  888.83 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   19.769      6.663   2.967  0.00302 ** 
+## age.sq       339.379      2.788 121.712  &lt; 2e-16 ***
+## sex          181.493      4.965  36.556  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 202.5 on 8070 degrees of freedom
+##   (251 observations deleted due to missingness)
+## Multiple R-squared:  0.6479, Adjusted R-squared:  0.6478 
+## F-statistic:  7426 on 2 and 8070 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="linear-models-ii.html#cb171-1" tabindex="-1"></a>x.vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">20</span>, <span class="fl">0.1</span>)</span>
+<span id="cb171-2"><a href="linear-models-ii.html#cb171-2" tabindex="-1"></a></span>
+<span id="cb171-3"><a href="linear-models-ii.html#cb171-3" tabindex="-1"></a><span class="co"># Note that these have to be converted similarly to be interpretable!</span></span>
+<span id="cb171-4"><a href="linear-models-ii.html#cb171-4" tabindex="-1"></a></span>
+<span id="cb171-5"><a href="linear-models-ii.html#cb171-5" tabindex="-1"></a>f.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod4, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">age.sq=</span>x.vals<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>},</span>
+<span id="cb171-6"><a href="linear-models-ii.html#cb171-6" tabindex="-1"></a>                                           <span class="at">sex=</span><span class="dv">0</span>))</span>
+<span id="cb171-7"><a href="linear-models-ii.html#cb171-7" tabindex="-1"></a></span>
+<span id="cb171-8"><a href="linear-models-ii.html#cb171-8" tabindex="-1"></a>m.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod4, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">age.sq=</span>x.vals<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>},</span>
+<span id="cb171-9"><a href="linear-models-ii.html#cb171-9" tabindex="-1"></a>                                           <span class="at">sex=</span><span class="dv">1</span>))</span>
+<span id="cb171-10"><a href="linear-models-ii.html#cb171-10" tabindex="-1"></a></span>
+<span id="cb171-11"><a href="linear-models-ii.html#cb171-11" tabindex="-1"></a></span>
+<span id="cb171-12"><a href="linear-models-ii.html#cb171-12" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>AnimalWeight <span class="sc">~</span> dat<span class="sc">$</span>age, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;blue&quot;</span>)[<span class="fu">factor</span>(dat<span class="sc">$</span>sex)])</span>
+<span id="cb171-13"><a href="linear-models-ii.html#cb171-13" tabindex="-1"></a><span class="fu">lines</span>(f.pred <span class="sc">~</span> x.vals, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb171-14"><a href="linear-models-ii.html#cb171-14" tabindex="-1"></a><span class="fu">lines</span>(m.pred <span class="sc">~</span> x.vals, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>This is closer, but we still aren’t capturing that there is a rapid increase at the beginning followed by a tapering off and that the slopes are really different for male and female bison. We can model this with an <strong>interaction</strong> between our categorical predictor (sex) and our continuous predictor (the square root of age).</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="linear-models-ii.html#cb172-1" tabindex="-1"></a>mod.int <span class="ot">&lt;-</span> <span class="fu">lm</span>(AnimalWeight <span class="sc">~</span> age.sq <span class="sc">+</span> sex <span class="sc">+</span> age.sq<span class="sc">*</span>sex, <span class="at">data=</span>dat)</span>
+<span id="cb172-2"><a href="linear-models-ii.html#cb172-2" tabindex="-1"></a><span class="fu">summary</span>(mod.int)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = AnimalWeight ~ age.sq + sex + age.sq * sex, data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -759.29  -92.79    5.50   93.48  482.48 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  194.120      4.738   40.97   &lt;2e-16 ***
+## age.sq       258.670      2.011  128.60   &lt;2e-16 ***
+## sex         -665.221      8.965  -74.20   &lt;2e-16 ***
+## age.sq:sex   516.795      5.090  101.53   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 134.2 on 8069 degrees of freedom
+##   (251 observations deleted due to missingness)
+## Multiple R-squared:  0.8454, Adjusted R-squared:  0.8454 
+## F-statistic: 1.471e+04 on 3 and 8069 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="linear-models-ii.html#cb174-1" tabindex="-1"></a>x.vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="fl">0.1</span>)</span>
+<span id="cb174-2"><a href="linear-models-ii.html#cb174-2" tabindex="-1"></a></span>
+<span id="cb174-3"><a href="linear-models-ii.html#cb174-3" tabindex="-1"></a>pred.f2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">age.sq=</span>x.vals<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>},</span>
+<span id="cb174-4"><a href="linear-models-ii.html#cb174-4" tabindex="-1"></a>                                               <span class="at">sex=</span><span class="dv">0</span>))</span>
+<span id="cb174-5"><a href="linear-models-ii.html#cb174-5" tabindex="-1"></a></span>
+<span id="cb174-6"><a href="linear-models-ii.html#cb174-6" tabindex="-1"></a>pred.m2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">age.sq=</span>x.vals<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>},</span>
+<span id="cb174-7"><a href="linear-models-ii.html#cb174-7" tabindex="-1"></a>                                               <span class="at">sex=</span><span class="dv">1</span>))</span>
+<span id="cb174-8"><a href="linear-models-ii.html#cb174-8" tabindex="-1"></a></span>
+<span id="cb174-9"><a href="linear-models-ii.html#cb174-9" tabindex="-1"></a></span>
+<span id="cb174-10"><a href="linear-models-ii.html#cb174-10" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>AnimalWeight <span class="sc">~</span> dat<span class="sc">$</span>age, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;blue&quot;</span>)[<span class="fu">factor</span>(dat<span class="sc">$</span>sex)])</span>
+<span id="cb174-11"><a href="linear-models-ii.html#cb174-11" tabindex="-1"></a><span class="fu">lines</span>(pred.f2 <span class="sc">~</span> x.vals, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb174-12"><a href="linear-models-ii.html#cb174-12" tabindex="-1"></a><span class="fu">lines</span>(pred.m2 <span class="sc">~</span> x.vals, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="simple-linear-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

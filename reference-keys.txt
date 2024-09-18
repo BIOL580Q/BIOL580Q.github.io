@@ -33,11 +33,10 @@ confidence-intervals
 lyrebird-population-differences
 lyrebird-mating-success-and-the-sampling-distribution
 credible-intervals
-linear-models
+simple-linear-models
 algebraic-linear-functions
 model-components
 ordinary-least-squares
-vectors-and-matrices
 assumptions-of-linear-models
 example-american-pika
 specify-our-the-model
@@ -48,3 +47,9 @@ fit-the-model
 evaluate-model-fit
 interpret-model-output
 make-predictions
+linear-models-ii
+multiple-predictors
+the-design-matrix
+adding-matrices
+multiplying-vectors-and-matrices
+additive-effects
