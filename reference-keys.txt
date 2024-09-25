@@ -53,3 +53,16 @@ the-design-matrix
 adding-matrices
 multiplying-vectors-and-matrices
 additive-effects
+generalized-linear-models
+logistic-regression
+common-distributions-in-ecology
+what-to-look-for-in-a-distribution
+bernoulli-and-binomial
+poisson
+example-ant-species-richness-in-canopy
+negative-binomial-distribution
+normal-distribution
+lognormal-distribution
+gamma-distribution
+uniform-distribution
+beta-distribution

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Generalized linear models | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+  <meta name="description" content="8 Generalized linear models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Generalized linear models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Generalized linear models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  
+  
+  
+
+<meta name="author" content="Eliza Grames" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="linear-models-ii.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.1</b> About this ‘book’</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#why-this-course"><i class="fa fa-check"></i><b>1.2</b> Why this course?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-comfortable-with-r-and-rstudio"><i class="fa fa-check"></i><b>1.3</b> Getting comfortable with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#some-terms-and-definitions"><i class="fa fa-check"></i><b>1.3.1</b> Some terms and definitions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#customizing-rstudio"><i class="fa fa-check"></i><b>1.3.2</b> Customizing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-approach-this-course"><i class="fa fa-check"></i><b>1.4</b> How to approach this course</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i><b>2.1</b> Bernoulli distribution</a></li>
+<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#binomial-distribution"><i class="fa fa-check"></i><b>2.2</b> Binomial distribution</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#guillemot-example"><i class="fa fa-check"></i><b>2.2.1</b> Guillemot example</a></li>
+<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#coral-example"><i class="fa fa-check"></i><b>2.2.2</b> Coral example</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#probability-mass"><i class="fa fa-check"></i><b>2.3</b> Probability mass</a></li>
+<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#the-normal-gaussian-distribution"><i class="fa fa-check"></i><b>2.4</b> The Normal (Gaussian) distribution</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#guillemot-weight"><i class="fa fa-check"></i><b>2.4.1</b> Guillemot weight</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#probability-density"><i class="fa fa-check"></i><b>2.5</b> Probability density</a></li>
+<li class="chapter" data-level="2.6" data-path="probability.html"><a href="probability.html#the-standard-normal-distribution"><i class="fa fa-check"></i><b>2.6</b> The Standard Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="probability.html"><a href="probability.html#functions-1"><i class="fa fa-check"></i><b>2.6.1</b> Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html"><i class="fa fa-check"></i><b>3</b> Null hypothesis significance testing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#a-brief-history-of-statistics-and-eugenics"><i class="fa fa-check"></i><b>3.1</b> A brief history of statistics and eugenics</a></li>
+<li class="chapter" data-level="3.2" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#t-distribution-and-t-tests"><i class="fa fa-check"></i><b>3.2</b> T-distribution and t-tests</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#butterfly-wing-size"><i class="fa fa-check"></i><b>3.2.1</b> Butterfly wing size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#anova"><i class="fa fa-check"></i><b>3.3</b> ANOVA</a></li>
+<li class="chapter" data-level="3.4" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#type-i-and-type-ii-error"><i class="fa fa-check"></i><b>3.4</b> Type I and Type II error</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4</b> Inference</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inference.html"><a href="inference.html#lyrebird-song-repertoire"><i class="fa fa-check"></i><b>4.1</b> Lyrebird song repertoire</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html"><i class="fa fa-check"></i><b>5</b> The law of large numbers</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#confidence-intervals"><i class="fa fa-check"></i><b>5.1</b> Confidence intervals</a></li>
+<li class="chapter" data-level="5.2" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-population-differences"><i class="fa fa-check"></i><b>5.2</b> Lyrebird population differences</a></li>
+<li class="chapter" data-level="5.3" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-mating-success-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> Lyrebird mating success and the sampling distribution</a></li>
+<li class="chapter" data-level="5.4" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#credible-intervals"><i class="fa fa-check"></i><b>5.4</b> Credible intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="simple-linear-models.html"><a href="simple-linear-models.html"><i class="fa fa-check"></i><b>6</b> Simple Linear models</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="simple-linear-models.html"><a href="simple-linear-models.html#algebraic-linear-functions"><i class="fa fa-check"></i><b>6.1</b> Algebraic linear functions</a></li>
+<li class="chapter" data-level="6.2" data-path="simple-linear-models.html"><a href="simple-linear-models.html#model-components"><i class="fa fa-check"></i><b>6.2</b> Model components</a></li>
+<li class="chapter" data-level="6.3" data-path="simple-linear-models.html"><a href="simple-linear-models.html#ordinary-least-squares"><i class="fa fa-check"></i><b>6.3</b> Ordinary least squares</a></li>
+<li class="chapter" data-level="6.4" data-path="simple-linear-models.html"><a href="simple-linear-models.html#assumptions-of-linear-models"><i class="fa fa-check"></i><b>6.4</b> Assumptions of linear models</a></li>
+<li class="chapter" data-level="6.5" data-path="simple-linear-models.html"><a href="simple-linear-models.html#example-american-pika"><i class="fa fa-check"></i><b>6.5</b> Example: American pika</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="simple-linear-models.html"><a href="simple-linear-models.html#specify-our-the-model"><i class="fa fa-check"></i><b>6.5.1</b> Specify our the model</a></li>
+<li class="chapter" data-level="6.5.2" data-path="simple-linear-models.html"><a href="simple-linear-models.html#read-in-the-data"><i class="fa fa-check"></i><b>6.5.2</b> Read in the data</a></li>
+<li class="chapter" data-level="6.5.3" data-path="simple-linear-models.html"><a href="simple-linear-models.html#data-cleaning-and-prepping-covariates"><i class="fa fa-check"></i><b>6.5.3</b> Data cleaning and prepping covariates</a></li>
+<li class="chapter" data-level="6.5.4" data-path="simple-linear-models.html"><a href="simple-linear-models.html#plot-the-data"><i class="fa fa-check"></i><b>6.5.4</b> Plot the data</a></li>
+<li class="chapter" data-level="6.5.5" data-path="simple-linear-models.html"><a href="simple-linear-models.html#fit-the-model"><i class="fa fa-check"></i><b>6.5.5</b> Fit the model</a></li>
+<li class="chapter" data-level="6.5.6" data-path="simple-linear-models.html"><a href="simple-linear-models.html#evaluate-model-fit"><i class="fa fa-check"></i><b>6.5.6</b> Evaluate model fit</a></li>
+<li class="chapter" data-level="6.5.7" data-path="simple-linear-models.html"><a href="simple-linear-models.html#interpret-model-output"><i class="fa fa-check"></i><b>6.5.7</b> Interpret model output</a></li>
+<li class="chapter" data-level="6.5.8" data-path="simple-linear-models.html"><a href="simple-linear-models.html#make-predictions"><i class="fa fa-check"></i><b>6.5.8</b> Make predictions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="linear-models-ii.html"><a href="linear-models-ii.html"><i class="fa fa-check"></i><b>7</b> Linear models II</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="linear-models-ii.html"><a href="linear-models-ii.html#multiple-predictors"><i class="fa fa-check"></i><b>7.1</b> Multiple predictors</a></li>
+<li class="chapter" data-level="7.2" data-path="linear-models-ii.html"><a href="linear-models-ii.html#the-design-matrix"><i class="fa fa-check"></i><b>7.2</b> The Design Matrix</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="linear-models-ii.html"><a href="linear-models-ii.html#adding-matrices"><i class="fa fa-check"></i><b>7.2.1</b> Adding matrices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="linear-models-ii.html"><a href="linear-models-ii.html#multiplying-vectors-and-matrices"><i class="fa fa-check"></i><b>7.2.2</b> Multiplying vectors and matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="linear-models-ii.html"><a href="linear-models-ii.html#additive-effects"><i class="fa fa-check"></i><b>7.3</b> Additive effects</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html"><i class="fa fa-check"></i><b>8</b> Generalized linear models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#logistic-regression"><i class="fa fa-check"></i><b>8.1</b> Logistic regression</a></li>
+<li class="chapter" data-level="8.2" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#common-distributions-in-ecology"><i class="fa fa-check"></i><b>8.2</b> Common distributions in ecology</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#what-to-look-for-in-a-distribution"><i class="fa fa-check"></i><b>8.2.1</b> What to look for in a distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#bernoulli-and-binomial"><i class="fa fa-check"></i><b>8.3</b> Bernoulli and Binomial</a></li>
+<li class="chapter" data-level="8.4" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#poisson"><i class="fa fa-check"></i><b>8.4</b> Poisson</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#example-ant-species-richness-in-canopy"><i class="fa fa-check"></i><b>8.4.1</b> Example: Ant species richness in canopy</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>8.5</b> Negative binomial distribution</a></li>
+<li class="chapter" data-level="8.6" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#normal-distribution"><i class="fa fa-check"></i><b>8.6</b> Normal distribution</a></li>
+<li class="chapter" data-level="8.7" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#lognormal-distribution"><i class="fa fa-check"></i><b>8.7</b> Lognormal distribution</a></li>
+<li class="chapter" data-level="8.8" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#gamma-distribution"><i class="fa fa-check"></i><b>8.8</b> Gamma distribution</a></li>
+<li class="chapter" data-level="8.9" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#uniform-distribution"><i class="fa fa-check"></i><b>8.9</b> Uniform distribution</a></li>
+<li class="chapter" data-level="8.10" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#beta-distribution"><i class="fa fa-check"></i><b>8.10</b> Beta distribution</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIOL 480/580Q: Ecological Modeling (Fall 2024)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="generalized-linear-models" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Generalized linear models<a href="generalized-linear-models.html#generalized-linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Remember that the linear models we have been running so far have some assumptions:</p>
+<ol style="list-style-type: decimal">
+<li>It makes <em>biological sense</em>.</li>
+<li>The effects are <em>additive</em>.</li>
+<li>Effects are <em>linear</em>.</li>
+<li>Errors (aka residuals, in this case) are <em>independent</em>.</li>
+<li>Errors have equal variance (“<em>homoscedasticity</em>”).</li>
+<li>Errors are <em>normally</em> distributed.</li>
+</ol>
+<p>In ecology, one of the assumptions we often fail to meet is that the errors are normally distributed. Instead of assuming normality when it is rarely the case, we can instead use a more flexible model with is the generalized linear model. In addition to the deterministic and stochastic components present in a general linear model, a generalized linear model also has a <strong>link function</strong>. This link function translates between the structure of our observed data and model estimates so that effects are additive on some scale. Note that this is different from transforming our predictor variables (e.g., how we used the square root of bison age as a predictor of weight, rather than age itself). Instead, we are translating the model predictions to match the structure of the response variable.</p>
+<div class="float">
+<img src="https://pbs.twimg.com/media/EqoEzhpXcAIX-BK.jpg" alt="Data in ecology" />
+<div class="figcaption">Data in ecology</div>
+</div>
+<div id="logistic-regression" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Logistic regression<a href="generalized-linear-models.html#logistic-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s revisit the example of guillemot chicks jumping from the cliff to the ocean. Earlier this semester, we only looked at the probability of success, and all individuals had the same probability of making it. i.e. the model we fit was what is displayed below, where the only value we are concerned with estimating is the intercept (i.e. the mean value)</p>
+<p><span class="math display">\[y \sim Bern(p)\\
+p = \beta_0\]</span></p>
+<p>If we had additional information about each individual guillemot chick, we might want to model the probability of success as a function of that information. For instance, perhaps birds with longer wings have a higher likelihood of success. Now each individual chick <span class="math inline">\(i\)</span> can have its own estimated probability of success based on its wing size <span class="math inline">\(x_i\)</span>.</p>
+<p><span class="math display">\[y_i \sim Bern(p_i)\\
+p_i = \beta_0 + \beta_1*x_i\]</span></p>
+<p>This is not quite right, however, because we know that probability can only be between 0 and 1. So we need to put some constraints on the value that <span class="math inline">\(p_i\)</span> can take. We do this with the logit link function. The logit function takes all real numbers, <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span> and maps them on to the range from 0 to 1, but never actually reaches 0 or 1.</p>
+<p><span class="math display">\[y_i \sim Bern(p_i)\\
+\text{logit}(p_i) = \beta_0 + \beta_1*x_i\]</span></p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="generalized-linear-models.html#cb175-1" tabindex="-1"></a><span class="co"># create a vector of real numbers</span></span>
+<span id="cb175-2"><a href="generalized-linear-models.html#cb175-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb175-3"><a href="generalized-linear-models.html#cb175-3" tabindex="-1"></a><span class="fu">plot</span>(x <span class="sc">~</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="fl">0.1</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="generalized-linear-models.html#cb176-1" tabindex="-1"></a><span class="co"># plot it with the logit link</span></span>
+<span id="cb176-2"><a href="generalized-linear-models.html#cb176-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">plogis</span>(x) <span class="sc">~</span> x)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-53-2.png" width="672" /></p>
+<p>By using the logit link, we can only ever get probabilities between 0 and 1, which means that we will be able to draw from the Bernoulli distribution to get successes of 0 or 1 for each guillemot depending on their probability of survival. Let’s first simulate a dataset.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="generalized-linear-models.html#cb177-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">88</span>)</span>
+<span id="cb177-2"><a href="generalized-linear-models.html#cb177-2" tabindex="-1"></a><span class="co"># define an intercept</span></span>
+<span id="cb177-3"><a href="generalized-linear-models.html#cb177-3" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
+<span id="cb177-4"><a href="generalized-linear-models.html#cb177-4" tabindex="-1"></a></span>
+<span id="cb177-5"><a href="generalized-linear-models.html#cb177-5" tabindex="-1"></a><span class="co"># for every one unit increase in wing length, increase pro</span></span>
+<span id="cb177-6"><a href="generalized-linear-models.html#cb177-6" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fl">2.2</span></span>
+<span id="cb177-7"><a href="generalized-linear-models.html#cb177-7" tabindex="-1"></a></span>
+<span id="cb177-8"><a href="generalized-linear-models.html#cb177-8" tabindex="-1"></a><span class="co"># number of chicks</span></span>
+<span id="cb177-9"><a href="generalized-linear-models.html#cb177-9" tabindex="-1"></a>n.obs <span class="ot">&lt;-</span> <span class="dv">88</span></span>
+<span id="cb177-10"><a href="generalized-linear-models.html#cb177-10" tabindex="-1"></a></span>
+<span id="cb177-11"><a href="generalized-linear-models.html#cb177-11" tabindex="-1"></a></span>
+<span id="cb177-12"><a href="generalized-linear-models.html#cb177-12" tabindex="-1"></a>wing <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs)</span>
+<span id="cb177-13"><a href="generalized-linear-models.html#cb177-13" tabindex="-1"></a></span>
+<span id="cb177-14"><a href="generalized-linear-models.html#cb177-14" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">plogis</span>(b0 <span class="sc">+</span> b1<span class="sc">*</span>wing)</span>
+<span id="cb177-15"><a href="generalized-linear-models.html#cb177-15" tabindex="-1"></a></span>
+<span id="cb177-16"><a href="generalized-linear-models.html#cb177-16" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n.obs, <span class="dv">1</span>, p)</span>
+<span id="cb177-17"><a href="generalized-linear-models.html#cb177-17" tabindex="-1"></a></span>
+<span id="cb177-18"><a href="generalized-linear-models.html#cb177-18" tabindex="-1"></a><span class="co"># visualize our simulated data</span></span>
+<span id="cb177-19"><a href="generalized-linear-models.html#cb177-19" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> wing)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p>Now we have a simulated dataset in which the response is Bernoulli distributed, and chicks with larger wings seem to have a higher probability of success (i.e. there are more observations of ‘success’ to the right of the graph, and more observations of failure to the left). Let’s fit a generalized linear model with a logit link predicting the probability of success in response to weight using the function <code>glm()</code>.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="generalized-linear-models.html#cb178-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> wing, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb178-2"><a href="generalized-linear-models.html#cb178-2" tabindex="-1"></a></span>
+<span id="cb178-3"><a href="generalized-linear-models.html#cb178-3" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = y ~ wing, family = binomial(link = &quot;logit&quot;))
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.6536  -0.6381   0.1429   0.6664   2.1986  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)   0.1962     0.2879   0.682    0.496    
+## wing          2.3643     0.4868   4.857 1.19e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 121.584  on 87  degrees of freedom
+## Residual deviance:  75.481  on 86  degrees of freedom
+## AIC: 79.481
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="generalized-linear-models.html#cb180-1" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb180-2"><a href="generalized-linear-models.html#cb180-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">wing=</span>xvals), <span class="at">type =</span> <span class="st">&quot;response&quot;</span>, <span class="at">se.fit =</span> T)</span>
+<span id="cb180-3"><a href="generalized-linear-models.html#cb180-3" tabindex="-1"></a>up.ci <span class="ot">&lt;-</span> p1<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p1<span class="sc">$</span>se.fit</span>
+<span id="cb180-4"><a href="generalized-linear-models.html#cb180-4" tabindex="-1"></a>low.ci <span class="ot">&lt;-</span> p1<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p1<span class="sc">$</span>se.fit</span>
+<span id="cb180-5"><a href="generalized-linear-models.html#cb180-5" tabindex="-1"></a></span>
+<span id="cb180-6"><a href="generalized-linear-models.html#cb180-6" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> wing)</span>
+<span id="cb180-7"><a href="generalized-linear-models.html#cb180-7" tabindex="-1"></a><span class="fu">lines</span>(p1<span class="sc">$</span>fit <span class="sc">~</span> xvals)</span>
+<span id="cb180-8"><a href="generalized-linear-models.html#cb180-8" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x =</span> <span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb180-9"><a href="generalized-linear-models.html#cb180-9" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(low.ci, <span class="fu">rev</span>(up.ci)), </span>
+<span id="cb180-10"><a href="generalized-linear-models.html#cb180-10" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#006e6d88&quot;</span>, <span class="at">border=</span><span class="st">&quot;#006e6d88&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+</div>
+<div id="common-distributions-in-ecology" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Common distributions in ecology<a href="generalized-linear-models.html#common-distributions-in-ecology" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-to-look-for-in-a-distribution" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> What to look for in a distribution<a href="generalized-linear-models.html#what-to-look-for-in-a-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="https://pbs.twimg.com/media/Bo06aWZIcAAevoX.jpg" /></p>
+<ul>
+<li><p><strong>Discrete versus continuous</strong>: Do your data only fall into discrete bins, or are any points along the line valid?</p></li>
+<li><p><strong>Range of support</strong>: What are the possible values your data can take? Can you have negative values? Only positive values? Can your data ever include zero? Can you have values above 1?</p></li>
+<li><p><strong>Skewness</strong>: How asymmetric are the data? Is there a long tail in either direction?</p></li>
+<li><p><strong>Kurtosis</strong>: How fat are the tails of the distribution? i.e. how much weight the probability distribution is in the tails?</p></li>
+</ul>
+<p><a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA_gpmDfGJEFfs6C1iChSE_jgTokguKhctBg&amp;s">Platykurtic distributions have relatively flat tails</a></p>
+<p><a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-w9P8eBeVNAGsuO2f-whYxLWoUuffOkyUXg&amp;s">Leptokurtic distributions have relatively fat tails</a></p>
+</div>
+</div>
+<div id="bernoulli-and-binomial" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Bernoulli and Binomial<a href="generalized-linear-models.html#bernoulli-and-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Remember that the Bernoulli distribution is a special case of the Binomial distribution with only one trial. <span class="math inline">\(y \sim Bern(p)\)</span>. Beyond success/failure, it is useful for a lot of different types of data in ecology. For example, presence or absence of a species at a site (i.e. occurrence), condition when there are only two options (e.g. diseased or not), and anything else that you can imagine coding as 0 or 1.</p>
+<p>The Binomial distribution has multiple trials. <span class="math inline">\(y \sim Binom(N, p)\)</span>. For instance, we talked about it earlier in the semester in terms of reproductive success of a breeding pair of guillemots, where the number of trials is equal to the number of chicks that they have attempting to make it to the ocean.</p>
+</div>
+<div id="poisson" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Poisson<a href="generalized-linear-models.html#poisson" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Poisson distribution describes count data. Because many, many questions in ecology involve counting (e.g. abundance, species richness, number of leaves, etc.) it is a very commonly used distribution and worth getting familiar with.</p>
+<p>The Poisson distribution has only one parameter, <span class="math inline">\(\lambda\)</span>, that describes both the mean and the variance. Because there is only one parameter, the variance increases with the mean, i.e. at larger values, the variance also increases.</p>
+<p>The values that can be returned from the Poisson distribution are only positive integers (including zero).</p>
+<p>The link function typically used for the Poisson distribution is the log, which means that the effects are not additive but instead are multiplicative.</p>
+<div id="example-ant-species-richness-in-canopy" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Example: Ant species richness in canopy<a href="generalized-linear-models.html#example-ant-species-richness-in-canopy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The dataset we will use comes from <a href="https://doi.org/10.1111/ecog.02608">Adams et al. (2016). Trees as islands: canopy ant species richness increases with the size of liana-free trees in a Neotropical forest. <em>Ecography</em>.</a> The data are publicly available on Dryad at <a href="https://doi.org/10.5061/dryad.b34d2">https://doi.org/10.5061/dryad.b34d2</a>. In this study, researchers counted ant species richness in tree crowns on Barro Colorado Island to test the hypotheses that species richness follows the species-area relationship with tree basal area, that this relationship would be less strong in the presence of lianas which serve as connective corridors between different trees, and that overall species richness would be higher in the presence of lianas.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="generalized-linear-models.html#cb181-1" tabindex="-1"></a>ants <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;~/Downloads/Adams+et+al+2016+Ecography.xlsx&quot;</span>))</span>
+<span id="cb181-2"><a href="generalized-linear-models.html#cb181-2" tabindex="-1"></a></span>
+<span id="cb181-3"><a href="generalized-linear-models.html#cb181-3" tabindex="-1"></a><span class="co"># Let&#39;s rename the columns to be easier to call in the model</span></span>
+<span id="cb181-4"><a href="generalized-linear-models.html#cb181-4" tabindex="-1"></a>ants<span class="sc">$</span>tree_size <span class="ot">&lt;-</span> ants<span class="sc">$</span><span class="st">`</span><span class="at">Basal area (cm²)</span><span class="st">`</span></span>
+<span id="cb181-5"><a href="generalized-linear-models.html#cb181-5" tabindex="-1"></a>ants<span class="sc">$</span>scale_tree <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(ants<span class="sc">$</span>tree_size))</span>
+<span id="cb181-6"><a href="generalized-linear-models.html#cb181-6" tabindex="-1"></a><span class="co"># and let&#39;s collapse lianas into a binary, i.e. liana score of 0 versus</span></span>
+<span id="cb181-7"><a href="generalized-linear-models.html#cb181-7" tabindex="-1"></a><span class="co"># liana score greater than 0</span></span>
+<span id="cb181-8"><a href="generalized-linear-models.html#cb181-8" tabindex="-1"></a>ants<span class="sc">$</span>lianas <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(ants<span class="sc">$</span><span class="st">`</span><span class="at">Liana score</span><span class="st">`</span><span class="sc">&gt;</span><span class="dv">0</span>)</span>
+<span id="cb181-9"><a href="generalized-linear-models.html#cb181-9" tabindex="-1"></a></span>
+<span id="cb181-10"><a href="generalized-linear-models.html#cb181-10" tabindex="-1"></a><span class="co"># visualize the data</span></span>
+<span id="cb181-11"><a href="generalized-linear-models.html#cb181-11" tabindex="-1"></a><span class="fu">plot</span>(ants<span class="sc">$</span>Richness <span class="sc">~</span> ants<span class="sc">$</span>tree_size)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="generalized-linear-models.html#cb182-1" tabindex="-1"></a><span class="fu">boxplot</span>(ants<span class="sc">$</span>Richness <span class="sc">~</span> ants<span class="sc">$</span>lianas)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-2.png" width="672" /></p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="generalized-linear-models.html#cb183-1" tabindex="-1"></a><span class="co"># Let&#39;s start by fitting a model with just tree size as a predictor</span></span>
+<span id="cb183-2"><a href="generalized-linear-models.html#cb183-2" tabindex="-1"></a></span>
+<span id="cb183-3"><a href="generalized-linear-models.html#cb183-3" tabindex="-1"></a>mod_tree <span class="ot">&lt;-</span> <span class="fu">glm</span>(Richness <span class="sc">~</span> tree_size, <span class="at">data=</span>ants, <span class="at">family=</span><span class="fu">poisson</span>(<span class="at">link=</span><span class="st">&quot;log&quot;</span>))</span></code></pre></div>
+<p>Don’t forget that, because of the link function, we cannot simply add up our predictors.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="generalized-linear-models.html#cb184-1" tabindex="-1"></a><span class="co"># ant species richness in a tree with a basal area of 5000 cm</span></span>
+<span id="cb184-2"><a href="generalized-linear-models.html#cb184-2" tabindex="-1"></a>rich <span class="ot">&lt;-</span> <span class="fl">2.1884</span> <span class="sc">+</span> <span class="fl">0.000027946</span><span class="sc">*</span><span class="dv">5000</span></span>
+<span id="cb184-3"><a href="generalized-linear-models.html#cb184-3" tabindex="-1"></a></span>
+<span id="cb184-4"><a href="generalized-linear-models.html#cb184-4" tabindex="-1"></a><span class="co"># ... that&#39;s not right! Need to remember that log(lambda) = b0 + b1*x1 </span></span>
+<span id="cb184-5"><a href="generalized-linear-models.html#cb184-5" tabindex="-1"></a><span class="co"># is the same as lambda = exp(b0 + b1*x1)</span></span>
+<span id="cb184-6"><a href="generalized-linear-models.html#cb184-6" tabindex="-1"></a><span class="fu">exp</span>(rich)</span></code></pre></div>
+<pre><code>## [1] 10.25874</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="generalized-linear-models.html#cb186-1" tabindex="-1"></a>tree_xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">16000</span>, <span class="at">by=</span><span class="dv">1</span>)</span>
+<span id="cb186-2"><a href="generalized-linear-models.html#cb186-2" tabindex="-1"></a>pred_tree <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_tree, </span>
+<span id="cb186-3"><a href="generalized-linear-models.html#cb186-3" tabindex="-1"></a>                     <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">tree_size=</span>tree_xvals),</span>
+<span id="cb186-4"><a href="generalized-linear-models.html#cb186-4" tabindex="-1"></a>                     <span class="at">se.fit=</span>T, <span class="at">type=</span><span class="st">&quot;response&quot;</span>)</span>
+<span id="cb186-5"><a href="generalized-linear-models.html#cb186-5" tabindex="-1"></a>up.ci <span class="ot">&lt;-</span> pred_tree<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>pred_tree<span class="sc">$</span>se.fit</span>
+<span id="cb186-6"><a href="generalized-linear-models.html#cb186-6" tabindex="-1"></a>low.ci <span class="ot">&lt;-</span> pred_tree<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>pred_tree<span class="sc">$</span>se.fit</span>
+<span id="cb186-7"><a href="generalized-linear-models.html#cb186-7" tabindex="-1"></a></span>
+<span id="cb186-8"><a href="generalized-linear-models.html#cb186-8" tabindex="-1"></a><span class="fu">plot</span>(ants<span class="sc">$</span>Richness <span class="sc">~</span> ants<span class="sc">$</span>tree_size, </span>
+<span id="cb186-9"><a href="generalized-linear-models.html#cb186-9" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">19</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb186-10"><a href="generalized-linear-models.html#cb186-10" tabindex="-1"></a><span class="fu">lines</span>(pred_tree<span class="sc">$</span>fit <span class="sc">~</span> tree_xvals)</span>
+<span id="cb186-11"><a href="generalized-linear-models.html#cb186-11" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x =</span> <span class="fu">c</span>(tree_xvals, <span class="fu">rev</span>(tree_xvals)),</span>
+<span id="cb186-12"><a href="generalized-linear-models.html#cb186-12" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(low.ci, <span class="fu">rev</span>(up.ci)), </span>
+<span id="cb186-13"><a href="generalized-linear-models.html#cb186-13" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#006e6d88&quot;</span>, <span class="at">border=</span><span class="st">&quot;#006e6d88&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p>What would have happened if we fit the model as if the residuals were normally distributed?</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="generalized-linear-models.html#cb187-1" tabindex="-1"></a>mod_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Richness <span class="sc">~</span> tree_size, <span class="at">data=</span>ants)</span>
+<span id="cb187-2"><a href="generalized-linear-models.html#cb187-2" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">residuals</span>(mod_lm), <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="generalized-linear-models.html#cb188-1" tabindex="-1"></a><span class="co"># compare to:</span></span>
+<span id="cb188-2"><a href="generalized-linear-models.html#cb188-2" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">residuals</span>(mod_tree), <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-59-2.png" width="672" /></p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="generalized-linear-models.html#cb189-1" tabindex="-1"></a><span class="co"># notice the difference in the y-axis</span></span>
+<span id="cb189-2"><a href="generalized-linear-models.html#cb189-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(mod_lm) <span class="sc">~</span> <span class="fu">predict</span>(mod_lm), <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-59-3.png" width="672" /></p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="generalized-linear-models.html#cb190-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(mod_tree) <span class="sc">~</span> <span class="fu">predict</span>(mod_tree), <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-59-4.png" width="672" /></p>
+<p>Because generalized linear models are just a more flexible version of the linear models we have already talked about, you can similarly add in other covariates, interactions, etc. Let’s now fit a model that addresses all three of the authors hypotheses combined: the effect of tree size, lianas, and an interaction between lianas and tree size.</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="generalized-linear-models.html#cb191-1" tabindex="-1"></a>mod_full <span class="ot">&lt;-</span> <span class="fu">glm</span>(Richness <span class="sc">~</span> tree_size <span class="sc">+</span> lianas <span class="sc">+</span> lianas<span class="sc">*</span>tree_size,</span>
+<span id="cb191-2"><a href="generalized-linear-models.html#cb191-2" tabindex="-1"></a>                <span class="at">data=</span>ants, </span>
+<span id="cb191-3"><a href="generalized-linear-models.html#cb191-3" tabindex="-1"></a>                <span class="at">family=</span><span class="fu">poisson</span>(<span class="at">link=</span><span class="st">&quot;log&quot;</span>))</span></code></pre></div>
+</div>
+</div>
+<div id="negative-binomial-distribution" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Negative binomial distribution<a href="generalized-linear-models.html#negative-binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Count data can often be overdispersed, meaning that there is more spread or variance than expected. Because variance increases with the mean in the Poisson distribution, at low values, there is low variance. If you are dealing with overdispersed count data, you may want to look into the negative binomial distribution.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="generalized-linear-models.html#cb192-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnbinom</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">size=</span><span class="dv">20</span>, <span class="at">mu=</span><span class="fl">2.2</span>), <span class="dv">20</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+</div>
+<div id="normal-distribution" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Normal distribution<a href="generalized-linear-models.html#normal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The normal, or Gaussian, distribution is probably the most familiar to people because it is taught in every introductory statistics course. The normal distribution has two parameters: the mean (<span class="math inline">\(\mu\)</span>) and standard deviation (<span class="math inline">\(\sigma\)</span>) which is the square root of the variance (<span class="math inline">\(\sigma^2\)</span>). The support of the normal distribution is all numbers from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>.</p>
+</div>
+<div id="lognormal-distribution" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Lognormal distribution<a href="generalized-linear-models.html#lognormal-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The log normal distribution is the normal distribution, but log-transformed. It has skewness and the support is all positive real numbers, including zero. It has two parameters, <span class="math inline">\(\alpha\)</span> which is the mean of the log of the distribution, and <span class="math inline">\(\beta\)</span> which is the standard deviation of the log of the distribution.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="generalized-linear-models.html#cb193-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rlnorm</span>(<span class="at">n=</span><span class="dv">10000</span>, <span class="at">meanlog=</span><span class="dv">5</span>, <span class="at">sdlog=</span>.<span class="dv">5</span>), <span class="dv">50</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+</div>
+<div id="gamma-distribution" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> Gamma distribution<a href="generalized-linear-models.html#gamma-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The gamma distribution is super useful in ecology! It is highly, highly skewed at many parameter combinations, and also very flexible. The support is all positive real numbers (excluding zero!). It has two parameters: <span class="math inline">\(\apha\)</span>, which is the shape, and <span class="math inline">\(\beta\)</span> which is the scale.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="generalized-linear-models.html#cb194-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rgamma</span>(<span class="at">n=</span><span class="dv">10000</span>, <span class="at">shape=</span><span class="fl">1.2</span>, <span class="at">rate=</span><span class="dv">1</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="generalized-linear-models.html#cb195-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rgamma</span>(<span class="at">n=</span><span class="dv">10000</span>, <span class="at">shape=</span><span class="fl">1.2</span>, <span class="at">rate=</span>.<span class="dv">5</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-2.png" width="672" /></p>
+</div>
+<div id="uniform-distribution" class="section level2 hasAnchor" number="8.9">
+<h2><span class="header-section-number">8.9</span> Uniform distribution<a href="generalized-linear-models.html#uniform-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Probability is uniform between the minimum and maximum values. This distribution is not typically used to represent data, but is often a prior (more on that when we get to Bayesian things).</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="generalized-linear-models.html#cb196-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">runif</span>(<span class="at">n=</span><span class="dv">1000</span>, <span class="at">min=</span><span class="sc">-</span><span class="dv">5</span>, <span class="at">max=</span><span class="dv">5</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+</div>
+<div id="beta-distribution" class="section level2 hasAnchor" number="8.10">
+<h2><span class="header-section-number">8.10</span> Beta distribution<a href="generalized-linear-models.html#beta-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The beta distribution returns numbers between (but not including!) 0 and 1. It is great for modeling probabilities.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="linear-models-ii.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
