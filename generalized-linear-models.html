@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="linear-models-ii.html"/>
-
+<link rel="next" href="mixed-effects-models.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -233,6 +233,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.9" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#uniform-distribution"><i class="fa fa-check"></i><b>8.9</b> Uniform distribution</a></li>
 <li class="chapter" data-level="8.10" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#beta-distribution"><i class="fa fa-check"></i><b>8.10</b> Beta distribution</a></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html"><i class="fa fa-check"></i><b>9</b> Mixed-effects models</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#pseudoreplication"><i class="fa fa-check"></i><b>9.1</b> Pseudoreplication</a></li>
+<li class="chapter" data-level="9.2" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#dependence-in-error-structure"><i class="fa fa-check"></i><b>9.2</b> Dependence in error structure</a></li>
+<li class="chapter" data-level="9.3" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#consequences-of-ignoring-dependence-in-errors"><i class="fa fa-check"></i><b>9.3</b> Consequences of ignoring dependence in errors</a></li>
+<li class="chapter" data-level="9.4" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#dealing-with-dependence"><i class="fa fa-check"></i><b>9.4</b> Dealing with dependence</a></li>
+<li class="chapter" data-level="9.5" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#pika-stress-example"><i class="fa fa-check"></i><b>9.5</b> Pika stress example</a></li>
+<li class="chapter" data-level="9.6" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#shrinkage"><i class="fa fa-check"></i><b>9.6</b> Shrinkage</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -270,7 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.1</span> Logistic regression<a href="generalized-linear-models.html#logistic-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s revisit the example of guillemot chicks jumping from the cliff to the ocean. Earlier this semester, we only looked at the probability of success, and all individuals had the same probability of making it. i.e. the model we fit was what is displayed below, where the only value we are concerned with estimating is the intercept (i.e. the mean value)</p>
 <p><span class="math display">\[y \sim Bern(p)\\
-p = \beta_0\]</span></p>
+p = 0.4\]</span></p>
 <p>If we had additional information about each individual guillemot chick, we might want to model the probability of success as a function of that information. For instance, perhaps birds with longer wings have a higher likelihood of success. Now each individual chick <span class="math inline">\(i\)</span> can have its own estimated probability of success based on its wing size <span class="math inline">\(x_i\)</span>.</p>
 <p><span class="math display">\[y_i \sim Bern(p_i)\\
 p_i = \beta_0 + \beta_1*x_i\]</span></p>
@@ -295,15 +304,14 @@ p_i = \beta_0 + \beta_1*x_i\]</span></p>
 <span id="cb177-8"><a href="generalized-linear-models.html#cb177-8" tabindex="-1"></a><span class="co"># number of chicks</span></span>
 <span id="cb177-9"><a href="generalized-linear-models.html#cb177-9" tabindex="-1"></a>n.obs <span class="ot">&lt;-</span> <span class="dv">88</span></span>
 <span id="cb177-10"><a href="generalized-linear-models.html#cb177-10" tabindex="-1"></a></span>
-<span id="cb177-11"><a href="generalized-linear-models.html#cb177-11" tabindex="-1"></a></span>
-<span id="cb177-12"><a href="generalized-linear-models.html#cb177-12" tabindex="-1"></a>wing <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs)</span>
-<span id="cb177-13"><a href="generalized-linear-models.html#cb177-13" tabindex="-1"></a></span>
-<span id="cb177-14"><a href="generalized-linear-models.html#cb177-14" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">plogis</span>(b0 <span class="sc">+</span> b1<span class="sc">*</span>wing)</span>
-<span id="cb177-15"><a href="generalized-linear-models.html#cb177-15" tabindex="-1"></a></span>
-<span id="cb177-16"><a href="generalized-linear-models.html#cb177-16" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n.obs, <span class="dv">1</span>, p)</span>
-<span id="cb177-17"><a href="generalized-linear-models.html#cb177-17" tabindex="-1"></a></span>
-<span id="cb177-18"><a href="generalized-linear-models.html#cb177-18" tabindex="-1"></a><span class="co"># visualize our simulated data</span></span>
-<span id="cb177-19"><a href="generalized-linear-models.html#cb177-19" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> wing)</span></code></pre></div>
+<span id="cb177-11"><a href="generalized-linear-models.html#cb177-11" tabindex="-1"></a>wing <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs)</span>
+<span id="cb177-12"><a href="generalized-linear-models.html#cb177-12" tabindex="-1"></a></span>
+<span id="cb177-13"><a href="generalized-linear-models.html#cb177-13" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">plogis</span>(b0 <span class="sc">+</span> b1<span class="sc">*</span>wing)</span>
+<span id="cb177-14"><a href="generalized-linear-models.html#cb177-14" tabindex="-1"></a></span>
+<span id="cb177-15"><a href="generalized-linear-models.html#cb177-15" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n.obs, <span class="dv">1</span>, p)</span>
+<span id="cb177-16"><a href="generalized-linear-models.html#cb177-16" tabindex="-1"></a></span>
+<span id="cb177-17"><a href="generalized-linear-models.html#cb177-17" tabindex="-1"></a><span class="co"># visualize our simulated data</span></span>
+<span id="cb177-18"><a href="generalized-linear-models.html#cb177-18" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> wing)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 <p>Now we have a simulated dataset in which the response is Bernoulli distributed, and chicks with larger wings seem to have a higher probability of success (i.e. there are more observations of ‘success’ to the right of the graph, and more observations of failure to the left). Let’s fit a generalized linear model with a logit link predicting the probability of success in response to weight using the function <code>glm()</code>.</p>
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="generalized-linear-models.html#cb178-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> wing, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>))</span>
@@ -405,11 +413,12 @@ p_i = \beta_0 + \beta_1*x_i\]</span></p>
 <span id="cb186-6"><a href="generalized-linear-models.html#cb186-6" tabindex="-1"></a>low.ci <span class="ot">&lt;-</span> pred_tree<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>pred_tree<span class="sc">$</span>se.fit</span>
 <span id="cb186-7"><a href="generalized-linear-models.html#cb186-7" tabindex="-1"></a></span>
 <span id="cb186-8"><a href="generalized-linear-models.html#cb186-8" tabindex="-1"></a><span class="fu">plot</span>(ants<span class="sc">$</span>Richness <span class="sc">~</span> ants<span class="sc">$</span>tree_size, </span>
-<span id="cb186-9"><a href="generalized-linear-models.html#cb186-9" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">19</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
-<span id="cb186-10"><a href="generalized-linear-models.html#cb186-10" tabindex="-1"></a><span class="fu">lines</span>(pred_tree<span class="sc">$</span>fit <span class="sc">~</span> tree_xvals)</span>
-<span id="cb186-11"><a href="generalized-linear-models.html#cb186-11" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x =</span> <span class="fu">c</span>(tree_xvals, <span class="fu">rev</span>(tree_xvals)),</span>
-<span id="cb186-12"><a href="generalized-linear-models.html#cb186-12" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(low.ci, <span class="fu">rev</span>(up.ci)), </span>
-<span id="cb186-13"><a href="generalized-linear-models.html#cb186-13" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#006e6d88&quot;</span>, <span class="at">border=</span><span class="st">&quot;#006e6d88&quot;</span>)</span></code></pre></div>
+<span id="cb186-9"><a href="generalized-linear-models.html#cb186-9" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Species richness&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Tree basal area&quot;</span>,</span>
+<span id="cb186-10"><a href="generalized-linear-models.html#cb186-10" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">19</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb186-11"><a href="generalized-linear-models.html#cb186-11" tabindex="-1"></a><span class="fu">lines</span>(pred_tree<span class="sc">$</span>fit <span class="sc">~</span> tree_xvals)</span>
+<span id="cb186-12"><a href="generalized-linear-models.html#cb186-12" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x =</span> <span class="fu">c</span>(tree_xvals, <span class="fu">rev</span>(tree_xvals)),</span>
+<span id="cb186-13"><a href="generalized-linear-models.html#cb186-13" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(low.ci, <span class="fu">rev</span>(up.ci)), </span>
+<span id="cb186-14"><a href="generalized-linear-models.html#cb186-14" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#006e6d88&quot;</span>, <span class="at">border=</span><span class="st">&quot;#006e6d88&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>What would have happened if we fit the model as if the residuals were normally distributed?</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="generalized-linear-models.html#cb187-1" tabindex="-1"></a>mod_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Richness <span class="sc">~</span> tree_size, <span class="at">data=</span>ants)</span>
@@ -462,7 +471,6 @@ p_i = \beta_0 + \beta_1*x_i\]</span></p>
 <div id="beta-distribution" class="section level2 hasAnchor" number="8.10">
 <h2><span class="header-section-number">8.10</span> Beta distribution<a href="generalized-linear-models.html#beta-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The beta distribution returns numbers between (but not including!) 0 and 1. It is great for modeling probabilities.</p>
-
 </div>
 </div>
             </section>
@@ -470,8 +478,8 @@ p_i = \beta_0 + \beta_1*x_i\]</span></p>
           </div>
         </div>
       </div>
-<a href="linear-models-ii.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="linear-models-ii.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mixed-effects-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

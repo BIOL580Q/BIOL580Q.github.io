@@ -233,6 +233,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.9" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#uniform-distribution"><i class="fa fa-check"></i><b>8.9</b> Uniform distribution</a></li>
 <li class="chapter" data-level="8.10" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#beta-distribution"><i class="fa fa-check"></i><b>8.10</b> Beta distribution</a></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html"><i class="fa fa-check"></i><b>9</b> Mixed-effects models</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#pseudoreplication"><i class="fa fa-check"></i><b>9.1</b> Pseudoreplication</a></li>
+<li class="chapter" data-level="9.2" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#dependence-in-error-structure"><i class="fa fa-check"></i><b>9.2</b> Dependence in error structure</a></li>
+<li class="chapter" data-level="9.3" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#consequences-of-ignoring-dependence-in-errors"><i class="fa fa-check"></i><b>9.3</b> Consequences of ignoring dependence in errors</a></li>
+<li class="chapter" data-level="9.4" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#dealing-with-dependence"><i class="fa fa-check"></i><b>9.4</b> Dealing with dependence</a></li>
+<li class="chapter" data-level="9.5" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#pika-stress-example"><i class="fa fa-check"></i><b>9.5</b> Pika stress example</a></li>
+<li class="chapter" data-level="9.6" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#shrinkage"><i class="fa fa-check"></i><b>9.6</b> Shrinkage</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -599,16 +608,24 @@ A =
 <div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="linear-models-ii.html#cb174-1" tabindex="-1"></a>x.vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="fl">0.1</span>)</span>
 <span id="cb174-2"><a href="linear-models-ii.html#cb174-2" tabindex="-1"></a></span>
 <span id="cb174-3"><a href="linear-models-ii.html#cb174-3" tabindex="-1"></a>pred.f2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">age.sq=</span>x.vals<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>},</span>
-<span id="cb174-4"><a href="linear-models-ii.html#cb174-4" tabindex="-1"></a>                                               <span class="at">sex=</span><span class="dv">0</span>))</span>
+<span id="cb174-4"><a href="linear-models-ii.html#cb174-4" tabindex="-1"></a>                                               <span class="at">sex=</span><span class="dv">0</span>), <span class="at">se.fit=</span>T)</span>
 <span id="cb174-5"><a href="linear-models-ii.html#cb174-5" tabindex="-1"></a></span>
 <span id="cb174-6"><a href="linear-models-ii.html#cb174-6" tabindex="-1"></a>pred.m2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">age.sq=</span>x.vals<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>},</span>
-<span id="cb174-7"><a href="linear-models-ii.html#cb174-7" tabindex="-1"></a>                                               <span class="at">sex=</span><span class="dv">1</span>))</span>
+<span id="cb174-7"><a href="linear-models-ii.html#cb174-7" tabindex="-1"></a>                                               <span class="at">sex=</span><span class="dv">1</span>), <span class="at">se.fit=</span>T)</span>
 <span id="cb174-8"><a href="linear-models-ii.html#cb174-8" tabindex="-1"></a><span class="fu">par</span>(<span class="at">pty=</span><span class="st">&quot;s&quot;</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
 <span id="cb174-9"><a href="linear-models-ii.html#cb174-9" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>AnimalWeight <span class="sc">~</span> dat<span class="sc">$</span>age, </span>
 <span id="cb174-10"><a href="linear-models-ii.html#cb174-10" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;brown&quot;</span>)[<span class="fu">factor</span>(dat<span class="sc">$</span>sex)],</span>
 <span id="cb174-11"><a href="linear-models-ii.html#cb174-11" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb174-12"><a href="linear-models-ii.html#cb174-12" tabindex="-1"></a><span class="fu">lines</span>(pred.f2 <span class="sc">~</span> x.vals, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>)</span>
-<span id="cb174-13"><a href="linear-models-ii.html#cb174-13" tabindex="-1"></a><span class="fu">lines</span>(pred.m2 <span class="sc">~</span> x.vals, <span class="at">col=</span><span class="st">&quot;brown&quot;</span>)</span></code></pre></div>
+<span id="cb174-12"><a href="linear-models-ii.html#cb174-12" tabindex="-1"></a><span class="fu">lines</span>(pred.f2<span class="sc">$</span>fit <span class="sc">~</span> x.vals, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb174-13"><a href="linear-models-ii.html#cb174-13" tabindex="-1"></a><span class="fu">lines</span>(pred.m2<span class="sc">$</span>fit <span class="sc">~</span> x.vals, <span class="at">col=</span><span class="st">&quot;brown&quot;</span>)</span>
+<span id="cb174-14"><a href="linear-models-ii.html#cb174-14" tabindex="-1"></a></span>
+<span id="cb174-15"><a href="linear-models-ii.html#cb174-15" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(x.vals, <span class="fu">rev</span>(x.vals)), <span class="at">y=</span><span class="fu">c</span>(<span class="fu">c</span>(pred.f2<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>pred.f2<span class="sc">$</span>se.fit),</span>
+<span id="cb174-16"><a href="linear-models-ii.html#cb174-16" tabindex="-1"></a>                                      <span class="fu">rev</span>(<span class="fu">c</span>(pred.f2<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>pred.f2<span class="sc">$</span>se.fit))),</span>
+<span id="cb174-17"><a href="linear-models-ii.html#cb174-17" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#ffa50088&quot;</span>, <span class="at">border=</span>F)</span>
+<span id="cb174-18"><a href="linear-models-ii.html#cb174-18" tabindex="-1"></a></span>
+<span id="cb174-19"><a href="linear-models-ii.html#cb174-19" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(x.vals, <span class="fu">rev</span>(x.vals)), <span class="at">y=</span><span class="fu">c</span>(<span class="fu">c</span>(pred.m2<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>pred.m2<span class="sc">$</span>se.fit),</span>
+<span id="cb174-20"><a href="linear-models-ii.html#cb174-20" tabindex="-1"></a>                                      <span class="fu">rev</span>(<span class="fu">c</span>(pred.m2<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>pred.m2<span class="sc">$</span>se.fit))),</span>
+<span id="cb174-21"><a href="linear-models-ii.html#cb174-21" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#964b0a88&quot;</span>, <span class="at">border=</span>F)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 </div>
 </div>

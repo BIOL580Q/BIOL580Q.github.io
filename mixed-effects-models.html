@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9 Mixed-effects models | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+  <meta name="description" content="9 Mixed-effects models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9 Mixed-effects models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 Mixed-effects models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  
+  
+  
+
+<meta name="author" content="Eliza Grames" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="generalized-linear-models.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.1</b> About this ‘book’</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#why-this-course"><i class="fa fa-check"></i><b>1.2</b> Why this course?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-comfortable-with-r-and-rstudio"><i class="fa fa-check"></i><b>1.3</b> Getting comfortable with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#some-terms-and-definitions"><i class="fa fa-check"></i><b>1.3.1</b> Some terms and definitions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#customizing-rstudio"><i class="fa fa-check"></i><b>1.3.2</b> Customizing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-approach-this-course"><i class="fa fa-check"></i><b>1.4</b> How to approach this course</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i><b>2.1</b> Bernoulli distribution</a></li>
+<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#binomial-distribution"><i class="fa fa-check"></i><b>2.2</b> Binomial distribution</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#guillemot-example"><i class="fa fa-check"></i><b>2.2.1</b> Guillemot example</a></li>
+<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#coral-example"><i class="fa fa-check"></i><b>2.2.2</b> Coral example</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#probability-mass"><i class="fa fa-check"></i><b>2.3</b> Probability mass</a></li>
+<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#the-normal-gaussian-distribution"><i class="fa fa-check"></i><b>2.4</b> The Normal (Gaussian) distribution</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#guillemot-weight"><i class="fa fa-check"></i><b>2.4.1</b> Guillemot weight</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#probability-density"><i class="fa fa-check"></i><b>2.5</b> Probability density</a></li>
+<li class="chapter" data-level="2.6" data-path="probability.html"><a href="probability.html#the-standard-normal-distribution"><i class="fa fa-check"></i><b>2.6</b> The Standard Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="probability.html"><a href="probability.html#functions-1"><i class="fa fa-check"></i><b>2.6.1</b> Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html"><i class="fa fa-check"></i><b>3</b> Null hypothesis significance testing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#a-brief-history-of-statistics-and-eugenics"><i class="fa fa-check"></i><b>3.1</b> A brief history of statistics and eugenics</a></li>
+<li class="chapter" data-level="3.2" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#t-distribution-and-t-tests"><i class="fa fa-check"></i><b>3.2</b> T-distribution and t-tests</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#butterfly-wing-size"><i class="fa fa-check"></i><b>3.2.1</b> Butterfly wing size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#anova"><i class="fa fa-check"></i><b>3.3</b> ANOVA</a></li>
+<li class="chapter" data-level="3.4" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#type-i-and-type-ii-error"><i class="fa fa-check"></i><b>3.4</b> Type I and Type II error</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4</b> Inference</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inference.html"><a href="inference.html#lyrebird-song-repertoire"><i class="fa fa-check"></i><b>4.1</b> Lyrebird song repertoire</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html"><i class="fa fa-check"></i><b>5</b> The law of large numbers</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#confidence-intervals"><i class="fa fa-check"></i><b>5.1</b> Confidence intervals</a></li>
+<li class="chapter" data-level="5.2" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-population-differences"><i class="fa fa-check"></i><b>5.2</b> Lyrebird population differences</a></li>
+<li class="chapter" data-level="5.3" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-mating-success-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> Lyrebird mating success and the sampling distribution</a></li>
+<li class="chapter" data-level="5.4" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#credible-intervals"><i class="fa fa-check"></i><b>5.4</b> Credible intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="simple-linear-models.html"><a href="simple-linear-models.html"><i class="fa fa-check"></i><b>6</b> Simple Linear models</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="simple-linear-models.html"><a href="simple-linear-models.html#algebraic-linear-functions"><i class="fa fa-check"></i><b>6.1</b> Algebraic linear functions</a></li>
+<li class="chapter" data-level="6.2" data-path="simple-linear-models.html"><a href="simple-linear-models.html#model-components"><i class="fa fa-check"></i><b>6.2</b> Model components</a></li>
+<li class="chapter" data-level="6.3" data-path="simple-linear-models.html"><a href="simple-linear-models.html#ordinary-least-squares"><i class="fa fa-check"></i><b>6.3</b> Ordinary least squares</a></li>
+<li class="chapter" data-level="6.4" data-path="simple-linear-models.html"><a href="simple-linear-models.html#assumptions-of-linear-models"><i class="fa fa-check"></i><b>6.4</b> Assumptions of linear models</a></li>
+<li class="chapter" data-level="6.5" data-path="simple-linear-models.html"><a href="simple-linear-models.html#example-american-pika"><i class="fa fa-check"></i><b>6.5</b> Example: American pika</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="simple-linear-models.html"><a href="simple-linear-models.html#specify-our-the-model"><i class="fa fa-check"></i><b>6.5.1</b> Specify our the model</a></li>
+<li class="chapter" data-level="6.5.2" data-path="simple-linear-models.html"><a href="simple-linear-models.html#read-in-the-data"><i class="fa fa-check"></i><b>6.5.2</b> Read in the data</a></li>
+<li class="chapter" data-level="6.5.3" data-path="simple-linear-models.html"><a href="simple-linear-models.html#data-cleaning-and-prepping-covariates"><i class="fa fa-check"></i><b>6.5.3</b> Data cleaning and prepping covariates</a></li>
+<li class="chapter" data-level="6.5.4" data-path="simple-linear-models.html"><a href="simple-linear-models.html#plot-the-data"><i class="fa fa-check"></i><b>6.5.4</b> Plot the data</a></li>
+<li class="chapter" data-level="6.5.5" data-path="simple-linear-models.html"><a href="simple-linear-models.html#fit-the-model"><i class="fa fa-check"></i><b>6.5.5</b> Fit the model</a></li>
+<li class="chapter" data-level="6.5.6" data-path="simple-linear-models.html"><a href="simple-linear-models.html#evaluate-model-fit"><i class="fa fa-check"></i><b>6.5.6</b> Evaluate model fit</a></li>
+<li class="chapter" data-level="6.5.7" data-path="simple-linear-models.html"><a href="simple-linear-models.html#interpret-model-output"><i class="fa fa-check"></i><b>6.5.7</b> Interpret model output</a></li>
+<li class="chapter" data-level="6.5.8" data-path="simple-linear-models.html"><a href="simple-linear-models.html#make-predictions"><i class="fa fa-check"></i><b>6.5.8</b> Make predictions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="linear-models-ii.html"><a href="linear-models-ii.html"><i class="fa fa-check"></i><b>7</b> Linear models II</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="linear-models-ii.html"><a href="linear-models-ii.html#multiple-predictors"><i class="fa fa-check"></i><b>7.1</b> Multiple predictors</a></li>
+<li class="chapter" data-level="7.2" data-path="linear-models-ii.html"><a href="linear-models-ii.html#the-design-matrix"><i class="fa fa-check"></i><b>7.2</b> The Design Matrix</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="linear-models-ii.html"><a href="linear-models-ii.html#adding-matrices"><i class="fa fa-check"></i><b>7.2.1</b> Adding matrices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="linear-models-ii.html"><a href="linear-models-ii.html#multiplying-vectors-and-matrices"><i class="fa fa-check"></i><b>7.2.2</b> Multiplying vectors and matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="linear-models-ii.html"><a href="linear-models-ii.html#additive-effects"><i class="fa fa-check"></i><b>7.3</b> Additive effects</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html"><i class="fa fa-check"></i><b>8</b> Generalized linear models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#logistic-regression"><i class="fa fa-check"></i><b>8.1</b> Logistic regression</a></li>
+<li class="chapter" data-level="8.2" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#common-distributions-in-ecology"><i class="fa fa-check"></i><b>8.2</b> Common distributions in ecology</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#what-to-look-for-in-a-distribution"><i class="fa fa-check"></i><b>8.2.1</b> What to look for in a distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#bernoulli-and-binomial"><i class="fa fa-check"></i><b>8.3</b> Bernoulli and Binomial</a></li>
+<li class="chapter" data-level="8.4" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#poisson"><i class="fa fa-check"></i><b>8.4</b> Poisson</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#example-ant-species-richness-in-canopy"><i class="fa fa-check"></i><b>8.4.1</b> Example: Ant species richness in canopy</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>8.5</b> Negative binomial distribution</a></li>
+<li class="chapter" data-level="8.6" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#normal-distribution"><i class="fa fa-check"></i><b>8.6</b> Normal distribution</a></li>
+<li class="chapter" data-level="8.7" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#lognormal-distribution"><i class="fa fa-check"></i><b>8.7</b> Lognormal distribution</a></li>
+<li class="chapter" data-level="8.8" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#gamma-distribution"><i class="fa fa-check"></i><b>8.8</b> Gamma distribution</a></li>
+<li class="chapter" data-level="8.9" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#uniform-distribution"><i class="fa fa-check"></i><b>8.9</b> Uniform distribution</a></li>
+<li class="chapter" data-level="8.10" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#beta-distribution"><i class="fa fa-check"></i><b>8.10</b> Beta distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html"><i class="fa fa-check"></i><b>9</b> Mixed-effects models</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#pseudoreplication"><i class="fa fa-check"></i><b>9.1</b> Pseudoreplication</a></li>
+<li class="chapter" data-level="9.2" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#dependence-in-error-structure"><i class="fa fa-check"></i><b>9.2</b> Dependence in error structure</a></li>
+<li class="chapter" data-level="9.3" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#consequences-of-ignoring-dependence-in-errors"><i class="fa fa-check"></i><b>9.3</b> Consequences of ignoring dependence in errors</a></li>
+<li class="chapter" data-level="9.4" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#dealing-with-dependence"><i class="fa fa-check"></i><b>9.4</b> Dealing with dependence</a></li>
+<li class="chapter" data-level="9.5" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#pika-stress-example"><i class="fa fa-check"></i><b>9.5</b> Pika stress example</a></li>
+<li class="chapter" data-level="9.6" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#shrinkage"><i class="fa fa-check"></i><b>9.6</b> Shrinkage</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIOL 480/580Q: Ecological Modeling (Fall 2024)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mixed-effects-models" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> Mixed-effects models<a href="mixed-effects-models.html#mixed-effects-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Remember that one of the assumptions of linear models, and generalized linear models, is that our <em>errors are independent</em> from each other. In reality, this is rarely the case with ecological data.</p>
+<div id="pseudoreplication" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Pseudoreplication<a href="mixed-effects-models.html#pseudoreplication" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>“Pseudoreplication is … use of inferential statistics to test for treatment effects with data from experiments where either treatments have not been replicated (though samples may be) or replicates are not statistically independent” - Hurlbert 1984</p>
+</blockquote>
+<p>As an example of how to think about pseudoreplication, imagine that you’ve been asked to judge the quality of apples from different states to determine where the best apples are grown. The biggest apple growing states in the US, in order, are: Washington, Michigan, New York, Pennsylvania, California, Virginia, and Oregon. Each of these states can submit up to 50 different apple varieties from different growers in the state to give a full picture of the types and quality of apples grown. Independent growers in each state submit a random apple, and then these apples are packed up and shipped to you, the world expert on apple quality. You grab one at random from the shipment from Washington, and it tastes foul. You grab another one at random from the Washington shipment, and it also tastes foul even though it was submitted by a different, completely independent grower. Even as your sample size increases and you keep trying different apples, they all taste foul. When trying shipments from other states, you can taste differences between the apples and they seem to be a bit more ‘random’ than the Washington ones, though the ones from Michigan are more similar to each other than they are to the ones from California. Because the apples are shipped in the same barrel, a single rotten one affects the flavor of all of them, i.e. the apples are not truly independent replicates. Similarly, even though the other barrels are not contaminated, the apples in them still share some characteristics (e.g. similar climatic or soil conditions) that makes them not truly independent <em>at the level of comparing apples across states</em>. That last bit, that they are not independent <em>at the level of your analysis</em> is critical. If we were only interested in variation in apple quality within the state of New York and had independent growers randomly submit apples, then we would not have a pseudoreplication issue going through that barrel.</p>
+<p>Put into more ecological terms, pseudoreplication occurs when you add more samples but they are not more replicates, i.e. just because you have 200 fish does not mean your sample size is 200 if those fish are divided evenly into 20 tanks of 10 fish each (i.e. your number of replicates is actually 20 tanks, not 200 fish).</p>
+<p>How can we avoid pseudoreplication? The best thing to do is to plan ahead for it, and not be dealing with it after the fact. When planning your experimental design setup, think of the variety of ways that the environment (or other characteristics of your particular system) could lead to pseudoreplication or other confounding factors.</p>
+<div class="float">
+<img src="https://dt5vp8kor0orz.cloudfront.net/1f062c71580d2978d8688b805cb383c29e237f2f/7-Figure1-1.png" alt="Design of field experiments" />
+<div class="figcaption">Design of field experiments</div>
+</div>
+<p>Firstly, you want to add <em>more blocks</em> not more repeated measures within blocks. Randomly assigning blocks is one approach, but a random assignment can sometimes end up interacting strangely with the environment and biasing your sample in unintended ways. A systematic design is another approach which avoids clumping that can sometimes happen with random assignment. But, your data could have other forms of dependence. A randomized block design is typically a pretty good approach because it has the advantages of being both systematic and random.</p>
+</div>
+<div id="dependence-in-error-structure" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Dependence in error structure<a href="mixed-effects-models.html#dependence-in-error-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>More broadly than just pseudoreplication, it is worth thinking about what processes could result in dependence in errors (i.e. is there some other factor that could explain variation in residuals that is not in your model). Some common examples in ecology include:</p>
+<ul>
+<li><p><strong>Phylogenetic non-independence</strong>. Species with shared evolutionary history may be more likely to exhibit similar traits. For instance, if you wanted to know something about how body size in birds relates to their lifespan, so you sampled a hoatzin, a saltmarsh sparrow, a barnacle goose, a chickadee, and an albatross. The residuals for the saltmarsh sparrow and chickadee will likely be much more similar to each other than to other because they are both passerines.
+<img src="https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-024-07323-1/MediaObjects/41586_2024_7323_Fig16_ESM.jpg?as=webp" alt="Bird phylogeny showing body size trait" /></p></li>
+<li><p><strong>Spatial autocorrelation</strong>. Things that are more similar in space often tend to be more similar in other ways. For example, plants grown on the same soil type, insects reared from the same population, chipmunks studied in the same forest fragment, etc. This also applies to lab environments, not just field experiments! For instance, you can end up with gradients in labs from drafts, distance to a fan, light gradients, etc.</p></li>
+<li><p><strong>Proximity in time</strong>. Similar to space, when you measure things near the same time point, they may be more similar. This does not necessarily need to be linear time! For instance, atmospheric CO2 concentration measured in 1961 and 1962 would be more similar to each other than when comparing 1961 to 2021, but also the concentration will be more similar between Northern Hemisphere summer of 2020 and summer of 2021, than between Northern Hemisphere summer and winter of 2021.</p></li>
+</ul>
+<div class="float">
+<img src="https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1638890092/EducationHub/photos/scripps-keeling-curve.jpg" alt="Fluctuations and increase in atmospheric CO2" />
+<div class="figcaption">Fluctuations and increase in atmospheric CO2</div>
+</div>
+<ul>
+<li><p><strong>Measurement dependence</strong>. Sometimes you might also heard this referred to as observer bias, though it does not necessarily need to be an observer (e.g. it could also be an equipment or measurement device bias).
+<img src="https://www.researchgate.net/publication/253288282/figure/fig6/AS:669405482586127@1536610112325/Above-a-good-hold-for-measuring-the-wing-chord-and-below-the-measurement-of-the-wing.png" alt="Bird wing chord measurement" /></p></li>
+<li><p><strong>Same reagent or lab equipment.</strong> Samples processed with the same equipment, or at the same time (e.g. sending sequences off to be processed in a batch), can result in dependence if there is something different about that equipment or batch.</p></li>
+</ul>
+<div class="float">
+<img src="https://static.wixstatic.com/media/d84614_77b1a23d0d124062bdbee2f4cbe3a6cf~mv2.png/v1/fill/w_968,h_910,al_c,q_90,enc_auto/d84614_77b1a23d0d124062bdbee2f4cbe3a6cf~mv2.png" alt="Batch effects in sequencing" />
+<div class="figcaption">Batch effects in sequencing</div>
+</div>
+</div>
+<div id="consequences-of-ignoring-dependence-in-errors" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Consequences of ignoring dependence in errors<a href="mixed-effects-models.html#consequences-of-ignoring-dependence-in-errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If we ignore dependence in errors, we will end up:
+1) Overestimating test statistics,
+2) Underestimating variance, and
+3) Biasing parameter estimates,
+all of which means we may end up making errors when it comes to inference.</p>
+<p>We will also incorrectly estimate the degrees of freedom for the model. Degrees of freedom are how many things are free to vary, though I find it is easier to think of them as the number of pieces of information we have to be able to fit our model, but we use one up every time we estimate something.</p>
+<p>Calculating a mean uses one degree of freedom. Let’s say we have four numbers, and the mean is 7. Three of the numbers are free to vary. If the first number is 8, the second number can be whatever it wants (let’s say it is 14), and the third number can also be anything (let’s say -5). Because the first three numbers are now set, and we know the mean, the last number <em>has</em> to be 11.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="mixed-effects-models.html#cb197-1" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">14</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">11</span>))</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+</div>
+<div id="dealing-with-dependence" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Dealing with dependence<a href="mixed-effects-models.html#dealing-with-dependence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Other than just ignoring it and knowing our results are likely wrong, there are two approaches to dealing with dependence in error structure: 1) we can include covariates that explain variation or soak up the noise, or 2) we can explicitly model the dependence.</p>
+<p>The first approach is something we have already done, i.e. we have included group level differences in models already when estimating differences in diving depth of simulated lizards (i.e. adding in a categorical / dummy variable indicating if a lizard was black or orange), and also when modeling weight of bison when we had separate effects for age and sex. We could deal with dependence in our data in the same way.</p>
+<p>Take the example of measuring bird wing chord. Let’s say we have four field technicians measuring bird wings, and we suspect that they each have a slightly different approach. Sam is careful to not flatten the wing at all so his estimates are slightly lower than if Frodo were to measure the same wing because he pushes it down slightly; Pippin tends to grab larger birds to measure, and Merry insists on using his own ruler which is in inches instead of centimeters and then does the back calculations to get the numbers. You could include four categorical variables to soak up the ‘noise’ associated with each of these technicians, so that birds measured by Sam all had a missing 0.2 centimeters explained, Pippin’s had an extra error correction, etc. Those coefficient estimates do not carry any real biological information, they are just accounting for nuisance.</p>
+<p>Adding in extra categorical or dummy variables as a <strong>fixed effect</strong> is all well and good in terms of inference and interpretation of the model, but it comes at a cost - for each extra parameter that we estimate, we lose one degree of freedom. If we run out of degrees of freedom, then we cannot actually fit our model. If you have sufficient sample size and a small number of groups, that can be no problem, but what if you have dozens or even hundreds of treatment groups?</p>
+<p>A <strong>random effect</strong> is one way to deal with dependence in errors. Instead of estimating a parameter for each group, you give each group some freedom to vary by assuming it is drawn from some distribution centered at the mean across groups with some standard deviation. Each random effect, then, is drawn from that distribution. We only have to estimate the standard deviation of the distribution, so it uses far, far less degrees of freedom than if we were to explicitly model each group as a fixed effect. Random effects can take the form of <em>random intercepts</em> (i.e. an offset for each group, like with the lizard color morphs except not explicitly estimated) or <em>random slopes</em> where each group is allowed to have a slightly different response to a covariate.</p>
+<p><strong>Beware of Simpson’s Paradox</strong> when dealing with random effects. Simpson’s Paradox occurs when the direction of the effect of a predictor on a response is different when looking within groups compared to between groups. If you’ve been listening to <a href="https://quantitudepod.org/">Quantitude</a>, you might be familiar with the example of the effect of body size on lifespan in animals. In general, the bigger an animal is, the longer it lives. Elephants live longer than dogs, which live longer than mice, etc. If you fit a model predicting longevity as a function of body size at the species level, you would end up with a positive relationship.</p>
+<div class="float">
+<img src="https://ars.els-cdn.com/content/image/1-s2.0-S1146609X23000292-gr1_lrg.jpg" alt="Kuparinen et al. 2023. Acta Oecologia" />
+<div class="figcaption">Kuparinen et al. 2023. Acta Oecologia</div>
+</div>
+<p>But within a species, smaller individuals tend to live longer. Small dog breeds, for example, live longer than large breeds. So depending <em>on the level of your analysis</em> you would reach very different conclusions about how body size impacts lifespan, which is Simpson’s Paradox.</p>
+<div class="float">
+<img src="https://miro.medium.com/v2/resize:fit:1042/1*T5X22TMXchelXlP0yNOgTw.png" alt="Simpson’s Paradox" />
+<div class="figcaption">Simpson’s Paradox</div>
+</div>
+</div>
+<div id="pika-stress-example" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Pika stress example<a href="mixed-effects-models.html#pika-stress-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s revisit our stressed out pikas from earlier in the semester. Fecal samples were collected at different sites associated with different stations along an elevational gradient. Look through the data files again (…including the Notes field) and come up with some different factors that could lead to dependence in the errors.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="mixed-effects-models.html#cb199-1" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;~/Downloads/pika_stress.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>))</span>
+<span id="cb199-2"><a href="mixed-effects-models.html#cb199-2" tabindex="-1"></a></span>
+<span id="cb199-3"><a href="mixed-effects-models.html#cb199-3" tabindex="-1"></a>metadat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;~/Downloads/pika_stress.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">2</span>))</span>
+<span id="cb199-4"><a href="mixed-effects-models.html#cb199-4" tabindex="-1"></a></span>
+<span id="cb199-5"><a href="mixed-effects-models.html#cb199-5" tabindex="-1"></a>dat<span class="sc">$</span>elevation <span class="ot">&lt;-</span> metadat<span class="sc">$</span>Elev_M[<span class="fu">match</span>(dat<span class="sc">$</span>Station, metadat<span class="sc">$</span>Station)]</span>
+<span id="cb199-6"><a href="mixed-effects-models.html#cb199-6" tabindex="-1"></a>dat<span class="sc">$</span>elevation <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(dat<span class="sc">$</span>elevation))</span>
+<span id="cb199-7"><a href="mixed-effects-models.html#cb199-7" tabindex="-1"></a></span>
+<span id="cb199-8"><a href="mixed-effects-models.html#cb199-8" tabindex="-1"></a>dat<span class="sc">$</span>stress <span class="ot">&lt;-</span> dat<span class="sc">$</span>Concentration_pg_g</span>
+<span id="cb199-9"><a href="mixed-effects-models.html#cb199-9" tabindex="-1"></a>dat<span class="sc">$</span>stress <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(dat<span class="sc">$</span>stress))</span>
+<span id="cb199-10"><a href="mixed-effects-models.html#cb199-10" tabindex="-1"></a>dat<span class="sc">$</span>male <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>Sex<span class="sc">==</span><span class="st">&quot;M&quot;</span>)</span></code></pre></div>
+<p>One of the packages in R that we can use to fit mixed effects models is called <code>lme4</code>. The syntax for specifying random effects is:
+<img src="https://xiaoyingpu.github.io/images/lme4.png" alt="Random effects specification in lme4" /></p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="mixed-effects-models.html#cb200-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(stress <span class="sc">~</span> elevation <span class="sc">+</span> male <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Station), <span class="at">data=</span>dat)</span>
+<span id="cb200-2"><a href="mixed-effects-models.html#cb200-2" tabindex="-1"></a></span>
+<span id="cb200-3"><a href="mixed-effects-models.html#cb200-3" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(stress <span class="sc">~</span> elevation <span class="sc">+</span> male <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Plate<span class="sc">/</span>Station), <span class="at">data=</span>dat)</span></code></pre></div>
+<p>Why are there no p-values? [add explanation]!!!!!!!!!!!!!!!!!! Getting confidence intervals can be done via bootstrapping instead.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="mixed-effects-models.html#cb201-1" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">2.5</span>, <span class="dv">1</span>, <span class="fl">0.1</span>)</span>
+<span id="cb201-2"><a href="mixed-effects-models.html#cb201-2" tabindex="-1"></a>pred1.m <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">elevation=</span>xvals, </span>
+<span id="cb201-3"><a href="mixed-effects-models.html#cb201-3" tabindex="-1"></a>                                          <span class="at">male=</span><span class="dv">1</span>),<span class="at">re.form=</span><span class="sc">~</span><span class="dv">0</span>, <span class="at">se.fit=</span>T)</span>
+<span id="cb201-4"><a href="mixed-effects-models.html#cb201-4" tabindex="-1"></a>up.ci.m <span class="ot">&lt;-</span> pred1.m<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>pred1.m<span class="sc">$</span>se.fit</span>
+<span id="cb201-5"><a href="mixed-effects-models.html#cb201-5" tabindex="-1"></a>low.ci.m <span class="ot">&lt;-</span> pred1.m<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>pred1.m<span class="sc">$</span>se.fit</span>
+<span id="cb201-6"><a href="mixed-effects-models.html#cb201-6" tabindex="-1"></a></span>
+<span id="cb201-7"><a href="mixed-effects-models.html#cb201-7" tabindex="-1"></a>pred1.u <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">elevation=</span>xvals, </span>
+<span id="cb201-8"><a href="mixed-effects-models.html#cb201-8" tabindex="-1"></a>                                          <span class="at">male=</span><span class="dv">0</span>),<span class="at">re.form=</span><span class="sc">~</span><span class="dv">0</span>, <span class="at">se.fit=</span>T)</span>
+<span id="cb201-9"><a href="mixed-effects-models.html#cb201-9" tabindex="-1"></a>up.ci.u <span class="ot">&lt;-</span> pred1.u<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>pred1.u<span class="sc">$</span>se.fit</span>
+<span id="cb201-10"><a href="mixed-effects-models.html#cb201-10" tabindex="-1"></a>low.ci.u <span class="ot">&lt;-</span> pred1.u<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>pred1.u<span class="sc">$</span>se.fit</span>
+<span id="cb201-11"><a href="mixed-effects-models.html#cb201-11" tabindex="-1"></a></span>
+<span id="cb201-12"><a href="mixed-effects-models.html#cb201-12" tabindex="-1"></a></span>
+<span id="cb201-13"><a href="mixed-effects-models.html#cb201-13" tabindex="-1"></a><span class="fu">plot</span>(stress <span class="sc">~</span> elevation, <span class="at">data=</span>dat, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;grey&quot;</span>, <span class="st">&quot;red&quot;</span>)[dat<span class="sc">$</span>male<span class="sc">+</span><span class="dv">1</span>], <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb201-14"><a href="mixed-effects-models.html#cb201-14" tabindex="-1"></a><span class="fu">lines</span>(pred1.m<span class="sc">$</span>fit <span class="sc">~</span> xvals, <span class="at">col=</span><span class="st">&quot;#ff2200&quot;</span>)</span>
+<span id="cb201-15"><a href="mixed-effects-models.html#cb201-15" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb201-16"><a href="mixed-effects-models.html#cb201-16" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(low.ci.m, <span class="fu">rev</span>(up.ci.m)),</span>
+<span id="cb201-17"><a href="mixed-effects-models.html#cb201-17" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#ff220022&quot;</span>, <span class="at">border=</span><span class="st">&quot;#ff220022&quot;</span>)</span>
+<span id="cb201-18"><a href="mixed-effects-models.html#cb201-18" tabindex="-1"></a></span>
+<span id="cb201-19"><a href="mixed-effects-models.html#cb201-19" tabindex="-1"></a><span class="fu">lines</span>(pred1.u<span class="sc">$</span>fit <span class="sc">~</span> xvals, <span class="at">col=</span><span class="st">&quot;#cacaca&quot;</span>)</span>
+<span id="cb201-20"><a href="mixed-effects-models.html#cb201-20" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb201-21"><a href="mixed-effects-models.html#cb201-21" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(low.ci.u, <span class="fu">rev</span>(up.ci.u)),</span>
+<span id="cb201-22"><a href="mixed-effects-models.html#cb201-22" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#cacaca22&quot;</span>, <span class="at">border=</span><span class="st">&quot;#cacaca22&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="mixed-effects-models.html#cb202-1" tabindex="-1"></a><span class="co"># What about our random effects?</span></span>
+<span id="cb202-2"><a href="mixed-effects-models.html#cb202-2" tabindex="-1"></a>stations <span class="ot">&lt;-</span> <span class="fu">unique</span>(dat<span class="sc">$</span>Station)</span>
+<span id="cb202-3"><a href="mixed-effects-models.html#cb202-3" tabindex="-1"></a></span>
+<span id="cb202-4"><a href="mixed-effects-models.html#cb202-4" tabindex="-1"></a><span class="fu">plot</span>(stress <span class="sc">~</span> elevation, <span class="at">data=</span>dat, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;grey&quot;</span>, <span class="st">&quot;red&quot;</span>)[dat<span class="sc">$</span>male<span class="sc">+</span><span class="dv">1</span>], <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb202-5"><a href="mixed-effects-models.html#cb202-5" tabindex="-1"></a><span class="fu">lines</span>(pred1.m<span class="sc">$</span>fit <span class="sc">~</span> xvals, <span class="at">col=</span><span class="st">&quot;#ff2200&quot;</span>)</span>
+<span id="cb202-6"><a href="mixed-effects-models.html#cb202-6" tabindex="-1"></a></span>
+<span id="cb202-7"><a href="mixed-effects-models.html#cb202-7" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(stations)){</span>
+<span id="cb202-8"><a href="mixed-effects-models.html#cb202-8" tabindex="-1"></a>  pred.tmp <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">elevation=</span>xvals, </span>
+<span id="cb202-9"><a href="mixed-effects-models.html#cb202-9" tabindex="-1"></a>                                          <span class="at">male=</span><span class="dv">1</span>, <span class="at">Station=</span>stations[i]))</span>
+<span id="cb202-10"><a href="mixed-effects-models.html#cb202-10" tabindex="-1"></a>  <span class="fu">lines</span>(pred.tmp <span class="sc">~</span> xvals, <span class="at">col=</span><span class="st">&quot;#ff220020&quot;</span>)</span>
+<span id="cb202-11"><a href="mixed-effects-models.html#cb202-11" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-68-2.png" width="672" /></p>
+</div>
+<div id="shrinkage" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Shrinkage<a href="mixed-effects-models.html#shrinkage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The random effect we added for Station is at the level of Station, because remember we are only estimating the standard deviation of the distribution from which deviations by groups are drawn. Each level of our grouping factor (i.e. CG1, CG2, etc.) has its own ‘Best Linear Unbiased Predictor’ drawn from that distribution, more commonly called BLUPs because it is fun to say. BLUPs are the individual predicted differences, i.e. the result of adding a random effect for Station means each station has a different BLUP.</p>
+<p>They are not estimates because we did not estimate parameters, hence why they are called predictions. They rely on data from other groups to fit the overall random effect, which means that groups with small sample size have BLUPs that are more influenced by the population mean than large groups. BLUPs tell us how much the parameter for each group differs from the population mean, i.e. in the case of a random intercept, how much each group’s intercept is above or below the mean intercept.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="generalized-linear-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
