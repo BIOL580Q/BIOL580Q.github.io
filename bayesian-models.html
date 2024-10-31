@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Bayesian models | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+  <meta name="description" content="10 Bayesian models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Bayesian models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Bayesian models | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  
+  
+  
+
+<meta name="author" content="Eliza Grames" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mixed-effects-models.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.1</b> About this ‘book’</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#why-this-course"><i class="fa fa-check"></i><b>1.2</b> Why this course?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#getting-comfortable-with-r-and-rstudio"><i class="fa fa-check"></i><b>1.3</b> Getting comfortable with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#some-terms-and-definitions"><i class="fa fa-check"></i><b>1.3.1</b> Some terms and definitions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#customizing-rstudio"><i class="fa fa-check"></i><b>1.3.2</b> Customizing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#how-to-approach-this-course"><i class="fa fa-check"></i><b>1.4</b> How to approach this course</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#bernoulli-distribution"><i class="fa fa-check"></i><b>2.1</b> Bernoulli distribution</a></li>
+<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#binomial-distribution"><i class="fa fa-check"></i><b>2.2</b> Binomial distribution</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#guillemot-example"><i class="fa fa-check"></i><b>2.2.1</b> Guillemot example</a></li>
+<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#coral-example"><i class="fa fa-check"></i><b>2.2.2</b> Coral example</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#probability-mass"><i class="fa fa-check"></i><b>2.3</b> Probability mass</a></li>
+<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#the-normal-gaussian-distribution"><i class="fa fa-check"></i><b>2.4</b> The Normal (Gaussian) distribution</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#guillemot-weight"><i class="fa fa-check"></i><b>2.4.1</b> Guillemot weight</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#probability-density"><i class="fa fa-check"></i><b>2.5</b> Probability density</a></li>
+<li class="chapter" data-level="2.6" data-path="probability.html"><a href="probability.html#the-standard-normal-distribution"><i class="fa fa-check"></i><b>2.6</b> The Standard Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="probability.html"><a href="probability.html#functions-1"><i class="fa fa-check"></i><b>2.6.1</b> Functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html"><i class="fa fa-check"></i><b>3</b> Null hypothesis significance testing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#a-brief-history-of-statistics-and-eugenics"><i class="fa fa-check"></i><b>3.1</b> A brief history of statistics and eugenics</a></li>
+<li class="chapter" data-level="3.2" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#t-distribution-and-t-tests"><i class="fa fa-check"></i><b>3.2</b> T-distribution and t-tests</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#butterfly-wing-size"><i class="fa fa-check"></i><b>3.2.1</b> Butterfly wing size</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#anova"><i class="fa fa-check"></i><b>3.3</b> ANOVA</a></li>
+<li class="chapter" data-level="3.4" data-path="null-hypothesis-significance-testing.html"><a href="null-hypothesis-significance-testing.html#type-i-and-type-ii-error"><i class="fa fa-check"></i><b>3.4</b> Type I and Type II error</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4</b> Inference</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inference.html"><a href="inference.html#lyrebird-song-repertoire"><i class="fa fa-check"></i><b>4.1</b> Lyrebird song repertoire</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html"><i class="fa fa-check"></i><b>5</b> The law of large numbers</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#confidence-intervals"><i class="fa fa-check"></i><b>5.1</b> Confidence intervals</a></li>
+<li class="chapter" data-level="5.2" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-population-differences"><i class="fa fa-check"></i><b>5.2</b> Lyrebird population differences</a></li>
+<li class="chapter" data-level="5.3" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#lyrebird-mating-success-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> Lyrebird mating success and the sampling distribution</a></li>
+<li class="chapter" data-level="5.4" data-path="the-law-of-large-numbers.html"><a href="the-law-of-large-numbers.html#credible-intervals"><i class="fa fa-check"></i><b>5.4</b> Credible intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="simple-linear-models.html"><a href="simple-linear-models.html"><i class="fa fa-check"></i><b>6</b> Simple Linear models</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="simple-linear-models.html"><a href="simple-linear-models.html#algebraic-linear-functions"><i class="fa fa-check"></i><b>6.1</b> Algebraic linear functions</a></li>
+<li class="chapter" data-level="6.2" data-path="simple-linear-models.html"><a href="simple-linear-models.html#model-components"><i class="fa fa-check"></i><b>6.2</b> Model components</a></li>
+<li class="chapter" data-level="6.3" data-path="simple-linear-models.html"><a href="simple-linear-models.html#ordinary-least-squares"><i class="fa fa-check"></i><b>6.3</b> Ordinary least squares</a></li>
+<li class="chapter" data-level="6.4" data-path="simple-linear-models.html"><a href="simple-linear-models.html#assumptions-of-linear-models"><i class="fa fa-check"></i><b>6.4</b> Assumptions of linear models</a></li>
+<li class="chapter" data-level="6.5" data-path="simple-linear-models.html"><a href="simple-linear-models.html#example-american-pika"><i class="fa fa-check"></i><b>6.5</b> Example: American pika</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="simple-linear-models.html"><a href="simple-linear-models.html#specify-our-the-model"><i class="fa fa-check"></i><b>6.5.1</b> Specify our the model</a></li>
+<li class="chapter" data-level="6.5.2" data-path="simple-linear-models.html"><a href="simple-linear-models.html#read-in-the-data"><i class="fa fa-check"></i><b>6.5.2</b> Read in the data</a></li>
+<li class="chapter" data-level="6.5.3" data-path="simple-linear-models.html"><a href="simple-linear-models.html#data-cleaning-and-prepping-covariates"><i class="fa fa-check"></i><b>6.5.3</b> Data cleaning and prepping covariates</a></li>
+<li class="chapter" data-level="6.5.4" data-path="simple-linear-models.html"><a href="simple-linear-models.html#plot-the-data"><i class="fa fa-check"></i><b>6.5.4</b> Plot the data</a></li>
+<li class="chapter" data-level="6.5.5" data-path="simple-linear-models.html"><a href="simple-linear-models.html#fit-the-model"><i class="fa fa-check"></i><b>6.5.5</b> Fit the model</a></li>
+<li class="chapter" data-level="6.5.6" data-path="simple-linear-models.html"><a href="simple-linear-models.html#evaluate-model-fit"><i class="fa fa-check"></i><b>6.5.6</b> Evaluate model fit</a></li>
+<li class="chapter" data-level="6.5.7" data-path="simple-linear-models.html"><a href="simple-linear-models.html#interpret-model-output"><i class="fa fa-check"></i><b>6.5.7</b> Interpret model output</a></li>
+<li class="chapter" data-level="6.5.8" data-path="simple-linear-models.html"><a href="simple-linear-models.html#make-predictions"><i class="fa fa-check"></i><b>6.5.8</b> Make predictions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="linear-models-ii.html"><a href="linear-models-ii.html"><i class="fa fa-check"></i><b>7</b> Linear models II</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="linear-models-ii.html"><a href="linear-models-ii.html#multiple-predictors"><i class="fa fa-check"></i><b>7.1</b> Multiple predictors</a></li>
+<li class="chapter" data-level="7.2" data-path="linear-models-ii.html"><a href="linear-models-ii.html#the-design-matrix"><i class="fa fa-check"></i><b>7.2</b> The Design Matrix</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="linear-models-ii.html"><a href="linear-models-ii.html#adding-matrices"><i class="fa fa-check"></i><b>7.2.1</b> Adding matrices</a></li>
+<li class="chapter" data-level="7.2.2" data-path="linear-models-ii.html"><a href="linear-models-ii.html#multiplying-vectors-and-matrices"><i class="fa fa-check"></i><b>7.2.2</b> Multiplying vectors and matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="linear-models-ii.html"><a href="linear-models-ii.html#additive-effects"><i class="fa fa-check"></i><b>7.3</b> Additive effects</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html"><i class="fa fa-check"></i><b>8</b> Generalized linear models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#logistic-regression"><i class="fa fa-check"></i><b>8.1</b> Logistic regression</a></li>
+<li class="chapter" data-level="8.2" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#common-distributions-in-ecology"><i class="fa fa-check"></i><b>8.2</b> Common distributions in ecology</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#what-to-look-for-in-a-distribution"><i class="fa fa-check"></i><b>8.2.1</b> What to look for in a distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#bernoulli-and-binomial"><i class="fa fa-check"></i><b>8.3</b> Bernoulli and Binomial</a></li>
+<li class="chapter" data-level="8.4" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#poisson"><i class="fa fa-check"></i><b>8.4</b> Poisson</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#example-ant-species-richness-in-canopy"><i class="fa fa-check"></i><b>8.4.1</b> Example: Ant species richness in canopy</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#negative-binomial-distribution"><i class="fa fa-check"></i><b>8.5</b> Negative binomial distribution</a></li>
+<li class="chapter" data-level="8.6" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#normal-distribution"><i class="fa fa-check"></i><b>8.6</b> Normal distribution</a></li>
+<li class="chapter" data-level="8.7" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#lognormal-distribution"><i class="fa fa-check"></i><b>8.7</b> Lognormal distribution</a></li>
+<li class="chapter" data-level="8.8" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#gamma-distribution"><i class="fa fa-check"></i><b>8.8</b> Gamma distribution</a></li>
+<li class="chapter" data-level="8.9" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#uniform-distribution"><i class="fa fa-check"></i><b>8.9</b> Uniform distribution</a></li>
+<li class="chapter" data-level="8.10" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#beta-distribution"><i class="fa fa-check"></i><b>8.10</b> Beta distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html"><i class="fa fa-check"></i><b>9</b> Mixed-effects models</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#pseudoreplication"><i class="fa fa-check"></i><b>9.1</b> Pseudoreplication</a></li>
+<li class="chapter" data-level="9.2" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#dependence-in-error-structure"><i class="fa fa-check"></i><b>9.2</b> Dependence in error structure</a></li>
+<li class="chapter" data-level="9.3" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#consequences-of-ignoring-dependence-in-errors"><i class="fa fa-check"></i><b>9.3</b> Consequences of ignoring dependence in errors</a></li>
+<li class="chapter" data-level="9.4" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#dealing-with-dependence"><i class="fa fa-check"></i><b>9.4</b> Dealing with dependence</a></li>
+<li class="chapter" data-level="9.5" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#pika-stress-example"><i class="fa fa-check"></i><b>9.5</b> Pika stress example</a></li>
+<li class="chapter" data-level="9.6" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#shrinkage"><i class="fa fa-check"></i><b>9.6</b> Shrinkage</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="bayesian-models.html"><a href="bayesian-models.html"><i class="fa fa-check"></i><b>10</b> Bayesian models</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="bayesian-models.html"><a href="bayesian-models.html#simulate-vampire-bat-survival"><i class="fa fa-check"></i><b>10.1</b> Simulate vampire bat survival</a></li>
+<li class="chapter" data-level="10.2" data-path="bayesian-models.html"><a href="bayesian-models.html#comparing-frequentist-and-bayesian-model-outputs"><i class="fa fa-check"></i><b>10.2</b> Comparing frequentist and Bayesian model outputs</a></li>
+<li class="chapter" data-level="10.3" data-path="bayesian-models.html"><a href="bayesian-models.html#markov-chain-monte-carlo"><i class="fa fa-check"></i><b>10.3</b> Markov Chain Monte Carlo</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIOL 480/580Q: Ecological Modeling (Fall 2024)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="bayesian-models" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">10</span> Bayesian models<a href="bayesian-models.html#bayesian-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rZTAW0vPE1o?si=R3ICdc3GjWN3cGVV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<p>The example we are working with this week is vampire bats. One question we might ask about this system is how bat survival (<span class="math inline">\(y\)</span>) depends on the number of food sources (donkeys) nearby, and on how altruistic its neighbors are. Our response variable (survival) is a Bernoulli distributed random variable because it can only take values of 0 or 1. This means we can predict probability of survival with a logistic regression using a logit link. If we denote the number of donkeys as <span class="math inline">\(x_1\)</span> and neighbor altruism as <span class="math inline">\(x_2\)</span>, we can write out our model as:</p>
+<p><span class="math display">\[
+y_i \sim Binom(p_i, N)\\
+logit(p_i) = \beta_0 + \beta_1*x_{1_i} + \beta_2*x_{2_i}
+\]</span></p>
+<div id="simulate-vampire-bat-survival" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Simulate vampire bat survival<a href="bayesian-models.html#simulate-vampire-bat-survival" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s simulate a dataset representing this scenario.</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="bayesian-models.html#cb203-1" tabindex="-1"></a><span class="co"># How many bats?</span></span>
+<span id="cb203-2"><a href="bayesian-models.html#cb203-2" tabindex="-1"></a>n.obs <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb203-3"><a href="bayesian-models.html#cb203-3" tabindex="-1"></a></span>
+<span id="cb203-4"><a href="bayesian-models.html#cb203-4" tabindex="-1"></a><span class="co"># Simulate covariates / predictor values</span></span>
+<span id="cb203-5"><a href="bayesian-models.html#cb203-5" tabindex="-1"></a><span class="co"># Let&#39;s say that on average, there are 100 donkeys nearby</span></span>
+<span id="cb203-6"><a href="bayesian-models.html#cb203-6" tabindex="-1"></a>n.donkeys <span class="ot">&lt;-</span> <span class="fu">rpois</span>(n.obs, <span class="at">lambda=</span><span class="dv">100</span>)</span>
+<span id="cb203-7"><a href="bayesian-models.html#cb203-7" tabindex="-1"></a></span>
+<span id="cb203-8"><a href="bayesian-models.html#cb203-8" tabindex="-1"></a><span class="co"># To get more sensible outputs from the model, we will scale this predictor</span></span>
+<span id="cb203-9"><a href="bayesian-models.html#cb203-9" tabindex="-1"></a>donkeys <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(n.donkeys))</span>
+<span id="cb203-10"><a href="bayesian-models.html#cb203-10" tabindex="-1"></a></span>
+<span id="cb203-11"><a href="bayesian-models.html#cb203-11" tabindex="-1"></a><span class="co"># Let&#39;s say altruism is normally distributed, centered on 0</span></span>
+<span id="cb203-12"><a href="bayesian-models.html#cb203-12" tabindex="-1"></a>altruism <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb203-13"><a href="bayesian-models.html#cb203-13" tabindex="-1"></a></span>
+<span id="cb203-14"><a href="bayesian-models.html#cb203-14" tabindex="-1"></a><span class="co"># Effect size guesstimates</span></span>
+<span id="cb203-15"><a href="bayesian-models.html#cb203-15" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="fl">0.2</span> <span class="co"># intercept</span></span>
+<span id="cb203-16"><a href="bayesian-models.html#cb203-16" tabindex="-1"></a>bd <span class="ot">&lt;-</span> <span class="fl">1.8</span> <span class="co"># effect of nearby donkey density</span></span>
+<span id="cb203-17"><a href="bayesian-models.html#cb203-17" tabindex="-1"></a>ba <span class="ot">&lt;-</span> <span class="fl">2.5</span> <span class="co"># effect of neighbor altruism</span></span>
+<span id="cb203-18"><a href="bayesian-models.html#cb203-18" tabindex="-1"></a></span>
+<span id="cb203-19"><a href="bayesian-models.html#cb203-19" tabindex="-1"></a><span class="co"># To simulate our response variable, we need it to be related to the predictor</span></span>
+<span id="cb203-20"><a href="bayesian-models.html#cb203-20" tabindex="-1"></a><span class="co"># variables based on our selected effect values. Why? So that we know the model</span></span>
+<span id="cb203-21"><a href="bayesian-models.html#cb203-21" tabindex="-1"></a><span class="co"># is doing what we think it is. But we also NEED to include the stochastic </span></span>
+<span id="cb203-22"><a href="bayesian-models.html#cb203-22" tabindex="-1"></a><span class="co"># component because our response is a random variable</span></span>
+<span id="cb203-23"><a href="bayesian-models.html#cb203-23" tabindex="-1"></a></span>
+<span id="cb203-24"><a href="bayesian-models.html#cb203-24" tabindex="-1"></a><span class="co"># Use the covariates and effects to generate the deterministically</span></span>
+<span id="cb203-25"><a href="bayesian-models.html#cb203-25" tabindex="-1"></a><span class="co"># This represents the vector of probabilities for each individual bat</span></span>
+<span id="cb203-26"><a href="bayesian-models.html#cb203-26" tabindex="-1"></a><span class="co"># Because our response is binomial, we will use a logit link</span></span>
+<span id="cb203-27"><a href="bayesian-models.html#cb203-27" tabindex="-1"></a><span class="co"># This is the deterministic part of the model</span></span>
+<span id="cb203-28"><a href="bayesian-models.html#cb203-28" tabindex="-1"></a><span class="co"># You will get the SAME answer every time</span></span>
+<span id="cb203-29"><a href="bayesian-models.html#cb203-29" tabindex="-1"></a>det <span class="ot">&lt;-</span> <span class="fu">plogis</span>(b0 <span class="sc">+</span> bd<span class="sc">*</span>donkeys <span class="sc">+</span> ba<span class="sc">*</span>altruism)</span>
+<span id="cb203-30"><a href="bayesian-models.html#cb203-30" tabindex="-1"></a></span>
+<span id="cb203-31"><a href="bayesian-models.html#cb203-31" tabindex="-1"></a><span class="co"># Draw the response variable stochastically using the rbinom function</span></span>
+<span id="cb203-32"><a href="bayesian-models.html#cb203-32" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n.obs, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span>det)</span>
+<span id="cb203-33"><a href="bayesian-models.html#cb203-33" tabindex="-1"></a></span>
+<span id="cb203-34"><a href="bayesian-models.html#cb203-34" tabindex="-1"></a><span class="co"># Plot our simulated data to see if it is sensible</span></span>
+<span id="cb203-35"><a href="bayesian-models.html#cb203-35" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> donkeys)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="bayesian-models.html#cb204-1" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> altruism)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-69-2.png" width="672" />
+## Fit a frequentist model to the data</p>
+<p>Since we are already familiar with fitting generalized linear models, we will first fit our model in a frequentist framework so that the syntax and output is familiar. Note that you would not actually do this when modeling your real data - this is just for learning purposes. <em>Never mix modes of inference!</em> By that I mean if you’re taking a frequentist approach, all your inference should be through that lens; if you’re going Bayesian for an analysis, then all parts of it should be Bayesian.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="bayesian-models.html#cb205-1" tabindex="-1"></a>frq.mod <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> donkeys <span class="sc">+</span> altruism,</span>
+<span id="cb205-2"><a href="bayesian-models.html#cb205-2" tabindex="-1"></a>               <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>))</span>
+<span id="cb205-3"><a href="bayesian-models.html#cb205-3" tabindex="-1"></a></span>
+<span id="cb205-4"><a href="bayesian-models.html#cb205-4" tabindex="-1"></a><span class="fu">summary</span>(frq.mod)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = y ~ donkeys + altruism, family = binomial(link = &quot;logit&quot;))
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -1.90572  -0.51152   0.06722   0.44244   2.79244  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)   0.2625     0.3469   0.757 0.449342    
+## donkeys       1.6015     0.4844   3.306 0.000947 ***
+## altruism      2.7739     0.6544   4.239 2.25e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 110.102  on 79  degrees of freedom
+## Residual deviance:  55.402  on 77  degrees of freedom
+## AIC: 61.402
+## 
+## Number of Fisher Scoring iterations: 6</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="bayesian-models.html#cb207-1" tabindex="-1"></a><span class="co"># We won&#39;t go through the model fit checking process because we simulated</span></span>
+<span id="cb207-2"><a href="bayesian-models.html#cb207-2" tabindex="-1"></a><span class="co"># the data, instead let&#39;s skip to visualizing the results  </span></span>
+<span id="cb207-3"><a href="bayesian-models.html#cb207-3" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb207-4"><a href="bayesian-models.html#cb207-4" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(frq.mod, </span>
+<span id="cb207-5"><a href="bayesian-models.html#cb207-5" tabindex="-1"></a>              <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">donkeys=</span>xvals, <span class="at">altruism=</span><span class="dv">0</span>),</span>
+<span id="cb207-6"><a href="bayesian-models.html#cb207-6" tabindex="-1"></a>              <span class="at">type=</span><span class="st">&quot;response&quot;</span>, </span>
+<span id="cb207-7"><a href="bayesian-models.html#cb207-7" tabindex="-1"></a>              <span class="at">se.fit =</span> T)</span>
+<span id="cb207-8"><a href="bayesian-models.html#cb207-8" tabindex="-1"></a></span>
+<span id="cb207-9"><a href="bayesian-models.html#cb207-9" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> donkeys, <span class="at">pch=</span><span class="st">&quot;|&quot;</span>)</span>
+<span id="cb207-10"><a href="bayesian-models.html#cb207-10" tabindex="-1"></a><span class="fu">lines</span>(p1<span class="sc">$</span>fit <span class="sc">~</span> xvals)</span>
+<span id="cb207-11"><a href="bayesian-models.html#cb207-11" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb207-12"><a href="bayesian-models.html#cb207-12" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>((p1<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p1<span class="sc">$</span>se.fit), </span>
+<span id="cb207-13"><a href="bayesian-models.html#cb207-13" tabindex="-1"></a>            <span class="fu">rev</span>(p1<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p1<span class="sc">$</span>se.fit)),</span>
+<span id="cb207-14"><a href="bayesian-models.html#cb207-14" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#cacaca88&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-70-1.png" width="672" />
+## Fit a Bayesian model to the data
+Now we will fit the same model, but using a Bayesian approach. For this we will use JAGS (Just Another Gibbs Sampler), accessed via the R2jags package. In addition to install R2jags with <code>install.packages("R2jags")</code>, you will need to install JAGS which can be downloaded from: <a href="https://sourceforge.net/projects/mcmc-jags/" class="uri">https://sourceforge.net/projects/mcmc-jags/</a>.</p>
+<p>When using R2jags for model fitting, we will specify our model in a different file (i.e. another R script external to the one for our main analysis). This is because we will need to point towards the path to read the model from when running it. For the sake of simplicity in this format, imagine that the following block of code is saved separately as a plain text file called “bat_model.R”.</p>
+<p>The syntax for specifying a model to run with JAGS is very similar to R, but also a little different. For starters, we need to wrap our model in <code>model{}</code>. We also need to use a for-loop to index our data. The model itself is essentially converting the equations we would use to represent our model into code. For instance, our model from above was:</p>
+<p><span class="math display">\[
+y_i \sim Binom(p_i, N)\\
+logit(p_i) = \beta_0 + \beta_1*x_{1_i} + \beta_2*x_{2_i}
+\]</span></p>
+<p>and the corresponding JAGS syntax (for this part), would be:</p>
+<p><code>y[i] ~ dbinom(p[i], n)</code>
+<code>logit(p[i]) = b0 + b1*x1[i] + b2*x2[i]</code></p>
+<p>Further explanations are annotated in the code chunk below (which remember, we are pretending is a separate file!). You can use <code>#</code> just like you would in an R script to leave comments to yourself.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="bayesian-models.html#cb208-1" tabindex="-1"></a><span class="co"># JAGS model for survival</span></span>
+<span id="cb208-2"><a href="bayesian-models.html#cb208-2" tabindex="-1"></a></span>
+<span id="cb208-3"><a href="bayesian-models.html#cb208-3" tabindex="-1"></a>model{ <span class="co"># need enclose the whole model inside these brackets</span></span>
+<span id="cb208-4"><a href="bayesian-models.html#cb208-4" tabindex="-1"></a></span>
+<span id="cb208-5"><a href="bayesian-models.html#cb208-5" tabindex="-1"></a>  <span class="co"># because we want to index our observations, we need to put the deterministic</span></span>
+<span id="cb208-6"><a href="bayesian-models.html#cb208-6" tabindex="-1"></a>  <span class="co"># and stochastic portions of our model in a for loop</span></span>
+<span id="cb208-7"><a href="bayesian-models.html#cb208-7" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n.obs){</span>
+<span id="cb208-8"><a href="bayesian-models.html#cb208-8" tabindex="-1"></a>    </span>
+<span id="cb208-9"><a href="bayesian-models.html#cb208-9" tabindex="-1"></a>    <span class="co"># Stochastic component</span></span>
+<span id="cb208-10"><a href="bayesian-models.html#cb208-10" tabindex="-1"></a>    <span class="co"># survival is a random variable drawn from a binomial distribution </span></span>
+<span id="cb208-11"><a href="bayesian-models.html#cb208-11" tabindex="-1"></a>    <span class="co"># with some probability p; we do not index n because we will set it to 1</span></span>
+<span id="cb208-12"><a href="bayesian-models.html#cb208-12" tabindex="-1"></a>    <span class="co"># because logically each individual only gets one attempt to survive the night</span></span>
+<span id="cb208-13"><a href="bayesian-models.html#cb208-13" tabindex="-1"></a>    y[i] <span class="sc">~</span> <span class="fu">dbinom</span>(p[i], n)</span>
+<span id="cb208-14"><a href="bayesian-models.html#cb208-14" tabindex="-1"></a></span>
+<span id="cb208-15"><a href="bayesian-models.html#cb208-15" tabindex="-1"></a>    <span class="co"># Deterministic component</span></span>
+<span id="cb208-16"><a href="bayesian-models.html#cb208-16" tabindex="-1"></a>    <span class="co"># We use the logit link function because our response variable is</span></span>
+<span id="cb208-17"><a href="bayesian-models.html#cb208-17" tabindex="-1"></a>    <span class="co"># binomially distributed</span></span>
+<span id="cb208-18"><a href="bayesian-models.html#cb208-18" tabindex="-1"></a>    </span>
+<span id="cb208-19"><a href="bayesian-models.html#cb208-19" tabindex="-1"></a>    <span class="co"># Note that for each covariate (i.e. x1 and x2, which represent donkeys and</span></span>
+<span id="cb208-20"><a href="bayesian-models.html#cb208-20" tabindex="-1"></a>    <span class="co"># altruism, respectively) we also index them because we want to associate the</span></span>
+<span id="cb208-21"><a href="bayesian-models.html#cb208-21" tabindex="-1"></a>    <span class="co"># covariate data for each individual i with their predicted probability of </span></span>
+<span id="cb208-22"><a href="bayesian-models.html#cb208-22" tabindex="-1"></a>    <span class="co"># survival p[i] (and their &#39;observed&#39; survival y[i]). </span></span>
+<span id="cb208-23"><a href="bayesian-models.html#cb208-23" tabindex="-1"></a>    </span>
+<span id="cb208-24"><a href="bayesian-models.html#cb208-24" tabindex="-1"></a>    <span class="co"># We do not index b0, b1, or b2 because those are the parameters we are trying</span></span>
+<span id="cb208-25"><a href="bayesian-models.html#cb208-25" tabindex="-1"></a>    <span class="co"># to estimate across all our &#39;observed&#39; bats</span></span>
+<span id="cb208-26"><a href="bayesian-models.html#cb208-26" tabindex="-1"></a>    <span class="fu">logit</span>(p[i]) <span class="ot">=</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>x1[i] <span class="sc">+</span> b2<span class="sc">*</span>x2[i]</span>
+<span id="cb208-27"><a href="bayesian-models.html#cb208-27" tabindex="-1"></a>  }</span>
+<span id="cb208-28"><a href="bayesian-models.html#cb208-28" tabindex="-1"></a>  </span>
+<span id="cb208-29"><a href="bayesian-models.html#cb208-29" tabindex="-1"></a>  <span class="co"># We also need to specify what distribution the parameter values come from,</span></span>
+<span id="cb208-30"><a href="bayesian-models.html#cb208-30" tabindex="-1"></a>  <span class="co"># which are our priors. Here, we are using uninformative priors, but specifying</span></span>
+<span id="cb208-31"><a href="bayesian-models.html#cb208-31" tabindex="-1"></a>  <span class="co"># that are coefficients should be drawn from a normal distribution (i.e. the </span></span>
+<span id="cb208-32"><a href="bayesian-models.html#cb208-32" tabindex="-1"></a>  <span class="co"># intercept, on the logit scale, can be anyhwere from -infinity to +infinity)</span></span>
+<span id="cb208-33"><a href="bayesian-models.html#cb208-33" tabindex="-1"></a></span>
+<span id="cb208-34"><a href="bayesian-models.html#cb208-34" tabindex="-1"></a>  <span class="co"># Priors</span></span>
+<span id="cb208-35"><a href="bayesian-models.html#cb208-35" tabindex="-1"></a>  b0 <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="fl">0.001</span>)</span>
+<span id="cb208-36"><a href="bayesian-models.html#cb208-36" tabindex="-1"></a>  b1 <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="fl">0.001</span>)</span>
+<span id="cb208-37"><a href="bayesian-models.html#cb208-37" tabindex="-1"></a>  b2 <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="fl">0.001</span>)</span>
+<span id="cb208-38"><a href="bayesian-models.html#cb208-38" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p><em>Uninformative priors</em> are sometimes called ‘flat’ or ‘vague’ priors because they do not have any real influence on the posterior distribution, other than restricting it to a type of probability distribution.</p>
+</blockquote>
+<p>To illustrate what we mean by an uninformative prior, we will plot the probability density of a normal distribution with mean of 0 and standard deviation of 0.001. There is a nearly equal (extremely low) probability density across nearly all values other than an extremely high probability density centered right at 0. Unless our coefficient value falls within the range where there are high probability densities, it will be coming from a ‘flat’ part of the distribution.</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="bayesian-models.html#cb209-1" tabindex="-1"></a>xrange <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb209-2"><a href="bayesian-models.html#cb209-2" tabindex="-1"></a>dens.of.prior <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(xrange, <span class="dv">0</span>, <span class="fl">0.001</span>)</span>
+<span id="cb209-3"><a href="bayesian-models.html#cb209-3" tabindex="-1"></a><span class="fu">plot</span>(dens.of.prior <span class="sc">~</span> xrange, <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p>To run the model, we will need to pass it out data. The function to run the model <code>R2jags::jags</code> expects our data to be passed to it in the form of a list with named entries that correspond to the <em>observed</em> variables in our model (i.e. y, n, n.obs, x1, and x2).</p>
+<p>Once we have this list, we can pass it to the function along with a vector of the parameters from the model that we want to export and the path to the separate, plain text file containing our model code.</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="bayesian-models.html#cb210-1" tabindex="-1"></a>jags.dat <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb210-2"><a href="bayesian-models.html#cb210-2" tabindex="-1"></a>  <span class="at">y=</span>y,</span>
+<span id="cb210-3"><a href="bayesian-models.html#cb210-3" tabindex="-1"></a>  <span class="at">x1=</span>donkeys,</span>
+<span id="cb210-4"><a href="bayesian-models.html#cb210-4" tabindex="-1"></a>  <span class="at">x2=</span>altruism,</span>
+<span id="cb210-5"><a href="bayesian-models.html#cb210-5" tabindex="-1"></a>  <span class="at">n=</span><span class="dv">1</span>,</span>
+<span id="cb210-6"><a href="bayesian-models.html#cb210-6" tabindex="-1"></a>  <span class="at">n.obs=</span>n.obs</span>
+<span id="cb210-7"><a href="bayesian-models.html#cb210-7" tabindex="-1"></a>)</span>
+<span id="cb210-8"><a href="bayesian-models.html#cb210-8" tabindex="-1"></a></span>
+<span id="cb210-9"><a href="bayesian-models.html#cb210-9" tabindex="-1"></a>bayes.mod <span class="ot">&lt;-</span> R2jags<span class="sc">::</span><span class="fu">jags</span>(<span class="at">data =</span> jags.dat,</span>
+<span id="cb210-10"><a href="bayesian-models.html#cb210-10" tabindex="-1"></a>                  <span class="at">parameters.to.save =</span> <span class="fu">c</span>(<span class="st">&quot;p&quot;</span>,</span>
+<span id="cb210-11"><a href="bayesian-models.html#cb210-11" tabindex="-1"></a>                                         <span class="st">&quot;b0&quot;</span>, <span class="st">&quot;b1&quot;</span>, <span class="st">&quot;b2&quot;</span>),</span>
+<span id="cb210-12"><a href="bayesian-models.html#cb210-12" tabindex="-1"></a>                  <span class="at">model.file =</span> <span class="st">&quot;./bat_model.R&quot;</span>)</span></code></pre></div>
+<pre><code>## module glm loaded</code></pre>
+<pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 80
+##    Unobserved stochastic nodes: 3
+##    Total graph size: 519
+## 
+## Initializing model</code></pre>
+</div>
+<div id="comparing-frequentist-and-bayesian-model-outputs" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Comparing frequentist and Bayesian model outputs<a href="bayesian-models.html#comparing-frequentist-and-bayesian-model-outputs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before we get into more of the nuances and options for tweaking how we fit the Bayesian model, let’s compare the output to something we’re all already familiar with (i.e. the frequentist model we fit earlier). In the absence of informative priors, frequentist and Bayesian models should converge on the same values, though with different interpretations. Remember from earlier in the semester that the only real difference between frequentist and Bayesian methods is that frequentists assume that the parameters are fixed and the data are random, while Bayesians assume that the data are what they are, and the parameters themselves are random variables.</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="bayesian-models.html#cb213-1" tabindex="-1"></a><span class="co"># How similar are the coefficients?</span></span>
+<span id="cb213-2"><a href="bayesian-models.html#cb213-2" tabindex="-1"></a>frq.coefs <span class="ot">&lt;-</span> <span class="fu">coefficients</span>(frq.mod)</span>
+<span id="cb213-3"><a href="bayesian-models.html#cb213-3" tabindex="-1"></a>bayes.coefs <span class="ot">&lt;-</span> bayes.mod<span class="sc">$</span>BUGSoutput<span class="sc">$</span>mean[<span class="fu">c</span>(<span class="st">&#39;b0&#39;</span>, <span class="st">&#39;b1&#39;</span>, <span class="st">&#39;b2&#39;</span>)]</span>
+<span id="cb213-4"><a href="bayesian-models.html#cb213-4" tabindex="-1"></a></span>
+<span id="cb213-5"><a href="bayesian-models.html#cb213-5" tabindex="-1"></a><span class="co"># Note they will always be a little different because of MCMC </span></span>
+<span id="cb213-6"><a href="bayesian-models.html#cb213-6" tabindex="-1"></a><span class="fu">cbind</span>(frq.coefs, bayes.coefs)</span></code></pre></div>
+<pre><code>##             frq.coefs bayes.coefs
+## (Intercept) 0.2624687 0.2995315  
+## donkeys     1.601531  1.743162   
+## altruism    2.773924  3.051738</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="bayesian-models.html#cb215-1" tabindex="-1"></a><span class="co"># How similar are the predicted probabilities of survival for each bat?</span></span>
+<span id="cb215-2"><a href="bayesian-models.html#cb215-2" tabindex="-1"></a></span>
+<span id="cb215-3"><a href="bayesian-models.html#cb215-3" tabindex="-1"></a>frq.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(frq.mod, <span class="at">type=</span><span class="st">&quot;response&quot;</span>)</span>
+<span id="cb215-4"><a href="bayesian-models.html#cb215-4" tabindex="-1"></a>bayes.pred <span class="ot">&lt;-</span> bayes.mod<span class="sc">$</span>BUGSoutput<span class="sc">$</span>mean<span class="sc">$</span>p</span>
+<span id="cb215-5"><a href="bayesian-models.html#cb215-5" tabindex="-1"></a></span>
+<span id="cb215-6"><a href="bayesian-models.html#cb215-6" tabindex="-1"></a><span class="fu">plot</span>(frq.pred, bayes.pred)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+</div>
+<div id="markov-chain-monte-carlo" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Markov Chain Monte Carlo<a href="bayesian-models.html#markov-chain-monte-carlo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>At this point, we should back up and talk about where the parameter estimates came from. Rather than analytically computing the posterior distribution, we use Markov Chain Monte Carlo (MCMC) to wander around parameter space and take draws to build up the an approximation of the posterior distribution. Typically, we will start three ‘chains’ at the same time, which independently wander around parameter space. This lets us check convergence across the three independent chains. We run these chains for a certain number of iterations, which you can think of as how long we let the chains wander for (i.e. it could be 2000 time steps). So if we have three chains wandering parameter space for 2000 iterations, we would end up with 6000 parameter values that form the posterior distribution.</p>
+<p>It might help to visualize this. We will use the <code>traceplot</code> function from <code>R2jags</code> for this to view the values that the three chains (i.e. the ‘red chain’, ‘blue chain’, and ‘green chain’ if that helps to think about them). Each of these chains start somewhere, and in this case, have wandered around for 1000 iterations. Because this chain looks a bit like a fuzzy caterpillar, it would be fair to assume this model has probably converged (more on convergence diagnostics next week). Since there are 1000 iterations in this plot for three chains, that means we have 3000 different draws that form the posterior distribution for <span class="math inline">\(\beta_0\)</span>.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="bayesian-models.html#cb216-1" tabindex="-1"></a>R2jags<span class="sc">::</span><span class="fu">traceplot</span>(bayes.mod, <span class="at">ask=</span>F, <span class="at">varname=</span><span class="st">&quot;b0&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p>To get the 95% credible intervals around this parameter, we could place all these draws into a distribution and take the quantiles at 0.025 and 0.975, which would tell us that there is a 95% probability that the parameter value lies within that range.</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="bayesian-models.html#cb217-1" tabindex="-1"></a><span class="fu">quantile</span>(bayes.mod<span class="sc">$</span>BUGSoutput<span class="sc">$</span>sims.list<span class="sc">$</span>b0, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
+<pre><code>##       2.5%      97.5% 
+## -0.4180953  0.9629062</code></pre>
+<p>We can also use this to make predictions and generate credible intervals around our predictions.</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="bayesian-models.html#cb219-1" tabindex="-1"></a><span class="co"># range of x-values</span></span>
+<span id="cb219-2"><a href="bayesian-models.html#cb219-2" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb219-3"><a href="bayesian-models.html#cb219-3" tabindex="-1"></a></span>
+<span id="cb219-4"><a href="bayesian-models.html#cb219-4" tabindex="-1"></a><span class="co"># set up placeholders</span></span>
+<span id="cb219-5"><a href="bayesian-models.html#cb219-5" tabindex="-1"></a>uci <span class="ot">&lt;-</span> lci <span class="ot">&lt;-</span> p <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb219-6"><a href="bayesian-models.html#cb219-6" tabindex="-1"></a></span>
+<span id="cb219-7"><a href="bayesian-models.html#cb219-7" tabindex="-1"></a><span class="co"># to make the coding less clunky, let&#39;s pull the sims.list out of the model output</span></span>
+<span id="cb219-8"><a href="bayesian-models.html#cb219-8" tabindex="-1"></a>sims <span class="ot">&lt;-</span> bayes.mod<span class="sc">$</span>BUGSoutput<span class="sc">$</span>sims.list</span>
+<span id="cb219-9"><a href="bayesian-models.html#cb219-9" tabindex="-1"></a></span>
+<span id="cb219-10"><a href="bayesian-models.html#cb219-10" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(xvals)){</span>
+<span id="cb219-11"><a href="bayesian-models.html#cb219-11" tabindex="-1"></a>  <span class="co"># vector of predicted probabilities equal to the length of the posterior distribution</span></span>
+<span id="cb219-12"><a href="bayesian-models.html#cb219-12" tabindex="-1"></a>  <span class="co"># for whatever value of our predictor we are currently at, i.e. within the range</span></span>
+<span id="cb219-13"><a href="bayesian-models.html#cb219-13" tabindex="-1"></a>  <span class="co"># just like with frequentist predictions, not the actual &#39;observed&#39; values</span></span>
+<span id="cb219-14"><a href="bayesian-models.html#cb219-14" tabindex="-1"></a>  <span class="co"># in this case, we are fixing the altruism of neighbors to the mean (0) for </span></span>
+<span id="cb219-15"><a href="bayesian-models.html#cb219-15" tabindex="-1"></a>  <span class="co"># easier interpretation and plotting</span></span>
+<span id="cb219-16"><a href="bayesian-models.html#cb219-16" tabindex="-1"></a>  probs.vector <span class="ot">&lt;-</span> <span class="fu">plogis</span>(sims<span class="sc">$</span>b0 <span class="sc">+</span> sims<span class="sc">$</span>b1<span class="sc">*</span>xvals[i] <span class="sc">+</span> sims<span class="sc">$</span>b2<span class="sc">*</span><span class="dv">0</span>)</span>
+<span id="cb219-17"><a href="bayesian-models.html#cb219-17" tabindex="-1"></a>  uci[i] <span class="ot">&lt;-</span> <span class="fu">quantile</span>(probs.vector, <span class="fl">0.975</span>)</span>
+<span id="cb219-18"><a href="bayesian-models.html#cb219-18" tabindex="-1"></a>  lci[i] <span class="ot">&lt;-</span> <span class="fu">quantile</span>(probs.vector, <span class="fl">0.025</span>)</span>
+<span id="cb219-19"><a href="bayesian-models.html#cb219-19" tabindex="-1"></a>  p[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(probs.vector)</span>
+<span id="cb219-20"><a href="bayesian-models.html#cb219-20" tabindex="-1"></a>}</span>
+<span id="cb219-21"><a href="bayesian-models.html#cb219-21" tabindex="-1"></a></span>
+<span id="cb219-22"><a href="bayesian-models.html#cb219-22" tabindex="-1"></a><span class="co"># Now we can plot the predicted probabilities and the 95% credible interval </span></span>
+<span id="cb219-23"><a href="bayesian-models.html#cb219-23" tabindex="-1"></a><span class="co"># on top of the &#39;raw&#39; data that we simulated earlier</span></span>
+<span id="cb219-24"><a href="bayesian-models.html#cb219-24" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> donkeys)</span>
+<span id="cb219-25"><a href="bayesian-models.html#cb219-25" tabindex="-1"></a><span class="fu">lines</span>(p <span class="sc">~</span> xvals)</span>
+<span id="cb219-26"><a href="bayesian-models.html#cb219-26" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb219-27"><a href="bayesian-models.html#cb219-27" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(lci, <span class="fu">rev</span>(uci)),</span>
+<span id="cb219-28"><a href="bayesian-models.html#cb219-28" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#cacaca88&quot;</span>, </span>
+<span id="cb219-29"><a href="bayesian-models.html#cb219-29" tabindex="-1"></a>        <span class="at">border=</span><span class="st">&quot;#cacaca88&quot;</span>)</span>
+<span id="cb219-30"><a href="bayesian-models.html#cb219-30" tabindex="-1"></a></span>
+<span id="cb219-31"><a href="bayesian-models.html#cb219-31" tabindex="-1"></a><span class="co"># Let&#39;s add the frequentist prediction on top of this for comparison</span></span>
+<span id="cb219-32"><a href="bayesian-models.html#cb219-32" tabindex="-1"></a>pred.freq <span class="ot">&lt;-</span> <span class="fu">predict</span>(frq.mod, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">donkeys=</span>xvals,</span>
+<span id="cb219-33"><a href="bayesian-models.html#cb219-33" tabindex="-1"></a>                                                 <span class="at">altruism=</span><span class="dv">0</span>),</span>
+<span id="cb219-34"><a href="bayesian-models.html#cb219-34" tabindex="-1"></a>                     <span class="at">type=</span><span class="st">&quot;response&quot;</span>, <span class="at">se.fit=</span>T)</span>
+<span id="cb219-35"><a href="bayesian-models.html#cb219-35" tabindex="-1"></a></span>
+<span id="cb219-36"><a href="bayesian-models.html#cb219-36" tabindex="-1"></a><span class="fu">lines</span>(pred.freq<span class="sc">$</span>fit <span class="sc">~</span> xvals, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;#ffa500&quot;</span>)</span>
+<span id="cb219-37"><a href="bayesian-models.html#cb219-37" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb219-38"><a href="bayesian-models.html#cb219-38" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>((pred.freq<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>pred.freq<span class="sc">$</span>se.fit),</span>
+<span id="cb219-39"><a href="bayesian-models.html#cb219-39" tabindex="-1"></a>            <span class="fu">rev</span>(pred.freq<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>pred.freq<span class="sc">$</span>se.fit)),</span>
+<span id="cb219-40"><a href="bayesian-models.html#cb219-40" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;#ffa50088&quot;</span>, <span class="at">border=</span>F)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<p>More on Bayesian model specification, fitting, and interpretation next week!</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mixed-effects-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

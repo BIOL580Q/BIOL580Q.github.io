@@ -73,3 +73,7 @@ consequences-of-ignoring-dependence-in-errors
 dealing-with-dependence
 pika-stress-example
 shrinkage
+bayesian-models
+simulate-vampire-bat-survival
+comparing-frequentist-and-bayesian-model-outputs
+markov-chain-monte-carlo

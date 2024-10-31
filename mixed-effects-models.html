@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="generalized-linear-models.html"/>
-
+<link rel="next" href="bayesian-models.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -242,6 +242,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#pika-stress-example"><i class="fa fa-check"></i><b>9.5</b> Pika stress example</a></li>
 <li class="chapter" data-level="9.6" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#shrinkage"><i class="fa fa-check"></i><b>9.6</b> Shrinkage</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="bayesian-models.html"><a href="bayesian-models.html"><i class="fa fa-check"></i><b>10</b> Bayesian models</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="bayesian-models.html"><a href="bayesian-models.html#simulate-vampire-bat-survival"><i class="fa fa-check"></i><b>10.1</b> Simulate vampire bat survival</a></li>
+<li class="chapter" data-level="10.2" data-path="bayesian-models.html"><a href="bayesian-models.html#comparing-frequentist-and-bayesian-model-outputs"><i class="fa fa-check"></i><b>10.2</b> Comparing frequentist and Bayesian model outputs</a></li>
+<li class="chapter" data-level="10.3" data-path="bayesian-models.html"><a href="bayesian-models.html#markov-chain-monte-carlo"><i class="fa fa-check"></i><b>10.3</b> Markov Chain Monte Carlo</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -388,7 +394,6 @@ all of which means we may end up making errors when it comes to inference.</p>
 <h2><span class="header-section-number">9.6</span> Shrinkage<a href="mixed-effects-models.html#shrinkage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The random effect we added for Station is at the level of Station, because remember we are only estimating the standard deviation of the distribution from which deviations by groups are drawn. Each level of our grouping factor (i.e. CG1, CG2, etc.) has its own ‘Best Linear Unbiased Predictor’ drawn from that distribution, more commonly called BLUPs because it is fun to say. BLUPs are the individual predicted differences, i.e. the result of adding a random effect for Station means each station has a different BLUP.</p>
 <p>They are not estimates because we did not estimate parameters, hence why they are called predictions. They rely on data from other groups to fit the overall random effect, which means that groups with small sample size have BLUPs that are more influenced by the population mean than large groups. BLUPs tell us how much the parameter for each group differs from the population mean, i.e. in the case of a random intercept, how much each group’s intercept is above or below the mean intercept.</p>
-
 </div>
 </div>
             </section>
@@ -396,8 +401,8 @@ all of which means we may end up making errors when it comes to inference.</p>
           </div>
         </div>
       </div>
-<a href="generalized-linear-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="generalized-linear-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bayesian-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Inference | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
-  <meta name="description" content="4 Inference | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <title>11 Differences between frequentist and Bayesian inference | BIOL 480/580Q: Ecological Modeling (Fall 2024)</title>
+  <meta name="description" content="11 Differences between frequentist and Bayesian inference | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Inference | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta property="og:title" content="11 Differences between frequentist and Bayesian inference | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Inference | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
+  <meta name="twitter:title" content="11 Differences between frequentist and Bayesian inference | BIOL 480/580Q: Ecological Modeling (Fall 2024)" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="null-hypothesis-significance-testing.html"/>
-<link rel="next" href="the-law-of-large-numbers.html"/>
+<link rel="prev" href="bayes-theorem.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -242,11 +242,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#pika-stress-example"><i class="fa fa-check"></i><b>9.5</b> Pika stress example</a></li>
 <li class="chapter" data-level="9.6" data-path="mixed-effects-models.html"><a href="mixed-effects-models.html#shrinkage"><i class="fa fa-check"></i><b>9.6</b> Shrinkage</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="bayesian-models.html"><a href="bayesian-models.html"><i class="fa fa-check"></i><b>10</b> Bayesian models</a>
+<li class="chapter" data-level="10" data-path="bayes-theorem.html"><a href="bayes-theorem.html"><i class="fa fa-check"></i><b>10</b> Bayes theorem</a></li>
+<li class="chapter" data-level="11" data-path="differences-between-frequentist-and-bayesian-inference.html"><a href="differences-between-frequentist-and-bayesian-inference.html"><i class="fa fa-check"></i><b>11</b> Differences between frequentist and Bayesian inference</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="bayesian-models.html"><a href="bayesian-models.html#simulate-vampire-bat-survival"><i class="fa fa-check"></i><b>10.1</b> Simulate vampire bat survival</a></li>
-<li class="chapter" data-level="10.2" data-path="bayesian-models.html"><a href="bayesian-models.html#comparing-frequentist-and-bayesian-model-outputs"><i class="fa fa-check"></i><b>10.2</b> Comparing frequentist and Bayesian model outputs</a></li>
-<li class="chapter" data-level="10.3" data-path="bayesian-models.html"><a href="bayesian-models.html#markov-chain-monte-carlo"><i class="fa fa-check"></i><b>10.3</b> Markov Chain Monte Carlo</a></li>
+<li class="chapter" data-level="11.1" data-path="differences-between-frequentist-and-bayesian-inference.html"><a href="differences-between-frequentist-and-bayesian-inference.html#history-of-bayesian-inference"><i class="fa fa-check"></i><b>11.1</b> History of Bayesian inference</a></li>
+<li class="chapter" data-level="11.2" data-path="differences-between-frequentist-and-bayesian-inference.html"><a href="differences-between-frequentist-and-bayesian-inference.html#priors"><i class="fa fa-check"></i><b>11.2</b> Priors</a></li>
+<li class="chapter" data-level="11.3" data-path="differences-between-frequentist-and-bayesian-inference.html"><a href="differences-between-frequentist-and-bayesian-inference.html#markov-chain-monte-carlo"><i class="fa fa-check"></i><b>11.3</b> Markov Chain Monte Carlo</a></li>
 </ul></li>
 </ul>
 
@@ -265,52 +266,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="inference" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> Inference<a href="inference.html#inference" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>One of the goals of statistics is to make inference about the natural world. We make <em>inference</em> based on <em>observations</em> taken on our <em>sample</em>. In the Arctic butterfly example, the sample was the 2501 individual butterflies that Daly et al. measured. The observations are not just the length of each individual, but also their species identity (and lots of other data we did not dig into yet). In statistics, we assume that our sample is representative of the <em>population</em>. This does not mean a population in the ecological or evolutionary sense, but rather the universe that we are trying to make inference about. The way we defined the population for the t-tests was at the level of the species, i.e. we assumed the 968 <em>Boloria chariclea</em> individuals represented that species for the purposes of inference. The properties we measure on our sample are the variables at our disposal, i.e. species, length, growing degree days, region, etc. each matched to a single observation.</p>
-<p>When making inference, we can assume that the sample mean is an unbiased estimator of the population mean if:</p>
-<ol style="list-style-type: decimal">
-<li><p>Individuals are randomly selected from the population. i.e. we did not just choose the closest butterflies, or the prettiest butterflies, or the slowest butterflies, etc.</p></li>
-<li><p>Observations are independent of each other. i.e. not all the butterflies came from the same site, or the same person measured one species and a different person measured the other species, etc. This assumption is rarely met in ecology (…including in our t-tests that we did above).</p></li>
-<li><p>The population parameter we are interested in can be described as a <em>random variable</em>, meaning that it comes from a probability distribution.</p></li>
-</ol>
-<p>In calculating the sample mean <span class="math inline">\(\bar{x}\)</span> and sample variance <span class="math inline">\(s^2\)</span>, we are trying to make inference about the population mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. The latter are our population <em>parameters</em>. This is why you will sometimes hear the phrase ‘parametric’ when referring to statistics or modeling when there are parameters, whereas ‘non-parametric’ stats do not try to estimate or make inference about population parameters.</p>
-<p>Frequentist statistics assumes that population parameters are fixed, and the data are random. Bayesians, on the other hand, assume that the data are fixed and the parameters are random. In other words, frequentists assume that the world works in a certain way and we observe it imperfectly each time we collect a sample, while Bayesians tend to think more in terms of probability distributions that could have generated the data that we observed.</p>
-<p>We can simulate data based on fixing the underlying population parameters, then seeing how closely our sample approximates the population.</p>
-<div id="lyrebird-song-repertoire" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Lyrebird song repertoire<a href="inference.html#lyrebird-song-repertoire" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VjE0Kdfos4Y?si=pyDb1r8xL98Dakq2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-</iframe>
-<p>Lyrebirds can learn new songs from their environment, making it possible for individuals who have been exposed to more songs to have a larger song repertoire. As a motivating example, let’s pretend we are trying to understand the song repertoire of a population of lyrebirds (in this case, in both the ecological and statistical sense!). For the sake of this example, we will say that we know that the true population mean diversity of songs that lyrebirds in the population know is 38.1. We will also fix the standard deviation to 4. These are our population parameters.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="inference.html#cb89-1" tabindex="-1"></a><span class="co"># define our population parameters</span></span>
-<span id="cb89-2"><a href="inference.html#cb89-2" tabindex="-1"></a>true_mean <span class="ot">&lt;-</span> <span class="fl">38.1</span></span>
-<span id="cb89-3"><a href="inference.html#cb89-3" tabindex="-1"></a>true_sd <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb89-4"><a href="inference.html#cb89-4" tabindex="-1"></a></span>
-<span id="cb89-5"><a href="inference.html#cb89-5" tabindex="-1"></a><span class="co"># Now, we go out into the forest and sample some individuals from the population</span></span>
-<span id="cb89-6"><a href="inference.html#cb89-6" tabindex="-1"></a><span class="co"># by recording the diversity of songs they know. Let&#39;s say we observed 10 individuals.</span></span>
-<span id="cb89-7"><a href="inference.html#cb89-7" tabindex="-1"></a></span>
-<span id="cb89-8"><a href="inference.html#cb89-8" tabindex="-1"></a>n.obs <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb89-9"><a href="inference.html#cb89-9" tabindex="-1"></a>song_rep <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs, true_mean, <span class="at">sd =</span> true_sd)</span>
-<span id="cb89-10"><a href="inference.html#cb89-10" tabindex="-1"></a></span>
-<span id="cb89-11"><a href="inference.html#cb89-11" tabindex="-1"></a><span class="co"># What is the mean estimated from this sample?</span></span>
-<span id="cb89-12"><a href="inference.html#cb89-12" tabindex="-1"></a><span class="fu">mean</span>(song_rep)</span></code></pre></div>
-<pre><code>## [1] 38.13602</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="inference.html#cb91-1" tabindex="-1"></a><span class="co"># How close it is to the true population mean?</span></span>
-<span id="cb91-2"><a href="inference.html#cb91-2" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="fl">0.01</span>) <span class="co"># set up a reasonable range of x values for plotting purposes</span></span>
-<span id="cb91-3"><a href="inference.html#cb91-3" tabindex="-1"></a></span>
-<span id="cb91-4"><a href="inference.html#cb91-4" tabindex="-1"></a><span class="co"># first, plot the *true* probability density over this range of values</span></span>
-<span id="cb91-5"><a href="inference.html#cb91-5" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>xvals,</span>
-<span id="cb91-6"><a href="inference.html#cb91-6" tabindex="-1"></a>     <span class="at">y=</span><span class="fu">dnorm</span>(xvals, <span class="at">mean =</span> true_mean, <span class="at">sd =</span> true_sd),</span>
-<span id="cb91-7"><a href="inference.html#cb91-7" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
-<span id="cb91-8"><a href="inference.html#cb91-8" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Density&quot;</span>,</span>
-<span id="cb91-9"><a href="inference.html#cb91-9" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Value&quot;</span>,</span>
-<span id="cb91-10"><a href="inference.html#cb91-10" tabindex="-1"></a>     <span class="at">las=</span><span class="dv">1</span>)</span>
-<span id="cb91-11"><a href="inference.html#cb91-11" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(song_rep), <span class="at">lty=</span><span class="dv">2</span>) <span class="co"># sample mean from our 10 observations</span></span>
-<span id="cb91-12"><a href="inference.html#cb91-12" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>true_mean, <span class="at">lty=</span><span class="dv">1</span>) <span class="co"># true mean</span></span>
-<span id="cb91-13"><a href="inference.html#cb91-13" tabindex="-1"></a></span>
-<span id="cb91-14"><a href="inference.html#cb91-14" tabindex="-1"></a><span class="co"># What if we sampled a different 10 individuals?</span></span>
-<span id="cb91-15"><a href="inference.html#cb91-15" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(<span class="fu">rnorm</span>(n.obs, true_mean, true_sd)), <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;tomato2&quot;</span>) <span class="co"># a new sample</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div id="differences-between-frequentist-and-bayesian-inference" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">11</span> Differences between frequentist and Bayesian inference<a href="differences-between-frequentist-and-bayesian-inference.html#differences-between-frequentist-and-bayesian-inference" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>If you only know what has happened in the past, what is the probability of an event occurring in the future?
+Initial belief + new data = improved belief</p>
+<p><img src="https://preview.redd.it/1pxbgo8lcjy81.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=1c5db8e9508ff03364258dbc74770506548d9f68" /></p>
+<div id="history-of-bayesian-inference" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> History of Bayesian inference<a href="differences-between-frequentist-and-bayesian-inference.html#history-of-bayesian-inference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Essay Towards Solving a Problem in the Doctrine of Chances (1763, published posthumously)</p>
+<p>Pierre Simon, Marquis de Laplace (1749-1827)
+“The probability of a cause (given an event) is proportional to the probability of the event (given its cause)”
+(1774, age 25)</p>
+<p>Harold Jeffreys (1891-1989),
+Geophysicist
+Theory of Probability (1939)
+Bayesian probability is better than Fisher’s ‘imaginary repetitions’
+Namesake of Jeffrey’s Prior</p>
+<p>Alan Turing
+Theoretical computer scientist
+Chemically castrated after being found guilty of ‘gross indecency’
+Used Bayesian updating to crack the Enigma machine
+But, this required analytical approaches</p>
+<p>What is the probability of your data, given some parameter value θ?
+There is a true, fixed value of θ
+Pr(y | θ)</p>
+<p>Likelihood is the ‘reverse probability’
+L(model) = Pr(y | θ)
+L(θ|y) = Pr(y|θ)</p>
+<p>Pr(θ | y) = Pr(y | θ)*Pr(θ)
+Pr(y)</p>
+<p>Posterior is a true probability of a parameter given the data
+Likelihood is the probability of the data given the parameter
+Priors are probability of parameter values before we observe the data
+Pr(y) is the marginal distribution of the data; constant that makes the posterior sum to 1 after the data are observed</p>
+<p>Let’s say your risk of getting COVID in Broome County is 2%
+And the sensitivity of at-home tests is 0.80, i.e. 80% of the time if you have COVID, you will get a positive result
+Given a positive test, what is the probability you have COVID?
+Pr(x|y=1) = Pr(y=1|x)<em>Pr(x) = ______(0.80)</em>0.02_____ = 0.016
+Pr(y) (0.80<em>0.02 + 0.20</em>0.98) 0.212</p>
+<p>= 0.075
+What if the test was 95% accurate?
+Pr(x|y=1) = Pr(y=1|x)<em>Pr(x) = ______(0.95)</em>0.02_____ = 0.019
+Pr(y) (0.95<em>0.02 + 0.05</em>0.98) 0.068</p>
+<p>= 0.279</p>
+</div>
+<div id="priors" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Priors<a href="differences-between-frequentist-and-bayesian-inference.html#priors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="float">
+<img src="https://pbs.twimg.com/media/F8Bau4VXEAAf8YO.jpg:large" alt="Informative priors" />
+<div class="figcaption">Informative priors</div>
+</div>
+<p>Priors are the probability of our parameters before we observe our data
+Priors can be informative, e.g. based on previous research
+Or priors can be vague / uninformative / flat
+The more uninformative the prior, the more the likelihood / the data shape the posterior</p>
+<p>There are analytical solutions to Bayes theorem that could be worked out analytically, i.e. with paper and pencil mathematically for some cases when there is a solvable integral (I have no idea how to do this, nor quite frankly do most ecologists)
+More often, we use conjugate priors because they produce posterior distributions that are the same shape as the prior and are typically fairly quick to estimate analytically
+Poisson &lt;- gamma
+Binomial &lt;- beta
+Normal &lt;- normal
+But, in reality, we never solve things analytically</p>
+<p>What is the support for your data? What values can the parameter take and not take?
+Often, coefficients (i.e. betas in a linear model) can be normal
+When parameters need to be &gt;0, gamma is pretty flexible
+Binomial for when values can only be 0 or 1
+Beta as a prior for binomial, i.e. probabilities between 0 and 1
+Cauchy or half-cauchy is useful for fat tails</p>
+</div>
+<div id="markov-chain-monte-carlo" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Markov Chain Monte Carlo<a href="differences-between-frequentist-and-bayesian-inference.html#markov-chain-monte-carlo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh7wE-YL2xodeojd2748zd1geg7dG9I_L_QA&amp;s" /></p>
+<p>Estimate the posterior distribution
+We know the likelihood and the priors, but not the posterior
+Generates many, many draws that are proportional to the density in the posterior
+i.e. instead of directly estimating the posterior, we draw samples from it
+These samples then help us understand the posterior distribution (e.g. we can describe the mean, median, variance, moments, etc.)</p>
+<p>As the MCMC chain gets longer, more probable values are retained, which is what gives the posterior a shape
+The posterior distribution is approximated by samples from the MCMC chains</p>
+<p>Metropolis algorithm
+Metropolis-Hastings
+Gibbs sampler
+JAGS</p>
+<p>…Stan???</p>
+<p><a href="https://chi-feng.github.io/mcmc-demo/" class="uri">https://chi-feng.github.io/mcmc-demo/</a></p>
+
 </div>
 </div>
             </section>
@@ -318,8 +357,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="null-hypothesis-significance-testing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="the-law-of-large-numbers.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bayes-theorem.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
